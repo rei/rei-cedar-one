@@ -5,6 +5,7 @@ register(StyleDictionary);
 
 /** Token types that should be treated as size-like values. */
 const sizeTokenTypes = new Set(['dimension', 'fontSize', 'borderRadius']);
+
 /**
  * Extracts a string value from DTCG or legacy token shapes.
  * @param token - Token with optional `$value` or `value` fields.
@@ -14,6 +15,7 @@ const getTokenStringValue = (token: { $value?: unknown; value?: unknown }) => {
   const value = token.$value ?? token.value;
   return typeof value === 'string' ? value : null;
 };
+
 /**
  * Checks whether a token declares a size-like type.
  * @param token - Token with optional `$type` or `type` fields.
