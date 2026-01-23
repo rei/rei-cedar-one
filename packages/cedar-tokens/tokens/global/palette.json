@@ -2,14 +2,19 @@
   "color": {
     "palette": {
       "white": { "$value": "#ffffff", "$type": "color" },
-      "warm-grey-100": { "$value": "#f9f8f6", "$type": "color" },
-      "warm-grey-200": { "$value": "#f4f2ed", "$type": "color" },
+      "warm-grey-100": { "$value": "#fafbf9", "$type": "color" },
+      "warm-grey-200": { "$value": "#f9f8f6", "$type": "color" },
       "warm-grey-300": { "$value": "#edeae3", "$type": "color" },
-      "warm-grey-400": { "$value": "#dcd6cb", "$type": "color" },
-      "warm-grey-500": { "$value": "#d1cbbd", "$type": "color" },
-      "warm-grey-700": { "$value": "#928b80", "$type": "color" },
-      "warm-grey-900": { "$value": "#4e4d49", "$type": "color" },
+      "warm-grey-400": { "$value": "#d5cfc3", "$type": "color" },
+      "warm-grey-500": { "$value": "#d5cfc3", "$type": "color" },
+      "warm-grey-700": { "$value": "#958e83", "$type": "color" },
+      "warm-grey-900": { "$value": "#4b4a48", "$type": "color" },
+      "cold-grey-200": { "$value": "#f7f5f3", "$type": "color" },
+      "sage-green-400": { "$value": "#c7dfd1", "$type": "color" },
       "blue-spruce-green-1000": { "$value": "#1f513f", "$type": "color" },
+      "alpine-lake-blue-800": { "$value": "#406eb5", "$type": "color" },
+      "alpine-lake-blue-1000": { "$value": "#0b2d60", "$type": "color" },
+      "sale-red-200": { "$value": "#fde2e2", "$type": "color" },
       "sale-red-800": { "$value": "#c7370f", "$type": "color" }
     }
   }

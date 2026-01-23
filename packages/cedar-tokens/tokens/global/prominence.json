@@ -1,15 +1,15 @@
 {
   "prominence": {
     "raised": {
-      "$value": "0 0.2rem 0.2rem 0 rgba(12, 11, 8, 0.2)",
+      "$value": "0 0.2rem 0.2rem 0 #2e2e2b33",
       "$type": "shadow"
     },
     "elevated": {
-      "$value": "0 0.4rem 0.4rem 0 rgba(12, 11, 8, 0.2)",
+      "$value": "0 0.4rem 0.4rem 0 #2e2e2b33",
       "$type": "shadow"
     },
     "floating": {
-      "$value": "0 0.8rem 0.8rem 0 rgba(12, 11, 8, 0.2)",
+      "$value": "0 0.8rem 0.8rem 0 #2e2e2b33",
       "$type": "shadow"
     }
   }

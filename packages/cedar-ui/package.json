@@ -3,15 +3,25 @@
   "version": "0.0.0",
   "private": true,
   "sideEffects": [
-    "./src/css/**"
+    "./dist/css/**"
   ],
   "exports": {
-    "./base.css": "./src/css/cedar-base.css",
-    "./fonts.css": "./src/css/cedar-fonts.css",
-    "./reset.css": "./src/css/cedar-reset.css",
-    "./components/*": "./src/css/components/*"
+    "./base.css": "./dist/css/cedar-base.css",
+    "./fonts.css": "./dist/css/cedar-fonts.css",
+    "./reset.css": "./dist/css/cedar-reset.css",
+    "./components/*": "./dist/css/components/*"
   },
   "scripts": {
-    "build": "echo \"build utilities\""
+    "build": "postcss \"src/css/**/*.css\" --base src/css --dir dist/css"
+  },
+  "dependencies": {
+    "@rei/cedar-tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
+    "postcss-csso": "^6.0.1",
+    "postcss-custom-media": "^10.0.4",
+    "postcss-import": "^16.1.0"
   }
 }

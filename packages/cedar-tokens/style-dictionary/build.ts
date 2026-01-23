@@ -34,6 +34,14 @@ const isSizeToken = (token: { $type?: unknown; type?: unknown }) => {
 const isRootTextSize = (token: { path?: string[] }) =>
   Array.isArray(token.path) && token.path.join('.') === 'text.size.root';
 
+/**
+ * Checks if the token belongs to breakpoint tokens.
+ * @param token - Token with an optional path.
+ * @returns True when the token path starts with breakpoint.
+ */
+const isBreakpointToken = (token: { path?: string[] }) =>
+  Array.isArray(token.path) && token.path[0] === 'breakpoint';
+
 /** Matches any token in tokens/components. */
 const componentPathRe = /(^|[\\/])tokens[\\/]components[\\/]/;
 /** Matches the button component token file. */
@@ -86,7 +94,8 @@ StyleDictionary.registerTransform({
   filter: (token) =>
     isSizeToken(token) &&
     getTokenStringValue(token) !== null &&
-    !isRootTextSize(token),
+    !isRootTextSize(token) &&
+    !isBreakpointToken(token),
   transform: (token) => {
     const value = getTokenStringValue(token);
     if (!value) return token.$value ?? token.value;
@@ -95,6 +104,49 @@ StyleDictionary.registerTransform({
       const remStr = rem.toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
       return `${remStr}rem`;
     });
+  },
+});
+
+/**
+ * Outputs CSS custom media definitions from breakpoint tokens.
+ */
+StyleDictionary.registerFormat({
+  name: 'css/custom-media',
+  format: ({ dictionary }) => {
+    const header = [
+      '/**',
+      ' * Do not edit directly, this file was auto-generated.',
+      ' */',
+      '',
+    ].join('\n');
+    const byPath = new Map(
+      dictionary.allTokens.map((token) => [token.path.join('.'), token]),
+    );
+    const getValue = (path: string) =>
+      byPath.get(path)?.value ?? byPath.get(path)?.$value;
+
+    const xsMax = getValue('breakpoint.xs.max');
+    const smMin = getValue('breakpoint.sm.min');
+    const smMax = getValue('breakpoint.sm.max');
+    const mdMin = getValue('breakpoint.md.min');
+    const mdMax = getValue('breakpoint.md.max');
+    const lgMin = getValue('breakpoint.lg.min');
+
+    const lines: string[] = [];
+    if (xsMax) lines.push(`@custom-media --cdr-xs (max-width: ${xsMax});`);
+    if (smMin && smMax) {
+      lines.push(
+        `@custom-media --cdr-sm (min-width: ${smMin}) and (max-width: ${smMax});`,
+      );
+    }
+    if (mdMin && mdMax) {
+      lines.push(
+        `@custom-media --cdr-md (min-width: ${mdMin}) and (max-width: ${mdMax});`,
+      );
+    }
+    if (lgMin) lines.push(`@custom-media --cdr-lg (min-width: ${lgMin});`);
+
+    return `${header}${lines.join('\n')}\n`;
   },
 });
 
@@ -163,6 +215,11 @@ const sd = new StyleDictionary({
           destination: 'base.json',
           format: 'json/nested',
           filter: (token) => withoutOptions(token) && isBaseToken(token),
+        },
+        {
+          destination: 'breakpoints.css',
+          format: 'css/custom-media',
+          filter: (token) => withoutOptions(token) && isBreakpointToken(token),
         },
       ],
     },

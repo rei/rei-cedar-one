@@ -10,6 +10,7 @@
   "exports": {
     "./web/base.css": "./dist/web/base.css",
     "./web/base.json": "./dist/web/base.json",
+    "./web/breakpoints.css": "./dist/web/breakpoints.css",
     "./web/components/*": "./dist/web/components/*",
     "./web/tokens.css": "./dist/web/tokens.css",
     "./web/tokens.json": "./dist/web/tokens.json",

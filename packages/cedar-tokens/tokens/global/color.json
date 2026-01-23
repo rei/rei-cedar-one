@@ -7,8 +7,8 @@
       "primary": { "$value": "#ffffff", "$type": "color" }
     },
     "icon": {
-      "default": { "$value": "#928b80", "$type": "color" },
-      "disabled": { "$value": "#dcd6cb", "$type": "color" }
+      "default": { "$value": "#958e83", "$type": "color" },
+      "disabled": { "$value": "#d5cfc3", "$type": "color" }
     }
   }
 }

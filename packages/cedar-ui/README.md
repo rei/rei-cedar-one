@@ -24,3 +24,5 @@ Usage (web):
 @import '@rei/cedar-ui/base.css';
 @import '@rei/cedar-ui/components/button.css';
 ```
+
+Note: `@rei/cedar-ui` ships precompiled CSS with Cedar breakpoint values baked in, so consumers do not need PostCSS.
