@@ -1,0 +1,7 @@
+{
+  "text": {
+    "size": {
+      "root": { "$value": "10px", "$type": "dimension" }
+    }
+  }
+}

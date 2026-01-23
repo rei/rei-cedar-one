@@ -3,7 +3,20 @@
   "version": "0.0.0",
   "private": true,
   "description": "Cedar design tokens (DTCG) with web and React Native outputs.",
+  "sideEffects": [
+    "./dist/web/**/*.css"
+  ],
   "type": "module",
+  "exports": {
+    "./web/base.css": "./dist/web/base.css",
+    "./web/base.json": "./dist/web/base.json",
+    "./web/components/*": "./dist/web/components/*",
+    "./web/tokens.css": "./dist/web/tokens.css",
+    "./web/tokens.json": "./dist/web/tokens.json",
+    "./react-native/base.json": "./dist/react-native/base.json",
+    "./react-native/components/*": "./dist/react-native/components/*",
+    "./react-native/tokens.json": "./dist/react-native/tokens.json"
+  },
   "scripts": {
     "build": "tsx ./style-dictionary/build.ts",
     "clean": "rimraf dist"

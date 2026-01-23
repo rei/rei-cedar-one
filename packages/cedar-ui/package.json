@@ -1,0 +1,17 @@
+{
+  "name": "@rei/cedar-ui",
+  "version": "0.0.0",
+  "private": true,
+  "sideEffects": [
+    "./src/css/**"
+  ],
+  "exports": {
+    "./base.css": "./src/css/cedar-base.css",
+    "./fonts.css": "./src/css/cedar-fonts.css",
+    "./reset.css": "./src/css/cedar-reset.css",
+    "./components/*": "./src/css/components/*"
+  },
+  "scripts": {
+    "build": "echo \"build utilities\""
+  }
+}

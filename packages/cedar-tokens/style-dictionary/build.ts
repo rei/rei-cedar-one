@@ -27,6 +27,42 @@ const isSizeToken = (token: { $type?: unknown; type?: unknown }) => {
 };
 
 /**
+ * Checks if the token is the root text size token (keeps px values for html root).
+ * @param token - Token with an optional path.
+ * @returns True when the token path matches text.size.root.
+ */
+const isRootTextSize = (token: { path?: string[] }) =>
+  Array.isArray(token.path) && token.path.join('.') === 'text.size.root';
+
+/** Matches any token in tokens/components. */
+const componentPathRe = /(^|[\\/])tokens[\\/]components[\\/]/;
+/** Matches the button component token file. */
+const buttonPathRe = /(^|[\\/])tokens[\\/]components[\\/]button\.json$/;
+
+/**
+ * Checks if a token comes from the components token folder.
+ * @param token - Token with an optional file path.
+ * @returns True when the token file path is in tokens/components.
+ */
+const isComponentToken = (token: { filePath?: string }) =>
+  componentPathRe.test(token.filePath ?? '');
+
+/**
+ * Checks if a token belongs to the button component token file.
+ * @param token - Token with an optional file path.
+ * @returns True when the token file path matches button.json.
+ */
+const isButtonToken = (token: { filePath?: string }) =>
+  buttonPathRe.test(token.filePath ?? '');
+
+/**
+ * Checks if a token should be part of the base token bundle.
+ * @param token - Token with an optional file path.
+ * @returns True when the token is not a component token.
+ */
+const isBaseToken = (token: { filePath?: string }) => !isComponentToken(token);
+
+/**
  * Transform px sizes to numbers for React Native output.
  */
 StyleDictionary.registerTransform({
@@ -47,7 +83,10 @@ StyleDictionary.registerTransform({
 StyleDictionary.registerTransform({
   name: 'size/px-to-rem-10',
   type: 'value',
-  filter: (token) => isSizeToken(token) && getTokenStringValue(token) !== null,
+  filter: (token) =>
+    isSizeToken(token) &&
+    getTokenStringValue(token) !== null &&
+    !isRootTextSize(token),
   transform: (token) => {
     const value = getTokenStringValue(token);
     if (!value) return token.$value ?? token.value;
@@ -67,26 +106,35 @@ StyleDictionary.registerTransform({
 const withoutOptions = (token: { path: string[] }) =>
   !token.path.includes('options');
 
+/** Shared transform list for web CSS outputs. */
+const webTransforms = [
+  'attribute/cti',
+  'name/kebab',
+  'time/seconds',
+  'html/icon',
+  'size/px-to-rem-10',
+  'color/css',
+  'asset/url',
+  'cubicBezier/css',
+  'strokeStyle/css/shorthand',
+  'border/css/shorthand',
+  'typography/css/shorthand',
+  'transition/css/shorthand',
+  'shadow/css/shorthand',
+];
+
+/**
+ * Builds Cedar token outputs.
+ * - web: full and base bundles with concrete values
+ * - webComponents: component bundles referencing base variables
+ * - rn: JSON outputs with resolved values
+ */
 const sd = new StyleDictionary({
   source: ['tokens/**/*.json'],
   usesDtcg: true,
   platforms: {
     web: {
-      transforms: [
-        'attribute/cti',
-        'name/kebab',
-        'time/seconds',
-        'html/icon',
-        'size/px-to-rem-10',
-        'color/css',
-        'asset/url',
-        'cubicBezier/css',
-        'strokeStyle/css/shorthand',
-        'border/css/shorthand',
-        'typography/css/shorthand',
-        'transition/css/shorthand',
-        'shadow/css/shorthand',
-      ],
+      transforms: webTransforms,
       prefix: 'cdr',
       buildPath: 'dist/web/',
       files: [
@@ -103,6 +151,42 @@ const sd = new StyleDictionary({
           format: 'json/nested',
           filter: withoutOptions,
         },
+        {
+          destination: 'base.css',
+          format: 'css/variables',
+          filter: (token) => withoutOptions(token) && isBaseToken(token),
+          options: {
+            outputReferences: false,
+          },
+        },
+        {
+          destination: 'base.json',
+          format: 'json/nested',
+          filter: (token) => withoutOptions(token) && isBaseToken(token),
+        },
+      ],
+    },
+    webComponents: {
+      transforms: webTransforms,
+      prefix: 'cdr',
+      buildPath: 'dist/web/',
+      log: {
+        warnings: 'disabled',
+      },
+      files: [
+        {
+          destination: 'components/button.css',
+          format: 'css/variables',
+          filter: (token) => withoutOptions(token) && isButtonToken(token),
+          options: {
+            outputReferences: true,
+          },
+        },
+        {
+          destination: 'components/button.json',
+          format: 'json/nested',
+          filter: (token) => withoutOptions(token) && isButtonToken(token),
+        },
       ],
     },
     rn: {
@@ -114,9 +198,29 @@ const sd = new StyleDictionary({
           format: 'json/nested',
           filter: withoutOptions,
         },
+        {
+          destination: 'base.json',
+          format: 'json/nested',
+          filter: (token) => withoutOptions(token) && isBaseToken(token),
+        },
+        {
+          destination: 'components/button.json',
+          format: 'json/nested',
+          filter: (token) => withoutOptions(token) && isButtonToken(token),
+        },
       ],
     },
   },
 });
 
-sd.buildAllPlatforms();
+/**
+ * Runs platform builds sequentially to keep log warnings scoped per platform.
+ * @returns Promise<void>
+ */
+const run = async () => {
+  await sd.buildPlatform('web');
+  await sd.buildPlatform('webComponents');
+  await sd.buildPlatform('rn');
+};
+
+run();

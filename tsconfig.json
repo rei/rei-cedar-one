@@ -3,8 +3,7 @@
   "files": [],
   "references": [
     { "path": "./packages/cedar-tokens" },
-    { "path": "./packages/cedar-utilities" },
-    { "path": "./packages/cedar-behavior" },
+    { "path": "./packages/cedar-ui" },
     { "path": "./apps/playground-web" },
     { "path": "./apps/playground-rn" }
   ]

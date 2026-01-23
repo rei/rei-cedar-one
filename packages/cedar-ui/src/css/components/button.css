@@ -1,0 +1,607 @@
+.cedar-btn {
+  font-family: var(--cdr-font-family-sans);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.008rem;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  border: none;
+  border-radius: var(--cdr-radius-softer);
+  cursor: pointer;
+  display: inline-flex;
+  outline: none;
+  overflow: visible;
+  margin: 0;
+  padding: var(--cdr-space-inset-one-x-squish);
+  text-align: left;
+  text-decoration: none;
+  text-transform: none;
+  vertical-align: middle;
+  transition:
+    box-shadow var(--cdr-duration-2-x) var(--cdr-timing-function-ease),
+    background-color var(--cdr-duration-2-x) var(--cdr-timing-function-ease),
+    color var(--cdr-duration-2-x) var(--cdr-timing-function-ease),
+    fill var(--cdr-duration-2-x) var(--cdr-timing-function-ease);
+}
+
+.cedar-btn:hover,
+.cedar-btn:active,
+.cedar-btn:focus {
+  outline: none;
+  outline-offset: 0;
+  text-decoration: none;
+}
+
+.cedar-btn[disabled] {
+  cursor: not-allowed;
+}
+
+.cedar-btn svg {
+  align-self: center;
+  fill: inherit;
+}
+
+.cedar-btn--has-icon-left svg {
+  margin-right: var(--cdr-space-quarter-x);
+}
+
+.cedar-btn--has-icon-right svg {
+  margin-left: var(--cdr-space-quarter-x);
+}
+
+.cedar-btn--primary {
+  background-color: var(
+    --cdr-button-primary-background-color-rest,
+    var(--cdr-color-background-button-primary-rest)
+  );
+  box-shadow: inset 0 0 0 1px
+    var(--cdr-button-primary-box-shadow-color-rest, var(--cdr-color-border-button-primary-rest));
+  color: var(--cdr-button-primary-text-color, var(--cdr-color-text-button-primary));
+  fill: var(--cdr-button-primary-fill-color, var(--cdr-color-text-button-primary));
+}
+
+.cedar-btn--primary:hover,
+.cedar-btn--primary:focus {
+  color: var(
+    --cdr-button-primary-text-color-interaction,
+    var(--cdr-color-text-button-primary-hover)
+  );
+  fill: var(
+    --cdr-button-primary-fill-color-interaction,
+    var(--cdr-color-text-button-primary-hover)
+  );
+  background-color: var(
+    --cdr-button-primary-background-color-interaction,
+    var(--cdr-color-background-button-primary-hover)
+  );
+  box-shadow: inset 0 0 0 3px
+      var(
+        --cdr-button-primary-box-shadow-color-interaction,
+        var(--cdr-color-border-button-primary-hover)
+      ),
+    var(--cdr-prominence-raised);
+}
+
+.cedar-btn--primary:active {
+  color: var(
+    --cdr-button-primary-text-color-active,
+    var(--cdr-color-text-button-primary-active)
+  );
+  fill: var(
+    --cdr-button-primary-fill-color-active,
+    var(--cdr-color-text-button-primary-active)
+  );
+  background-color: var(
+    --cdr-button-primary-background-color-active,
+    var(--cdr-color-background-button-primary-active)
+  );
+  box-shadow: inset 0 0 0 3px
+      var(
+        --cdr-button-primary-box-shadow-color-active,
+        var(--cdr-color-border-button-primary-active)
+      ),
+    inset 0 0 0 5px
+      var(
+        --cdr-button-primary-box-shadow-color-active-inset,
+        var(--cdr-color-border-button-primary-active-inset)
+      );
+}
+
+.cedar-btn--primary[disabled] {
+  background-color: var(
+    --cdr-button-primary-background-color-disabled,
+    var(--cdr-color-background-button-default-disabled)
+  );
+  box-shadow: inset 0 0 0 1px
+    var(
+      --cdr-button-primary-box-shadow-color-disabled,
+      var(--cdr-color-border-button-default-disabled)
+    );
+  color: var(
+    --cdr-button-primary-text-color-disabled,
+    var(--cdr-color-text-button-primary-disabled)
+  );
+  fill: var(
+    --cdr-button-primary-fill-color-disabled,
+    var(--cdr-color-text-button-primary-disabled)
+  );
+}
+
+.cedar-btn--secondary {
+  background-color: var(
+    --cdr-button-secondary-background-color-rest,
+    var(--cdr-color-background-button-secondary-rest)
+  );
+  box-shadow: inset 0 0 0 1px
+    var(
+      --cdr-button-secondary-box-shadow-color-rest,
+      var(--cdr-color-border-button-secondary-rest)
+    );
+  color: var(--cdr-button-secondary-text-color, var(--cdr-color-text-button-secondary));
+  fill: var(--cdr-button-secondary-fill-color, var(--cdr-color-icon-default));
+}
+
+.cedar-btn--secondary:hover,
+.cedar-btn--secondary:focus {
+  color: var(
+    --cdr-button-secondary-text-color-interaction,
+    var(--cdr-color-text-button-secondary-hover)
+  );
+  fill: var(
+    --cdr-button-secondary-fill-color-interaction,
+    var(--cdr-color-text-button-secondary-hover)
+  );
+  background-color: var(
+    --cdr-button-secondary-background-color-interaction,
+    var(--cdr-color-background-button-secondary-hover)
+  );
+  box-shadow: inset 0 0 0 3px
+      var(
+        --cdr-button-secondary-box-shadow-color-interaction,
+        var(--cdr-color-border-button-secondary-hover)
+      ),
+    var(--cdr-prominence-raised);
+}
+
+.cedar-btn--secondary:active {
+  color: var(
+    --cdr-button-secondary-text-color-active,
+    var(--cdr-color-text-button-secondary-active)
+  );
+  fill: var(
+    --cdr-button-secondary-fill-color-active,
+    var(--cdr-color-text-button-secondary-active)
+  );
+  background-color: var(
+    --cdr-button-secondary-background-color-active,
+    var(--cdr-color-background-button-secondary-active)
+  );
+  box-shadow: inset 0 0 0 3px
+      var(
+        --cdr-button-secondary-box-shadow-color-active,
+        var(--cdr-color-border-button-secondary-active)
+      ),
+    inset 0 0 0 5px
+      var(
+        --cdr-button-secondary-border-color-active-inset,
+        var(--cdr-color-border-button-secondary-active-inset)
+      );
+}
+
+.cedar-btn--secondary[disabled] {
+  background-color: var(
+    --cdr-button-secondary-background-color-disabled,
+    var(--cdr-color-background-button-secondary-disabled)
+  );
+  box-shadow: inset 0 0 0 1px
+    var(
+      --cdr-button-secondary-box-shadow-color-disabled,
+      var(--cdr-color-border-button-default-disabled)
+    );
+  color: var(
+    --cdr-button-secondary-text-color-disabled,
+    var(--cdr-color-text-button-secondary-disabled)
+  );
+  fill: var(
+    --cdr-button-secondary-fill-color-disabled,
+    var(--cdr-color-text-button-secondary-disabled)
+  );
+}
+
+.cedar-btn--dark {
+  background-color: var(
+    --cdr-button-dark-background-color-rest,
+    var(--cdr-color-background-button-dark-rest)
+  );
+  box-shadow: inset 0 0 0 1px
+    var(--cdr-button-dark-box-shadow-color-rest, var(--cdr-color-border-button-dark-rest));
+  color: var(--cdr-button-dark-text-color, var(--cdr-color-text-button-dark));
+  fill: var(--cdr-button-dark-fill-color, var(--cdr-color-text-button-dark));
+}
+
+.cedar-btn--dark:hover,
+.cedar-btn--dark:focus {
+  color: var(
+    --cdr-button-dark-text-color-interaction,
+    var(--cdr-color-text-button-dark-hover)
+  );
+  fill: var(
+    --cdr-button-dark-fill-color-interaction,
+    var(--cdr-color-text-button-dark-hover)
+  );
+  background-color: var(
+    --cdr-button-dark-background-color-interaction,
+    var(--cdr-color-background-button-dark-hover)
+  );
+  box-shadow: inset 0 0 0 3px
+      var(
+        --cdr-button-dark-box-shadow-color-interaction,
+        var(--cdr-color-border-button-dark-hover)
+      ),
+    var(--cdr-prominence-raised);
+}
+
+.cedar-btn--dark:active {
+  color: var(
+    --cdr-button-dark-text-color-active,
+    var(--cdr-color-text-button-dark-active)
+  );
+  fill: var(
+    --cdr-button-dark-fill-color-active,
+    var(--cdr-color-text-button-dark-active)
+  );
+  background-color: var(
+    --cdr-button-dark-background-color-active,
+    var(--cdr-color-background-button-dark-active)
+  );
+  box-shadow: inset 0 0 0 3px
+      var(
+        --cdr-button-dark-box-shadow-color-active,
+        var(--cdr-color-border-button-dark-active)
+      ),
+    inset 0 0 0 5px
+      var(
+        --cdr-button-dark-box-shadow-color-active-inset,
+        var(--cdr-color-border-button-dark-active-inset)
+      );
+}
+
+.cedar-btn--dark[disabled] {
+  background-color: var(
+    --cdr-button-dark-background-color-disabled,
+    var(--cdr-color-background-button-default-disabled)
+  );
+  box-shadow: inset 0 0 0 1px
+    var(
+      --cdr-button-dark-box-shadow-color-disabled,
+      var(--cdr-color-border-button-default-disabled)
+    );
+  color: var(
+    --cdr-button-dark-text-color-disabled,
+    var(--cdr-color-text-button-dark-disabled)
+  );
+  fill: var(
+    --cdr-button-dark-fill-color-disabled,
+    var(--cdr-color-text-button-dark-disabled)
+  );
+}
+
+.cedar-btn--sale {
+  background-color: var(
+    --cdr-button-sale-background-color-rest,
+    var(--cdr-color-background-button-sale-rest)
+  );
+  box-shadow: inset 0 0 0 1px
+    var(--cdr-button-sale-box-shadow-color-rest, var(--cdr-color-border-button-sale-rest));
+  color: var(--cdr-button-sale-text-color, var(--cdr-color-text-button-sale));
+  fill: var(--cdr-button-sale-fill-color, var(--cdr-color-text-button-sale));
+}
+
+.cedar-btn--sale:hover,
+.cedar-btn--sale:focus {
+  color: var(
+    --cdr-button-sale-text-color-interaction,
+    var(--cdr-color-text-button-sale-hover)
+  );
+  fill: var(
+    --cdr-button-sale-fill-color-interaction,
+    var(--cdr-color-text-button-sale-hover)
+  );
+  background-color: var(
+    --cdr-button-sale-background-color-interaction,
+    var(--cdr-color-background-button-sale-hover)
+  );
+  box-shadow: inset 0 0 0 3px
+      var(
+        --cdr-button-sale-box-shadow-color-interaction,
+        var(--cdr-color-border-button-sale-hover)
+      ),
+    var(--cdr-prominence-raised);
+}
+
+.cedar-btn--sale:active {
+  color: var(
+    --cdr-button-sale-text-color-active,
+    var(--cdr-color-text-button-sale-active)
+  );
+  fill: var(
+    --cdr-button-sale-fill-color-active,
+    var(--cdr-color-text-button-sale-active)
+  );
+  background-color: var(
+    --cdr-button-sale-background-color-active,
+    var(--cdr-color-background-button-sale-active)
+  );
+  box-shadow: inset 0 0 0 3px
+      var(
+        --cdr-button-sale-box-shadow-color-active,
+        var(--cdr-color-border-button-sale-active)
+      ),
+    inset 0 0 0 5px
+      var(
+        --cdr-button-sale-box-shadow-color-active-inset,
+        var(--cdr-color-border-button-sale-active-inset)
+      );
+}
+
+.cedar-btn--sale[disabled] {
+  background-color: var(
+    --cdr-button-sale-background-color-disabled,
+    var(--cdr-color-background-button-default-disabled)
+  );
+  box-shadow: inset 0 0 0 1px
+    var(
+      --cdr-button-sale-box-shadow-color-disabled,
+      var(--cdr-color-border-button-default-disabled)
+    );
+  color: var(
+    --cdr-button-sale-text-color-disabled,
+    var(--cdr-color-text-button-sale-disabled)
+  );
+  fill: var(
+    --cdr-button-sale-fill-color-disabled,
+    var(--cdr-color-text-button-sale-disabled)
+  );
+}
+
+.cedar-btn--link {
+  color: var(--cdr-button-link-text-color, var(--cdr-color-text-link-rest));
+  fill: var(--cdr-button-link-fill-color, var(--cdr-color-text-link-rest));
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.cedar-btn--link:active,
+.cedar-btn--link:focus {
+  color: var(
+    --cdr-button-link-text-color-active,
+    var(--cdr-color-text-link-active)
+  );
+}
+
+.cedar-btn--link:hover {
+  color: var(
+    --cdr-button-link-text-color-hover,
+    var(--cdr-color-text-link-hover)
+  );
+  text-decoration: none;
+}
+
+.cedar-btn--link:focus {
+  outline: var(--cdr-button-link-outline, 0.2rem solid Highlight);
+  outline-color: -webkit-focus-ring-color;
+  outline-offset: 0;
+}
+
+.cedar-btn--small {
+  font-family: var(--cdr-font-family-sans);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.008rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  padding: var(--cdr-space-inset-three-quarter-x-squish);
+  width: auto;
+}
+
+.cedar-btn--small.cedar-btn--has-icon-left {
+  padding-left: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
+}
+
+.cedar-btn--small.cedar-btn--has-icon-right {
+  padding-right: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
+}
+
+.cedar-btn--small svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.cedar-btn--medium {
+  font-family: var(--cdr-font-family-sans);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.008rem;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  padding: var(--cdr-space-inset-one-x-squish);
+  width: auto;
+}
+
+.cedar-btn--medium.cedar-btn--has-icon-left {
+  padding-left: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
+}
+
+.cedar-btn--medium.cedar-btn--has-icon-right {
+  padding-right: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
+}
+
+.cedar-btn--medium svg {
+  width: var(--cdr-icon-size);
+  height: var(--cdr-icon-size);
+}
+
+.cedar-btn--large {
+  font-family: var(--cdr-font-family-sans);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.008rem;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  padding: var(--cdr-space-inset-one-and-a-half-x-squish);
+  width: auto;
+}
+
+.cedar-btn--large.cedar-btn--has-icon-left {
+  padding-left: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
+}
+
+.cedar-btn--large.cedar-btn--has-icon-right {
+  padding-right: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
+}
+
+.cedar-btn--large svg {
+  width: var(--cdr-icon-size);
+  height: var(--cdr-icon-size);
+}
+
+.cedar-btn--icon-only {
+  background: none;
+  border: none;
+  border-radius: var(--cdr-radius-soft);
+  box-shadow: none;
+  display: inline-block;
+  line-height: normal;
+  padding: var(--cdr-space-inset-half-x);
+  fill: var(--cdr-button-icon-only-icon-fill, var(--cdr-color-icon-default));
+}
+
+.cedar-btn--icon-only > svg {
+  margin: 0;
+}
+
+.cedar-btn--icon-only:hover {
+  background: none;
+  box-shadow: none;
+  border: none;
+  fill: var(--cdr-button-icon-only-icon-fill-hover, var(--cdr-color-icon-default));
+}
+
+.cedar-btn--icon-only:active,
+.cedar-btn--icon-only:focus {
+  background: none;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  fill: var(--cdr-button-icon-only-icon-fill-active, var(--cdr-color-icon-default));
+}
+
+.cedar-btn--icon-only:active svg,
+.cedar-btn--icon-only:focus svg {
+  box-shadow: inset 0 0 0 1px
+    var(
+      --cdr-button-icon-only-icon-svg-box-shadow,
+      var(--cdr-color-border-button-secondary-active)
+    );
+}
+
+.cedar-btn--icon-only[disabled] {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  fill: var(
+    --cdr-button-icon-only-disabled-icon-fill,
+    var(--cdr-color-icon-disabled)
+  );
+}
+
+.cedar-btn--icon-only-large {
+  padding: var(--cdr-space-three-quarter-x);
+}
+
+.cedar-btn--with-background {
+  border-radius: 50%;
+  fill: var(--cdr-button-with-background-icon-fill, var(--cdr-color-icon-default));
+  background-color: var(
+    --cdr-button-with-background-background-color,
+    var(--cdr-color-background-button-secondary-rest)
+  );
+  box-shadow: inset 0 0 0 1px
+    var(
+      --cdr-button-with-background-box-shadow,
+      var(--cdr-color-border-button-secondary-rest)
+    );
+}
+
+.cedar-btn--with-background:hover,
+.cedar-btn--with-background:focus {
+  fill: var(
+    --cdr-button-with-background-icon-fill-interaction,
+    var(--cdr-color-icon-default)
+  );
+  background-color: var(
+    --cdr-button-with-background-background-color-interaction,
+    var(--cdr-color-background-button-secondary-hover)
+  );
+  box-shadow: inset 0 0 0 3px
+      var(
+        --cdr-button-with-background-box-shadow-interaction,
+        var(--cdr-color-border-button-secondary-hover)
+      ),
+    var(--cdr-prominence-raised);
+}
+
+.cedar-btn--with-background:hover svg,
+.cedar-btn--with-background:focus svg {
+  box-shadow: none;
+}
+
+.cedar-btn--with-background:active {
+  color: var(
+    --cdr-button-with-background-color-active,
+    var(--cdr-color-text-button-secondary-active)
+  );
+  fill: var(
+    --cdr-button-with-background-fill-active,
+    var(--cdr-color-text-button-secondary-active)
+  );
+  background-color: var(
+    --cdr-button-with-background-background-color-active,
+    var(--cdr-color-background-button-secondary-active)
+  );
+  box-shadow: inset 0 0 0 3px
+      var(
+        --cdr-button-with-background-box-shadow-active,
+        var(--cdr-color-border-button-secondary-active)
+      ),
+    inset 0 0 0 5px
+      var(
+        --cdr-button-with-background-box-shadow-inset-active,
+        var(--cdr-color-border-button-secondary-active-inset)
+      );
+}
+
+.cedar-btn--with-background:active svg {
+  box-shadow: none;
+}
+
+.cedar-btn--with-background[disabled] {
+  background-color: var(
+    --cdr-button-with-background-background-color-disabled,
+    var(--cdr-color-background-button-secondary-disabled)
+  );
+  box-shadow: inset 0 0 0 1px
+    var(
+      --cdr-button-with-background-box-shadow-disabled,
+      var(--cdr-color-border-button-default-disabled)
+    );
+  fill: var(
+    --cdr-button-with-background-fill-disabled,
+    var(--cdr-color-text-button-secondary-disabled)
+  );
+}
+
+.cedar-btn--full-width {
+  width: 100%;
+  justify-content: center;
+}

@@ -12,8 +12,7 @@ Goals:
 Packages (early scaffold):
 
 - `packages/cedar-tokens`: token source and platform outputs.
-- `packages/cedar-utilities`: CSS utilities and recipes (plus optional Tailwind plugin).
-- `packages/cedar-behavior`: headless adapters with web and React Native entrypoints.
+- `packages/cedar-ui`: CSS utilities and recipes (plus optional Tailwind plugin).
 
 Apps (early scaffold):
 

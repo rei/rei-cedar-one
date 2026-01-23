@@ -1,5 +1,11 @@
 {
   "color": {
+    "text": {
+      "primary": { "$value": "rgba(12, 11, 8, 0.75)", "$type": "color" }
+    },
+    "background": {
+      "primary": { "$value": "#ffffff", "$type": "color" }
+    },
     "icon": {
       "default": { "$value": "#928b80", "$type": "color" },
       "disabled": { "$value": "#dcd6cb", "$type": "color" }
