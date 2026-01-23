@@ -173,7 +173,7 @@ export const ResponsiveSizes = {
 
 export const SizeVariantMatrix = {
   render: () => `
-    <div style="display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center">
+    <div style="display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;justify-items:start">
       ${Object.keys(SIZE_CLASSES)
         .map((size) =>
           Object.keys(VARIANT_CLASSES)

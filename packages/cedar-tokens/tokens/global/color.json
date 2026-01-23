@@ -7,8 +7,14 @@
       "primary": { "$value": "#ffffff", "$type": "color" }
     },
     "icon": {
-      "default": { "$value": "#958e83", "$type": "color" },
-      "disabled": { "$value": "#d5cfc3", "$type": "color" }
+      "default": {
+        "$value": "{color.palette.warm-grey-700}",
+        "$type": "color"
+      },
+      "disabled": {
+        "$value": "{color.palette.warm-grey-400}",
+        "$type": "color"
+      }
     }
   }
 }

@@ -63,7 +63,7 @@
           "$type": "color"
         },
         "primary-hover": {
-          "$value": "{color.palette.sage-green-400}",
+          "$value": "{color.palette.warm-grey-200}",
           "$type": "color"
         },
         "primary-active": {
@@ -103,7 +103,7 @@
           "$type": "color"
         },
         "sale-hover": {
-          "$value": "{color.palette.sale-red-200}",
+          "$value": "{color.palette.warm-grey-200}",
           "$type": "color"
         },
         "sale-active": {
@@ -132,7 +132,7 @@
             "$type": "color"
           },
           "active-inset": {
-            "$value": "{color.palette.cold-grey-200}",
+            "$value": "{color.palette.warm-grey-200}",
             "$type": "color"
           }
         },
@@ -150,7 +150,7 @@
             "$type": "color"
           },
           "active-inset": {
-            "$value": "{color.palette.cold-grey-200}",
+            "$value": "{color.palette.warm-grey-200}",
             "$type": "color"
           }
         },
@@ -186,7 +186,7 @@
             "$type": "color"
           },
           "active-inset": {
-            "$value": "{color.palette.sale-red-200}",
+            "$value": "{color.palette.warm-grey-200}",
             "$type": "color"
           }
         },

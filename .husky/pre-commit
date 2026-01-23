@@ -1,2 +1,2 @@
 #!/bin/sh
-pnpm typecheck && pnpm lint-staged
+pnpm typecheck && pnpm lint-staged && pnpm build
