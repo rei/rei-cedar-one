@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "references": [
+    { "path": "./packages/cedar-tokens" },
+    { "path": "./packages/cedar-utilities" },
+    { "path": "./packages/cedar-behavior" },
+    { "path": "./apps/playground-web" },
+    { "path": "./apps/playground-rn" }
+  ]
+}

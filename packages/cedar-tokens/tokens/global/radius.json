@@ -1,0 +1,6 @@
+{
+  "radius": {
+    "soft": { "$value": "2px", "$type": "dimension" },
+    "softer": { "$value": "4px", "$type": "dimension" }
+  }
+}

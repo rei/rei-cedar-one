@@ -1,0 +1,8 @@
+{
+  "name": "@rei/cedar-utilities",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo \"build utilities\""
+  }
+}

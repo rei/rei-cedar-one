@@ -1,0 +1,11 @@
+{
+  "color": {
+    "text": {
+      "link": {
+        "rest": { "$value": "#406eb5", "$type": "color" },
+        "hover": { "$value": "#406eb5", "$type": "color" },
+        "active": { "$value": "#0b2d60", "$type": "color" }
+      }
+    }
+  }
+}

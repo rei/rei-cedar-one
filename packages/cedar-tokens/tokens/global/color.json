@@ -1,0 +1,8 @@
+{
+  "color": {
+    "icon": {
+      "default": { "$value": "#928b80", "$type": "color" },
+      "disabled": { "$value": "#dcd6cb", "$type": "color" }
+    }
+  }
+}

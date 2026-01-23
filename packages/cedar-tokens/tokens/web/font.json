@@ -1,0 +1,10 @@
+{
+  "font": {
+    "family": {
+      "sans": {
+        "$value": "Graphik, \"Graphik fallback\", \"Helvetica Neue\", sans-serif",
+        "$type": "fontFamily"
+      }
+    }
+  }
+}

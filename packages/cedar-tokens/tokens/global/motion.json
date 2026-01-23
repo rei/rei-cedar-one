@@ -1,0 +1,9 @@
+{
+  "duration": {
+    "2-x": { "$value": "200ms", "$type": "time" }
+  },
+  "timing": {
+    "function-ease": { "$value": "cubic-bezier(0.15, 0, 0.15, 0)" },
+    "function-ease-out": { "$value": "cubic-bezier(0.32, 0.94, 0.60, 1)" }
+  }
+}

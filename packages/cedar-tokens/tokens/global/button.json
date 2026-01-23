@@ -1,0 +1,71 @@
+{
+  "color": {
+    "text": {
+      "button": {
+        "primary": { "$value": "#f9f8f6", "$type": "color" },
+        "primary-hover": { "$value": "#1f513f", "$type": "color" },
+        "primary-active": { "$value": "#f9f8f6", "$type": "color" },
+        "primary-disabled": { "$value": "#ffffff", "$type": "color" },
+        "secondary": { "$value": "#4e4d49", "$type": "color" },
+        "secondary-hover": { "$value": "#4e4d49", "$type": "color" },
+        "secondary-active": { "$value": "#f9f8f6", "$type": "color" },
+        "secondary-disabled": { "$value": "#d1cbbd", "$type": "color" },
+        "dark": { "$value": "#f9f8f6", "$type": "color" },
+        "dark-hover": { "$value": "#4e4d49", "$type": "color" },
+        "dark-active": { "$value": "#f9f8f6", "$type": "color" },
+        "dark-disabled": { "$value": "#ffffff", "$type": "color" },
+        "sale": { "$value": "#ffffff", "$type": "color" },
+        "sale-hover": { "$value": "#c7370f", "$type": "color" },
+        "sale-active": { "$value": "#ffffff", "$type": "color" },
+        "sale-disabled": { "$value": "#ffffff", "$type": "color" }
+      }
+    },
+    "background": {
+      "button": {
+        "primary-rest": { "$value": "#1f513f", "$type": "color" },
+        "primary-hover": { "$value": "#f4f2ed", "$type": "color" },
+        "primary-active": { "$value": "#1f513f", "$type": "color" },
+        "secondary-rest": { "$value": "#f9f8f6", "$type": "color" },
+        "secondary-hover": { "$value": "#f4f2ed", "$type": "color" },
+        "secondary-active": { "$value": "#928b80", "$type": "color" },
+        "secondary-disabled": { "$value": "#f9f8f6", "$type": "color" },
+        "dark-rest": { "$value": "#4e4d49", "$type": "color" },
+        "dark-hover": { "$value": "#edeae3", "$type": "color" },
+        "dark-active": { "$value": "#4e4d49", "$type": "color" },
+        "sale-rest": { "$value": "#c7370f", "$type": "color" },
+        "sale-hover": { "$value": "#f4f2ed", "$type": "color" },
+        "sale-active": { "$value": "#c7370f", "$type": "color" },
+        "default-disabled": { "$value": "#dcd6cb", "$type": "color" }
+      }
+    },
+    "border": {
+      "button": {
+        "primary": {
+          "rest": { "$value": "#1f513f", "$type": "color" },
+          "hover": { "$value": "#1f513f", "$type": "color" },
+          "active": { "$value": "#1f513f", "$type": "color" },
+          "active-inset": { "$value": "#f4f2ed", "$type": "color" }
+        },
+        "secondary": {
+          "rest": { "$value": "#928b80", "$type": "color" },
+          "hover": { "$value": "#4e4d49", "$type": "color" },
+          "active": { "$value": "#928b80", "$type": "color" },
+          "active-inset": { "$value": "#f4f2ed", "$type": "color" }
+        },
+        "dark": {
+          "rest": { "$value": "#4e4d49", "$type": "color" },
+          "hover": { "$value": "#4e4d49", "$type": "color" },
+          "active": { "$value": "#4e4d49", "$type": "color" },
+          "active-inset": { "$value": "#edeae3", "$type": "color" }
+        },
+        "sale": {
+          "rest": { "$value": "#c7370f", "$type": "color" },
+          "hover": { "$value": "#c7370f", "$type": "color" },
+          "active": { "$value": "#c7370f", "$type": "color" },
+          "active-inset": { "$value": "#f4f2ed", "$type": "color" }
+        },
+        "default-disabled": { "$value": "#dcd6cb", "$type": "color" }
+      }
+    }
+  }
+}

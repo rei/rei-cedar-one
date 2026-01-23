@@ -1,0 +1,1 @@
+// Web playground entrypoint placeholder.

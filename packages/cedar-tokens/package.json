@@ -1,0 +1,17 @@
+{
+  "name": "@rei/cedar-tokens",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Cedar design tokens (DTCG) with web and React Native outputs.",
+  "type": "module",
+  "scripts": {
+    "build": "tsx ./style-dictionary/build.ts",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "@tokens-studio/sd-transforms": "^1.2.2",
+    "rimraf": "^6.0.1",
+    "style-dictionary": "^4.0.1",
+    "tsx": "^4.19.1"
+  }
+}

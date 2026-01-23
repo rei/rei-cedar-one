@@ -1,0 +1,8 @@
+{
+  "name": "@rei/cedar-playground-rn",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo \"start rn playground\""
+  }
+}

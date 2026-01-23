@@ -1,0 +1,15 @@
+{
+  "space": {
+    "quarter-x": { "$value": "4px", "$type": "dimension" },
+    "half-x": { "$value": "8px", "$type": "dimension" },
+    "three-quarter-x": { "$value": "12px", "$type": "dimension" },
+    "one-x": { "$value": "16px", "$type": "dimension" },
+    "one-and-a-half-x": { "$value": "24px", "$type": "dimension" },
+    "inset": {
+      "half-x": { "$value": "8px", "$type": "dimension" },
+      "three-quarter-x-squish": { "$value": "6px 12px", "$type": "dimension" },
+      "one-x-squish": { "$value": "8px 16px", "$type": "dimension" },
+      "one-and-a-half-x-squish": { "$value": "12px 24px", "$type": "dimension" }
+    }
+  }
+}
