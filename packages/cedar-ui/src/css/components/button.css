@@ -1,6 +1,6 @@
 @import '../../../../cedar-tokens/dist/web/breakpoints.css';
 
-.cedar-btn {
+.cdr-button {
   font-family: var(--cdr-font-family-sans);
   font-style: normal;
   font-weight: 500;
@@ -26,32 +26,32 @@
     fill var(--cdr-duration-2-x) var(--cdr-timing-function-ease);
 }
 
-.cedar-btn:hover,
-.cedar-btn:active,
-.cedar-btn:focus {
+.cdr-button:hover,
+.cdr-button:active,
+.cdr-button:focus {
   outline: none;
   outline-offset: 0;
   text-decoration: none;
 }
 
-.cedar-btn[disabled] {
+.cdr-button[disabled] {
   cursor: not-allowed;
 }
 
-.cedar-btn svg {
+.cdr-button svg {
   align-self: center;
   fill: inherit;
 }
 
-.cedar-btn.cedar-btn--has-icon-left svg {
+.cdr-button.cdr-button--has-icon-left svg {
   margin-right: var(--cdr-space-quarter-x);
 }
 
-.cedar-btn.cedar-btn--has-icon-right svg {
+.cdr-button.cdr-button--has-icon-right svg {
   margin-left: var(--cdr-space-quarter-x);
 }
 
-.cedar-btn--primary {
+.cdr-button--primary {
   background-color: var(
     --cdr-button-primary-background-color-rest,
     var(--cdr-color-background-button-primary-rest)
@@ -62,8 +62,8 @@
   fill: var(--cdr-button-primary-fill-color, var(--cdr-color-text-button-primary));
 }
 
-.cedar-btn--primary:hover,
-.cedar-btn--primary:focus {
+.cdr-button--primary:hover,
+.cdr-button--primary:focus {
   color: var(
     --cdr-button-primary-text-color-interaction,
     var(--cdr-color-text-button-primary-hover)
@@ -84,7 +84,7 @@
     var(--cdr-prominence-raised);
 }
 
-.cedar-btn--primary:active {
+.cdr-button--primary:active {
   color: var(
     --cdr-button-primary-text-color-active,
     var(--cdr-color-text-button-primary-active)
@@ -109,7 +109,7 @@
       );
 }
 
-.cedar-btn--primary[disabled] {
+.cdr-button--primary[disabled] {
   background-color: var(
     --cdr-button-primary-background-color-disabled,
     var(--cdr-color-background-button-default-disabled)
@@ -129,7 +129,7 @@
   );
 }
 
-.cedar-btn--secondary {
+.cdr-button--secondary {
   background-color: var(
     --cdr-button-secondary-background-color-rest,
     var(--cdr-color-background-button-secondary-rest)
@@ -143,8 +143,8 @@
   fill: var(--cdr-button-secondary-fill-color, var(--cdr-color-icon-default));
 }
 
-.cedar-btn--secondary:hover,
-.cedar-btn--secondary:focus {
+.cdr-button--secondary:hover,
+.cdr-button--secondary:focus {
   color: var(
     --cdr-button-secondary-text-color-interaction,
     var(--cdr-color-text-button-secondary-hover)
@@ -165,7 +165,7 @@
     var(--cdr-prominence-raised);
 }
 
-.cedar-btn--secondary:active {
+.cdr-button--secondary:active {
   color: var(
     --cdr-button-secondary-text-color-active,
     var(--cdr-color-text-button-secondary-active)
@@ -190,7 +190,7 @@
       );
 }
 
-.cedar-btn--secondary[disabled] {
+.cdr-button--secondary[disabled] {
   background-color: var(
     --cdr-button-secondary-background-color-disabled,
     var(--cdr-color-background-button-secondary-disabled)
@@ -210,7 +210,7 @@
   );
 }
 
-.cedar-btn--dark {
+.cdr-button--dark {
   background-color: var(
     --cdr-button-dark-background-color-rest,
     var(--cdr-color-background-button-dark-rest)
@@ -221,8 +221,8 @@
   fill: var(--cdr-button-dark-fill-color, var(--cdr-color-text-button-dark));
 }
 
-.cedar-btn--dark:hover,
-.cedar-btn--dark:focus {
+.cdr-button--dark:hover,
+.cdr-button--dark:focus {
   color: var(
     --cdr-button-dark-text-color-interaction,
     var(--cdr-color-text-button-dark-hover)
@@ -243,7 +243,7 @@
     var(--cdr-prominence-raised);
 }
 
-.cedar-btn--dark:active {
+.cdr-button--dark:active {
   color: var(
     --cdr-button-dark-text-color-active,
     var(--cdr-color-text-button-dark-active)
@@ -268,7 +268,7 @@
       );
 }
 
-.cedar-btn--dark[disabled] {
+.cdr-button--dark[disabled] {
   background-color: var(
     --cdr-button-dark-background-color-disabled,
     var(--cdr-color-background-button-default-disabled)
@@ -288,7 +288,7 @@
   );
 }
 
-.cedar-btn--sale {
+.cdr-button--sale {
   background-color: var(
     --cdr-button-sale-background-color-rest,
     var(--cdr-color-background-button-sale-rest)
@@ -299,8 +299,8 @@
   fill: var(--cdr-button-sale-fill-color, var(--cdr-color-text-button-sale));
 }
 
-.cedar-btn--sale:hover,
-.cedar-btn--sale:focus {
+.cdr-button--sale:hover,
+.cdr-button--sale:focus {
   color: var(
     --cdr-button-sale-text-color-interaction,
     var(--cdr-color-text-button-sale-hover)
@@ -321,7 +321,7 @@
     var(--cdr-prominence-raised);
 }
 
-.cedar-btn--sale:active {
+.cdr-button--sale:active {
   color: var(
     --cdr-button-sale-text-color-active,
     var(--cdr-color-text-button-sale-active)
@@ -346,7 +346,7 @@
       );
 }
 
-.cedar-btn--sale[disabled] {
+.cdr-button--sale[disabled] {
   background-color: var(
     --cdr-button-sale-background-color-disabled,
     var(--cdr-color-background-button-default-disabled)
@@ -366,22 +366,22 @@
   );
 }
 
-.cedar-btn--link {
+.cdr-button--link {
   color: var(--cdr-button-link-text-color, var(--cdr-color-text-link-rest));
   fill: var(--cdr-button-link-fill-color, var(--cdr-color-text-link-rest));
   background-color: transparent;
   text-decoration: underline;
 }
 
-.cedar-btn--link:active,
-.cedar-btn--link:focus {
+.cdr-button--link:active,
+.cdr-button--link:focus {
   color: var(
     --cdr-button-link-text-color-active,
     var(--cdr-color-text-link-active)
   );
 }
 
-.cedar-btn--link:hover {
+.cdr-button--link:hover {
   color: var(
     --cdr-button-link-text-color-hover,
     var(--cdr-color-text-link-hover)
@@ -389,13 +389,13 @@
   text-decoration: none;
 }
 
-.cedar-btn--link:focus {
+.cdr-button--link:focus {
   outline: var(--cdr-button-link-outline, var(--default-outline, 0.2rem solid Highlight));
   outline-color: -webkit-focus-ring-color;
   outline-offset: 0;
 }
 
-.cedar-btn--small {
+.cdr-button--small {
   font-family: var(--cdr-font-family-sans);
   font-style: normal;
   font-weight: 500;
@@ -406,20 +406,20 @@
   width: auto;
 }
 
-.cedar-btn--small.cedar-btn--has-icon-left {
+.cdr-button--small.cdr-button--has-icon-left {
   padding-left: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
 }
 
-.cedar-btn--small.cedar-btn--has-icon-right {
+.cdr-button--small.cdr-button--has-icon-right {
   padding-right: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
 }
 
-.cedar-btn--small svg {
+.cdr-button--small svg {
   width: 2rem;
   height: 2rem;
 }
 
-.cedar-btn--medium {
+.cdr-button--medium {
   font-family: var(--cdr-font-family-sans);
   font-style: normal;
   font-weight: 500;
@@ -430,20 +430,20 @@
   width: auto;
 }
 
-.cedar-btn--medium.cedar-btn--has-icon-left {
+.cdr-button--medium.cdr-button--has-icon-left {
   padding-left: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
 }
 
-.cedar-btn--medium.cedar-btn--has-icon-right {
+.cdr-button--medium.cdr-button--has-icon-right {
   padding-right: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
 }
 
-.cedar-btn--medium svg {
+.cdr-button--medium svg {
   width: var(--cdr-icon-size);
   height: var(--cdr-icon-size);
 }
 
-.cedar-btn--large {
+.cdr-button--large {
   font-family: var(--cdr-font-family-sans);
   font-style: normal;
   font-weight: 500;
@@ -454,20 +454,20 @@
   width: auto;
 }
 
-.cedar-btn--large.cedar-btn--has-icon-left {
+.cdr-button--large.cdr-button--has-icon-left {
   padding-left: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
 }
 
-.cedar-btn--large.cedar-btn--has-icon-right {
+.cdr-button--large.cdr-button--has-icon-right {
   padding-right: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
 }
 
-.cedar-btn--large svg {
+.cdr-button--large svg {
   width: var(--cdr-icon-size);
   height: var(--cdr-icon-size);
 }
 
-.cedar-btn--icon-only {
+.cdr-button--icon-only {
   background: none;
   border: none;
   border-radius: var(--cdr-radius-soft);
@@ -478,19 +478,19 @@
   fill: var(--cdr-button-icon-only-icon-fill, var(--cdr-color-icon-default));
 }
 
-.cedar-btn--icon-only > svg {
+.cdr-button--icon-only > svg {
   margin: 0;
 }
 
-.cedar-btn--icon-only:hover {
+.cdr-button--icon-only:hover {
   background: none;
   box-shadow: none;
   border: none;
   fill: var(--cdr-button-icon-only-icon-fill-hover, var(--cdr-color-icon-default));
 }
 
-.cedar-btn--icon-only:active,
-.cedar-btn--icon-only:focus {
+.cdr-button--icon-only:active,
+.cdr-button--icon-only:focus {
   background: none;
   outline: none;
   border: none;
@@ -498,8 +498,8 @@
   fill: var(--cdr-button-icon-only-icon-fill-active, var(--cdr-color-icon-default));
 }
 
-.cedar-btn--icon-only:active svg,
-.cedar-btn--icon-only:focus svg {
+.cdr-button--icon-only:active svg,
+.cdr-button--icon-only:focus svg {
   box-shadow: inset 0 0 0 0.1rem
     var(
       --cdr-button-icon-only-icon-svg-box-shadow,
@@ -507,7 +507,7 @@
     );
 }
 
-.cedar-btn--icon-only[disabled] {
+.cdr-button--icon-only[disabled] {
   background: transparent;
   box-shadow: none;
   border: none;
@@ -517,11 +517,11 @@
   );
 }
 
-.cedar-btn--icon-only-large {
+.cdr-button--icon-only-large {
   padding: var(--cdr-space-three-quarter-x);
 }
 
-.cedar-btn--with-background {
+.cdr-button--with-background {
   border-radius: 50%;
   fill: var(--cdr-button-with-background-icon-fill, var(--cdr-color-icon-default));
   background-color: var(
@@ -535,8 +535,8 @@
     );
 }
 
-.cedar-btn--with-background:hover,
-.cedar-btn--with-background:focus {
+.cdr-button--with-background:hover,
+.cdr-button--with-background:focus {
   fill: var(
     --cdr-button-with-background-icon-fill-interaction,
     var(--cdr-color-icon-default)
@@ -553,12 +553,12 @@
     var(--cdr-prominence-raised);
 }
 
-.cedar-btn--with-background:hover svg,
-.cedar-btn--with-background:focus svg {
+.cdr-button--with-background:hover svg,
+.cdr-button--with-background:focus svg {
   box-shadow: none;
 }
 
-.cedar-btn--with-background:active {
+.cdr-button--with-background:active {
   color: var(
     --cdr-button-with-background-color-active,
     var(--cdr-color-text-button-secondary-active)
@@ -583,11 +583,11 @@
       );
 }
 
-.cedar-btn--with-background:active svg {
+.cdr-button--with-background:active svg {
   box-shadow: none;
 }
 
-.cedar-btn--with-background[disabled] {
+.cdr-button--with-background[disabled] {
   background-color: var(
     --cdr-button-with-background-background-color-disabled,
     var(--cdr-color-background-button-secondary-disabled)
@@ -603,13 +603,13 @@
   );
 }
 
-.cedar-btn--full-width {
+.cdr-button--full-width {
   width: 100% !important;
   justify-content: center;
 }
 
 @media (--cdr-xs) {
-  .cedar-btn--small\@xs {
+  .cdr-button--small\@xs {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -620,20 +620,20 @@
     width: auto;
   }
 
-  .cedar-btn--small\@xs.cedar-btn--has-icon-left {
+  .cdr-button--small\@xs.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--small\@xs.cedar-btn--has-icon-right {
+  .cdr-button--small\@xs.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--small\@xs svg {
+  .cdr-button--small\@xs svg {
     width: 2rem;
     height: 2rem;
   }
 
-  .cedar-btn--medium\@xs {
+  .cdr-button--medium\@xs {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -644,20 +644,20 @@
     width: auto;
   }
 
-  .cedar-btn--medium\@xs.cedar-btn--has-icon-left {
+  .cdr-button--medium\@xs.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--medium\@xs.cedar-btn--has-icon-right {
+  .cdr-button--medium\@xs.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--medium\@xs svg {
+  .cdr-button--medium\@xs svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cedar-btn--large\@xs {
+  .cdr-button--large\@xs {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -668,27 +668,27 @@
     width: auto;
   }
 
-  .cedar-btn--large\@xs.cedar-btn--has-icon-left {
+  .cdr-button--large\@xs.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--large\@xs.cedar-btn--has-icon-right {
+  .cdr-button--large\@xs.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--large\@xs svg {
+  .cdr-button--large\@xs svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cedar-btn--full-width\@xs {
+  .cdr-button--full-width\@xs {
     width: 100% !important;
     justify-content: center;
   }
 }
 
 @media (--cdr-sm) {
-  .cedar-btn--small\@sm {
+  .cdr-button--small\@sm {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -699,20 +699,20 @@
     width: auto;
   }
 
-  .cedar-btn--small\@sm.cedar-btn--has-icon-left {
+  .cdr-button--small\@sm.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--small\@sm.cedar-btn--has-icon-right {
+  .cdr-button--small\@sm.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--small\@sm svg {
+  .cdr-button--small\@sm svg {
     width: 2rem;
     height: 2rem;
   }
 
-  .cedar-btn--medium\@sm {
+  .cdr-button--medium\@sm {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -723,20 +723,20 @@
     width: auto;
   }
 
-  .cedar-btn--medium\@sm.cedar-btn--has-icon-left {
+  .cdr-button--medium\@sm.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--medium\@sm.cedar-btn--has-icon-right {
+  .cdr-button--medium\@sm.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--medium\@sm svg {
+  .cdr-button--medium\@sm svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cedar-btn--large\@sm {
+  .cdr-button--large\@sm {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -747,27 +747,27 @@
     width: auto;
   }
 
-  .cedar-btn--large\@sm.cedar-btn--has-icon-left {
+  .cdr-button--large\@sm.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--large\@sm.cedar-btn--has-icon-right {
+  .cdr-button--large\@sm.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--large\@sm svg {
+  .cdr-button--large\@sm svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cedar-btn--full-width\@sm {
+  .cdr-button--full-width\@sm {
     width: 100% !important;
     justify-content: center;
   }
 }
 
 @media (--cdr-md) {
-  .cedar-btn--small\@md {
+  .cdr-button--small\@md {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -778,20 +778,20 @@
     width: auto;
   }
 
-  .cedar-btn--small\@md.cedar-btn--has-icon-left {
+  .cdr-button--small\@md.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--small\@md.cedar-btn--has-icon-right {
+  .cdr-button--small\@md.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--small\@md svg {
+  .cdr-button--small\@md svg {
     width: 2rem;
     height: 2rem;
   }
 
-  .cedar-btn--medium\@md {
+  .cdr-button--medium\@md {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -802,20 +802,20 @@
     width: auto;
   }
 
-  .cedar-btn--medium\@md.cedar-btn--has-icon-left {
+  .cdr-button--medium\@md.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--medium\@md.cedar-btn--has-icon-right {
+  .cdr-button--medium\@md.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--medium\@md svg {
+  .cdr-button--medium\@md svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cedar-btn--large\@md {
+  .cdr-button--large\@md {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -826,27 +826,27 @@
     width: auto;
   }
 
-  .cedar-btn--large\@md.cedar-btn--has-icon-left {
+  .cdr-button--large\@md.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--large\@md.cedar-btn--has-icon-right {
+  .cdr-button--large\@md.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--large\@md svg {
+  .cdr-button--large\@md svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cedar-btn--full-width\@md {
+  .cdr-button--full-width\@md {
     width: 100% !important;
     justify-content: center;
   }
 }
 
 @media (--cdr-lg) {
-  .cedar-btn--small\@lg {
+  .cdr-button--small\@lg {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -857,20 +857,20 @@
     width: auto;
   }
 
-  .cedar-btn--small\@lg.cedar-btn--has-icon-left {
+  .cdr-button--small\@lg.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--small\@lg.cedar-btn--has-icon-right {
+  .cdr-button--small\@lg.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--small\@lg svg {
+  .cdr-button--small\@lg svg {
     width: 2rem;
     height: 2rem;
   }
 
-  .cedar-btn--medium\@lg {
+  .cdr-button--medium\@lg {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -881,20 +881,20 @@
     width: auto;
   }
 
-  .cedar-btn--medium\@lg.cedar-btn--has-icon-left {
+  .cdr-button--medium\@lg.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--medium\@lg.cedar-btn--has-icon-right {
+  .cdr-button--medium\@lg.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--medium\@lg svg {
+  .cdr-button--medium\@lg svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cedar-btn--large\@lg {
+  .cdr-button--large\@lg {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -905,20 +905,20 @@
     width: auto;
   }
 
-  .cedar-btn--large\@lg.cedar-btn--has-icon-left {
+  .cdr-button--large\@lg.cdr-button--has-icon-left {
     padding-left: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--large\@lg.cedar-btn--has-icon-right {
+  .cdr-button--large\@lg.cdr-button--has-icon-right {
     padding-right: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cedar-btn--large\@lg svg {
+  .cdr-button--large\@lg svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cedar-btn--full-width\@lg {
+  .cdr-button--full-width\@lg {
     width: 100% !important;
     justify-content: center;
   }

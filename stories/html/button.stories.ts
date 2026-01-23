@@ -1,15 +1,15 @@
 const SIZE_CLASSES = {
-  small: 'cedar-btn--small',
-  medium: 'cedar-btn--medium',
-  large: 'cedar-btn--large',
+  small: 'cdr-button--small',
+  medium: 'cdr-button--medium',
+  large: 'cdr-button--large',
 } as const;
 
 const VARIANT_CLASSES = {
-  primary: 'cedar-btn--primary',
-  secondary: 'cedar-btn--secondary',
-  dark: 'cedar-btn--dark',
-  sale: 'cedar-btn--sale',
-  link: 'cedar-btn--link',
+  primary: 'cdr-button--primary',
+  secondary: 'cdr-button--secondary',
+  dark: 'cdr-button--dark',
+  sale: 'cdr-button--sale',
+  link: 'cdr-button--link',
 } as const;
 
 const iconSvg = `
@@ -45,12 +45,12 @@ const renderButton = ({
   disabled,
 }: ButtonArgs) => {
   const classes = [
-    'cedar-btn',
+    'cdr-button',
     SIZE_CLASSES[size],
     VARIANT_CLASSES[variant],
-    fullWidth ? 'cedar-btn--full-width' : '',
-    iconLeft ? 'cedar-btn--has-icon-left' : '',
-    iconRight ? 'cedar-btn--has-icon-right' : '',
+    fullWidth ? 'cdr-button--full-width' : '',
+    iconLeft ? 'cdr-button--has-icon-left' : '',
+    iconRight ? 'cdr-button--has-icon-right' : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -151,9 +151,9 @@ export const FullWidth = {
 export const IconOnly = {
   render: () => `
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <button class="cedar-btn cedar-btn--primary cedar-btn--icon-only cedar-btn--icon-only-medium" aria-label="Icon only">${iconSvg}</button>
-      <button class="cedar-btn cedar-btn--primary cedar-btn--icon-only cedar-btn--icon-only-large" aria-label="Icon only large">${iconSvg}</button>
-      <button class="cedar-btn cedar-btn--primary cedar-btn--icon-only cedar-btn--icon-only-medium cedar-btn--with-background" aria-label="With background">${iconSvg}</button>
+      <button class="cdr-button cdr-button--primary cdr-button--icon-only" aria-label="Icon only">${iconSvg}</button>
+      <button class="cdr-button cdr-button--primary cdr-button--icon-only cdr-button--icon-only-large" aria-label="Icon only large">${iconSvg}</button>
+      <button class="cdr-button cdr-button--primary cdr-button--icon-only cdr-button--with-background" aria-label="With background">${iconSvg}</button>
     </div>
   `,
 };
@@ -161,10 +161,10 @@ export const IconOnly = {
 export const ResponsiveSizes = {
   render: () => `
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <button class="cedar-btn cedar-btn--primary cedar-btn--small@xs cedar-btn--medium@sm cedar-btn--large@md">
+      <button class="cdr-button cdr-button--primary cdr-button--small@xs cdr-button--medium@sm cdr-button--large@md">
         Responsive
       </button>
-      <button class="cedar-btn cedar-btn--secondary cedar-btn--small@xs cedar-btn--medium@sm cedar-btn--large@md cedar-btn--full-width@xs">
+      <button class="cdr-button cdr-button--secondary cdr-button--small@xs cdr-button--medium@sm cdr-button--large@md cdr-button--full-width@xs">
         Responsive Full
       </button>
     </div>

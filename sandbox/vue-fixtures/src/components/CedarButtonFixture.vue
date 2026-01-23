@@ -1,126 +1,323 @@
 <template>
-  <button :class="classes" :disabled="disabled" :aria-label="ariaLabel">
-    <span
-      v-if="iconLeft && !iconOnly"
-      class="cedar-btn__icon"
-      aria-hidden="true"
-    >
-      <svg
-        aria-hidden="true"
-        focusable="false"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
-      >
-        <path
-          role="presentation"
-          d="M12 12a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm6.762 7a7.073 7.073 0 00-13.524 0h13.524zM4 21a1 1 0 01-1-1h-.008a9.08 9.08 0 01.02-.159 9.08 9.08 0 015.454-7.127 5.5 5.5 0 117.068 0A9.08 9.08 0 0121.008 20H21a1 1 0 01-1 1H4z"
-        />
-      </svg>
-    </span>
-    <span v-if="!iconOnly">{{ label }}</span>
-    <span
-      v-if="iconRight && !iconOnly"
-      class="cedar-btn__icon"
-      aria-hidden="true"
-    >
-      <svg
-        aria-hidden="true"
-        focusable="false"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
-      >
-        <path
-          role="presentation"
-          d="M12 12a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm6.762 7a7.073 7.073 0 00-13.524 0h13.524zM4 21a1 1 0 01-1-1h-.008a9.08 9.08 0 01.02-.159 9.08 9.08 0 015.454-7.127 5.5 5.5 0 117.068 0A9.08 9.08 0 0121.008 20H21a1 1 0 01-1 1H4z"
-        />
-      </svg>
-    </span>
-    <span v-if="iconOnly" class="cedar-btn__icon" aria-hidden="true">
-      <svg
-        aria-hidden="true"
-        focusable="false"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
-      >
-        <path
-          role="presentation"
-          d="M12 12a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm6.762 7a7.073 7.073 0 00-13.524 0h13.524zM4 21a1 1 0 01-1-1h-.008a9.08 9.08 0 01.02-.159 9.08 9.08 0 015.454-7.127 5.5 5.5 0 117.068 0A9.08 9.08 0 0121.008 20H21a1 1 0 01-1 1H4z"
-        />
-      </svg>
-    </span>
-  </button>
+  <div class="fixture">
+    <section class="fixture-group">
+      <h3>Primary</h3>
+      <div class="fixture-row">
+        <button class="cdr-button cdr-button--primary cdr-button--medium">
+          Primary
+        </button>
+      </div>
+    </section>
+
+    <section class="fixture-group">
+      <h3>With icons</h3>
+      <div class="fixture-row">
+        <button
+          class="cdr-button cdr-button--secondary cdr-button--medium cdr-button--has-icon-left cdr-button--has-icon-right"
+        >
+          <IconUser />
+          With Icons
+          <IconUser />
+        </button>
+      </div>
+    </section>
+
+    <section class="fixture-group">
+      <h3>All variants</h3>
+      <div class="fixture-row">
+        <button class="cdr-button cdr-button--primary cdr-button--medium">
+          Primary
+        </button>
+        <button class="cdr-button cdr-button--secondary cdr-button--medium">
+          Secondary
+        </button>
+        <button class="cdr-button cdr-button--dark cdr-button--medium">
+          Dark
+        </button>
+        <button class="cdr-button cdr-button--sale cdr-button--medium">
+          Sale
+        </button>
+        <button class="cdr-button cdr-button--link cdr-button--medium">
+          Link
+        </button>
+      </div>
+    </section>
+
+    <section class="fixture-group">
+      <h3>Sizes</h3>
+      <div class="fixture-row">
+        <button class="cdr-button cdr-button--primary cdr-button--small">
+          Small
+        </button>
+        <button class="cdr-button cdr-button--primary cdr-button--medium">
+          Medium
+        </button>
+        <button class="cdr-button cdr-button--primary cdr-button--large">
+          Large
+        </button>
+      </div>
+    </section>
+
+    <section class="fixture-group">
+      <h3>Disabled</h3>
+      <div class="fixture-row">
+        <button
+          class="cdr-button cdr-button--primary cdr-button--medium"
+          disabled
+        >
+          Primary
+        </button>
+        <button
+          class="cdr-button cdr-button--secondary cdr-button--medium"
+          disabled
+        >
+          Secondary
+        </button>
+        <button class="cdr-button cdr-button--dark cdr-button--medium" disabled>
+          Dark
+        </button>
+        <button class="cdr-button cdr-button--sale cdr-button--medium" disabled>
+          Sale
+        </button>
+        <button class="cdr-button cdr-button--link cdr-button--medium" disabled>
+          Link
+        </button>
+      </div>
+    </section>
+
+    <section class="fixture-group">
+      <h3>Full width</h3>
+      <div class="fixture-row fixture-row--stack fixture-row--full">
+        <button
+          class="cdr-button cdr-button--primary cdr-button--medium cdr-button--full-width"
+        >
+          Full Width
+        </button>
+        <button
+          class="cdr-button cdr-button--secondary cdr-button--medium cdr-button--full-width"
+        >
+          Full Width
+        </button>
+      </div>
+    </section>
+
+    <section class="fixture-group">
+      <h3>Icon only</h3>
+      <div class="fixture-row">
+        <button
+          class="cdr-button cdr-button--primary cdr-button--icon-only"
+          aria-label="Icon only"
+        >
+          <IconUser />
+        </button>
+        <button
+          class="cdr-button cdr-button--primary cdr-button--icon-only cdr-button--icon-only-large"
+          aria-label="Icon only large"
+        >
+          <IconUser />
+        </button>
+        <button
+          class="cdr-button cdr-button--primary cdr-button--icon-only cdr-button--with-background"
+          aria-label="Icon only with background"
+        >
+          <IconUser />
+        </button>
+      </div>
+    </section>
+
+    <section class="fixture-group">
+      <h3>Responsive sizes</h3>
+      <div class="fixture-row">
+        <button
+          class="cdr-button cdr-button--primary cdr-button--small@xs cdr-button--medium@sm cdr-button--large@md"
+        >
+          Responsive
+        </button>
+        <button
+          class="cdr-button cdr-button--secondary cdr-button--small@xs cdr-button--medium@sm cdr-button--large@md cdr-button--full-width@xs"
+        >
+          Responsive Full
+        </button>
+      </div>
+    </section>
+
+    <section class="fixture-group">
+      <h3>Size variant matrix</h3>
+      <div class="fixture-row fixture-row--matrix">
+        <button class="cdr-button cdr-button--primary cdr-button--small">
+          primary / small
+        </button>
+        <button class="cdr-button cdr-button--secondary cdr-button--small">
+          secondary / small
+        </button>
+        <button class="cdr-button cdr-button--dark cdr-button--small">
+          dark / small
+        </button>
+        <button class="cdr-button cdr-button--sale cdr-button--small">
+          sale / small
+        </button>
+        <button class="cdr-button cdr-button--link cdr-button--small">
+          link / small
+        </button>
+        <button class="cdr-button cdr-button--primary cdr-button--medium">
+          primary / medium
+        </button>
+        <button class="cdr-button cdr-button--secondary cdr-button--medium">
+          secondary / medium
+        </button>
+        <button class="cdr-button cdr-button--dark cdr-button--medium">
+          dark / medium
+        </button>
+        <button class="cdr-button cdr-button--sale cdr-button--medium">
+          sale / medium
+        </button>
+        <button class="cdr-button cdr-button--link cdr-button--medium">
+          link / medium
+        </button>
+        <button class="cdr-button cdr-button--primary cdr-button--large">
+          primary / large
+        </button>
+        <button class="cdr-button cdr-button--secondary cdr-button--large">
+          secondary / large
+        </button>
+        <button class="cdr-button cdr-button--dark cdr-button--large">
+          dark / large
+        </button>
+        <button class="cdr-button cdr-button--sale cdr-button--large">
+          sale / large
+        </button>
+        <button class="cdr-button cdr-button--link cdr-button--large">
+          link / large
+        </button>
+      </div>
+    </section>
+
+    <section class="fixture-group">
+      <h3>Icon combos</h3>
+      <div class="fixture-row">
+        <button
+          class="cdr-button cdr-button--primary cdr-button--small cdr-button--has-icon-left"
+        >
+          <IconUser />
+          Left
+        </button>
+        <button
+          class="cdr-button cdr-button--primary cdr-button--small cdr-button--has-icon-right"
+        >
+          Right
+          <IconUser />
+        </button>
+        <button
+          class="cdr-button cdr-button--primary cdr-button--small cdr-button--has-icon-left cdr-button--has-icon-right"
+        >
+          <IconUser />
+          Both
+          <IconUser />
+        </button>
+        <button
+          class="cdr-button cdr-button--secondary cdr-button--medium cdr-button--has-icon-left"
+        >
+          <IconUser />
+          Left
+        </button>
+        <button
+          class="cdr-button cdr-button--secondary cdr-button--medium cdr-button--has-icon-right"
+        >
+          Right
+          <IconUser />
+        </button>
+        <button
+          class="cdr-button cdr-button--secondary cdr-button--medium cdr-button--has-icon-left cdr-button--has-icon-right"
+        >
+          <IconUser />
+          Both
+          <IconUser />
+        </button>
+        <button
+          class="cdr-button cdr-button--dark cdr-button--large cdr-button--has-icon-left"
+        >
+          <IconUser />
+          Left
+        </button>
+        <button
+          class="cdr-button cdr-button--dark cdr-button--large cdr-button--has-icon-right"
+        >
+          Right
+          <IconUser />
+        </button>
+        <button
+          class="cdr-button cdr-button--dark cdr-button--large cdr-button--has-icon-left cdr-button--has-icon-right"
+        >
+          <IconUser />
+          Both
+          <IconUser />
+        </button>
+      </div>
+    </section>
+
+    <section class="fixture-group">
+      <h3>Dark background</h3>
+      <div class="fixture-row fixture-row--dark">
+        <button class="cdr-button cdr-button--primary cdr-button--medium">
+          Primary
+        </button>
+        <button class="cdr-button cdr-button--secondary cdr-button--medium">
+          Secondary
+        </button>
+        <button class="cdr-button cdr-button--dark cdr-button--medium">
+          Dark
+        </button>
+        <button class="cdr-button cdr-button--sale cdr-button--medium">
+          Sale
+        </button>
+        <button class="cdr-button cdr-button--link cdr-button--medium">
+          Link
+        </button>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { computed, toRefs } from 'vue';
-
-type Size = 'small' | 'medium' | 'large';
-type Variant = 'primary' | 'secondary' | 'dark' | 'sale' | 'link';
-
-const props = withDefaults(
-  defineProps<{
-    label?: string;
-    size?: Size;
-    variant?: Variant;
-    fullWidth?: boolean;
-    iconLeft?: boolean;
-    iconRight?: boolean;
-    iconOnly?: boolean;
-    iconOnlySize?: Size | '';
-    withBackground?: boolean;
-    disabled?: boolean;
-    ariaLabel?: string;
-  }>(),
-  {
-    label: 'Button',
-    size: 'medium',
-    variant: 'primary',
-    fullWidth: false,
-    iconLeft: false,
-    iconRight: false,
-    iconOnly: false,
-    iconOnlySize: '',
-    withBackground: false,
-    disabled: false,
-    ariaLabel: 'Icon only',
-  },
-);
-
-const {
-  label,
-  size,
-  variant,
-  fullWidth,
-  iconLeft,
-  iconRight,
-  iconOnly,
-  iconOnlySize,
-  withBackground,
-  disabled,
-  ariaLabel,
-} = toRefs(props);
-
-const classes = computed(() => {
-  const sizeClass = `cedar-btn--${size.value}`;
-  const resolvedIconOnlySize = iconOnlySize.value || size.value;
-
-  return [
-    'cedar-btn',
-    `cedar-btn--${variant.value}`,
-    iconOnly.value ? 'cedar-btn--icon-only' : '',
-    iconOnly.value ? `cedar-btn--icon-only-${resolvedIconOnlySize}` : sizeClass,
-    fullWidth.value && !iconOnly.value ? 'cedar-btn--full-width' : '',
-    iconLeft.value && !iconOnly.value ? 'cedar-btn--has-icon-left' : '',
-    iconRight.value && !iconOnly.value ? 'cedar-btn--has-icon-right' : '',
-    withBackground.value && iconOnly.value ? 'cedar-btn--with-background' : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-});
+import IconUser from './IconUser.vue';
 </script>
+
+<style scoped>
+.fixture {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 650px;
+}
+
+.fixture-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.fixture-row--stack {
+  flex-direction: column;
+}
+
+.fixture-row--full {
+  display: grid;
+  gap: 12px;
+  max-width: 320px;
+}
+
+.fixture-row--matrix {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  justify-items: start;
+}
+
+.fixture-row--dark {
+  background: #2e2e2b;
+  padding: 16px;
+}
+</style>

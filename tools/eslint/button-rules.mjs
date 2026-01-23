@@ -2,40 +2,40 @@
 
 /**
  * Cedar button rules derived from the original CdrButton.vue class logic:
- * - Require exactly one variant class: cedar-btn--primary|secondary|sale|dark|link.
- * - Size classes must be cedar-btn--small|medium|large (optionally @xs|@sm|@md|@lg); only one base size allowed.
- * - Full-width classes must be cedar-btn--full-width (optionally @xs|@sm|@md|@lg).
- * - Icon-only buttons require cedar-btn--icon-only plus cedar-btn--icon-only-(small|medium|large).
+ * - Require exactly one variant class: cdr-button--primary|secondary|sale|dark|link.
+ * - Size classes must be cdr-button--small|medium|large (optionally @xs|@sm|@md|@lg); only one base size allowed.
+ * - Full-width classes must be cdr-button--full-width (optionally @xs|@sm|@md|@lg).
+ * - Icon-only buttons may optionally include cdr-button--icon-only-large for larger sizing.
  * - Icon-only buttons must include aria-label or aria-labelledby.
  * - Icon-only buttons cannot use text size classes or icon-left/right classes.
  * - Text buttons cannot use icon-only size classes.
- * - cedar-btn--with-background requires cedar-btn--icon-only.
- * - cedar-btn--full-width cannot be used with cedar-btn--icon-only.
+ * - cdr-button--with-background requires cdr-button--icon-only.
+ * - cdr-button--full-width cannot be used with cdr-button--icon-only.
  * - <a> elements should not include a type attribute.
  */
 /** @typedef {{ tagName: string | null, attrs: Map<string, string> }} ParsedTag */
 
 const VARIANT_CLASSES = new Set([
-  'cedar-btn--primary',
-  'cedar-btn--secondary',
-  'cedar-btn--sale',
-  'cedar-btn--dark',
-  'cedar-btn--link',
+  'cdr-button--primary',
+  'cdr-button--secondary',
+  'cdr-button--sale',
+  'cdr-button--dark',
+  'cdr-button--link',
 ]);
 
-const SIZE_CLASS_RE = /^cedar-btn--(small|medium|large)(@xs|@sm|@md|@lg)?$/;
-const BASE_SIZE_CLASS_RE = /^cedar-btn--(small|medium|large)$/;
-const FULL_WIDTH_CLASS_RE = /^cedar-btn--full-width(@xs|@sm|@md|@lg)?$/;
-const ICON_ONLY_SIZE_CLASS_RE = /^cedar-btn--icon-only-(small|medium|large)$/;
+const SIZE_CLASS_RE = /^cdr-button--(small|medium|large)(@xs|@sm|@md|@lg)?$/;
+const BASE_SIZE_CLASS_RE = /^cdr-button--(small|medium|large)$/;
+const FULL_WIDTH_CLASS_RE = /^cdr-button--full-width(@xs|@sm|@md|@lg)?$/;
+const ICON_ONLY_SIZE_CLASS_RE = /^cdr-button--icon-only-large$/;
 
 const TAG_RE = /<\s*(button|a)\b[^>]*>/gi;
 const ATTR_RE = /([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g;
 
-const BASE_CLASS = 'cedar-btn';
-const ICON_ONLY_CLASS = 'cedar-btn--icon-only';
-const WITH_BACKGROUND_CLASS = 'cedar-btn--with-background';
-const ICON_LEFT_CLASS = 'cedar-btn--has-icon-left';
-const ICON_RIGHT_CLASS = 'cedar-btn--has-icon-right';
+const BASE_CLASS = 'cdr-button';
+const ICON_ONLY_CLASS = 'cdr-button--icon-only';
+const WITH_BACKGROUND_CLASS = 'cdr-button--with-background';
+const ICON_LEFT_CLASS = 'cdr-button--has-icon-left';
+const ICON_RIGHT_CLASS = 'cdr-button--has-icon-right';
 
 /** Parse tag name and attributes from a raw HTML tag string. */
 /** @param {string} tagSource @returns {ParsedTag} */
@@ -166,7 +166,7 @@ function checkTagWithAttrs(tagName, attrs, node, context) {
   const classes = splitClasses(classValue);
   const hasBase =
     classes.includes(BASE_CLASS) ||
-    classes.some((cls) => cls.startsWith('cedar-btn--'));
+    classes.some((cls) => cls.startsWith('cdr-button--'));
   if (!hasBase) {
     return;
   }
@@ -184,12 +184,12 @@ function checkTagWithAttrs(tagName, attrs, node, context) {
     ICON_ONLY_SIZE_CLASS_RE.test(cls),
   );
   const fullWidthClasses = classes.filter((cls) =>
-    cls.startsWith('cedar-btn--full-width'),
+    cls.startsWith('cdr-button--full-width'),
   );
 
   for (const cls of classes) {
     if (
-      cls.startsWith('cedar-btn--full-width') &&
+      cls.startsWith('cdr-button--full-width') &&
       !FULL_WIDTH_CLASS_RE.test(cls)
     ) {
       context.report({
@@ -199,7 +199,17 @@ function checkTagWithAttrs(tagName, attrs, node, context) {
       });
     }
     if (
-      cls.startsWith('cedar-btn--') &&
+      cls.startsWith('cdr-button--icon-only-') &&
+      !ICON_ONLY_SIZE_CLASS_RE.test(cls)
+    ) {
+      context.report({
+        node,
+        messageId: 'invalidSizeClass',
+        data: { className: cls },
+      });
+    }
+    if (
+      cls.startsWith('cdr-button--') &&
       cls.includes('@') &&
       !SIZE_CLASS_RE.test(cls) &&
       !FULL_WIDTH_CLASS_RE.test(cls)
@@ -235,9 +245,6 @@ function checkTagWithAttrs(tagName, attrs, node, context) {
   }
 
   if (hasIconOnly) {
-    if (iconOnlySizeClasses.length === 0) {
-      context.report({ node, messageId: 'iconOnlyRequiresSize' });
-    }
     if (sizeClasses.length > 0) {
       context.report({ node, messageId: 'iconOnlyWithTextSize' });
     }
@@ -271,25 +278,29 @@ const rule = {
     schema: [],
     messages: {
       missingVariant:
-        'Button is missing a variant class (primary, secondary, sale, dark, link).',
-      multipleVariants: 'Button has multiple variant classes; use only one.',
-      invalidSizeClass: 'Invalid button size class "{{className}}".',
-      multipleBaseSizes: 'Button has multiple base size classes; use only one.',
-      iconOnlyRequiresSize:
-        'Icon-only button must include a size class like cedar-btn--icon-only-medium.',
-      iconOnlyWithTextSize: 'Icon-only button must not use text size classes.',
+        'Button must include exactly one variant class: cdr-button--primary|secondary|sale|dark|link.',
+      multipleVariants:
+        'Button has multiple variant classes; keep only one of cdr-button--primary|secondary|sale|dark|link.',
+      invalidSizeClass:
+        'Invalid size class "{{className}}". Use cdr-button--small|medium|large with optional @xs|@sm|@md|@lg.',
+      multipleBaseSizes:
+        'Button has multiple base size classes; keep only one of cdr-button--small|medium|large.',
+      iconOnlyWithTextSize:
+        'Icon-only button must not use text size classes (cdr-button--small|medium|large).',
       textSizeWithIconOnlyClass:
-        'Text button must not use icon-only size classes.',
+        'Text button must not use icon-only size classes (cdr-button--icon-only-*).',
       withBackgroundRequiresIconOnly:
-        'cedar-btn--with-background requires cedar-btn--icon-only.',
+        'cdr-button--with-background only applies to icon-only buttons; add cdr-button--icon-only.',
       fullWidthWithIconOnly:
-        'cedar-btn--full-width cannot be used with cedar-btn--icon-only.',
+        'cdr-button--full-width cannot be combined with cdr-button--icon-only.',
       iconOnlyWithIconSide:
-        'Icon-only button must not use icon-left/right classes.',
+        'Icon-only button must not use cdr-button--has-icon-left/right.',
       iconOnlyNeedsLabel:
-        'Icon-only button must include aria-label or aria-labelledby.',
-      invalidFullWidth: 'Invalid full-width class "{{className}}".',
-      anchorWithType: 'Anchor tags should not include a type attribute.',
+        'Icon-only button must include aria-label or aria-labelledby for an accessible name.',
+      invalidFullWidth:
+        'Invalid full-width class "{{className}}". Use cdr-button--full-width with optional @xs|@sm|@md|@lg.',
+      anchorWithType:
+        'Anchor tags (<a>) should not include a type attribute; use <button> instead.',
     },
   },
   /** @param {import('eslint').Rule.RuleContext} context */
@@ -308,7 +319,7 @@ const rule = {
     /** Scan text for <button>/<a> tags and validate each one. */
     /** @param {string} text @param {any} node */
     function checkText(text, node) {
-      if (!text.includes('cedar-btn')) {
+      if (!text.includes('cdr-button')) {
         return;
       }
       const tags = extractTagStrings(text);
@@ -317,9 +328,15 @@ const rule = {
       }
     }
 
-    const parserServices = /** @type {any} */ (context).parserServices;
+    const sourceCode =
+      /** @type {any} */ (context).sourceCode ?? context.getSourceCode();
+    const parserServices =
+      sourceCode && sourceCode.parserServices
+        ? sourceCode.parserServices
+        : null;
     const templateVisitor =
-      parserServices && parserServices.defineTemplateBodyVisitor
+      parserServices &&
+      typeof parserServices.defineTemplateBodyVisitor === 'function'
         ? parserServices.defineTemplateBodyVisitor({
             /** @param {any} node */
             VElement(node) {
