@@ -14,9 +14,10 @@ Packages (early scaffold):
 - `packages/cedar-tokens`: token source and platform outputs.
 - `packages/cedar-ui`: CSS utilities and recipes (plus optional Tailwind plugin).
 
-Apps (early scaffold):
+Sandbox (early scaffold):
 
-- `apps/playground-web`: validate utilities/recipes in a web app.
-- `apps/playground-rn`: validate tokens and adapters in React Native.
+- `sandbox/playground-web`: validate utilities/recipes in a web app.
+- `sandbox/playground-rn`: validate tokens and adapters in React Native.
+- `sandbox/vue-fixtures`: basic Vue components for story fixtures.
 
 Status: experimental. APIs and structure are expected to change.

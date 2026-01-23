@@ -2,9 +2,13 @@
   "extends": "./tsconfig.base.json",
   "files": [],
   "references": [
+    { "path": "./tools" },
     { "path": "./packages/cedar-tokens" },
     { "path": "./packages/cedar-ui" },
-    { "path": "./apps/playground-web" },
-    { "path": "./apps/playground-rn" }
+    { "path": "./sandbox/playground-web" },
+    { "path": "./sandbox/playground-rn" },
+    { "path": "./sandbox/vue-fixtures" },
+    { "path": "./stories" },
+    { "path": "./.storybook" }
   ]
 }

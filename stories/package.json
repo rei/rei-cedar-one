@@ -1,0 +1,13 @@
+{
+  "name": "@rei/cedar-stories",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@rei/cedar-vue-fixtures": "workspace:*"
+  }
+}

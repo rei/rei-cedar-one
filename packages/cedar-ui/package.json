@@ -12,7 +12,10 @@
     "./components/*": "./dist/css/components/*"
   },
   "scripts": {
-    "build": "postcss \"src/css/**/*.css\" --base src/css --dir dist/css"
+    "build": "postcss \"src/css/**/*.css\" --base src/css --dir dist/css",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@rei/cedar-tokens": "workspace:*"

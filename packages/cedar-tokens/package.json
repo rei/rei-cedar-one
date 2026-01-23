@@ -20,7 +20,10 @@
   },
   "scripts": {
     "build": "tsx ./style-dictionary/build.ts",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^1.2.2",

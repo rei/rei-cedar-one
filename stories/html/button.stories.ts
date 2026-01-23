@@ -63,7 +63,7 @@ const renderButton = ({
 };
 
 export default {
-  title: 'Utilities/Button',
+  title: 'Utilities/Button/HTML',
   argTypes: {
     size: {
       control: { type: 'select' },
@@ -151,9 +151,9 @@ export const FullWidth = {
 export const IconOnly = {
   render: () => `
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <button class="cedar-btn cedar-btn--icon-only" aria-label="Icon only">${iconSvg}</button>
-      <button class="cedar-btn cedar-btn--icon-only cedar-btn--icon-only-large" aria-label="Icon only large">${iconSvg}</button>
-      <button class="cedar-btn cedar-btn--icon-only cedar-btn--with-background" aria-label="With background">${iconSvg}</button>
+      <button class="cedar-btn cedar-btn--primary cedar-btn--icon-only cedar-btn--icon-only-medium" aria-label="Icon only">${iconSvg}</button>
+      <button class="cedar-btn cedar-btn--primary cedar-btn--icon-only cedar-btn--icon-only-large" aria-label="Icon only large">${iconSvg}</button>
+      <button class="cedar-btn cedar-btn--primary cedar-btn--icon-only cedar-btn--icon-only-medium cedar-btn--with-background" aria-label="With background">${iconSvg}</button>
     </div>
   `,
 };

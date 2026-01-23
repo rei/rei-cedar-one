@@ -3,16 +3,23 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "pnpm -r build",
-    "build-storybook": "pnpm --filter @rei/cedar-tokens build && pnpm --filter @rei/cedar-ui build && storybook build",
-    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm run ws:build",
+    "build-storybook": "pnpm run ws:storybook:build",
+    "dev": "pnpm run ws:dev",
     "format": "prettier --write --single-quote",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "pnpm run ws:lint",
+    "lint:fix": "pnpm run ws:lint:fix",
     "lint-staged": "lint-staged",
     "prepare": "husky",
-    "storybook": "pnpm --filter @rei/cedar-tokens build && pnpm --filter @rei/cedar-ui build && storybook dev -p 6006",
-    "typecheck": "pnpm -r exec tsc -b"
+    "storybook": "pnpm run ws:storybook",
+    "typecheck": "pnpm run ws:typecheck",
+    "ws:build": "pnpm -r --if-present --filter \"!rei-cedar-unified-lab\" run build",
+    "ws:dev": "pnpm -r --parallel dev",
+    "ws:lint": "pnpm -r --if-present --filter \"!rei-cedar-unified-lab\" run lint",
+    "ws:lint:fix": "pnpm -r --if-present --filter \"!rei-cedar-unified-lab\" run lint:fix",
+    "ws:storybook": "pnpm --filter @rei/cedar-tokens build && pnpm --filter @rei/cedar-ui build && storybook dev -p 6006 --config-dir .storybook",
+    "ws:storybook:build": "pnpm --filter @rei/cedar-tokens build && pnpm --filter @rei/cedar-ui build && storybook build --config-dir .storybook",
+    "ws:typecheck": "pnpm -r --if-present --filter \"!rei-cedar-unified-lab\" run typecheck"
   },
   "lint-staged": {
     "package.json": "pnpm dlx sort-package-json@latest",
@@ -23,7 +30,9 @@
   },
   "devDependencies": {
     "@eslint/js": "latest",
+    "@html-eslint/parser": "^0.24.1",
     "@storybook/html-vite": "10.2.0",
+    "@types/node": "^24.10.1",
     "eslint": "latest",
     "husky": "latest",
     "lint-staged": "latest",
@@ -31,6 +40,6 @@
     "storybook": "10.2.0",
     "typescript": "^5.6.3",
     "typescript-eslint": "latest",
-    "vite": "^7.3.1"
+    "vue-eslint-parser": "^9.4.3"
   }
 }

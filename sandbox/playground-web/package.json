@@ -1,0 +1,11 @@
+{
+  "name": "@rei/cedar-playground-web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo \"start web playground\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}
