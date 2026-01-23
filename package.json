@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "build": "pnpm -r build",
+    "build-storybook": "pnpm --filter @rei/cedar-tokens build && pnpm --filter @rei/cedar-ui build && storybook build",
     "dev": "pnpm -r --parallel dev",
     "format": "prettier --write --single-quote",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint-staged": "lint-staged",
     "prepare": "husky",
+    "storybook": "pnpm --filter @rei/cedar-tokens build && pnpm --filter @rei/cedar-ui build && storybook dev -p 6006",
     "typecheck": "pnpm -r exec tsc -b"
   },
   "lint-staged": {
@@ -21,11 +23,14 @@
   },
   "devDependencies": {
     "@eslint/js": "latest",
+    "@storybook/html-vite": "10.2.0",
     "eslint": "latest",
     "husky": "latest",
     "lint-staged": "latest",
     "prettier": "latest",
+    "storybook": "10.2.0",
     "typescript": "^5.6.3",
-    "typescript-eslint": "latest"
+    "typescript-eslint": "latest",
+    "vite": "^7.3.1"
   }
 }

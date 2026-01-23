@@ -13,6 +13,7 @@ node_modules/
 **/coverage/
 **/*.log
 **/tsconfig.tsbuildinfo
+storybook-static/
 
 # Editor
 .vscode/
