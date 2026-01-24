@@ -1,37 +1,49 @@
-# rei-cedar-unified-lab
+# Cedar Unified Lab
 
 Experimental monorepo for exploring a unified Cedar architecture where tokens are the source of truth, CSS provides the primary styling surface, and behavior is added only where needed. The intent is to keep the system framework-agnostic while preserving parity with existing Cedar styles and tokens.
 
-Architecture:
+## Architecture
 
 - Tokens drive design values and cross-platform outputs.
 - CSS recipes/utilities cover most styling without framework bindings.
 - Behavioral adapters are layered on only where needed.
 - `pnpm` workspaces handle monorepo orchestration.
-- ESLint rules enforce API contracts so validation is not shipped at runtime.
+- Dev tooling (ESLint) enforces API contracts so validation is not shipped at runtime.
 
-Goals:
+## Goals
 
 - Reduce bundle size via static CSS.
 - Simplify authoring with utilities/recipes.
 - Stay framework-agnostic for web.
 - Provide a path to React Native via token outputs and adapters.
+- Ship a UnoCSS preset (alongside prebuilt CSS) so consumers can opt into on-demand utility generation.
+- Improve DX with a VS Code Cedar extension for Cedar-specific authoring aids.
 
-Linting:
+## VS Code Extension Ideas
 
-- ESLint validates component class combinations in HTML, Vue templates, and JSX.
-- Static class strings only; dynamic expressions are ignored to avoid false positives.
+### Editor Assistance
 
-Getting started:
+- Autocomplete: suggest valid `cdr-` utility and component classes based on known variants, sizes, and tags for HTML, Vue, and JSX.
+- Inline diagnostics: surface Cedar ESLint rule violations while typing, with clear, actionable messages.
+- Quick fixes: fix typos, add required attributes, and remove invalid class combinations.
+- Snippets: common patterns for buttons, icons, and responsive sizes that match current rules.
+
+### Discovery
+
+- Hover docs: show token values, descriptions, and usage tips pulled from the token source.
+- Token explorer: searchable panel grouped by category with copy-to-clipboard for names and values.
+- Storybook links: jump from class names to the closest Storybook example.
+
+## Getting Started
 
 ```bash
 pnpm install
 pnpm storybook
 ```
 
-Usage examples:
+## Usage Examples
 
-HTML:
+### HTML
 
 ```html
 <button type="button" class="cdr-button cdr-button--primary cdr-button--medium">
@@ -39,7 +51,7 @@ HTML:
 </button>
 ```
 
-Vue:
+### Vue
 
 ```vue
 <template>
@@ -52,7 +64,7 @@ Vue:
 </template>
 ```
 
-Scripts:
+## Scripts
 
 - `pnpm storybook`: start Storybook.
 - `pnpm build-storybook`: build Storybook.
@@ -61,7 +73,7 @@ Scripts:
 - `pnpm fixtures:vue`: run Vue fixtures dev server.
 - `pnpm fixtures:vue:build`: build Vue fixtures.
 
-Workspaces:
+## Workspaces
 
 - `packages/cedar-tokens`: tokens and platform outputs (web + RN).
 - `packages/cedar-ui`: CSS utilities and recipes.
@@ -69,4 +81,6 @@ Workspaces:
 - `sandbox/playground-rn`: React Native sandbox for tokens/adapters.
 - `sandbox/vue-fixtures`: Vue fixtures for `cdr-button` permutations.
 
-Status: experimental. APIs and structure are expected to change.
+## Status
+
+Experimental. APIs and structure are expected to change.
