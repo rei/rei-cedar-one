@@ -59,7 +59,7 @@ const renderButton = ({
   const right = iconRight ? iconSvg : '';
   const disabledAttr = disabled ? 'disabled' : '';
 
-  return `<button class="${classes}" ${disabledAttr}>${left}${label}${right}</button>`;
+  return `<button type="button" class="${classes}" ${disabledAttr}>${left}${label}${right}</button>`;
 };
 
 export default {
@@ -151,9 +151,9 @@ export const FullWidth = {
 export const IconOnly = {
   render: () => `
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <button class="cdr-button cdr-button--primary cdr-button--icon-only" aria-label="Icon only">${iconSvg}</button>
-      <button class="cdr-button cdr-button--primary cdr-button--icon-only cdr-button--icon-only-large" aria-label="Icon only large">${iconSvg}</button>
-      <button class="cdr-button cdr-button--primary cdr-button--icon-only cdr-button--with-background" aria-label="With background">${iconSvg}</button>
+      <button type="button" class="cdr-button cdr-button--primary cdr-button--icon-only" aria-label="Icon only">${iconSvg}</button>
+      <button type="button" class="cdr-button cdr-button--primary cdr-button--icon-only cdr-button--icon-only-large" aria-label="Icon only large">${iconSvg}</button>
+      <button type="button" class="cdr-button cdr-button--primary cdr-button--icon-only cdr-button--with-background" aria-label="With background">${iconSvg}</button>
     </div>
   `,
 };
@@ -161,10 +161,10 @@ export const IconOnly = {
 export const ResponsiveSizes = {
   render: () => `
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <button class="cdr-button cdr-button--primary cdr-button--small@xs cdr-button--medium@sm cdr-button--large@md">
+      <button type="button" class="cdr-button cdr-button--primary cdr-button--small@xs cdr-button--medium@sm cdr-button--large@md">
         Responsive
       </button>
-      <button class="cdr-button cdr-button--secondary cdr-button--small@xs cdr-button--medium@sm cdr-button--large@md cdr-button--full-width@xs">
+      <button type="button" class="cdr-button cdr-button--secondary cdr-button--small@xs cdr-button--medium@sm cdr-button--large@md cdr-button--full-width@xs">
         Responsive Full
       </button>
     </div>

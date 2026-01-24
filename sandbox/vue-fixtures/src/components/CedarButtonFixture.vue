@@ -3,7 +3,10 @@
     <section class="fixture-group">
       <h3>Primary</h3>
       <div class="fixture-row">
-        <button class="cdr-button cdr-button--primary cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--primary cdr-button--medium"
+        >
           Primary
         </button>
       </div>
@@ -13,6 +16,7 @@
       <h3>With icons</h3>
       <div class="fixture-row">
         <button
+          type="button"
           class="cdr-button cdr-button--secondary cdr-button--medium cdr-button--has-icon-left cdr-button--has-icon-right"
         >
           <IconUser />
@@ -25,19 +29,34 @@
     <section class="fixture-group">
       <h3>All variants</h3>
       <div class="fixture-row">
-        <button class="cdr-button cdr-button--primary cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--primary cdr-button--medium"
+        >
           Primary
         </button>
-        <button class="cdr-button cdr-button--secondary cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--secondary cdr-button--medium"
+        >
           Secondary
         </button>
-        <button class="cdr-button cdr-button--dark cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--dark cdr-button--medium"
+        >
           Dark
         </button>
-        <button class="cdr-button cdr-button--sale cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--sale cdr-button--medium"
+        >
           Sale
         </button>
-        <button class="cdr-button cdr-button--link cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--link cdr-button--medium"
+        >
           Link
         </button>
       </div>
@@ -46,13 +65,22 @@
     <section class="fixture-group">
       <h3>Sizes</h3>
       <div class="fixture-row">
-        <button class="cdr-button cdr-button--primary cdr-button--small">
+        <button
+          type="button"
+          class="cdr-button cdr-button--primary cdr-button--small"
+        >
           Small
         </button>
-        <button class="cdr-button cdr-button--primary cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--primary cdr-button--medium"
+        >
           Medium
         </button>
-        <button class="cdr-button cdr-button--primary cdr-button--large">
+        <button
+          type="button"
+          class="cdr-button cdr-button--primary cdr-button--large"
+        >
           Large
         </button>
       </div>
@@ -62,24 +90,38 @@
       <h3>Disabled</h3>
       <div class="fixture-row">
         <button
+          type="button"
           class="cdr-button cdr-button--primary cdr-button--medium"
           disabled
         >
           Primary
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--secondary cdr-button--medium"
           disabled
         >
           Secondary
         </button>
-        <button class="cdr-button cdr-button--dark cdr-button--medium" disabled>
+        <button
+          type="button"
+          class="cdr-button cdr-button--dark cdr-button--medium"
+          disabled
+        >
           Dark
         </button>
-        <button class="cdr-button cdr-button--sale cdr-button--medium" disabled>
+        <button
+          type="button"
+          class="cdr-button cdr-button--sale cdr-button--medium"
+          disabled
+        >
           Sale
         </button>
-        <button class="cdr-button cdr-button--link cdr-button--medium" disabled>
+        <button
+          type="button"
+          class="cdr-button cdr-button--link cdr-button--medium"
+          disabled
+        >
           Link
         </button>
       </div>
@@ -89,11 +131,13 @@
       <h3>Full width</h3>
       <div class="fixture-row fixture-row--stack fixture-row--full">
         <button
+          type="button"
           class="cdr-button cdr-button--primary cdr-button--medium cdr-button--full-width"
         >
           Full Width
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--secondary cdr-button--medium cdr-button--full-width"
         >
           Full Width
@@ -105,18 +149,21 @@
       <h3>Icon only</h3>
       <div class="fixture-row">
         <button
+          type="button"
           class="cdr-button cdr-button--primary cdr-button--icon-only"
           aria-label="Icon only"
         >
           <IconUser />
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--primary cdr-button--icon-only cdr-button--icon-only-large"
           aria-label="Icon only large"
         >
           <IconUser />
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--primary cdr-button--icon-only cdr-button--with-background"
           aria-label="Icon only with background"
         >
@@ -129,11 +176,13 @@
       <h3>Responsive sizes</h3>
       <div class="fixture-row">
         <button
+          type="button"
           class="cdr-button cdr-button--primary cdr-button--small@xs cdr-button--medium@sm cdr-button--large@md"
         >
           Responsive
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--secondary cdr-button--small@xs cdr-button--medium@sm cdr-button--large@md cdr-button--full-width@xs"
         >
           Responsive Full
@@ -144,49 +193,94 @@
     <section class="fixture-group">
       <h3>Size variant matrix</h3>
       <div class="fixture-row fixture-row--matrix">
-        <button class="cdr-button cdr-button--primary cdr-button--small">
+        <button
+          type="button"
+          class="cdr-button cdr-button--primary cdr-button--small"
+        >
           primary / small
         </button>
-        <button class="cdr-button cdr-button--secondary cdr-button--small">
+        <button
+          type="button"
+          class="cdr-button cdr-button--secondary cdr-button--small"
+        >
           secondary / small
         </button>
-        <button class="cdr-button cdr-button--dark cdr-button--small">
+        <button
+          type="button"
+          class="cdr-button cdr-button--dark cdr-button--small"
+        >
           dark / small
         </button>
-        <button class="cdr-button cdr-button--sale cdr-button--small">
+        <button
+          type="button"
+          class="cdr-button cdr-button--sale cdr-button--small"
+        >
           sale / small
         </button>
-        <button class="cdr-button cdr-button--link cdr-button--small">
+        <button
+          type="button"
+          class="cdr-button cdr-button--link cdr-button--small"
+        >
           link / small
         </button>
-        <button class="cdr-button cdr-button--primary cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--primary cdr-button--medium"
+        >
           primary / medium
         </button>
-        <button class="cdr-button cdr-button--secondary cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--secondary cdr-button--medium"
+        >
           secondary / medium
         </button>
-        <button class="cdr-button cdr-button--dark cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--dark cdr-button--medium"
+        >
           dark / medium
         </button>
-        <button class="cdr-button cdr-button--sale cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--sale cdr-button--medium"
+        >
           sale / medium
         </button>
-        <button class="cdr-button cdr-button--link cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--link cdr-button--medium"
+        >
           link / medium
         </button>
-        <button class="cdr-button cdr-button--primary cdr-button--large">
+        <button
+          type="button"
+          class="cdr-button cdr-button--primary cdr-button--large"
+        >
           primary / large
         </button>
-        <button class="cdr-button cdr-button--secondary cdr-button--large">
+        <button
+          type="button"
+          class="cdr-button cdr-button--secondary cdr-button--large"
+        >
           secondary / large
         </button>
-        <button class="cdr-button cdr-button--dark cdr-button--large">
+        <button
+          type="button"
+          class="cdr-button cdr-button--dark cdr-button--large"
+        >
           dark / large
         </button>
-        <button class="cdr-button cdr-button--sale cdr-button--large">
+        <button
+          type="button"
+          class="cdr-button cdr-button--sale cdr-button--large"
+        >
           sale / large
         </button>
-        <button class="cdr-button cdr-button--link cdr-button--large">
+        <button
+          type="button"
+          class="cdr-button cdr-button--link cdr-button--large"
+        >
           link / large
         </button>
       </div>
@@ -196,18 +290,21 @@
       <h3>Icon combos</h3>
       <div class="fixture-row">
         <button
+          type="button"
           class="cdr-button cdr-button--primary cdr-button--small cdr-button--has-icon-left"
         >
           <IconUser />
           Left
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--primary cdr-button--small cdr-button--has-icon-right"
         >
           Right
           <IconUser />
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--primary cdr-button--small cdr-button--has-icon-left cdr-button--has-icon-right"
         >
           <IconUser />
@@ -215,18 +312,21 @@
           <IconUser />
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--secondary cdr-button--medium cdr-button--has-icon-left"
         >
           <IconUser />
           Left
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--secondary cdr-button--medium cdr-button--has-icon-right"
         >
           Right
           <IconUser />
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--secondary cdr-button--medium cdr-button--has-icon-left cdr-button--has-icon-right"
         >
           <IconUser />
@@ -234,18 +334,21 @@
           <IconUser />
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--dark cdr-button--large cdr-button--has-icon-left"
         >
           <IconUser />
           Left
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--dark cdr-button--large cdr-button--has-icon-right"
         >
           Right
           <IconUser />
         </button>
         <button
+          type="button"
           class="cdr-button cdr-button--dark cdr-button--large cdr-button--has-icon-left cdr-button--has-icon-right"
         >
           <IconUser />
@@ -258,19 +361,34 @@
     <section class="fixture-group">
       <h3>Dark background</h3>
       <div class="fixture-row fixture-row--dark">
-        <button class="cdr-button cdr-button--primary cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--primary cdr-button--medium"
+        >
           Primary
         </button>
-        <button class="cdr-button cdr-button--secondary cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--secondary cdr-button--medium"
+        >
           Secondary
         </button>
-        <button class="cdr-button cdr-button--dark cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--dark cdr-button--medium"
+        >
           Dark
         </button>
-        <button class="cdr-button cdr-button--sale cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--sale cdr-button--medium"
+        >
           Sale
         </button>
-        <button class="cdr-button cdr-button--link cdr-button--medium">
+        <button
+          type="button"
+          class="cdr-button cdr-button--link cdr-button--medium"
+        >
           Link
         </button>
       </div>

@@ -5,13 +5,15 @@
  * - Require exactly one variant class: cdr-button--primary|secondary|sale|dark|link.
  * - Size classes must be cdr-button--small|medium|large (optionally @xs|@sm|@md|@lg); only one base size allowed.
  * - Full-width classes must be cdr-button--full-width (optionally @xs|@sm|@md|@lg).
- * - Icon-only buttons may optionally include cdr-button--icon-only-large for larger sizing.
+ * - Icon-only buttons may optionally include cdr-button--icon-only-(small|medium|large).
  * - Icon-only buttons must include aria-label or aria-labelledby.
  * - Icon-only buttons cannot use text size classes or icon-left/right classes.
  * - Text buttons cannot use icon-only size classes.
  * - cdr-button--with-background requires cdr-button--icon-only.
  * - cdr-button--full-width cannot be used with cdr-button--icon-only.
+ * - cdr-button classes are only valid on <button> or <a> elements.
  * - <a> elements should not include a type attribute.
+ * - <button> type attributes must be button, submit, or reset.
  */
 /** @typedef {{ tagName: string | null, attrs: Map<string, string> }} ParsedTag */
 
@@ -26,9 +28,9 @@ const VARIANT_CLASSES = new Set([
 const SIZE_CLASS_RE = /^cdr-button--(small|medium|large)(@xs|@sm|@md|@lg)?$/;
 const BASE_SIZE_CLASS_RE = /^cdr-button--(small|medium|large)$/;
 const FULL_WIDTH_CLASS_RE = /^cdr-button--full-width(@xs|@sm|@md|@lg)?$/;
-const ICON_ONLY_SIZE_CLASS_RE = /^cdr-button--icon-only-large$/;
+const ICON_ONLY_SIZE_CLASS_RE = /^cdr-button--icon-only-(small|medium|large)$/;
 
-const TAG_RE = /<\s*(button|a)\b[^>]*>/gi;
+const TAG_RE = /<\s*([a-zA-Z0-9-]+)\b[^>]*>/gi;
 const ATTR_RE = /([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g;
 
 const BASE_CLASS = 'cdr-button';
@@ -36,6 +38,7 @@ const ICON_ONLY_CLASS = 'cdr-button--icon-only';
 const WITH_BACKGROUND_CLASS = 'cdr-button--with-background';
 const ICON_LEFT_CLASS = 'cdr-button--has-icon-left';
 const ICON_RIGHT_CLASS = 'cdr-button--has-icon-right';
+const BUTTON_TYPE_VALUES = new Set(['button', 'submit', 'reset']);
 
 /** Parse tag name and attributes from a raw HTML tag string. */
 /** @param {string} tagSource @returns {ParsedTag} */
@@ -154,10 +157,6 @@ function checkTagWithAttrs(tagName, attrs, node, context) {
   }
 
   const normalizedTag = tagName.toLowerCase();
-  if (normalizedTag !== 'button' && normalizedTag !== 'a') {
-    return;
-  }
-
   const classValue = attrs.get('class') ?? attrs.get('classname') ?? '';
   if (!classValue || includesDynamicValue(classValue)) {
     return;
@@ -168,6 +167,15 @@ function checkTagWithAttrs(tagName, attrs, node, context) {
     classes.includes(BASE_CLASS) ||
     classes.some((cls) => cls.startsWith('cdr-button--'));
   if (!hasBase) {
+    return;
+  }
+
+  if (normalizedTag !== 'button' && normalizedTag !== 'a') {
+    context.report({
+      node,
+      messageId: 'invalidTag',
+      data: { tagName: normalizedTag },
+    });
     return;
   }
 
@@ -262,6 +270,21 @@ function checkTagWithAttrs(tagName, attrs, node, context) {
     context.report({ node, messageId: 'textSizeWithIconOnlyClass' });
   }
 
+  if (normalizedTag === 'button') {
+    const typeValue = attrs.get('type');
+    if (!typeValue) {
+      context.report({ node, messageId: 'missingButtonType' });
+    } else if (includesDynamicValue(typeValue)) {
+      return;
+    } else if (!BUTTON_TYPE_VALUES.has(typeValue)) {
+      context.report({
+        node,
+        messageId: 'invalidButtonType',
+        data: { typeValue },
+      });
+    }
+  }
+
   if (normalizedTag === 'a' && attrs.has('type')) {
     context.report({ node, messageId: 'anchorWithType' });
   }
@@ -273,7 +296,7 @@ const rule = {
     type: 'problem',
     docs: {
       description:
-        'Validate cedar button class combinations in static HTML strings.',
+        'Validate cdr-button class combinations, tag usage, and attributes.',
     },
     schema: [],
     messages: {
@@ -299,6 +322,12 @@ const rule = {
         'Icon-only button must include aria-label or aria-labelledby for an accessible name.',
       invalidFullWidth:
         'Invalid full-width class "{{className}}". Use cdr-button--full-width with optional @xs|@sm|@md|@lg.',
+      invalidTag:
+        'cdr-button classes may only be used on <button> or <a> elements (found <{{tagName}}>).',
+      invalidButtonType:
+        'Button type must be "button", "submit", or "reset" (found {{typeValue}}).',
+      missingButtonType:
+        'Button must include type="button", "submit", or "reset".',
       anchorWithType:
         'Anchor tags (<a>) should not include a type attribute; use <button> instead.',
     },
@@ -316,7 +345,7 @@ const rule = {
       checkTagWithAttrs(tagName, attrs, node, context);
     }
 
-    /** Scan text for <button>/<a> tags and validate each one. */
+    /** Scan text for tags and validate each one. */
     /** @param {string} text @param {any} node */
     function checkText(text, node) {
       if (!text.includes('cdr-button')) {

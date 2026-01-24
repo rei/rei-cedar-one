@@ -34,7 +34,7 @@ Usage examples:
 HTML:
 
 ```html
-<button class="cdr-button cdr-button--primary cdr-button--medium">
+<button type="button" class="cdr-button cdr-button--primary cdr-button--medium">
   Primary
 </button>
 ```
@@ -43,7 +43,10 @@ Vue:
 
 ```vue
 <template>
-  <button class="cdr-button cdr-button--primary cdr-button--medium">
+  <button
+    type="button"
+    class="cdr-button cdr-button--primary cdr-button--medium"
+  >
     Primary
   </button>
 </template>
