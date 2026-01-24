@@ -29,7 +29,14 @@ export default [
       cedar: cedarButtonRules,
     },
     rules: {
-      'cedar/button': 'error',
+      'cedar/button-variant': 'error',
+      'cedar/button-size': 'error',
+      'cedar/button-icon': 'error',
+      'cedar/button-modifier': 'error',
+      'cedar/button-duplicate': 'error',
+      'cedar/button-tag': 'error',
+      'cedar/button-type': 'error',
+      'cedar/button-anchor': 'error',
     },
   },
   {
@@ -41,7 +48,14 @@ export default [
       cedar: cedarButtonRules,
     },
     rules: {
-      'cedar/button': 'error',
+      'cedar/button-variant': 'error',
+      'cedar/button-size': 'error',
+      'cedar/button-icon': 'error',
+      'cedar/button-modifier': 'error',
+      'cedar/button-duplicate': 'error',
+      'cedar/button-tag': 'error',
+      'cedar/button-type': 'error',
+      'cedar/button-anchor': 'error',
     },
   },
   {
@@ -58,7 +72,14 @@ export default [
       cedar: cedarButtonRules,
     },
     rules: {
-      'cedar/button': 'error',
+      'cedar/button-variant': 'error',
+      'cedar/button-size': 'error',
+      'cedar/button-icon': 'error',
+      'cedar/button-modifier': 'error',
+      'cedar/button-duplicate': 'error',
+      'cedar/button-tag': 'error',
+      'cedar/button-type': 'error',
+      'cedar/button-anchor': 'error',
     },
   },
 ];

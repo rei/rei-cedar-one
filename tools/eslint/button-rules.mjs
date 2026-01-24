@@ -13,6 +13,8 @@
  * - cdr-button--full-width cannot be used with cdr-button--icon-only.
  * - cdr-button classes are only valid on <button> or <a> elements.
  * - cdr-button modifier classes must be known (size, variant, icon, full-width, etc.).
+ * - cdr-button modifiers must use the "--" separator (for example, cdr-button--primary).
+ * - cdr-button classes should not be duplicated.
  * - <a> elements must include an href.
  * - <a> elements should not include a type attribute.
  * - <button> type attributes must be button, submit, or reset.
@@ -32,8 +34,14 @@ const BASE_SIZE_CLASS_RE = /^cdr-button--(small|medium|large)$/;
 const FULL_WIDTH_CLASS_RE = /^cdr-button--full-width(@xs|@sm|@md|@lg)?$/;
 const ICON_ONLY_SIZE_CLASS_RE = /^cdr-button--icon-only-(small|medium|large)$/;
 
-const TAG_RE = /<\s*([a-zA-Z0-9-]+)\b[^>]*>/gi;
-const ATTR_RE = /([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g;
+import {
+  createRule,
+  buildMeta,
+  includesDynamicValue,
+  reportClasses,
+  splitClasses,
+  unique,
+} from './utils.mjs';
 
 const BASE_CLASS = 'cdr-button';
 const MODIFIER_PREFIX = `${BASE_CLASS}--`;
@@ -43,8 +51,6 @@ const ICON_ONLY_CLASS = 'cdr-button--icon-only';
 const WITH_BACKGROUND_CLASS = 'cdr-button--with-background';
 const ICON_LEFT_CLASS = 'cdr-button--has-icon-left';
 const ICON_RIGHT_CLASS = 'cdr-button--has-icon-right';
-const BUTTON_TYPE_VALUES = new Set(['button', 'submit', 'reset']);
-const VALID_TAGS = new Set(['button', 'a']);
 const KNOWN_EXACT_MODIFIERS = new Set([
   ...VARIANT_CLASSES,
   ICON_ONLY_CLASS,
@@ -52,6 +58,8 @@ const KNOWN_EXACT_MODIFIERS = new Set([
   ICON_LEFT_CLASS,
   ICON_RIGHT_CLASS,
 ]);
+const BUTTON_TYPE_VALUES = new Set(['button', 'submit', 'reset']);
+const VALID_TAGS = new Set(['button', 'a']);
 
 /** @param {string} cls */
 const isSizeClass = (cls) => SIZE_CLASS_RE.test(cls);
@@ -63,115 +71,6 @@ const isFullWidthClass = (cls) => FULL_WIDTH_CLASS_RE.test(cls);
 const isIconOnlySizeClass = (cls) => ICON_ONLY_SIZE_CLASS_RE.test(cls);
 /** @param {string} cls */
 const isModifierClass = (cls) => cls.startsWith(MODIFIER_PREFIX);
-
-/** Parse tag name and attributes from a raw HTML tag string. */
-/** @param {string} tagSource @returns {ParsedTag} */
-function parseAttributes(tagSource) {
-  const tagMatch = tagSource.match(/^<\s*([a-zA-Z0-9-]+)/);
-  if (!tagMatch) {
-    return { tagName: null, attrs: new Map() };
-  }
-  const tagName = tagMatch[1].toLowerCase();
-  const attrSource = tagSource.slice(tagMatch[0].length);
-  const attrs = new Map();
-
-  let match;
-  while ((match = ATTR_RE.exec(attrSource)) !== null) {
-    const name = match[1].toLowerCase();
-    const value = match[2] ?? match[3] ?? match[4] ?? '';
-    attrs.set(name, value);
-  }
-
-  return { tagName, attrs };
-}
-
-/** Split a class attribute into individual class names. */
-/** @param {string} classValue @returns {string[]} */
-function splitClasses(classValue) {
-  return classValue
-    .split(/\s+/)
-    .map((value) => value.trim())
-    .filter(Boolean);
-}
-
-/** Extract raw tag strings from HTML text. */
-/** @param {string} text @returns {string[]} */
-function extractTagStrings(text) {
-  const tags = [];
-  let match;
-  while ((match = TAG_RE.exec(text)) !== null) {
-    tags.push(match[0]);
-  }
-  return tags;
-}
-
-/** Detect placeholder or template values that indicate a dynamic class. */
-/** @param {string} value @returns {boolean} */
-function includesDynamicValue(value) {
-  return (
-    value.includes('__EXPR__') || value.includes('${') || value.includes('{{')
-  );
-}
-
-/** Return a static JSX attribute value or "__EXPR__" for dynamic expressions. */
-/** @param {any} attr @returns {string | null} */
-function getJsxAttributeValue(attr) {
-  if (!attr || attr.type !== 'JSXAttribute') {
-    return null;
-  }
-  if (!attr.value) {
-    return '';
-  }
-  if (attr.value.type === 'Literal' && typeof attr.value.value === 'string') {
-    return attr.value.value;
-  }
-  if (attr.value.type === 'JSXExpressionContainer') {
-    const expression = attr.value.expression;
-    if (
-      expression &&
-      expression.type === 'Literal' &&
-      typeof expression.value === 'string'
-    ) {
-      return expression.value;
-    }
-    if (
-      expression &&
-      expression.type === 'TemplateLiteral' &&
-      expression.expressions.length === 0
-    ) {
-      return expression.quasis
-        .map(/** @param {any} quasi */ (quasi) => quasi.value.raw)
-        .join('');
-    }
-  }
-  return '__EXPR__';
-}
-
-/** Collect static Vue template attributes from a VElement. */
-/** @param {any} element @returns {Map<string, string>} */
-function getVueAttributes(element) {
-  const attrs = new Map();
-  const startTag = element && element.startTag;
-  if (!startTag || !Array.isArray(startTag.attributes)) {
-    return attrs;
-  }
-  for (const attr of startTag.attributes) {
-    if (!attr || attr.type !== 'VAttribute') {
-      continue;
-    }
-    const key = attr.key || {};
-    const name = key.name || key.rawName;
-    if (!name) {
-      continue;
-    }
-    if (!attr.value || typeof attr.value.value !== 'string') {
-      attrs.set(String(name).toLowerCase(), '__EXPR__');
-      continue;
-    }
-    attrs.set(String(name).toLowerCase(), attr.value.value);
-  }
-  return attrs;
-}
 
 /** @param {Map<string, string>} attrs @returns {string} */
 function getClassValue(attrs) {
@@ -188,22 +87,52 @@ function getClassValue(attrs) {
  *   baseSizeClasses: string[],
  *   iconOnlySizeClasses: string[],
  *   fullWidthClasses: string[],
+ *   duplicateClasses: string[],
+ *   invalidModifierPrefixes: string[],
+ *   invalidSizeClasses: string[],
+ *   invalidFullWidthClasses: string[],
+ *   invalidIconOnlySizeClasses: string[],
+ *   unknownModifierClasses: string[],
  * }} ClassInfo
  */
-/** @param {string[]} classes @param {any} node @param {import('eslint').Rule.RuleContext} context @returns {ClassInfo} */
-function collectClassInfo(classes, node, context) {
+
+/** @param {string[]} classes @returns {ClassInfo} */
+function analyzeClasses(classes) {
+  const duplicateClasses = new Set();
+  const seenClasses = new Set();
+  /** @type {ClassInfo} */
   const info = {
     hasIconOnly: false,
     hasWithBackground: false,
     hasIconSide: false,
-    variantClasses: /** @type {string[]} */ ([]),
-    sizeClasses: /** @type {string[]} */ ([]),
-    baseSizeClasses: /** @type {string[]} */ ([]),
-    iconOnlySizeClasses: /** @type {string[]} */ ([]),
-    fullWidthClasses: /** @type {string[]} */ ([]),
+    variantClasses: [],
+    sizeClasses: [],
+    baseSizeClasses: [],
+    iconOnlySizeClasses: [],
+    fullWidthClasses: [],
+    duplicateClasses: [],
+    invalidModifierPrefixes: [],
+    invalidSizeClasses: [],
+    invalidFullWidthClasses: [],
+    invalidIconOnlySizeClasses: [],
+    unknownModifierClasses: [],
   };
 
   for (const cls of classes) {
+    if (seenClasses.has(cls)) {
+      duplicateClasses.add(cls);
+    } else {
+      seenClasses.add(cls);
+    }
+
+    if (
+      cls.startsWith(BASE_CLASS) &&
+      cls !== BASE_CLASS &&
+      !isModifierClass(cls)
+    ) {
+      info.invalidModifierPrefixes.push(cls);
+    }
+
     if (VARIANT_CLASSES.has(cls)) {
       info.variantClasses.push(cls);
     }
@@ -218,7 +147,26 @@ function collectClassInfo(classes, node, context) {
     }
     if (cls.startsWith(FULL_WIDTH_PREFIX)) {
       info.fullWidthClasses.push(cls);
+      if (!isFullWidthClass(cls)) {
+        info.invalidFullWidthClasses.push(cls);
+      }
     }
+    if (cls.startsWith(ICON_ONLY_PREFIX) && !isIconOnlySizeClass(cls)) {
+      info.invalidIconOnlySizeClasses.push(cls);
+    }
+    if (isModifierClass(cls)) {
+      if (cls.includes('@') && !isSizeClass(cls) && !isFullWidthClass(cls)) {
+        info.invalidSizeClasses.push(cls);
+      } else if (
+        !isSizeClass(cls) &&
+        !isFullWidthClass(cls) &&
+        !isIconOnlySizeClass(cls) &&
+        !KNOWN_EXACT_MODIFIERS.has(cls)
+      ) {
+        info.unknownModifierClasses.push(cls);
+      }
+    }
+
     if (cls === ICON_ONLY_CLASS) {
       info.hasIconOnly = true;
     }
@@ -228,170 +176,117 @@ function collectClassInfo(classes, node, context) {
     if (cls === ICON_LEFT_CLASS || cls === ICON_RIGHT_CLASS) {
       info.hasIconSide = true;
     }
-
-    if (cls.startsWith(FULL_WIDTH_PREFIX) && !isFullWidthClass(cls)) {
-      context.report({
-        node,
-        messageId: 'invalidFullWidth',
-        data: { className: cls },
-      });
-      continue;
-    }
-    if (cls.startsWith(ICON_ONLY_PREFIX) && !isIconOnlySizeClass(cls)) {
-      context.report({
-        node,
-        messageId: 'invalidSizeClass',
-        data: { className: cls },
-      });
-      continue;
-    }
-    if (
-      isModifierClass(cls) &&
-      cls.includes('@') &&
-      !isSizeClass(cls) &&
-      !isFullWidthClass(cls)
-    ) {
-      context.report({
-        node,
-        messageId: 'invalidSizeClass',
-        data: { className: cls },
-      });
-      continue;
-    }
-
-    if (
-      isModifierClass(cls) &&
-      !isSizeClass(cls) &&
-      !isFullWidthClass(cls) &&
-      !isIconOnlySizeClass(cls) &&
-      !KNOWN_EXACT_MODIFIERS.has(cls)
-    ) {
-      context.report({
-        node,
-        messageId: 'invalidModifier',
-        data: { className: cls },
-      });
-    }
   }
 
+  info.duplicateClasses = Array.from(duplicateClasses);
   return info;
 }
 
-/** Apply Cedar button rules to a parsed tag and attributes. */
-/** @param {string | null} tagName @param {Map<string, string>} attrs @param {any} node @param {import('eslint').Rule.RuleContext} context */
-function checkTagWithAttrs(tagName, attrs, node, context) {
+/**
+ * @typedef {{
+ *   normalizedTag: string,
+ *   isValidTag: boolean,
+ *   attrs: Map<string, string>,
+ *   classes: string[],
+ *   info: ClassInfo,
+ * }} TagAnalysis
+ */
+
+/** @param {string | null} tagName @param {Map<string, string>} attrs @returns {TagAnalysis | null} */
+function analyzeTag(tagName, attrs) {
   if (!tagName) {
-    return;
+    return null;
   }
 
-  const normalizedTag = tagName.toLowerCase();
+  const normalizedTag = String(tagName).toLowerCase();
   const classValue = getClassValue(attrs);
   if (!classValue || includesDynamicValue(classValue)) {
-    return;
+    return null;
   }
 
   const classes = splitClasses(classValue);
   const hasBase = classes.includes(BASE_CLASS) || classes.some(isModifierClass);
   if (!hasBase) {
-    return;
+    return null;
   }
 
-  if (!VALID_TAGS.has(normalizedTag)) {
-    context.report({
-      node,
-      messageId: 'invalidTag',
-      data: { tagName: normalizedTag },
-    });
-    return;
-  }
-
-  const info = collectClassInfo(classes, node, context);
-
-  if (info.variantClasses.length === 0) {
-    context.report({ node, messageId: 'missingVariant' });
-  } else if (info.variantClasses.length > 1) {
-    context.report({ node, messageId: 'multipleVariants' });
-  }
-
-  if (info.baseSizeClasses.length > 1) {
-    context.report({ node, messageId: 'multipleBaseSizes' });
-  }
-
-  const hasFullWidth = info.fullWidthClasses.length > 0;
-  if (info.hasWithBackground && !info.hasIconOnly) {
-    context.report({ node, messageId: 'withBackgroundRequiresIconOnly' });
-  }
-
-  if (info.hasIconOnly && hasFullWidth) {
-    context.report({ node, messageId: 'fullWidthWithIconOnly' });
-  }
-
-  if (info.hasIconOnly && info.hasIconSide) {
-    context.report({ node, messageId: 'iconOnlyWithIconSide' });
-  }
-
-  if (info.hasIconOnly) {
-    if (info.sizeClasses.length > 0) {
-      context.report({ node, messageId: 'iconOnlyWithTextSize' });
-    }
-    const ariaLabel = attrs.get('aria-label');
-    const ariaLabelledBy = attrs.get('aria-labelledby');
-    if (
-      (!ariaLabel && !ariaLabelledBy) ||
-      (ariaLabel === '' && ariaLabelledBy === '')
-    ) {
-      context.report({ node, messageId: 'iconOnlyNeedsLabel' });
-    }
-  }
-
-  if (!info.hasIconOnly && info.iconOnlySizeClasses.length > 0) {
-    context.report({ node, messageId: 'textSizeWithIconOnlyClass' });
-  }
-
-  if (normalizedTag === 'button') {
-    const typeValue = attrs.get('type');
-    if (!typeValue) {
-      context.report({ node, messageId: 'missingButtonType' });
-    } else if (includesDynamicValue(typeValue)) {
-      return;
-    } else if (!BUTTON_TYPE_VALUES.has(typeValue)) {
-      context.report({
-        node,
-        messageId: 'invalidButtonType',
-        data: { typeValue },
-      });
-    }
-  }
-
-  if (normalizedTag === 'a') {
-    const href = attrs.get('href');
-    if (!href) {
-      context.report({ node, messageId: 'anchorMissingHref' });
-    }
-    if (attrs.has('type')) {
-      context.report({ node, messageId: 'anchorWithType' });
-    }
-  }
+  return {
+    normalizedTag,
+    isValidTag: VALID_TAGS.has(normalizedTag),
+    attrs,
+    classes,
+    info: analyzeClasses(classes),
+  };
 }
 
-/** @type {import('eslint').Rule.RuleModule} */
-const rule = {
-  meta: {
-    type: 'problem',
-    docs: {
-      description:
-        'Validate cdr-button class combinations, tag usage, and attributes.',
-    },
-    schema: [],
-    messages: {
-      missingVariant:
-        'Button must include exactly one variant class: cdr-button--primary|secondary|sale|dark|link.',
-      multipleVariants:
-        'Button has multiple variant classes; keep only one of cdr-button--primary|secondary|sale|dark|link.',
-      invalidSizeClass:
-        'Invalid size class "{{className}}". Use cdr-button--small|medium|large with optional @xs|@sm|@md|@lg.',
-      multipleBaseSizes:
-        'Button has multiple base size classes; keep only one of cdr-button--small|medium|large.',
+/**
+ * @param {{
+ *   meta: import('eslint').Rule.RuleMetaData,
+ *   check: (analysis: TagAnalysis, node: any, context: import('eslint').Rule.RuleContext) => void,
+ * }} options
+ */
+function createButtonRule(options) {
+  return createRule({
+    ...options,
+    baseClass: BASE_CLASS,
+    analyzeTag,
+  });
+}
+
+const ruleVariant = createButtonRule({
+  meta: buildMeta('Validate cdr-button variant class usage.', {
+    missingVariant:
+      'Button must include exactly one variant class: cdr-button--primary|secondary|sale|dark|link.',
+    multipleVariants:
+      'Button has multiple variant classes; keep only one of cdr-button--primary|secondary|sale|dark|link.',
+  }),
+  check(analysis, node, context) {
+    if (!analysis.isValidTag) {
+      return;
+    }
+    const uniqueVariants = unique(analysis.info.variantClasses);
+    if (uniqueVariants.length === 0) {
+      context.report({ node, messageId: 'missingVariant' });
+    } else if (uniqueVariants.length > 1) {
+      context.report({ node, messageId: 'multipleVariants' });
+    }
+  },
+});
+
+const ruleSize = createButtonRule({
+  meta: buildMeta('Validate cdr-button size and full-width classes.', {
+    invalidSizeClass:
+      'Invalid size class "{{className}}". Use cdr-button--small|medium|large with optional @xs|@sm|@md|@lg.',
+    invalidFullWidth:
+      'Invalid full-width class "{{className}}". Use cdr-button--full-width with optional @xs|@sm|@md|@lg.',
+    multipleBaseSizes:
+      'Button has multiple base size classes; keep only one of cdr-button--small|medium|large.',
+  }),
+  check(analysis, node, context) {
+    if (!analysis.isValidTag) {
+      return;
+    }
+    reportClasses(
+      context,
+      node,
+      'invalidFullWidth',
+      unique(analysis.info.invalidFullWidthClasses),
+    );
+    const invalidSizeClasses = unique([
+      ...analysis.info.invalidSizeClasses,
+      ...analysis.info.invalidIconOnlySizeClasses,
+    ]);
+    reportClasses(context, node, 'invalidSizeClass', invalidSizeClasses);
+    if (unique(analysis.info.baseSizeClasses).length > 1) {
+      context.report({ node, messageId: 'multipleBaseSizes' });
+    }
+  },
+});
+
+const ruleIcon = createButtonRule({
+  meta: buildMeta(
+    'Validate icon-only and icon placement rules for cdr-button.',
+    {
       iconOnlyWithTextSize:
         'Icon-only button must not use text size classes (cdr-button--small|medium|large).',
       textSizeWithIconOnlyClass:
@@ -404,132 +299,173 @@ const rule = {
         'Icon-only button must not use cdr-button--has-icon-left/right.',
       iconOnlyNeedsLabel:
         'Icon-only button must include aria-label or aria-labelledby for an accessible name.',
-      invalidFullWidth:
-        'Invalid full-width class "{{className}}". Use cdr-button--full-width with optional @xs|@sm|@md|@lg.',
-      invalidModifier:
-        'Unknown cdr-button modifier "{{className}}". Use a valid size, variant, icon, or full-width class.',
-      invalidTag:
-        'cdr-button classes may only be used on <button> or <a> elements (found <{{tagName}}>).',
-      invalidButtonType:
-        'Button type must be "button", "submit", or "reset" (found {{typeValue}}).',
-      missingButtonType:
-        'Button must include type="button", "submit", or "reset".',
-      anchorWithType:
-        'Anchor tags (<a>) should not include a type attribute; use <button> instead.',
-      anchorMissingHref: 'Anchor tags (<a>) must include an href attribute.',
     },
-  },
-  /** @param {import('eslint').Rule.RuleContext} context */
-  create(context) {
-    const filename = context.getFilename();
-    const isHtml = filename.endsWith('.html') || filename.endsWith('.htm');
-    const isStorySource = filename.endsWith('.stories.ts');
+  ),
+  check(analysis, node, context) {
+    if (!analysis.isValidTag) {
+      return;
+    }
+    const { info, attrs } = analysis;
+    const hasFullWidth = info.fullWidthClasses.length > 0;
 
-    /** Parse and validate a single tag string. */
-    /** @param {string} tagSource @param {any} node */
-    function checkTag(tagSource, node) {
-      const { tagName, attrs } = parseAttributes(tagSource);
-      checkTagWithAttrs(tagName, attrs, node, context);
+    if (info.hasWithBackground && !info.hasIconOnly) {
+      context.report({ node, messageId: 'withBackgroundRequiresIconOnly' });
+    }
+    if (info.hasIconOnly && hasFullWidth) {
+      context.report({ node, messageId: 'fullWidthWithIconOnly' });
+    }
+    if (info.hasIconOnly && info.hasIconSide) {
+      context.report({ node, messageId: 'iconOnlyWithIconSide' });
     }
 
-    /** Scan text for tags and validate each one. */
-    /** @param {string} text @param {any} node */
-    function checkText(text, node) {
-      if (!text.includes('cdr-button')) {
-        return;
+    if (info.hasIconOnly) {
+      if (info.sizeClasses.length > 0) {
+        context.report({ node, messageId: 'iconOnlyWithTextSize' });
       }
-      const tags = extractTagStrings(text);
-      for (const tagSource of tags) {
-        checkTag(tagSource, node);
-      }
-    }
-
-    const sourceCode =
-      /** @type {any} */ (context).sourceCode ?? context.getSourceCode();
-    const parserServices =
-      sourceCode && sourceCode.parserServices
-        ? sourceCode.parserServices
-        : null;
-    const templateVisitor =
-      parserServices &&
-      typeof parserServices.defineTemplateBodyVisitor === 'function'
-        ? parserServices.defineTemplateBodyVisitor({
-            /** @param {any} node */
-            VElement(node) {
-              const tagName =
-                node.rawName || (node.name && node.name.name) || '';
-              const attrs = getVueAttributes(node);
-              checkTagWithAttrs(String(tagName), attrs, node, context);
-            },
-          })
-        : {};
-
-    return {
-      /** Scan HTML files for button markup. */
-      /** @param {any} node */
-      Program(node) {
-        if (!isHtml) {
-          return;
-        }
-        checkText(context.getSourceCode().text, node);
-      },
-      /** Scan static string literals in stories for button markup. */
-      /** @param {any} node */
-      Literal(node) {
-        if (!isStorySource || typeof node.value !== 'string') {
-          return;
-        }
-        checkText(node.value, node);
-      },
-      /** Scan static template literals in stories for button markup. */
-      /** @param {any} node */
-      TemplateLiteral(node) {
-        if (!isStorySource) {
-          return;
-        }
-        const text = node.quasis
-          .map(/** @param {any} quasi */ (quasi) => quasi.value.raw)
-          .join('__EXPR__');
-        checkText(text, node);
-      },
-      /** Validate JSX <button>/<a> elements. */
-      /** @param {any} node */
-      JSXElement(node) {
-        const opening = node.openingElement;
+      const ariaLabel = attrs.get('aria-label');
+      const ariaLabelledBy = attrs.get('aria-labelledby');
+      const hasDynamicLabel =
+        (ariaLabel && includesDynamicValue(ariaLabel)) ||
+        (ariaLabelledBy && includesDynamicValue(ariaLabelledBy));
+      if (!hasDynamicLabel) {
         if (
-          !opening ||
-          !opening.name ||
-          opening.name.type !== 'JSXIdentifier'
+          (!ariaLabel && !ariaLabelledBy) ||
+          (ariaLabel === '' && ariaLabelledBy === '')
         ) {
-          return;
+          context.report({ node, messageId: 'iconOnlyNeedsLabel' });
         }
-        const tagName = opening.name.name;
-        const attrs = new Map();
-        for (const attr of opening.attributes || []) {
-          if (!attr || attr.type !== 'JSXAttribute') {
-            continue;
-          }
-          const attrName =
-            attr.name && attr.name.name ? String(attr.name.name) : '';
-          if (!attrName) {
-            continue;
-          }
-          const value = getJsxAttributeValue(attr);
-          if (value === null) {
-            continue;
-          }
-          attrs.set(attrName.toLowerCase(), value);
-        }
-        checkTagWithAttrs(tagName, attrs, node, context);
-      },
-      ...templateVisitor,
-    };
+      }
+    }
+
+    if (!info.hasIconOnly && info.iconOnlySizeClasses.length > 0) {
+      context.report({ node, messageId: 'textSizeWithIconOnlyClass' });
+    }
   },
-};
+});
+
+const ruleModifier = createButtonRule({
+  meta: buildMeta('Validate cdr-button modifier class names.', {
+    invalidModifier:
+      'Unknown cdr-button modifier "{{className}}". Use a valid size, variant, icon, or full-width class.',
+    invalidModifierPrefix:
+      'cdr-button modifiers must use the "--" separator (found "{{className}}").',
+  }),
+  check(analysis, node, context) {
+    if (!analysis.isValidTag) {
+      return;
+    }
+    reportClasses(
+      context,
+      node,
+      'invalidModifierPrefix',
+      unique(analysis.info.invalidModifierPrefixes),
+    );
+    reportClasses(
+      context,
+      node,
+      'invalidModifier',
+      unique(analysis.info.unknownModifierClasses),
+    );
+  },
+});
+
+const ruleDuplicate = createButtonRule({
+  meta: buildMeta('Prevent duplicate cdr-button classes.', {
+    duplicateClass:
+      'Duplicate class "{{className}}" is not allowed on cdr-button elements.',
+  }),
+  check(analysis, node, context) {
+    if (!analysis.isValidTag) {
+      return;
+    }
+    reportClasses(
+      context,
+      node,
+      'duplicateClass',
+      analysis.info.duplicateClasses,
+    );
+  },
+});
+
+const ruleTag = createButtonRule({
+  meta: buildMeta('Restrict cdr-button usage to <button> or <a>.', {
+    invalidTag:
+      'cdr-button classes may only be used on <button> or <a> elements (found <{{tagName}}>).',
+  }),
+  check(analysis, node, context) {
+    if (analysis.isValidTag) {
+      return;
+    }
+    context.report({
+      node,
+      messageId: 'invalidTag',
+      data: { tagName: analysis.normalizedTag },
+    });
+  },
+});
+
+const ruleType = createButtonRule({
+  meta: buildMeta('Validate button type attributes for cdr-button.', {
+    invalidButtonType:
+      'Button type must be "button", "submit", or "reset" (found {{typeValue}}).',
+    missingButtonType:
+      'Button must include type="button", "submit", or "reset".',
+  }),
+  check(analysis, node, context) {
+    if (!analysis.isValidTag || analysis.normalizedTag !== 'button') {
+      return;
+    }
+    const typeValue = analysis.attrs.get('type');
+    if (!typeValue) {
+      context.report({ node, messageId: 'missingButtonType' });
+      return;
+    }
+    if (includesDynamicValue(typeValue)) {
+      return;
+    }
+    if (!BUTTON_TYPE_VALUES.has(typeValue)) {
+      context.report({
+        node,
+        messageId: 'invalidButtonType',
+        data: { typeValue },
+      });
+    }
+  },
+});
+
+const ruleAnchor = createButtonRule({
+  meta: buildMeta('Validate anchor usage for cdr-button links.', {
+    anchorWithType:
+      'Anchor tags (<a>) should not include a type attribute; use <button> instead.',
+    anchorMissingHref: 'Anchor tags (<a>) must include an href attribute.',
+  }),
+  check(analysis, node, context) {
+    if (!analysis.isValidTag || analysis.normalizedTag !== 'a') {
+      return;
+    }
+    const href = analysis.attrs.get('href');
+    if (!href) {
+      context.report({ node, messageId: 'anchorMissingHref' });
+    } else if (includesDynamicValue(href)) {
+      return;
+    }
+    const typeValue = analysis.attrs.get('type');
+    if (typeValue && !includesDynamicValue(typeValue)) {
+      context.report({ node, messageId: 'anchorWithType' });
+    }
+  },
+});
 
 /** @type {import('eslint').ESLint.Plugin} */
 export default {
   rules: {
-    button: rule,
+    'button-variant': ruleVariant,
+    'button-size': ruleSize,
+    'button-icon': ruleIcon,
+    'button-modifier': ruleModifier,
+    'button-duplicate': ruleDuplicate,
+    'button-tag': ruleTag,
+    'button-type': ruleType,
+    'button-anchor': ruleAnchor,
   },
 };
