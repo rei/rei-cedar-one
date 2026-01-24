@@ -2,6 +2,10 @@
   "name": "rei-cedar-unified-lab",
   "version": "0.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rei/rei-cedar-unified-lab.git"
+  },
   "scripts": {
     "build": "pnpm run ws:build",
     "build-storybook": "pnpm run ws:storybook:build",

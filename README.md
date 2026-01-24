@@ -22,6 +22,13 @@ Linting:
 - ESLint validates component class combinations in HTML, Vue templates, and JSX.
 - Static class strings only; dynamic expressions are ignored to avoid false positives.
 
+Getting started:
+
+```bash
+pnpm install
+pnpm storybook
+```
+
 Usage examples:
 
 HTML:
@@ -40,13 +47,6 @@ Vue:
     Primary
   </button>
 </template>
-```
-
-Getting started:
-
-```bash
-pnpm install
-pnpm storybook
 ```
 
 Scripts:
