@@ -1,4 +1,6 @@
-# Cedar Unified Lab
+# Cedar One
+
+![Alpha](https://img.shields.io/badge/status-alpha-orange)
 
 Experimental monorepo for exploring a unified Cedar architecture where tokens are the source of truth, CSS provides the primary styling surface, and behavior is added only where needed. The intent is to keep the system framework-agnostic while preserving parity with existing Cedar styles and tokens.
 
