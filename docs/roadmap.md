@@ -1,10 +1,6 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+# Roadmap
 
-<Meta title="Introduction" />
-
-# Cedar One
-
-This Storybook focuses on HTML-first component outputs to validate parity with `rei-cedar` and token values from `rei-cedar-tokens`.
+Roadmap and status tracker for HTML-first component conversion, token parity, and adapter planning against `rei-cedar` and `rei-cedar-tokens`.
 
 ## Conversion Matrix
 
@@ -18,16 +14,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
 6. **Notes:** key behavior or layout constraints.
 7. **Status:** implementation status in this repo.
 
-<style>
-  {`
-  .intro-matrix th,
-  .intro-matrix td {
-    text-align: center;
-  }
-  `}
-</style>
-
-<table className="intro-matrix">
+<table class="intro-matrix">
   <thead>
     <tr>
       <th>Component</th>
