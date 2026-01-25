@@ -125,12 +125,29 @@ StyleDictionary.registerFormat({
     const getValue = (path: string) =>
       byPath.get(path)?.value ?? byPath.get(path)?.$value;
 
-    const xsMax = getValue('breakpoint.xs.max');
-    const smMin = getValue('breakpoint.sm.min');
-    const smMax = getValue('breakpoint.sm.max');
-    const mdMin = getValue('breakpoint.md.min');
-    const mdMax = getValue('breakpoint.md.max');
-    const lgMin = getValue('breakpoint.lg.min');
+    const sm = getValue('breakpoint.sm');
+    const md = getValue('breakpoint.md');
+    const lg = getValue('breakpoint.lg');
+
+    const toPx = (value: string | undefined | null) => {
+      if (!value) return null;
+      const numeric = Number.parseFloat(String(value));
+      if (Number.isNaN(numeric)) return null;
+      return numeric;
+    };
+
+    const pxMinusOne = (value: string | undefined | null) => {
+      const numeric = toPx(value);
+      if (numeric === null) return null;
+      return `${numeric - 1}px`;
+    };
+
+    const xsMax = pxMinusOne(sm);
+    const smMin = sm ?? null;
+    const smMax = pxMinusOne(md);
+    const mdMin = md ?? null;
+    const mdMax = pxMinusOne(lg);
+    const lgMin = lg ?? null;
 
     const lines: string[] = [];
     if (xsMax) lines.push(`@custom-media --cdr-xs (max-width: ${xsMax});`);
@@ -145,6 +162,9 @@ StyleDictionary.registerFormat({
       );
     }
     if (lgMin) lines.push(`@custom-media --cdr-lg (min-width: ${lgMin});`);
+    if (smMin) lines.push(`@custom-media --cdr-sm-up (min-width: ${smMin});`);
+    if (mdMin) lines.push(`@custom-media --cdr-md-up (min-width: ${mdMin});`);
+    if (lgMin) lines.push(`@custom-media --cdr-lg-up (min-width: ${lgMin});`);
 
     return `${header}${lines.join('\n')}\n`;
   },
@@ -157,6 +177,23 @@ StyleDictionary.registerFormat({
  */
 const withoutOptions = (token: { path: string[] }) =>
   !token.path.includes('options');
+
+/**
+ * Checks if a token belongs to the color palette.
+ * @param token - Token with an optional path.
+ * @returns True when the token path matches color.palette.*.
+ */
+const isPaletteToken = (token: { path?: string[] }) =>
+  Array.isArray(token.path) &&
+  token.path.length >= 2 &&
+  token.path[0] === 'color' &&
+  token.path[1] === 'palette';
+
+/**
+ * Exclude palette tokens and root text size from legacy-parity outputs.
+ */
+const withoutLegacyGaps = (token: { path: string[] }) =>
+  withoutOptions(token) && !isPaletteToken(token) && !isRootTextSize(token);
 
 /** Shared transform list for web CSS outputs. */
 const webTransforms = [
@@ -193,7 +230,7 @@ const sd = new StyleDictionary({
         {
           destination: 'tokens.css',
           format: 'css/variables',
-          filter: withoutOptions,
+          filter: withoutLegacyGaps,
           options: {
             outputReferences: false,
           },
@@ -201,12 +238,12 @@ const sd = new StyleDictionary({
         {
           destination: 'tokens.json',
           format: 'json/nested',
-          filter: withoutOptions,
+          filter: withoutLegacyGaps,
         },
         {
           destination: 'base.css',
           format: 'css/variables',
-          filter: (token) => withoutOptions(token) && isBaseToken(token),
+          filter: (token) => withoutLegacyGaps(token) && isBaseToken(token),
           options: {
             outputReferences: false,
           },
@@ -214,7 +251,7 @@ const sd = new StyleDictionary({
         {
           destination: 'base.json',
           format: 'json/nested',
-          filter: (token) => withoutOptions(token) && isBaseToken(token),
+          filter: (token) => withoutLegacyGaps(token) && isBaseToken(token),
         },
         {
           destination: 'breakpoints.css',
@@ -236,7 +273,7 @@ const sd = new StyleDictionary({
           format: 'css/variables',
           filter: (token) => withoutOptions(token) && isButtonToken(token),
           options: {
-            outputReferences: true,
+            outputReferences: false,
           },
         },
         {

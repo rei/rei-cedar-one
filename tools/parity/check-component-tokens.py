@@ -106,13 +106,25 @@ def main() -> int:
     old_tokens_path = Path(args.old_tokens)
 
     component_css = root / "packages" / "cedar-ui" / "src" / "css" / "components" / f"{component}.css"
+    component_tokens_path = (
+        root
+        / "packages"
+        / "cedar-tokens"
+        / "dist"
+        / "web"
+        / "components"
+        / f"{component}.css"
+    )
     new_token_paths = [
         root / "packages" / "cedar-tokens" / "dist" / "web" / "base.css",
         root / "packages" / "cedar-tokens" / "dist" / "web" / "tokens.css",
-        root / "packages" / "cedar-tokens" / "dist" / "web" / "components" / f"{component}.css",
     ]
+    if component_tokens_path.exists():
+        new_token_paths.append(component_tokens_path)
 
-    missing_paths = [p for p in [component_css, old_tokens_path] + new_token_paths if not p.exists()]
+    missing_paths = [
+        p for p in [component_css, old_tokens_path] + new_token_paths if not p.exists()
+    ]
     if missing_paths:
         print("Missing required files:")
         for path in missing_paths:

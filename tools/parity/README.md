@@ -14,3 +14,20 @@ python tools/parity/check-component-tokens.py \
 ```
 
 The script exits non-zero if it finds missing tokens or mismatched values.
+
+## Cedar UI token usage
+
+Ensure `packages/cedar-ui/src/css` only references tokens that exist in
+`packages/cedar-tokens/dist/web`. This allows override custom props per
+component via an allowlist of prefixes.
+
+```sh
+python tools/parity/check-token-usage.py
+```
+
+Add additional override prefixes (one flag per prefix) as new components
+introduce custom props:
+
+```sh
+python tools/parity/check-token-usage.py --allow-prefix cdr-container-
+```

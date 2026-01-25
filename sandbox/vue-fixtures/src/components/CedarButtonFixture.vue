@@ -1,5 +1,6 @@
 <template>
-  <div class="fixture">
+  <section class="fixture">
+    <h2 class="fixture-title">Button</h2>
     <section class="fixture-group">
       <h3>Primary</h3>
       <div class="fixture-row">
@@ -393,7 +394,7 @@
         </button>
       </div>
     </section>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -402,11 +403,20 @@ import IconUser from './IconUser.vue';
 
 <style scoped>
 .fixture {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-  max-width: 650px;
+  display: grid;
+  gap: 16px;
+}
+
+.fixture-title {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.fixture-group h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .fixture-row {

@@ -1,18 +1,8 @@
 {
   "breakpoint": {
-    "xs": {
-      "max": { "$value": "767px", "$type": "dimension" }
-    },
-    "sm": {
-      "min": { "$value": "768px", "$type": "dimension" },
-      "max": { "$value": "991px", "$type": "dimension" }
-    },
-    "md": {
-      "min": { "$value": "992px", "$type": "dimension" },
-      "max": { "$value": "1231px", "$type": "dimension" }
-    },
-    "lg": {
-      "min": { "$value": "1232px", "$type": "dimension" }
-    }
+    "xs": { "$value": "0", "$type": "dimension" },
+    "sm": { "$value": "768px", "$type": "dimension" },
+    "md": { "$value": "992px", "$type": "dimension" },
+    "lg": { "$value": "1232px", "$type": "dimension" }
   }
 }

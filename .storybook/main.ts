@@ -4,7 +4,16 @@ const basePath = process.env.STORYBOOK_BASE_PATH || '/';
 const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
 
 const config: StorybookConfig = {
-  stories: ['../stories/html/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: [
+    '../stories/**/*.mdx',
+    '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+  ],
+  addons: [
+    '@storybook/addon-onboarding',
+    '@chromatic-com/storybook',
+    '@storybook/addon-vitest',
+    '@storybook/addon-docs',
+  ],
   framework: {
     name: '@storybook/html-vite',
     options: {},

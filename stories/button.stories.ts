@@ -63,7 +63,16 @@ const renderButton = ({
 };
 
 export default {
-  title: 'Utilities/Button/HTML',
+  title: 'Button',
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'HTML-first button styles for Cedar. Validate variants, sizes, and icon combinations.',
+      },
+    },
+  },
   argTypes: {
     size: {
       control: { type: 'select' },

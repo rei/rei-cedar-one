@@ -3,6 +3,19 @@ import tseslint from 'typescript-eslint';
 import htmlParser from '@html-eslint/parser';
 import vueParser from 'vue-eslint-parser';
 import cedarButtonRules from './tools/eslint/button-rules.mjs';
+import cedarContainerRules from './tools/eslint/container-rules.mjs';
+
+const cedarRules = {
+  rules: {
+    ...cedarButtonRules.rules,
+    ...cedarContainerRules.rules,
+  },
+};
+
+const cedarRecommendedRules = {
+  ...cedarButtonRules.configs.recommended.rules,
+  ...cedarContainerRules.configs.recommended.rules,
+};
 
 export default [
   {
@@ -26,17 +39,10 @@ export default [
       sourceType: 'module',
     },
     plugins: {
-      cedar: cedarButtonRules,
+      cedar: cedarRules,
     },
     rules: {
-      'cedar/button-variant': 'error',
-      'cedar/button-size': 'error',
-      'cedar/button-icon': 'error',
-      'cedar/button-modifier': 'error',
-      'cedar/button-duplicate': 'error',
-      'cedar/button-tag': 'error',
-      'cedar/button-type': 'error',
-      'cedar/button-anchor': 'error',
+      ...cedarRecommendedRules,
     },
   },
   {
@@ -45,17 +51,10 @@ export default [
       parser: htmlParser,
     },
     plugins: {
-      cedar: cedarButtonRules,
+      cedar: cedarRules,
     },
     rules: {
-      'cedar/button-variant': 'error',
-      'cedar/button-size': 'error',
-      'cedar/button-icon': 'error',
-      'cedar/button-modifier': 'error',
-      'cedar/button-duplicate': 'error',
-      'cedar/button-tag': 'error',
-      'cedar/button-type': 'error',
-      'cedar/button-anchor': 'error',
+      ...cedarRecommendedRules,
     },
   },
   {
@@ -69,17 +68,10 @@ export default [
       },
     },
     plugins: {
-      cedar: cedarButtonRules,
+      cedar: cedarRules,
     },
     rules: {
-      'cedar/button-variant': 'error',
-      'cedar/button-size': 'error',
-      'cedar/button-icon': 'error',
-      'cedar/button-modifier': 'error',
-      'cedar/button-duplicate': 'error',
-      'cedar/button-tag': 'error',
-      'cedar/button-type': 'error',
-      'cedar/button-anchor': 'error',
+      ...cedarRecommendedRules,
     },
   },
 ];

@@ -1,0 +1,26 @@
+@import '../../../../cedar-tokens/dist/web/breakpoints.css';
+
+.cdr-container {
+  font-family: var(--cdr-text-default-family);
+  font-style: var(--cdr-text-default-style);
+  font-weight: var(--cdr-text-default-weight);
+  letter-spacing: var(--cdr-text-default-spacing);
+  font-size: var(--cdr-text-default-size);
+  line-height: var(--cdr-text-default-height);
+  padding-left: var(--cdr-space-one-x);
+  padding-right: var(--cdr-space-one-x);
+  width: 100%;
+}
+
+@media (--cdr-md-up) {
+  .cdr-container {
+    padding-left: var(--cdr-space-two-x);
+    padding-right: var(--cdr-space-two-x);
+  }
+}
+
+.cdr-container--static {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--cdr-breakpoint-lg);
+}
