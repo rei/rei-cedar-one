@@ -1,13 +1,8 @@
-<p align="center">
+<p>
   <img src="docs/assets/chad-sasquatch.png" alt="Chad Sasquatch" width="220" />
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/status-alpha-orange" alt="Status: alpha" />
-</p>
-<br/>
-
-# Cedar One 🌲
+# Cedar One · ![Alpha](https://img.shields.io/badge/status-alpha-orange)
 
 Cedar One is a single, platform-agnostic foundation for the Cedar design system. It preserves Cedar’s token-driven core while minimizing framework coupling, reducing shipped code, and enabling consistent delivery across web and native platforms.
 
