@@ -1,6 +1,7 @@
 <p align="center">
-  <img src="docs/assets/c1.png" alt="Chad Sasquatch" width="220" />
+  <img src="docs/assets/c1.png" alt="c1 logo" width="150" />
 </p>
+<br/>
 
 # Cedar One · ![Alpha](https://img.shields.io/badge/status-alpha-orange)
 
