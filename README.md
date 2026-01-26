@@ -1,23 +1,35 @@
-![Alpha](https://img.shields.io/badge/status-alpha-orange)
+<p align="center">
+  <img src="docs/assets/chad-sasquatch.png" alt="Chad Sasquatch" width="300" />
+</p>
 
-# Cedar One
+<br />
 
-Cedar One is the unified foundation of the [Cedar design system](https://cedar.rei.com).
-It defines a single, token-driven source of truth from which all Cedar styles and behaviors are derived.
+<p align="center">
+  <img src="https://img.shields.io/badge/status-alpha-orange" alt="Status: alpha" />
+</p>
 
-By resolving design decisions at build time instead of runtime, Cedar One delivers smaller bundles, simpler integration, and consistent parity across web and native platforms.
+<br />
 
-## Why Cedar One
+# Cedar One 🌲
 
-- **One system, many surfaces:** a single token source drives consistent outputs for web and React Native.
-- **HTML-first by default:** components resolve to native markup and static CSS wherever possible.
-- **Minimal runtime:** behavior is layered intentionally, not assumed.
-- **Framework-agnostic:** styles and patterns work across Vue, React, and plain HTML.
-- **Optimized delivery:** optional on-demand utilities (via UnoCSS) alongside prebuilt CSS.
-- **Built for authoring:** contracts are enforced at development time through linting and tooling.
+Cedar One is a single, platform-agnostic foundation for the Cedar design system. It preserves Cedar’s token-driven core while minimizing framework coupling, reducing shipped code, and enabling consistent delivery across web and native platforms.
+
+## Why Cedar One?
+
+### One system, many platforms
+
+A single architectural core serves both web and native platforms. Shared tokens define design intent, while platform-specific adapters handle differences without fragmenting the system or its outputs.
+
+### Platform-agnostic, performance-focused
+
+The web layer targets native HTML and static CSS rather than framework runtimes. By resolving styling and validation at build time, Cedar One ships less code, produces smaller bundles, and delivers faster, more predictable performance.
+
+### Intentional behavior and developer experience
+
+Behavior is introduced only where platforms require it, through explicit adapters that preserve accessibility and interaction standards. Clear contracts, predictable patterns, and fast feedback loops make correct usage the default.
 
 ## Docs
 
-- Architecture and guiding principles: `docs/architecture.md`
-- Conversion roadmap: `docs/roadmap.md`
-- Usage and examples: `docs/usage.md`
+- [Architecture and guiding principles](docs/architecture.md)
+- [Conversion roadmap](docs/roadmap.md)
+- [Usage and examples](docs/usage.md)
