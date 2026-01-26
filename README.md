@@ -1,14 +1,11 @@
 <p align="center">
-  <img src="docs/assets/chad-sasquatch.png" alt="Chad Sasquatch" width="300" />
+  <img src="docs/assets/chad-sasquatch.png" alt="Chad Sasquatch" width="220" />
 </p>
-
-<br />
 
 <p align="center">
   <img src="https://img.shields.io/badge/status-alpha-orange" alt="Status: alpha" />
 </p>
-
-<br />
+<br/>
 
 # Cedar One 🌲
 
