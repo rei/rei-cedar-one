@@ -8,6 +8,7 @@ import '../packages/cedar-ui/dist/css/cedar-base.css';
 // Components
 import '../packages/cedar-ui/dist/css/components/button.css';
 import '../packages/cedar-ui/dist/css/components/container.css';
+import '../packages/cedar-ui/dist/css/components/link.css';
 
 export const parameters = {
   controls: {

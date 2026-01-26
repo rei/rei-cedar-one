@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import CedarButtonFixture from './components/CedarButtonFixture.vue';
 import CedarContainerFixture from './components/CedarContainerFixture.vue';
+import CedarLinkFixture from './components/CedarLinkFixture.vue';
 </script>
 
 <template>
   <main class="fixture-app">
     <CedarContainerFixture />
+    <CedarLinkFixture />
     <CedarButtonFixture />
   </main>
 </template>

@@ -7,8 +7,8 @@ import re
 import sys
 
 
-VAR_DEF_RE = re.compile(r"--([A-Za-z0-9_-]+)\\s*:")
-VAR_REF_RE = re.compile(r"var\\(\\s*--([A-Za-z0-9_-]+)")
+VAR_DEF_RE = re.compile(r"--([A-Za-z0-9_-]+)\s*:")
+VAR_REF_RE = re.compile(r"var\(\s*--([A-Za-z0-9_-]+)")
 
 
 def parse_args() -> argparse.Namespace:

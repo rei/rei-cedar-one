@@ -4,17 +4,20 @@ import htmlParser from '@html-eslint/parser';
 import vueParser from 'vue-eslint-parser';
 import cedarButtonRules from './tools/eslint/button-rules.mjs';
 import cedarContainerRules from './tools/eslint/container-rules.mjs';
+import cedarLinkRules from './tools/eslint/link-rules.mjs';
 
 const cedarRules = {
   rules: {
     ...cedarButtonRules.rules,
     ...cedarContainerRules.rules,
+    ...cedarLinkRules.rules,
   },
 };
 
 const cedarRecommendedRules = {
   ...cedarButtonRules.configs.recommended.rules,
   ...cedarContainerRules.configs.recommended.rules,
+  ...cedarLinkRules.configs.recommended.rules,
 };
 
 export default [
