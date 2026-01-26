@@ -1,4 +1,4 @@
-<p>
+<p align="center">
   <img src="docs/assets/chad-sasquatch.png" alt="Chad Sasquatch" width="220" />
 </p>
 
