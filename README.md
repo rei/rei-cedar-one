@@ -1,7 +1,7 @@
-<p align="center">
-  <img src="docs/assets/c1.png" alt="c1 logo" width="150" />
-</p>
 <br/>
+<p align="center">
+  <img src="docs/assets/c1.png" alt="c1 logo" width="120" />
+</p>
 
 # Cedar One · ![Alpha](https://img.shields.io/badge/status-alpha-orange)
 
