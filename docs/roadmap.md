@@ -2,7 +2,7 @@
 
 Roadmap and status tracker for HTML-first component conversion, token parity, and adapter planning against `rei-cedar` and `rei-cedar-tokens`.
 
-## Conversion Matrix
+## Conversion matrix
 
 Directional guide based on Cedar components in `rei-cedar/src/components`.
 
@@ -529,7 +529,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
   <strong>Status legend:</strong> ✅ Done · 🟡 In progress · ⚪ Not started
 </p>
 
-## Component Tasks
+## Component tasks
 
 1. Inventory + parity: audit `rei-cedar/src/components/<name>` (props/slots/states/class output), compare against `rei-cedar/dist/style`, and enforce exact token parity with `rei-cedar-tokens` (no extra tokens, no derived min/max tokens in dist). Update only `packages/cedar-tokens/tokens` sources and rebuild dist outputs; do not edit `dist` directly (see `tools/parity/README.md`).
 2. Markup contract: define the minimal HTML structure (tags/required attrs) from the Vue template and mirror it in `stories/html` and fixtures.

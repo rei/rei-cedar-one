@@ -1,4 +1,4 @@
-# Getting Started
+# Getting started
 
 This document focuses on developing and exploring Cedar One. Cedar One is currently an experimental repository, and the examples below are intended to illustrate how token-driven, HTML-first styles are authored and consumed during development.
 
@@ -7,7 +7,7 @@ pnpm install
 pnpm storybook
 ```
 
-## Using Cedar Components
+## Using Cedar One components
 
 Cedar One ships components, such as buttons, containers, and form elements, as HTML- and CSS-first building blocks. Each component is expressed primarily through native markup and static CSS, with behavior layered in only when required through explicit adapters. This approach preserves familiar component concepts while minimizing framework coupling and runtime cost.
 

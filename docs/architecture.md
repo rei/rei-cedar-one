@@ -1,4 +1,4 @@
-# Cedar One Architecture
+# Architecture
 
 This document outlines the architectural principles and near-term goals that guide Cedar One.
 
