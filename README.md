@@ -5,7 +5,7 @@
 
 # Cedar One · ![Alpha](https://img.shields.io/badge/status-alpha-orange)
 
-Cedar One is a single, platform-agnostic foundation for the Cedar design system. It preserves Cedar’s token-driven core while minimizing framework coupling, reducing shipped code, and enabling consistent delivery across web and native platforms.
+Cedar One is a single, platform-agnostic foundation for the [Cedar design system](https://cedar.rei.com/). It preserves Cedar’s token-driven core while minimizing framework coupling, reducing shipped code, and enabling consistent delivery across web and native platforms.
 
 ## Why Cedar One?
 
