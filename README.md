@@ -1,11 +1,11 @@
 <br/>
 <p align="center">
-  <img src="docs/assets/c1.png" alt="c1 logo" width="120" />
+  <img src="docs/assets/c1.png" alt="Cedar One logo" width="120" />
 </p>
 
 # Cedar One · ![Alpha](https://img.shields.io/badge/status-alpha-orange)
 
-Cedar One is a single, platform-agnostic foundation for the [Cedar design system](https://cedar.rei.com/). It preserves Cedar’s token-driven core while minimizing framework coupling, reducing shipped code, and enabling consistent delivery across web and native platforms.
+Cedar One is a single, platform-agnostic foundation for the [Cedar design system](https://cedar.rei.com/). It preserves Cedar’s token-driven core while decoupling styling and behavior from any single web framework; reducing shipped code and enabling consistent delivery across web and native platforms through explicit adapters.
 
 ## Why Cedar One?
 
