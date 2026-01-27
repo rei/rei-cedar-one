@@ -14,21 +14,21 @@ VAR_REF_RE = re.compile(r"var\(\s*--([A-Za-z0-9_-]+)")
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Verify that CSS in cedar-ui only references tokens that exist in "
-            "cedar-tokens dist output."
+            "Verify that CSS in c1-ui only references tokens that exist in "
+            "c1-tokens dist output."
         )
     )
     parser.add_argument(
-        "--cedar-ui-root",
+        "--c1-ui-root",
         type=Path,
-        default=Path("packages/cedar-ui/src/css"),
-        help="Path to cedar-ui source CSS directory.",
+        default=Path("packages/ui/src/css"),
+        help="Path to c1-ui source CSS directory.",
     )
     parser.add_argument(
         "--tokens-root",
         type=Path,
-        default=Path("packages/cedar-tokens/dist/web"),
-        help="Path to cedar-tokens dist web directory.",
+        default=Path("packages/tokens/dist/web"),
+        help="Path to c1-tokens dist web directory.",
     )
     parser.add_argument(
         "--allow",

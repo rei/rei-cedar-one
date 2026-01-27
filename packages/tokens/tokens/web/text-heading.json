@@ -1,0 +1,48 @@
+{
+  "text": {
+    "heading": {
+      "sans": {
+        "200": {
+          "family": { "$value": "{font.family.sans}", "$type": "fontFamily" },
+          "style": { "$value": "normal", "$type": "fontStyle" },
+          "weight": { "$value": "500", "$type": "fontWeight" },
+          "spacing": { "$value": "0", "$type": "dimension" },
+          "size": { "$value": "1.4rem", "$type": "fontSize" },
+          "height": { "$value": "1.8rem", "$type": "dimension" }
+        },
+        "300": {
+          "family": { "$value": "{font.family.sans}", "$type": "fontFamily" },
+          "style": { "$value": "normal", "$type": "fontStyle" },
+          "weight": { "$value": "500", "$type": "fontWeight" },
+          "spacing": { "$value": "0", "$type": "dimension" },
+          "size": { "$value": "1.6rem", "$type": "fontSize" },
+          "height": { "$value": "2rem", "$type": "dimension" }
+        },
+        "400": {
+          "family": { "$value": "{font.family.sans}", "$type": "fontFamily" },
+          "style": { "$value": "normal", "$type": "fontStyle" },
+          "weight": { "$value": "500", "$type": "fontWeight" },
+          "spacing": { "$value": "0", "$type": "dimension" },
+          "size": { "$value": "1.8rem", "$type": "fontSize" },
+          "height": { "$value": "2.4rem", "$type": "dimension" }
+        },
+        "500": {
+          "family": { "$value": "{font.family.sans}", "$type": "fontFamily" },
+          "style": { "$value": "normal", "$type": "fontStyle" },
+          "weight": { "$value": "500", "$type": "fontWeight" },
+          "spacing": { "$value": "0", "$type": "dimension" },
+          "size": { "$value": "2rem", "$type": "fontSize" },
+          "height": { "$value": "2.6rem", "$type": "dimension" }
+        },
+        "600": {
+          "family": { "$value": "{font.family.sans}", "$type": "fontFamily" },
+          "style": { "$value": "normal", "$type": "fontStyle" },
+          "weight": { "$value": "500", "$type": "fontWeight" },
+          "spacing": { "$value": "0", "$type": "dimension" },
+          "size": { "$value": "2.4rem", "$type": "fontSize" },
+          "height": { "$value": "3rem", "$type": "dimension" }
+        }
+      }
+    }
+  }
+}

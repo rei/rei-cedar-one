@@ -1,7 +1,7 @@
 # Vue Fixtures
 
 This sandbox package provides simple Vue components for story fixtures and class parity checks.
-Fixtures mirror the `cdr-button` class API from `packages/cedar-ui`.
+Fixtures mirror the `cdr-button` class API from `packages/ui`.
 
 Scripts:
 

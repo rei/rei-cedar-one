@@ -1,4 +1,4 @@
-@import '../../../../cedar-tokens/dist/web/breakpoints.css';
+@import '../../../../tokens/dist/web/breakpoints.css';
 
 .cdr-button {
   font-family: var(--cdr-font-family-sans);

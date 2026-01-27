@@ -1,6 +1,6 @@
 # Parity checks
 
-Lightweight checks to keep `cedar-tokens` aligned with legacy `rei-cedar-tokens` output.
+Lightweight checks to keep `c1-tokens` aligned with legacy `rei-cedar-tokens` output.
 
 ## Component token parity
 
@@ -17,8 +17,8 @@ The script exits non-zero if it finds missing tokens or mismatched values.
 
 ## Cedar UI token usage
 
-Ensure `packages/cedar-ui/src/css` only references tokens that exist in
-`packages/cedar-tokens/dist/web`. This allows override custom props per
+Ensure `packages/ui/src/css` only references tokens that exist in
+`packages/tokens/dist/web`. This allows override custom props per
 component via an allowlist of prefixes.
 
 ```sh

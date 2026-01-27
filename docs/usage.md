@@ -66,8 +66,8 @@ Common workflows for exploring and validating Cedar One:
 
 The repository is organized as a `pnpm` monorepo:
 
-- `packages/cedar-tokens` - design tokens and platform-specific outputs (web + React Native).
-- `packages/cedar-ui` - compiled CSS utilities and component recipes.
+- `packages/tokens` - design tokens and platform-specific outputs (web + React Native).
+- `packages/ui` - compiled CSS utilities and component recipes.
 - `sandbox/playground-web` - web sandbox for experimenting with utilities and recipes.
 - `sandbox/playground-rn` - React Native sandbox for token outputs and adapters.
 - `sandbox/vue-fixtures` - Vue-based fixtures used for parity validation.

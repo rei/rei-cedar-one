@@ -1,5 +1,5 @@
 {
-  "name": "@rei/cedar-tokens",
+  "name": "@rei/c1-tokens",
   "version": "0.0.0",
   "private": true,
   "description": "Cedar design tokens (DTCG) with web and React Native outputs.",

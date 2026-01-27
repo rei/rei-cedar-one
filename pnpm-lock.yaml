@@ -58,7 +58,7 @@ importers:
 
   .storybook: {}
 
-  packages/cedar-tokens:
+  packages/tokens:
     devDependencies:
       '@tokens-studio/sd-transforms':
         specifier: ^1.2.2
@@ -73,11 +73,11 @@ importers:
         specifier: ^4.19.1
         version: 4.21.0
 
-  packages/cedar-ui:
+  packages/ui:
     dependencies:
-      '@rei/cedar-tokens':
+      '@rei/c1-tokens':
         specifier: workspace:*
-        version: link:../cedar-tokens
+        version: link:../tokens
     devDependencies:
       postcss:
         specifier: ^8.4.38
@@ -101,12 +101,12 @@ importers:
 
   sandbox/vue-fixtures:
     dependencies:
-      '@rei/cedar-tokens':
+      '@rei/c1-tokens':
         specifier: workspace:*
-        version: link:../../packages/cedar-tokens
-      '@rei/cedar-ui':
+        version: link:../../packages/tokens
+      '@rei/c1-ui':
         specifier: workspace:*
-        version: link:../../packages/cedar-ui
+        version: link:../../packages/ui
       vue:
         specifier: ^3.5.24
         version: 3.5.27(typescript@5.9.3)

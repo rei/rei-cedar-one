@@ -105,19 +105,19 @@ def main() -> int:
     component = args.component
     old_tokens_path = Path(args.old_tokens)
 
-    component_css = root / "packages" / "cedar-ui" / "src" / "css" / "components" / f"{component}.css"
+    component_css = root / "packages" / "c1-ui" / "src" / "css" / "components" / f"{component}.css"
     component_tokens_path = (
         root
         / "packages"
-        / "cedar-tokens"
+        / "c1-tokens"
         / "dist"
         / "web"
         / "components"
         / f"{component}.css"
     )
     new_token_paths = [
-        root / "packages" / "cedar-tokens" / "dist" / "web" / "base.css",
-        root / "packages" / "cedar-tokens" / "dist" / "web" / "tokens.css",
+        root / "packages" / "c1-tokens" / "dist" / "web" / "base.css",
+        root / "packages" / "c1-tokens" / "dist" / "web" / "tokens.css",
     ]
     if component_tokens_path.exists():
         new_token_paths.append(component_tokens_path)

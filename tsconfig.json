@@ -3,8 +3,8 @@
   "files": [],
   "references": [
     { "path": "./tools" },
-    { "path": "./packages/cedar-tokens" },
-    { "path": "./packages/cedar-ui" },
+    { "path": "./packages/tokens" },
+    { "path": "./packages/ui" },
     { "path": "./sandbox/playground-web" },
     { "path": "./sandbox/playground-rn" },
     { "path": "./sandbox/vue-fixtures" },

@@ -1,4 +1,4 @@
-# cedar-ui
+# c1-ui
 
 CSS utilities and recipe classes built from Cedar tokens for traditional web apps (non-React Native). Optional Tailwind plugin lives here.
 
@@ -13,16 +13,16 @@ Includes:
 
 Exports:
 
-- `@rei/cedar-ui/base.css`
-- `@rei/cedar-ui/fonts.css`
-- `@rei/cedar-ui/reset.css`
-- `@rei/cedar-ui/components/*`
+- `@rei/c1-ui/base.css`
+- `@rei/c1-ui/fonts.css`
+- `@rei/c1-ui/reset.css`
+- `@rei/c1-ui/components/*`
 
 Usage (web):
 
 ```css
-@import '@rei/cedar-ui/base.css';
-@import '@rei/cedar-ui/components/button.css';
+@import '@rei/c1-ui/base.css';
+@import '@rei/c1-ui/components/button.css';
 ```
 
-Note: `@rei/cedar-ui` ships precompiled CSS with Cedar breakpoint values baked in, so consumers do not need PostCSS.
+Note: `@rei/c1-ui` ships precompiled CSS with Cedar breakpoint values baked in, so consumers do not need PostCSS.
