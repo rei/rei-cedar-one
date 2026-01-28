@@ -123,19 +123,7 @@ importers:
         specifier: ^16.1.0
         version: 16.1.1(postcss@8.5.6)
 
-  sandbox/playground-rn:
-    devDependencies:
-      '@rei/c1-lint':
-        specifier: workspace:*
-        version: link:../../packages/lint
-
-  sandbox/playground-web:
-    devDependencies:
-      '@rei/c1-lint':
-        specifier: workspace:*
-        version: link:../../packages/lint
-
-  sandbox/vue-fixtures:
+  sandbox/vue-library:
     dependencies:
       '@rei/c1-tokens':
         specifier: workspace:*
@@ -171,9 +159,9 @@ importers:
 
   stories:
     dependencies:
-      '@rei/cedar-vue-fixtures':
+      '@rei/c1-vue-library':
         specifier: workspace:*
-        version: link:../sandbox/vue-fixtures
+        version: link:../sandbox/vue-library
     devDependencies:
       '@rei/c1-lint':
         specifier: workspace:*

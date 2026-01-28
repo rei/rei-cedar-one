@@ -1,1 +1,0 @@
-// RN playground entrypoint placeholder.

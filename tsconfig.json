@@ -5,9 +5,7 @@
     { "path": "./packages/lint" },
     { "path": "./packages/tokens" },
     { "path": "./packages/ui" },
-    { "path": "./sandbox/playground-web" },
-    { "path": "./sandbox/playground-rn" },
-    { "path": "./sandbox/vue-fixtures" },
+    { "path": "./sandbox/vue-library" },
     { "path": "./stories" },
     { "path": "./.storybook" }
   ]

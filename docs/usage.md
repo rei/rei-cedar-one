@@ -59,8 +59,8 @@ Common workflows for exploring and validating Cedar One:
 - `pnpm build-storybook` - build the static Storybook output.
 - `pnpm tokens:build` - generate token outputs for supported platforms.
 - `pnpm ui:build` - build compiled CSS utilities and recipes.
-- `pnpm fixtures:vue` - run Vue fixtures for visual parity checks.
-- `pnpm fixtures:vue:build` - build Vue fixtures for deployment or review.
+- `pnpm fixtures:vue` - build the Vue fixtures library for parity checks.
+- `pnpm fixtures:vue:build` - build the Vue fixtures library for distribution.
 
 ## Workspace Layout
 
@@ -68,6 +68,4 @@ The repository is organized as a `pnpm` monorepo:
 
 - `packages/tokens` - design tokens and platform-specific outputs (web + React Native).
 - `packages/ui` - compiled CSS utilities and component recipes.
-- `sandbox/playground-web` - web sandbox for experimenting with utilities and recipes.
-- `sandbox/playground-rn` - React Native sandbox for token outputs and adapters.
-- `sandbox/vue-fixtures` - Vue-based fixtures used for parity validation.
+- `sandbox/vue-library` - Vue component library used for parity validation and lint coverage.

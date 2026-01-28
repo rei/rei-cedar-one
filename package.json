@@ -1,6 +1,6 @@
 {
   "name": "rei-cedar-one",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.1-alpha.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -10,8 +10,8 @@
     "build": "pnpm run ws:build",
     "build-storybook": "pnpm run ws:storybook:build",
     "dev": "pnpm run ws:dev",
-    "fixtures:vue": "pnpm --filter @rei/cedar-vue-fixtures dev",
-    "fixtures:vue:build": "pnpm --filter @rei/cedar-vue-fixtures build",
+    "fixtures:vue": "pnpm --filter @rei/c1-vue-library build",
+    "fixtures:vue:build": "pnpm --filter @rei/c1-vue-library build",
     "format": "prettier --write --single-quote",
     "lint": "pnpm run lint:plugin:build && pnpm run ws:lint",
     "lint:fix": "pnpm run lint:plugin:build && pnpm run ws:lint:fix",
@@ -23,7 +23,7 @@
     "typecheck": "pnpm run ws:typecheck",
     "ui:build": "pnpm --filter @rei/c1-ui build",
     "ws:build": "pnpm -r --if-present --filter \"!rei-cedar-one\" run build",
-    "ws:dev": "pnpm -r --parallel dev",
+    "ws:dev": "pnpm -r --parallel --if-present dev",
     "ws:lint": "pnpm -r --if-present --filter \"!rei-cedar-one\" run lint",
     "ws:lint:fix": "pnpm -r --if-present --filter \"!rei-cedar-one\" run lint:fix",
     "ws:storybook": "pnpm tokens:build && pnpm ui:build && storybook dev -p 6006 --config-dir .storybook",

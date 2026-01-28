@@ -1,20 +1,22 @@
 {
-  "name": "@rei/cedar-vue-fixtures",
-  "version": "0.1.0-alpha.0",
+  "name": "@rei/c1-vue-library",
+  "version": "0.1.1-alpha.0",
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
   },
   "files": [
-    "src"
+    "dist"
   ],
   "scripts": {
-    "build": "pnpm run typecheck && vite build",
-    "dev": "vite",
+    "build": "pnpm run typecheck && vite build && vue-tsc -p tsconfig.app.json --declaration --emitDeclarationOnly --declarationDir dist/types",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "preview": "vite preview",
     "typecheck": "vue-tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit"
   },
   "dependencies": {

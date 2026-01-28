@@ -8,7 +8,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@rei/cedar-vue-fixtures": "workspace:*"
+    "@rei/c1-vue-library": "workspace:*"
   },
   "devDependencies": {
     "@rei/c1-lint": "workspace:*"
