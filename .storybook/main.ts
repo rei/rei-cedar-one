@@ -8,6 +8,7 @@ const config: StorybookConfig = {
     '../stories/**/*.mdx',
     '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
+  staticDirs: [{ from: '../docs/assets', to: '/assets' }],
   addons: [
     '@storybook/addon-onboarding',
     '@chromatic-com/storybook',

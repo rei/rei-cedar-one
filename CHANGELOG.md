@@ -1,5 +1,10 @@
 # Cedar One Changelog
 
+## 0.1.4-alpha.0 - 2026-01-28
+
+- Added dark theme branding and static asset support for Storybook.
+- Introduced a standalone Vue Storybook with fixture stories and docs theming.
+
 ## 0.1.3-alpha.0 - 2026-01-28
 
 - Added standalone Vue Storybook config and fixture stories.

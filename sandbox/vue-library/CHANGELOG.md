@@ -1,5 +1,9 @@
 # @rei/c1-vue-library Changelog
 
+## 0.1.3-alpha.0 - 2026-01-28
+
+- Added Vue Storybook branding, static assets, and autodocs defaults.
+
 ## 0.1.2-alpha.0 - 2026-01-28
 
 - Added Vue Storybook config and fixture stories for local previewing.
