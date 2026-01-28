@@ -5,6 +5,7 @@ This document focuses on developing and exploring Cedar One. Cedar One is curren
 ```bash
 pnpm install
 pnpm storybook
+pnpm storybook:vue
 ```
 
 ## Using Cedar One components
@@ -56,6 +57,7 @@ export function PrimaryButton() {
 Common workflows for exploring and validating Cedar One:
 
 - `pnpm storybook` - start Storybook for component and utility inspection.
+- `pnpm storybook:vue` - start the Vue Storybook for fixture components.
 - `pnpm build-storybook` - build the static Storybook output.
 - `pnpm tokens:build` - generate token outputs for supported platforms.
 - `pnpm ui:build` - build compiled CSS utilities and recipes.

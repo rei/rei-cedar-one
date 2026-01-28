@@ -1,10 +1,13 @@
 # Cedar One Changelog
 
-## 0.1.2-alpha.0 - 2026-01-28
+## 0.1.3-alpha.0 - 2026-01-28
+
+- Added standalone Vue Storybook config and fixture stories.
+- Documented the new Vue Storybook command in usage docs.
 
 - Updated Storybook preview imports for the renamed tokens/ui packages.
 
-## 0.1.1-alpha.0 - 2026-01-28
+## 0.1.2-alpha.0 - 2026-01-28
 
 - Converted the Vue fixtures app into @rei/c1-vue-library and restored declaration output.
 - Removed the playground sandboxes and updated workspace scripts accordingly.
