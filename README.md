@@ -5,21 +5,33 @@
 
 # Cedar One · ![Alpha](https://img.shields.io/badge/status-alpha-orange)
 
-Cedar One is a single, platform-agnostic foundation for the [Cedar design system](https://cedar.rei.com/). It preserves Cedar’s token-driven core while decoupling styling and behavior from any single web framework; reducing shipped code and enabling consistent delivery across web and native platforms through explicit adapters.
+Cedar One is a single, framework-agnostic foundation for the
+[Cedar design system](https://cedar.rei.com/). It preserves Cedar’s
+token-driven core while decoupling styling and behavior from any
+single web framework, reducing shipped code and enabling consistent
+delivery across platforms through explicit adapters.
 
 ## Why Cedar One?
 
 ### One system, many platforms
 
-A single architectural core serves both web and native platforms. Shared tokens define design intent, while platform-specific adapters handle differences without fragmenting the system or its outputs.
+A single architectural core serves both web and native platforms.
+Shared tokens define design intent, while platform-specific adapters
+handle differences without fragmenting the system or its outputs.
 
-### Platform-agnostic, performance-focused
+### Framework-agnostic, performance-focused
 
-The web layer targets native HTML and static CSS rather than framework runtimes. By resolving styling and validation at build time, Cedar One ships less code, produces smaller bundles, and delivers faster, more predictable performance.
+The web layer targets native HTML and static CSS rather than framework
+runtimes. By resolving styling and validation at build time, Cedar One
+ships less code, produces smaller bundles, and delivers faster, more
+predictable performance.
 
 ### Intentional behavior and developer experience
 
-Behavior is introduced only where platforms require it, through explicit adapters that preserve accessibility and interaction standards. Clear contracts, predictable patterns, and fast feedback loops make correct usage the default.
+Behavior is introduced only where platforms require it, through
+explicit adapters that preserve accessibility and interaction
+standards. Clear contracts, predictable patterns, and fast feedback
+loops make correct usage the default.
 
 ## Docs
 
