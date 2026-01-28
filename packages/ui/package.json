@@ -21,6 +21,7 @@
     "@rei/c1-tokens": "workspace:*"
   },
   "devDependencies": {
+    "@rei/c1-lint": "workspace:*",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
     "postcss-csso": "^6.0.1",

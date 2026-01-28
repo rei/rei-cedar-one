@@ -1,25 +1,17 @@
-// @ts-check
-
-/**
- * Cedar button rules derived from the original CdrButton.vue class logic:
- * - Require exactly one variant class: cdr-button--primary|secondary|sale|dark|link.
- * - Size classes must be cdr-button--small|medium|large (optionally @xs|@sm|@md|@lg); only one base size allowed.
- * - Full-width classes must be cdr-button--full-width (optionally @xs|@sm|@md|@lg).
- * - Icon-only buttons may optionally include cdr-button--icon-only-(small|medium|large).
- * - Icon-only buttons must include aria-label or aria-labelledby.
- * - Icon-only buttons cannot use text size classes or icon-left/right classes.
- * - Text buttons cannot use icon-only size classes.
- * - cdr-button--with-background requires cdr-button--icon-only.
- * - cdr-button--full-width cannot be used with cdr-button--icon-only.
- * - cdr-button classes are only valid on <button> or <a> elements.
- * - cdr-button modifier classes must be known (size, variant, icon, full-width, etc.).
- * - cdr-button modifiers must use the "--" separator (for example, cdr-button--primary).
- * - cdr-button classes should not be duplicated.
- * - <a> elements must include an href.
- * - <a> elements should not include a type attribute.
- * - <button> type attributes must be button, submit, or reset.
- */
-/** @typedef {{ tagName: string | null, attrs: Map<string, string> }} ParsedTag */
+import type { Rule } from 'eslint';
+import type { ButtonClassInfo, ButtonTagAnalysis } from '../types.js';
+import {
+  createComponentRule,
+  buildMeta,
+  findDuplicateClasses,
+  getClassValue,
+  hasIconLabel,
+  isDynamicValue,
+  reportClasses,
+  reportUniqueClasses,
+  splitClasses,
+  unique,
+} from '../utils.js';
 
 const VARIANT_CLASSES = new Set([
   'cdr-button--primary',
@@ -33,15 +25,6 @@ const SIZE_CLASS_RE = /^cdr-button--(small|medium|large)(@xs|@sm|@md|@lg)?$/;
 const BASE_SIZE_CLASS_RE = /^cdr-button--(small|medium|large)$/;
 const FULL_WIDTH_CLASS_RE = /^cdr-button--full-width(@xs|@sm|@md|@lg)?$/;
 const ICON_ONLY_SIZE_CLASS_RE = /^cdr-button--icon-only-(small|medium|large)$/;
-
-import {
-  createRule,
-  buildMeta,
-  includesDynamicValue,
-  reportClasses,
-  splitClasses,
-  unique,
-} from './utils.mjs';
 
 const BASE_CLASS = 'cdr-button';
 const MODIFIER_PREFIX = `${BASE_CLASS}--`;
@@ -61,47 +44,28 @@ const KNOWN_EXACT_MODIFIERS = new Set([
 const BUTTON_TYPE_VALUES = new Set(['button', 'submit', 'reset']);
 const VALID_TAGS = new Set(['button', 'a']);
 
-/** @param {string} cls */
-const isSizeClass = (cls) => SIZE_CLASS_RE.test(cls);
-/** @param {string} cls */
-const isBaseSizeClass = (cls) => BASE_SIZE_CLASS_RE.test(cls);
-/** @param {string} cls */
-const isFullWidthClass = (cls) => FULL_WIDTH_CLASS_RE.test(cls);
-/** @param {string} cls */
-const isIconOnlySizeClass = (cls) => ICON_ONLY_SIZE_CLASS_RE.test(cls);
-/** @param {string} cls */
-const isModifierClass = (cls) => cls.startsWith(MODIFIER_PREFIX);
-
-/** @param {Map<string, string>} attrs @returns {string} */
-function getClassValue(attrs) {
-  return attrs.get('class') ?? attrs.get('classname') ?? '';
-}
+/** @param cls - Class name. */
+const isSizeClass = (cls: string) => SIZE_CLASS_RE.test(cls);
+/** @param cls - Class name. */
+const isBaseSizeClass = (cls: string) => BASE_SIZE_CLASS_RE.test(cls);
+/** @param cls - Class name. */
+const isFullWidthClass = (cls: string) => FULL_WIDTH_CLASS_RE.test(cls);
+/** @param cls - Class name. */
+const isIconOnlySizeClass = (cls: string) => ICON_ONLY_SIZE_CLASS_RE.test(cls);
+/** @param cls - Class name. */
+const isModifierClass = (cls: string) => cls.startsWith(MODIFIER_PREFIX);
+/** @param cls - Class name. */
+const isIconSideClass = (cls: string) =>
+  cls === ICON_LEFT_CLASS || cls === ICON_RIGHT_CLASS;
 
 /**
- * @typedef {{
- *   hasIconOnly: boolean,
- *   hasWithBackground: boolean,
- *   hasIconSide: boolean,
- *   variantClasses: string[],
- *   sizeClasses: string[],
- *   baseSizeClasses: string[],
- *   iconOnlySizeClasses: string[],
- *   fullWidthClasses: string[],
- *   duplicateClasses: string[],
- *   invalidModifierPrefixes: string[],
- *   invalidSizeClasses: string[],
- *   invalidFullWidthClasses: string[],
- *   invalidIconOnlySizeClasses: string[],
- *   unknownModifierClasses: string[],
- * }} ClassInfo
+ * Analyze classes for button-specific metadata.
+ * @param classes - Class list.
+ * @returns Button class info.
  */
-
-/** @param {string[]} classes @returns {ClassInfo} */
-function analyzeClasses(classes) {
-  const duplicateClasses = new Set();
-  const seenClasses = new Set();
-  /** @type {ClassInfo} */
-  const info = {
+function analyzeClasses(classes: string[]): ButtonClassInfo {
+  const duplicateClasses = findDuplicateClasses(classes);
+  const info: ButtonClassInfo = {
     hasIconOnly: false,
     hasWithBackground: false,
     hasIconSide: false,
@@ -110,7 +74,7 @@ function analyzeClasses(classes) {
     baseSizeClasses: [],
     iconOnlySizeClasses: [],
     fullWidthClasses: [],
-    duplicateClasses: [],
+    duplicateClasses,
     invalidModifierPrefixes: [],
     invalidSizeClasses: [],
     invalidFullWidthClasses: [],
@@ -118,13 +82,41 @@ function analyzeClasses(classes) {
     unknownModifierClasses: [],
   };
 
-  for (const cls of classes) {
-    if (seenClasses.has(cls)) {
-      duplicateClasses.add(cls);
-    } else {
-      seenClasses.add(cls);
+  /**
+   * Push a class name into a list when the condition is true.
+   * @param condition - Condition check.
+   * @param list - Destination list.
+   * @param value - Class name.
+   */
+  const pushIf = (condition: boolean, list: string[], value: string) => {
+    if (condition) {
+      list.push(value);
     }
+  };
 
+  /**
+   * Set boolean flags for core button modifiers.
+   * @param cls - Class name.
+   */
+  const markCoreFlags = (cls: string) => {
+    if (cls === ICON_ONLY_CLASS) {
+      info.hasIconOnly = true;
+      return;
+    }
+    if (cls === WITH_BACKGROUND_CLASS) {
+      info.hasWithBackground = true;
+      return;
+    }
+    if (isIconSideClass(cls)) {
+      info.hasIconSide = true;
+    }
+  };
+
+  /**
+   * Collect invalid modifier prefixes.
+   * @param cls - Class name.
+   */
+  const pushModifierClass = (cls: string) => {
     if (
       cls.startsWith(BASE_CLASS) &&
       cls !== BASE_CLASS &&
@@ -132,75 +124,102 @@ function analyzeClasses(classes) {
     ) {
       info.invalidModifierPrefixes.push(cls);
     }
+  };
 
-    if (VARIANT_CLASSES.has(cls)) {
-      info.variantClasses.push(cls);
+  /**
+   * Collect size-related class names.
+   * @param cls - Class name.
+   */
+  const collectSizeClasses = (cls: string) => {
+    pushIf(isSizeClass(cls), info.sizeClasses, cls);
+    pushIf(isBaseSizeClass(cls), info.baseSizeClasses, cls);
+    pushIf(isIconOnlySizeClass(cls), info.iconOnlySizeClasses, cls);
+  };
+
+  /**
+   * Collect variant class names.
+   * @param cls - Class name.
+   */
+  const collectVariantClasses = (cls: string) => {
+    pushIf(VARIANT_CLASSES.has(cls), info.variantClasses, cls);
+  };
+
+  /**
+   * Collect full-width classes and invalid values.
+   * @param cls - Class name.
+   */
+  const collectFullWidthClasses = (cls: string) => {
+    if (!cls.startsWith(FULL_WIDTH_PREFIX)) {
+      return;
     }
-    if (isSizeClass(cls)) {
-      info.sizeClasses.push(cls);
+    info.fullWidthClasses.push(cls);
+    if (!isFullWidthClass(cls)) {
+      info.invalidFullWidthClasses.push(cls);
     }
-    if (isBaseSizeClass(cls)) {
-      info.baseSizeClasses.push(cls);
-    }
-    if (isIconOnlySizeClass(cls)) {
-      info.iconOnlySizeClasses.push(cls);
-    }
-    if (cls.startsWith(FULL_WIDTH_PREFIX)) {
-      info.fullWidthClasses.push(cls);
-      if (!isFullWidthClass(cls)) {
-        info.invalidFullWidthClasses.push(cls);
-      }
-    }
+  };
+
+  /**
+   * Collect invalid icon-only sizing classes.
+   * @param cls - Class name.
+   */
+  const collectIconOnlySizing = (cls: string) => {
     if (cls.startsWith(ICON_ONLY_PREFIX) && !isIconOnlySizeClass(cls)) {
       info.invalidIconOnlySizeClasses.push(cls);
     }
-    if (isModifierClass(cls)) {
-      if (cls.includes('@') && !isSizeClass(cls) && !isFullWidthClass(cls)) {
-        info.invalidSizeClasses.push(cls);
-      } else if (
-        !isSizeClass(cls) &&
-        !isFullWidthClass(cls) &&
-        !isIconOnlySizeClass(cls) &&
-        !KNOWN_EXACT_MODIFIERS.has(cls)
-      ) {
-        info.unknownModifierClasses.push(cls);
-      }
-    }
+  };
 
-    if (cls === ICON_ONLY_CLASS) {
-      info.hasIconOnly = true;
+  /**
+   * Collect invalid and unknown modifiers.
+   * @param cls - Class name.
+   */
+  const collectUnknownModifiers = (cls: string) => {
+    if (!isModifierClass(cls)) {
+      return;
     }
-    if (cls === WITH_BACKGROUND_CLASS) {
-      info.hasWithBackground = true;
+    if (cls.includes('@') && !isSizeClass(cls) && !isFullWidthClass(cls)) {
+      info.invalidSizeClasses.push(cls);
+      return;
     }
-    if (cls === ICON_LEFT_CLASS || cls === ICON_RIGHT_CLASS) {
-      info.hasIconSide = true;
+    if (
+      !isSizeClass(cls) &&
+      !isFullWidthClass(cls) &&
+      !isIconOnlySizeClass(cls) &&
+      !KNOWN_EXACT_MODIFIERS.has(cls)
+    ) {
+      info.unknownModifierClasses.push(cls);
     }
+  };
+
+  for (const cls of classes) {
+    pushModifierClass(cls);
+    collectVariantClasses(cls);
+    collectSizeClasses(cls);
+    collectFullWidthClasses(cls);
+    collectIconOnlySizing(cls);
+    collectUnknownModifiers(cls);
+    markCoreFlags(cls);
   }
 
-  info.duplicateClasses = Array.from(duplicateClasses);
   return info;
 }
 
 /**
- * @typedef {{
- *   normalizedTag: string,
- *   isValidTag: boolean,
- *   attrs: Map<string, string>,
- *   classes: string[],
- *   info: ClassInfo,
- * }} TagAnalysis
+ * Analyze a tag into a button rule payload.
+ * @param tagName - Tag name.
+ * @param attrs - Attribute map.
+ * @returns Tag analysis or null.
  */
-
-/** @param {string | null} tagName @param {Map<string, string>} attrs @returns {TagAnalysis | null} */
-function analyzeTag(tagName, attrs) {
+function analyzeTag(
+  tagName: string | null,
+  attrs: Map<string, string>,
+): ButtonTagAnalysis | null {
   if (!tagName) {
     return null;
   }
 
   const normalizedTag = String(tagName).toLowerCase();
   const classValue = getClassValue(attrs);
-  if (!classValue || includesDynamicValue(classValue)) {
+  if (!classValue || isDynamicValue(classValue)) {
     return null;
   }
 
@@ -220,13 +239,19 @@ function analyzeTag(tagName, attrs) {
 }
 
 /**
- * @param {{
- *   meta: import('eslint').Rule.RuleMetaData,
- *   check: (analysis: TagAnalysis, node: any, context: import('eslint').Rule.RuleContext) => void,
- * }} options
+ * Build a button rule wrapper.
+ * @param options - Rule options.
+ * @returns ESLint rule module.
  */
-function createButtonRule(options) {
-  return createRule({
+function createButtonRule(options: {
+  meta: Rule.RuleMetaData;
+  check: (
+    analysis: ButtonTagAnalysis,
+    node: Rule.Node,
+    context: Rule.RuleContext,
+  ) => void;
+}) {
+  return createComponentRule<ButtonTagAnalysis>({
     ...options,
     baseClass: BASE_CLASS,
     analyzeTag,
@@ -234,12 +259,21 @@ function createButtonRule(options) {
 }
 
 const ruleVariant = createButtonRule({
+  /**
+   * Require exactly one variant class:
+   * cdr-button--primary|secondary|sale|dark|link.
+   */
   meta: buildMeta('Validate cdr-button variant class usage.', {
     missingVariant:
       'Button must include exactly one variant class: cdr-button--primary|secondary|sale|dark|link.',
     multipleVariants:
       'Button has multiple variant classes; keep only one of cdr-button--primary|secondary|sale|dark|link.',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis.isValidTag) {
       return;
@@ -254,6 +288,11 @@ const ruleVariant = createButtonRule({
 });
 
 const ruleSize = createButtonRule({
+  /**
+   * Validate size + full-width classes:
+   * - cdr-button--small|medium|large (optionally @xs|@sm|@md|@lg)
+   * - cdr-button--full-width (optionally @xs|@sm|@md|@lg)
+   */
   meta: buildMeta('Validate cdr-button size and full-width classes.', {
     invalidSizeClass:
       'Invalid size class "{{className}}". Use cdr-button--small|medium|large with optional @xs|@sm|@md|@lg.',
@@ -262,15 +301,20 @@ const ruleSize = createButtonRule({
     multipleBaseSizes:
       'Button has multiple base size classes; keep only one of cdr-button--small|medium|large.',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis.isValidTag) {
       return;
     }
-    reportClasses(
+    reportUniqueClasses(
       context,
       node,
       'invalidFullWidth',
-      unique(analysis.info.invalidFullWidthClasses),
+      analysis.info.invalidFullWidthClasses,
     );
     const invalidSizeClasses = unique([
       ...analysis.info.invalidSizeClasses,
@@ -284,6 +328,14 @@ const ruleSize = createButtonRule({
 });
 
 const ruleIcon = createButtonRule({
+  /**
+   * Icon-only rules:
+   * - icon-only requires aria-label/aria-labelledby
+   * - icon-only cannot use text size or icon-left/right classes
+   * - text buttons cannot use icon-only size classes
+   * - with-background requires icon-only
+   * - full-width cannot be icon-only
+   */
   meta: buildMeta(
     'Validate icon-only and icon placement rules for cdr-button.',
     {
@@ -301,6 +353,11 @@ const ruleIcon = createButtonRule({
         'Icon-only button must include aria-label or aria-labelledby for an accessible name.',
     },
   ),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis.isValidTag) {
       return;
@@ -322,18 +379,8 @@ const ruleIcon = createButtonRule({
       if (info.sizeClasses.length > 0) {
         context.report({ node, messageId: 'iconOnlyWithTextSize' });
       }
-      const ariaLabel = attrs.get('aria-label');
-      const ariaLabelledBy = attrs.get('aria-labelledby');
-      const hasDynamicLabel =
-        (ariaLabel && includesDynamicValue(ariaLabel)) ||
-        (ariaLabelledBy && includesDynamicValue(ariaLabelledBy));
-      if (!hasDynamicLabel) {
-        if (
-          (!ariaLabel && !ariaLabelledBy) ||
-          (ariaLabel === '' && ariaLabelledBy === '')
-        ) {
-          context.report({ node, messageId: 'iconOnlyNeedsLabel' });
-        }
+      if (!hasIconLabel(attrs)) {
+        context.report({ node, messageId: 'iconOnlyNeedsLabel' });
       }
     }
 
@@ -344,36 +391,52 @@ const ruleIcon = createButtonRule({
 });
 
 const ruleModifier = createButtonRule({
+  /**
+   * Validate modifier class names and prefixes.
+   */
   meta: buildMeta('Validate cdr-button modifier class names.', {
     invalidModifier:
       'Unknown cdr-button modifier "{{className}}". Use a valid size, variant, icon, or full-width class.',
     invalidModifierPrefix:
       'cdr-button modifiers must use the "--" separator (found "{{className}}").',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis.isValidTag) {
       return;
     }
-    reportClasses(
+    reportUniqueClasses(
       context,
       node,
       'invalidModifierPrefix',
-      unique(analysis.info.invalidModifierPrefixes),
+      analysis.info.invalidModifierPrefixes,
     );
-    reportClasses(
+    reportUniqueClasses(
       context,
       node,
       'invalidModifier',
-      unique(analysis.info.unknownModifierClasses),
+      analysis.info.unknownModifierClasses,
     );
   },
 });
 
 const ruleDuplicate = createButtonRule({
+  /**
+   * Prevent duplicate cdr-button classes.
+   */
   meta: buildMeta('Prevent duplicate cdr-button classes.', {
     duplicateClass:
       'Duplicate class "{{className}}" is not allowed on cdr-button elements.',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis.isValidTag) {
       return;
@@ -388,10 +451,18 @@ const ruleDuplicate = createButtonRule({
 });
 
 const ruleTag = createButtonRule({
+  /**
+   * Restrict cdr-button usage to <button> and <a>.
+   */
   meta: buildMeta('Restrict cdr-button usage to <button> or <a>.', {
     invalidTag:
       'cdr-button classes may only be used on <button> or <a> elements (found <{{tagName}}>).',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (analysis.isValidTag) {
       return;
@@ -405,12 +476,20 @@ const ruleTag = createButtonRule({
 });
 
 const ruleType = createButtonRule({
+  /**
+   * Validate <button> type values.
+   */
   meta: buildMeta('Validate button type attributes for cdr-button.', {
     invalidButtonType:
       'Button type must be "button", "submit", or "reset" (found {{typeValue}}).',
     missingButtonType:
       'Button must include type="button", "submit", or "reset".',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis.isValidTag || analysis.normalizedTag !== 'button') {
       return;
@@ -420,7 +499,7 @@ const ruleType = createButtonRule({
       context.report({ node, messageId: 'missingButtonType' });
       return;
     }
-    if (includesDynamicValue(typeValue)) {
+    if (isDynamicValue(typeValue)) {
       return;
     }
     if (!BUTTON_TYPE_VALUES.has(typeValue)) {
@@ -434,11 +513,19 @@ const ruleType = createButtonRule({
 });
 
 const ruleAnchor = createButtonRule({
+  /**
+   * Validate <a> usage for cdr-button.
+   */
   meta: buildMeta('Validate anchor usage for cdr-button links.', {
     anchorWithType:
       'Anchor tags (<a>) should not include a type attribute; use <button> instead.',
     anchorMissingHref: 'Anchor tags (<a>) must include an href attribute.',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis.isValidTag || analysis.normalizedTag !== 'a') {
       return;
@@ -446,11 +533,11 @@ const ruleAnchor = createButtonRule({
     const href = analysis.attrs.get('href');
     if (!href) {
       context.report({ node, messageId: 'anchorMissingHref' });
-    } else if (includesDynamicValue(href)) {
+    } else if (isDynamicValue(href)) {
       return;
     }
     const typeValue = analysis.attrs.get('type');
-    if (typeValue && !includesDynamicValue(typeValue)) {
+    if (typeValue && !isDynamicValue(typeValue)) {
       context.report({ node, messageId: 'anchorWithType' });
     }
   },

@@ -3,4 +3,3 @@ packages:
   - 'sandbox/*'
   - 'stories'
   - '.storybook'
-  - 'tools'

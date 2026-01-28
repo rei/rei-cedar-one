@@ -2,7 +2,7 @@
   "extends": "./tsconfig.base.json",
   "files": [],
   "references": [
-    { "path": "./tools" },
+    { "path": "./packages/lint" },
     { "path": "./packages/tokens" },
     { "path": "./packages/ui" },
     { "path": "./sandbox/playground-web" },

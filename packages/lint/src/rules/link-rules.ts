@@ -1,13 +1,12 @@
-// @ts-check
-
+import type { Rule } from 'eslint';
+import type { LinkTagAnalysis } from '../types.js';
 import {
-  createRule,
+  createModifierRule,
   buildMeta,
   includesDynamicValue,
   reportClasses,
-  splitClasses,
   unique,
-} from './utils.mjs';
+} from '../utils.js';
 
 const BASE_CLASS = 'cdr-link';
 const MODIFIER_PREFIX = `${BASE_CLASS}--`;
@@ -18,108 +17,57 @@ const ALLOWED_MODIFIERS = new Set([
 ]);
 const VALID_TAGS = new Set(['a', 'button']);
 
-/** @param {Map<string, string>} attrs @returns {string} */
-function getClassValue(attrs) {
-  return attrs.get('class') ?? attrs.get('classname') ?? '';
-}
-
 /**
- * @typedef {{
- *   hasBase: boolean,
- *   modifiers: string[],
- *   duplicateClasses: string[],
- *   invalidPrefixes: string[],
- *   invalidModifiers: string[],
- * }} ClassInfo
+ * Build a link rule wrapper.
+ * @param options - Rule options.
+ * @returns ESLint rule module.
  */
+function createLinkRule(options: {
+  meta: Rule.RuleMetaData;
+  check: (
+    analysis: LinkTagAnalysis,
+    node: Rule.Node,
+    context: Rule.RuleContext,
+  ) => void;
+}) {
+  /**
+   * Build analysis payload from modifier parsing.
+   * @param input - Parsed modifier input.
+   * @returns Link tag analysis.
+   */
+  const buildAnalysis = (input: {
+    classes: string[];
+    info: LinkTagAnalysis['info'];
+    tagName: string;
+    attrs: Map<string, string>;
+  }): LinkTagAnalysis => ({
+    tagName: input.tagName,
+    attrs: input.attrs,
+    classes: input.classes,
+    info: input.info,
+  });
 
-/** @param {string[]} classes @returns {ClassInfo} */
-function analyzeClasses(classes) {
-  const seen = new Set();
-  const duplicates = new Set();
-  const modifiers = [];
-  const invalidPrefixes = [];
-  const invalidModifiers = [];
-
-  for (const cls of classes) {
-    if (seen.has(cls)) {
-      duplicates.add(cls);
-    }
-    seen.add(cls);
-
-    if (cls.startsWith(BASE_CLASS) && cls !== BASE_CLASS) {
-      if (!cls.startsWith(MODIFIER_PREFIX)) {
-        invalidPrefixes.push(cls);
-      } else {
-        modifiers.push(cls);
-        if (!ALLOWED_MODIFIERS.has(cls)) {
-          invalidModifiers.push(cls);
-        }
-      }
-    }
-  }
-
-  return {
-    hasBase: classes.includes(BASE_CLASS),
-    modifiers,
-    duplicateClasses: Array.from(duplicates),
-    invalidPrefixes,
-    invalidModifiers,
-  };
-}
-
-/**
- * @typedef {{
- *   tagName: string,
- *   attrs: Map<string, string>,
- *   classes: string[],
- *   info: ClassInfo,
- * }} TagAnalysis
- */
-
-/** @param {string | null} tagName @param {Map<string, string>} attrs @returns {TagAnalysis | null} */
-function analyzeTag(tagName, attrs) {
-  if (!tagName) {
-    return null;
-  }
-  const classValue = getClassValue(attrs);
-  if (!classValue || includesDynamicValue(classValue)) {
-    return null;
-  }
-  const classes = splitClasses(classValue);
-  if (
-    !classes.some(
-      (cls) => cls === BASE_CLASS || cls.startsWith(MODIFIER_PREFIX),
-    )
-  ) {
-    return null;
-  }
-  return {
-    tagName,
-    attrs,
-    classes,
-    info: analyzeClasses(classes),
-  };
-}
-
-/**
- * @param {{
- *   meta: import('eslint').Rule.RuleMetaData,
- *   check: (analysis: TagAnalysis, node: any, context: import('eslint').Rule.RuleContext) => void,
- * }} options
- */
-function createLinkRule(options) {
-  return createRule({
+  return createModifierRule<LinkTagAnalysis>({
     ...options,
     baseClass: BASE_CLASS,
-    analyzeTag,
+    modifierPrefix: MODIFIER_PREFIX,
+    allowedModifiers: ALLOWED_MODIFIERS,
+    build: buildAnalysis,
   });
 }
 
 const ruleMissingBase = createLinkRule({
+  /**
+   * Require the base class when modifiers are present.
+   */
   meta: buildMeta('Require cdr-link base class for modifiers.', {
     missingBase: 'cdr-link modifiers require the base class.',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis) {
       return;
@@ -131,9 +79,17 @@ const ruleMissingBase = createLinkRule({
 });
 
 const ruleInvalidModifier = createLinkRule({
+  /**
+   * Validate link modifier values.
+   */
   meta: buildMeta('Validate cdr-link modifier values.', {
     invalidModifier: 'Unknown link modifier "{{className}}".',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis) {
       return;
@@ -148,10 +104,18 @@ const ruleInvalidModifier = createLinkRule({
 });
 
 const ruleInvalidPrefix = createLinkRule({
+  /**
+   * Validate the modifier prefix separator.
+   */
   meta: buildMeta('Validate cdr-link modifier prefixes.', {
     invalidPrefix:
       'cdr-link modifiers must use the "--" separator (for example, cdr-link--standalone).',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis) {
       return;
@@ -166,9 +130,17 @@ const ruleInvalidPrefix = createLinkRule({
 });
 
 const ruleDuplicate = createLinkRule({
+  /**
+   * Prevent duplicate link classes.
+   */
   meta: buildMeta('Prevent duplicate cdr-link classes.', {
     duplicateClass: 'Duplicate link class "{{className}}" is not allowed.',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis) {
       return;
@@ -183,9 +155,17 @@ const ruleDuplicate = createLinkRule({
 });
 
 const ruleInvalidTag = createLinkRule({
+  /**
+   * Restrict link classes to <a> and <button>.
+   */
   meta: buildMeta('Restrict cdr-link classes to valid tags.', {
     invalidTag: 'cdr-link classes are only valid on <a> or <button> elements.',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis) {
       return;
@@ -197,9 +177,17 @@ const ruleInvalidTag = createLinkRule({
 });
 
 const ruleAnchorHref = createLinkRule({
+  /**
+   * Require href on anchor links.
+   */
   meta: buildMeta('Require href on anchor links.', {
     missingHref: '<a> elements with cdr-link must include an href.',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis) {
       return;
@@ -215,10 +203,18 @@ const ruleAnchorHref = createLinkRule({
 });
 
 const ruleBlankRel = createLinkRule({
+  /**
+   * Require rel when target is _blank.
+   */
   meta: buildMeta('Require rel when target is _blank.', {
     missingRel:
       'Links with target="_blank" should include rel="noopener noreferrer".',
   }),
+  /**
+   * @param analysis - Tag analysis.
+   * @param node - AST node.
+   * @param context - Rule context.
+   */
   check(analysis, node, context) {
     if (!analysis) {
       return;

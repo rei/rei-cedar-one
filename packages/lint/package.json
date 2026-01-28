@@ -1,0 +1,29 @@
+{
+  "name": "@rei/c1-lint",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@rei/c1-lint": "workspace:*",
+    "eslint": "latest",
+    "typescript": "latest",
+    "typescript-eslint": "latest"
+  },
+  "peerDependencies": {
+    "eslint": ">=8"
+  }
+}

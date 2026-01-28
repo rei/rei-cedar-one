@@ -9,5 +9,8 @@
   },
   "dependencies": {
     "@rei/cedar-vue-fixtures": "workspace:*"
+  },
+  "devDependencies": {
+    "@rei/c1-lint": "workspace:*"
   }
 }

@@ -2,23 +2,9 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import htmlParser from '@html-eslint/parser';
 import vueParser from 'vue-eslint-parser';
-import cedarButtonRules from './tools/eslint/button-rules.mjs';
-import cedarContainerRules from './tools/eslint/container-rules.mjs';
-import cedarLinkRules from './tools/eslint/link-rules.mjs';
+import cedar from '@rei/c1-lint';
 
-const cedarRules = {
-  rules: {
-    ...cedarButtonRules.rules,
-    ...cedarContainerRules.rules,
-    ...cedarLinkRules.rules,
-  },
-};
-
-const cedarRecommendedRules = {
-  ...cedarButtonRules.configs.recommended.rules,
-  ...cedarContainerRules.configs.recommended.rules,
-  ...cedarLinkRules.configs.recommended.rules,
-};
+const cedarRecommendedRules = cedar.configs.recommended.rules;
 
 export default [
   {
@@ -42,7 +28,7 @@ export default [
       sourceType: 'module',
     },
     plugins: {
-      cedar: cedarRules,
+      cedar,
     },
     rules: {
       ...cedarRecommendedRules,
@@ -54,7 +40,7 @@ export default [
       parser: htmlParser,
     },
     plugins: {
-      cedar: cedarRules,
+      cedar,
     },
     rules: {
       ...cedarRecommendedRules,
@@ -71,7 +57,7 @@ export default [
       },
     },
     plugins: {
-      cedar: cedarRules,
+      cedar,
     },
     rules: {
       ...cedarRecommendedRules,
