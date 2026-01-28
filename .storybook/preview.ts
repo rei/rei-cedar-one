@@ -1,14 +1,14 @@
 // Tokens
-import '../packages/cedar-tokens/dist/web/base.css';
-import '../packages/cedar-tokens/dist/web/components/button.css';
+import '../packages/tokens/dist/web/base.css';
+import '../packages/tokens/dist/web/components/button.css';
 
 // Base
-import '../packages/cedar-ui/dist/css/cedar-base.css';
+import '../packages/ui/dist/css/cedar-base.css';
 
 // Components
-import '../packages/cedar-ui/dist/css/components/button.css';
-import '../packages/cedar-ui/dist/css/components/container.css';
-import '../packages/cedar-ui/dist/css/components/link.css';
+import '../packages/ui/dist/css/components/button.css';
+import '../packages/ui/dist/css/components/container.css';
+import '../packages/ui/dist/css/components/link.css';
 
 export const parameters = {
   controls: {

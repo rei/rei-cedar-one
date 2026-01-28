@@ -1,5 +1,9 @@
 # Cedar One Changelog
 
+## 0.1.2-alpha.0 - 2026-01-28
+
+- Updated Storybook preview imports for the renamed tokens/ui packages.
+
 ## 0.1.1-alpha.0 - 2026-01-28
 
 - Converted the Vue fixtures app into @rei/c1-vue-library and restored declaration output.
