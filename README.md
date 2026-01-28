@@ -26,3 +26,11 @@ Behavior is introduced only where platforms require it, through explicit adapter
 - [Architecture and guiding principles](docs/architecture.md)
 - [Conversion roadmap](docs/roadmap.md)
 - [Usage and examples](docs/usage.md)
+
+## Packages
+
+| Package          | Description                                                               |
+| ---------------- | ------------------------------------------------------------------------- |
+| `@rei/c1-tokens` | Design tokens (source + build outputs) for web and native.                |
+| `@rei/c1-ui`     | Framework-agnostic component CSS and behavior adapters built from tokens. |
+| `@rei/c1-lint`   | ESLint plugin enforcing Cedar One component contracts.                    |
