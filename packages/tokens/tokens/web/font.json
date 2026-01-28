@@ -1,9 +1,29 @@
 {
   "font": {
     "family": {
+      "serif-brand-font": {
+        "$value": "{options.font.family.serif-main}",
+        "docs": {
+          "type": "font-family"
+        }
+      },
+      "serif": {
+        "$value": "{options.font.family.serif}",
+        "docs": {
+          "type": "font-family"
+        }
+      },
+      "sans-brand-font": {
+        "$value": "{options.font.family.sans-main}",
+        "docs": {
+          "type": "font-family"
+        }
+      },
       "sans": {
-        "$value": "Graphik, \"Graphik fallback\", \"Helvetica Neue\", sans-serif",
-        "$type": "fontFamily"
+        "$value": "{options.font.family.sans}",
+        "docs": {
+          "type": "font-family"
+        }
       }
     }
   }

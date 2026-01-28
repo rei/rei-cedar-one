@@ -105,20 +105,17 @@ def main() -> int:
     component = args.component
     old_tokens_path = Path(args.old_tokens)
 
-    component_css = root / "packages" / "c1-ui" / "src" / "css" / "components" / f"{component}.css"
+    component_css = root / "packages" / "ui" / "src" / "css" / "components" / f"{component}.css"
     component_tokens_path = (
         root
         / "packages"
-        / "c1-tokens"
+        / "tokens"
         / "dist"
         / "web"
         / "components"
         / f"{component}.css"
     )
-    new_token_paths = [
-        root / "packages" / "c1-tokens" / "dist" / "web" / "base.css",
-        root / "packages" / "c1-tokens" / "dist" / "web" / "tokens.css",
-    ]
+    new_token_paths = [root / "packages" / "tokens" / "dist" / "web" / "core.css"]
     if component_tokens_path.exists():
         new_token_paths.append(component_tokens_path)
 
@@ -133,7 +130,23 @@ def main() -> int:
 
     vars_used = extract_vars_from_component(component_css.read_text())
     ignore_prefix = f"--cdr-{component}-"
-    ignore_vars = {"--default-outline"}
+    ignore_vars = {
+        "--cdr-text-color",
+        "--cdr-heading-line-height",
+        "--default-outline",
+    }
+
+    text_components = {
+        "text",
+        "body",
+        "eyebrow",
+        "heading-display",
+        "heading-sans",
+        "heading-serif",
+        "subheading-sans",
+        "utility-sans",
+        "utility-serif",
+    }
 
     old_tokens = load_old_tokens(old_tokens_path)
     new_tokens = load_new_tokens(new_token_paths)
@@ -146,6 +159,11 @@ def main() -> int:
         if name.startswith(ignore_prefix):
             continue
         if name in ignore_vars:
+            continue
+        if component in text_components and (
+            name.startswith("--cdr-type-scale-")
+            or name.startswith("--cdr-line-height-ratio-")
+        ):
             continue
         new_val = new_tokens.get(name)
         if new_val is None:

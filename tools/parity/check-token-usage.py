@@ -39,7 +39,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--allow-prefix",
         action="append",
-        default=["cdr-button-"],
+        default=[
+            "cdr-button-",
+            "cdr-link-",
+            "cdr-text-",
+            "cdr-body-",
+            "cdr-eyebrow-",
+            "cdr-heading-",
+            "cdr-subheading-sans-",
+            "cdr-utility-",
+        ],
         help=(
             "Token name prefix to ignore (repeatable). "
             "Use for component override custom props."
@@ -49,11 +58,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def collect_defined(tokens_root: Path) -> set[str]:
-    files = [
-        tokens_root / "tokens.css",
-        tokens_root / "base.css",
-        tokens_root / "breakpoints.css",
-    ]
+    files = [tokens_root / "core.css"]
     components_dir = tokens_root / "components"
     if components_dir.exists():
         files.extend(components_dir.glob("*.css"))
@@ -85,7 +90,7 @@ def is_allowed(name: str, allow: set[str], allow_prefixes: list[str]) -> bool:
 
 def main() -> int:
     args = parse_args()
-    cedar_ui_root = args.cedar_ui_root
+    cedar_ui_root = args.c1_ui_root
     tokens_root = args.tokens_root
 
     defined = collect_defined(tokens_root)

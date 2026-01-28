@@ -3,23 +3,23 @@
     "text": {
       "link": {
         "rest": {
-          "$value": "{color.palette.alpine-lake-blue-800}",
+          "$value": "{options.color.alpine-lake-blue-800}",
           "$type": "color"
         },
         "hover": {
-          "$value": "{color.palette.alpine-lake-blue-800}",
+          "$value": "{options.color.alpine-lake-blue-800}",
           "$type": "color"
         },
         "active": {
-          "$value": "{color.palette.alpine-lake-blue-1000}",
+          "$value": "{options.color.alpine-lake-blue-1000}",
           "$type": "color"
         },
         "disabled": {
-          "$value": "{color.palette.warm-grey-500}",
+          "$value": "{options.color.warm-grey-500}",
           "$type": "color"
         },
         "visited": {
-          "$value": "{color.palette.alpine-lake-blue-800}",
+          "$value": "{options.color.alpine-lake-blue-800}",
           "$type": "color"
         }
       }
@@ -27,23 +27,23 @@
     "border": {
       "link": {
         "rest": {
-          "$value": "{color.palette.alpine-lake-blue-800}",
+          "$value": "{options.color.alpine-lake-blue-800}",
           "$type": "color"
         },
         "hover": {
-          "$value": "{color.palette.alpine-lake-blue-800}",
+          "$value": "{options.color.alpine-lake-blue-800}",
           "$type": "color"
         },
         "active": {
-          "$value": "{color.palette.alpine-lake-blue-1000}",
+          "$value": "{options.color.alpine-lake-blue-1000}",
           "$type": "color"
         },
         "disabled": {
-          "$value": "{color.palette.warm-grey-400}",
+          "$value": "{options.color.warm-grey-400}",
           "$type": "color"
         },
         "visited": {
-          "$value": "{color.palette.alpine-lake-blue-800}",
+          "$value": "{options.color.alpine-lake-blue-800}",
           "$type": "color"
         }
       }

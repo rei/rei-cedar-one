@@ -1,5 +1,9 @@
 # @rei/c1-lint Changelog
 
+## 0.1.1-alpha.0 - 2026-01-28
+
+- Added text/preset lint rules (base, modifiers, duplicates, scale conflicts).
+
 ## 0.1.0-alpha.0 - 2026-01-27
 
 - Introduced @rei/c1-lint with button, container, and link rules.

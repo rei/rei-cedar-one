@@ -1,0 +1,12 @@
+/**
+ * Source-only custom media definitions for c1-ui.
+ * Do not import from consumers; the UI build resolves these.
+ */
+
+@custom-media --cdr-xs (max-width: 767px);
+@custom-media --cdr-sm (min-width: 768px) and (max-width: 991px);
+@custom-media --cdr-md (min-width: 992px) and (max-width: 1231px);
+@custom-media --cdr-lg (min-width: 1232px);
+@custom-media --cdr-sm-up (min-width: 768px);
+@custom-media --cdr-md-up (min-width: 992px);
+@custom-media --cdr-lg-up (min-width: 1232px);

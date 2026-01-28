@@ -1,0 +1,44 @@
+.cdr-subheading-sans {
+  color: var(--cdr-text-color, var(--cdr-color-text-primary));
+  margin: 0;
+  font-family: var(
+    --cdr-font-family-sans,
+    Graphik,
+    "Graphik fallback",
+    "Helvetica Neue",
+    sans-serif
+  );
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-size: 2.4rem;
+  line-height: 3rem;
+  font-size: var(
+    --cdr-subheading-sans-font-size,
+    var(--cdr-type-scale-1)
+  );
+  line-height: var(
+    --cdr-subheading-sans-line-height,
+    var(--cdr-line-height-ratio-subheading-sans-1)
+  );
+}
+
+.cdr-subheading-sans--scale-minus-1 {
+  --cdr-subheading-sans-font-size: var(--cdr-type-scale-minus-1);
+  --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans-minus-1);
+}
+
+.cdr-subheading-sans--scale-0 {
+  --cdr-subheading-sans-font-size: var(--cdr-type-scale-0);
+  --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans-0);
+}
+
+.cdr-subheading-sans--scale-1 {
+  --cdr-subheading-sans-font-size: var(--cdr-type-scale-1);
+  --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans-1);
+}
+
+.cdr-subheading-sans--scale-2 {
+  --cdr-subheading-sans-font-size: var(--cdr-type-scale-2);
+  --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans-2);
+}

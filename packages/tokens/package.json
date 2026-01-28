@@ -1,6 +1,6 @@
 {
   "name": "@rei/c1-tokens",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.1-alpha.0",
   "private": true,
   "description": "Cedar design tokens (DTCG) with web and React Native outputs.",
   "sideEffects": [
@@ -8,13 +8,11 @@
   ],
   "type": "module",
   "exports": {
-    "./web/base.css": "./dist/web/base.css",
-    "./web/base.json": "./dist/web/base.json",
-    "./web/breakpoints.css": "./dist/web/breakpoints.css",
+    "./web/core.css": "./dist/web/core.css",
+    "./web/categories/*": "./dist/web/categories/*",
     "./web/components/*": "./dist/web/components/*",
-    "./web/tokens.css": "./dist/web/tokens.css",
+    "./web/components.css": "./dist/web/components.css",
     "./web/tokens.json": "./dist/web/tokens.json",
-    "./react-native/base.json": "./dist/react-native/base.json",
     "./react-native/components/*": "./dist/react-native/components/*",
     "./react-native/tokens.json": "./dist/react-native/tokens.json"
   },

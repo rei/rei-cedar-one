@@ -4,7 +4,12 @@ import { register } from '@tokens-studio/sd-transforms';
 register(StyleDictionary);
 
 /** Token types that should be treated as size-like values. */
-const sizeTokenTypes = new Set(['dimension', 'fontSize', 'borderRadius']);
+const sizeTokenTypes = new Set([
+  'dimension',
+  'fontSize',
+  'borderRadius',
+  'letterSpacing',
+]);
 
 /**
  * Extracts a string value from DTCG or legacy token shapes.
@@ -12,7 +17,7 @@ const sizeTokenTypes = new Set(['dimension', 'fontSize', 'borderRadius']);
  * @returns The string value or null when not a string.
  */
 const getTokenStringValue = (token: { $value?: unknown; value?: unknown }) => {
-  const value = token.$value ?? token.value;
+  const value = token.value ?? token.$value;
   return typeof value === 'string' ? value : null;
 };
 
@@ -70,6 +75,39 @@ const isButtonToken = (token: { filePath?: string }) =>
  */
 const isBaseToken = (token: { filePath?: string }) => !isComponentToken(token);
 
+/** Extracts the top-level token path segment. */
+const getTokenHead = (token: { path?: string[] }) =>
+  Array.isArray(token.path) ? token.path[0] : undefined;
+
+/** Checks if a token is part of a text-related group. */
+const isTextTokenHead = (head?: string) =>
+  typeof head === 'string' && head.startsWith('text-');
+
+/** Category filters for optional bundles. */
+const categoryFilters = {
+  color: (token: { path?: string[] }) => getTokenHead(token) === 'color',
+  icon: (token: { path?: string[] }) => getTokenHead(token) === 'icon',
+  space: (token: { path?: string[] }) => getTokenHead(token) === 'space',
+  radius: (token: { path?: string[] }) => getTokenHead(token) === 'radius',
+  elevation: (token: { path?: string[] }) =>
+    getTokenHead(token) === 'prominence',
+  motion: (token: { path?: string[] }) => {
+    const head = getTokenHead(token);
+    return head === 'duration' || head === 'timing';
+  },
+  type: (token: { path?: string[] }) => {
+    const head = getTokenHead(token);
+    return (
+      head === 'font' ||
+      head === 'type-scale' ||
+      head === 'line-height-ratio' ||
+      isTextTokenHead(head)
+    );
+  },
+  breakpoints: (token: { path?: string[] }) =>
+    getTokenHead(token) === 'breakpoint',
+};
+
 /**
  * Transform px sizes to numbers for React Native output.
  */
@@ -91,19 +129,27 @@ StyleDictionary.registerTransform({
 StyleDictionary.registerTransform({
   name: 'size/px-to-rem-10',
   type: 'value',
+  transitive: true,
   filter: (token) =>
-    isSizeToken(token) &&
-    getTokenStringValue(token) !== null &&
-    !isRootTextSize(token) &&
-    !isBreakpointToken(token),
+    isSizeToken(token) && !isRootTextSize(token) && !isBreakpointToken(token),
   transform: (token) => {
-    const value = getTokenStringValue(token);
-    if (!value) return token.$value ?? token.value;
-    return value.replace(/(\d+(\.\d+)?)px/g, (_, num) => {
-      const rem = Number.parseFloat(num) / 10;
-      const remStr = rem.toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
-      return `${remStr}rem`;
-    });
+    const raw = token.$value ?? token.value;
+    if (typeof raw !== 'string') return raw;
+    return raw
+      .split(' ')
+      .map((part) => {
+        const value = part.trim();
+        if (!value) return value;
+        if (value === '0' || value === '0px') return '0';
+        if (value.includes('rem')) return value;
+        const parsed = Number.parseFloat(value);
+        if (Number.isNaN(parsed)) return value;
+        if (!value.includes('px')) return value;
+        const rem = parsed / 10;
+        const remStr = rem.toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
+        return `${remStr}rem`;
+      })
+      .join(' ');
   },
 });
 
@@ -171,6 +217,58 @@ StyleDictionary.registerFormat({
 });
 
 /**
+ * Outputs CSS variables for a dictionary.
+ * @param dictionary - Style Dictionary token dictionary.
+ * @returns CSS variables string.
+ */
+const formatCssVariables = (dictionary: {
+  allTokens: Array<{ name: string; value?: unknown; $value?: unknown }>;
+}) => {
+  const header = [
+    '/**',
+    ' * Do not edit directly, this file was auto-generated.',
+    ' */',
+    '',
+  ].join('\n');
+  const lines = dictionary.allTokens.map((token) => {
+    const value = token.value ?? token.$value;
+    return `  --${token.name}: ${value};`;
+  });
+
+  return `${header}:root {\n${lines.join('\n')}\n}\n`;
+};
+
+/**
+ * Outputs CSS variables with Cedar legacy alias tokens for negative scales.
+ */
+StyleDictionary.registerFormat({
+  name: 'css/variables-with-aliases',
+  format: ({ dictionary }) => {
+    const baseOutput = formatCssVariables(dictionary);
+    const tokenNames = new Set(dictionary.allTokens.map((token) => token.name));
+    const aliasLines: string[] = [];
+
+    if (tokenNames.has('cdr-type-scale-minus-1')) {
+      aliasLines.push('  --cdr-type-scale--1: var(--cdr-type-scale-minus-1);');
+    }
+    if (tokenNames.has('cdr-type-scale-minus-2')) {
+      aliasLines.push('  --cdr-type-scale--2: var(--cdr-type-scale-minus-2);');
+    }
+    if (tokenNames.has('cdr-line-height-ratio-utility-minus-1')) {
+      aliasLines.push(
+        '  --cdr-line-height-ratio-utility--1: var(--cdr-line-height-ratio-utility-minus-1);',
+      );
+    }
+
+    if (aliasLines.length === 0) {
+      return baseOutput;
+    }
+
+    return baseOutput.replace(/\n}\s*$/, `\n${aliasLines.join('\n')}\n}\n`);
+  },
+});
+
+/**
  * Filters out internal "options" tokens from outputs.
  * @param token - Token with a computed path.
  * @returns True when the token should be included in outputs.
@@ -228,9 +326,9 @@ const sd = new StyleDictionary({
       buildPath: 'dist/web/',
       files: [
         {
-          destination: 'tokens.css',
-          format: 'css/variables',
-          filter: withoutLegacyGaps,
+          destination: 'core.css',
+          format: 'css/variables-with-aliases',
+          filter: (token) => withoutLegacyGaps(token) && isBaseToken(token),
           options: {
             outputReferences: false,
           },
@@ -241,22 +339,100 @@ const sd = new StyleDictionary({
           filter: withoutLegacyGaps,
         },
         {
-          destination: 'base.css',
-          format: 'css/variables',
-          filter: (token) => withoutLegacyGaps(token) && isBaseToken(token),
+          destination: 'components.css',
+          format: 'css/variables-with-aliases',
+          filter: (token) => withoutOptions(token) && isComponentToken(token),
           options: {
             outputReferences: false,
           },
         },
         {
-          destination: 'base.json',
-          format: 'json/nested',
-          filter: (token) => withoutLegacyGaps(token) && isBaseToken(token),
+          destination: 'categories/color.css',
+          format: 'css/variables-with-aliases',
+          filter: (token) =>
+            withoutLegacyGaps(token) &&
+            isBaseToken(token) &&
+            categoryFilters.color(token),
+          options: {
+            outputReferences: false,
+          },
         },
         {
-          destination: 'breakpoints.css',
-          format: 'css/custom-media',
-          filter: (token) => withoutOptions(token) && isBreakpointToken(token),
+          destination: 'categories/type.css',
+          format: 'css/variables-with-aliases',
+          filter: (token) =>
+            withoutLegacyGaps(token) &&
+            isBaseToken(token) &&
+            categoryFilters.type(token),
+          options: {
+            outputReferences: false,
+          },
+        },
+        {
+          destination: 'categories/space.css',
+          format: 'css/variables-with-aliases',
+          filter: (token) =>
+            withoutLegacyGaps(token) &&
+            isBaseToken(token) &&
+            categoryFilters.space(token),
+          options: {
+            outputReferences: false,
+          },
+        },
+        {
+          destination: 'categories/radius.css',
+          format: 'css/variables-with-aliases',
+          filter: (token) =>
+            withoutLegacyGaps(token) &&
+            isBaseToken(token) &&
+            categoryFilters.radius(token),
+          options: {
+            outputReferences: false,
+          },
+        },
+        {
+          destination: 'categories/motion.css',
+          format: 'css/variables-with-aliases',
+          filter: (token) =>
+            withoutLegacyGaps(token) &&
+            isBaseToken(token) &&
+            categoryFilters.motion(token),
+          options: {
+            outputReferences: false,
+          },
+        },
+        {
+          destination: 'categories/elevation.css',
+          format: 'css/variables-with-aliases',
+          filter: (token) =>
+            withoutLegacyGaps(token) &&
+            isBaseToken(token) &&
+            categoryFilters.elevation(token),
+          options: {
+            outputReferences: false,
+          },
+        },
+        {
+          destination: 'categories/icon.css',
+          format: 'css/variables-with-aliases',
+          filter: (token) =>
+            withoutLegacyGaps(token) &&
+            isBaseToken(token) &&
+            categoryFilters.icon(token),
+          options: {
+            outputReferences: false,
+          },
+        },
+        {
+          destination: 'categories/breakpoints.css',
+          format: 'css/variables-with-aliases',
+          filter: (token) =>
+            withoutLegacyGaps(token) &&
+            isBaseToken(token) &&
+            categoryFilters.breakpoints(token),
+          options: {
+            outputReferences: false,
+          },
         },
       ],
     },
@@ -291,11 +467,6 @@ const sd = new StyleDictionary({
           destination: 'tokens.json',
           format: 'json/nested',
           filter: withoutOptions,
-        },
-        {
-          destination: 'base.json',
-          format: 'json/nested',
-          filter: (token) => withoutOptions(token) && isBaseToken(token),
         },
         {
           destination: 'components/button.json',

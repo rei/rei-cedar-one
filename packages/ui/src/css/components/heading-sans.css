@@ -1,0 +1,36 @@
+.cdr-heading-sans {
+  color: var(--cdr-text-color, var(--cdr-color-text-primary));
+  margin: 0;
+  font-family: var(
+    --cdr-font-family-sans,
+    Graphik,
+    "Graphik fallback",
+    "Helvetica Neue",
+    sans-serif
+  );
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-size: 2.4rem;
+  line-height: 3rem;
+  font-size: var(--cdr-heading-sans-font-size, var(--cdr-type-scale-3));
+  line-height: var(
+    --cdr-heading-line-height,
+    var(--cdr-line-height-ratio-heading-3)
+  );
+}
+
+.cdr-heading-sans--scale-1 {
+  --cdr-heading-sans-font-size: var(--cdr-type-scale-1);
+  --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-1);
+}
+
+.cdr-heading-sans--scale-2 {
+  --cdr-heading-sans-font-size: var(--cdr-type-scale-2);
+  --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-2);
+}
+
+.cdr-heading-sans--scale-3 {
+  --cdr-heading-sans-font-size: var(--cdr-type-scale-3);
+  --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-3);
+}

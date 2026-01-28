@@ -1,6 +1,6 @@
 # Parity checks
 
-Lightweight checks to keep `c1-tokens` aligned with legacy `rei-cedar-tokens` output.
+Lightweight checks to keep `c1-tokens` aligned with legacy `rei-cedar-tokens` output (the legacy `cdr-tokens.css` file).
 
 ## Component token parity
 

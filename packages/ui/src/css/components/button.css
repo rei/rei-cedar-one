@@ -1,4 +1,4 @@
-@import '../../../../tokens/dist/web/breakpoints.css';
+@import '../../../../tokens/src/breakpoints.css';
 
 .cdr-button {
   font-family: var(--cdr-font-family-sans);

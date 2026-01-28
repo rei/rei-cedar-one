@@ -1,0 +1,51 @@
+.cdr-heading-serif {
+  color: var(--cdr-text-color, var(--cdr-color-text-primary));
+  margin: 0;
+  font-family: var(
+    --cdr-font-family-serif,
+    Stuart,
+    "Stuart fallback",
+    Georgia,
+    serif
+  );
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-size: 5.4rem;
+  line-height: 6.4rem;
+  font-size: var(--cdr-heading-serif-font-size, var(--cdr-type-scale-5));
+  line-height: var(
+    --cdr-heading-line-height,
+    var(--cdr-line-height-ratio-heading-5)
+  );
+  font-weight: var(--cdr-heading-serif-font-weight, 400);
+}
+
+.cdr-heading-serif--scale-1 {
+  --cdr-heading-serif-font-size: var(--cdr-type-scale-1);
+  --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-1);
+}
+
+.cdr-heading-serif--scale-2 {
+  --cdr-heading-serif-font-size: var(--cdr-type-scale-2);
+  --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-2);
+}
+
+.cdr-heading-serif--scale-3 {
+  --cdr-heading-serif-font-size: var(--cdr-type-scale-3);
+  --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-3);
+}
+
+.cdr-heading-serif--scale-4 {
+  --cdr-heading-serif-font-size: var(--cdr-type-scale-4);
+  --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-4);
+}
+
+.cdr-heading-serif--scale-5 {
+  --cdr-heading-serif-font-size: var(--cdr-type-scale-5);
+  --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-5);
+}
+
+.cdr-heading-serif--strong {
+  --cdr-heading-serif-font-weight: 600;
+}

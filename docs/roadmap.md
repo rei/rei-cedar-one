@@ -531,11 +531,23 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
 
 ## Component tasks
 
-1. Inventory + parity: audit `rei-cedar/src/components/<name>` (props/slots/states/class output), compare against `rei-cedar/dist/style`, and enforce exact token parity with `rei-cedar-tokens` (no extra tokens, no derived min/max tokens in dist). Update only `packages/tokens/tokens` sources and rebuild dist outputs; do not edit `dist` directly (see `tools/parity/README.md`).
-2. Markup contract: define the minimal HTML structure (tags/required attrs) from the Vue template and mirror it in `stories/html` and fixtures.
+1. Inventory + contract: audit `rei-cedar/src/components/<name>` (props/slots/states/class output) and define the minimal HTML structure (tags/required attrs). Mirror it in `stories/html` and fixtures.
+2. Token parity: identify required tokens and add them to `packages/tokens/tokens` (use `rei-cedar-tokens` as source of truth). Rebuild dist outputs; do not edit `dist` directly (see `tools/parity/README.md`).
 3. Behavior classification: identify a11y/interaction logic (ARIA, roving tabindex, focus trap, ESC) and decide CSS-only vs adapter.
 4. Adapter plan: prefer vanilla JS for generic web behavior; use framework adapters when schema-driven or framework-specific deps are required.
-5. CSS extraction: translate SCSS in `rei-cedar/src/components/<name>/styles` to `packages/ui/src/css/components/<name>.css`, keep values token-backed (no palette vars in component CSS), and derive media queries from token-generated custom media (import `packages/tokens/dist/web/breakpoints.css`).
+5. CSS extraction: translate SCSS in `rei-cedar/src/components/<name>/styles` to `packages/ui/src/css/components/<name>.css`, keep values token-backed (no palette vars in component CSS), and derive media queries from source custom media (import `packages/tokens/src/breakpoints.css`).
 6. Lint rules: add component rules under `packages/lint/src/rules`, split into focused rules per constraint (like button), register them in `eslint.config.mjs`, and validate in Vue fixtures via `sandbox/vue-library/eslint.config.mjs`.
 7. Stories/fixtures: add/update permutations in `stories/html` and `sandbox/vue-library/src/components`, export fixtures from `sandbox/vue-library/src/index.ts`, and consume them from a Vue Storybook.
+   - Prefer fully static markup (no loops/helpers) in stories/fixtures so ESLint can validate literal class usage.
 8. Parity checks: compare compiled CSS in `packages/ui/dist/css` with `rei-cedar/dist/style`, record accepted deltas, run `tools/parity/check-component-tokens.py` for token parity audits, and ensure all `var(--cdr-*)` references in `packages/ui/src/css` exist in `packages/tokens/dist/web` (excluding documented override custom props and `--default-outline`).
+   - Text presets intentionally diverge from legacy token naming by using `--cdr-type-scale-*` and `--cdr-line-height-ratio-*`; the component parity script skips those for text components.
+
+## Divergences
+
+Intentional deviations from legacy Cedar while keeping the same visual output where possible.
+
+- Text scale tokens: Cedar One uses `--cdr-type-scale-*` + `--cdr-line-height-ratio-*` for presets instead of legacy `--cdr-text-*-size/height` tokens. Parity checks skip these for text components.
+- Override custom props: Component CSS allows override props like `--cdr-text-color` and `--cdr-heading-line-height` that are not part of token dist; parity scripts allow these by default.
+- Token naming tweaks: Cedar One emits `--cdr-type-scale-minus-*` tokens and aliases them to `--cdr-type-scale--*` for ergonomic class usage.
+- Breakpoints output: Custom media is used as a source-only build aid (`packages/tokens/src/breakpoints.css`) and is not shipped as a standalone dist file.
+- Token bundles: Tokens are shipped as `core.css`, `components.css`, and optional category bundles rather than a single legacy `cdr-tokens.css`.

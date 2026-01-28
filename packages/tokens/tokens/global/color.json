@@ -8,11 +8,11 @@
     },
     "icon": {
       "default": {
-        "$value": "{color.palette.warm-grey-700}",
+        "$value": "{options.color.warm-grey-700}",
         "$type": "color"
       },
       "disabled": {
-        "$value": "{color.palette.warm-grey-400}",
+        "$value": "{options.color.warm-grey-400}",
         "$type": "color"
       }
     }

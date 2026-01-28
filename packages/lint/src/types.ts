@@ -48,3 +48,18 @@ export type LinkTagAnalysis = {
   classes: string[];
   info: LinkClassInfo;
 };
+
+export type TextComponentInfo = {
+  baseClass: string;
+  info: ModifierAnalysis;
+  scaleModifiers: string[];
+};
+
+export type TextTagAnalysis = {
+  tagName: string;
+  attrs: Map<string, string>;
+  classes: string[];
+  textClasses: string[];
+  duplicateTextClasses: string[];
+  components: TextComponentInfo[];
+};

@@ -1,0 +1,4 @@
+.cdr-text {
+  color: var(--cdr-text-color, var(--cdr-color-text-primary));
+  margin: 0;
+}

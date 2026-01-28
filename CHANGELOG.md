@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.5-alpha.0 - 2026-01-28
+
+- Added text preset lint rules and updated parity scripts to handle text token divergence.
+- Added subheading-sans minus-1 line-height ratio token for text presets.
+- Documented intentional divergences and renamed UI reset/font exports.
+
 ## 0.1.4-alpha.0 - 2026-01-28
 
 - Added dark theme branding and static asset support for Storybook.

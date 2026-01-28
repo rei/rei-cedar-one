@@ -3,115 +3,115 @@
     "text": {
       "button": {
         "primary": {
-          "$value": "{color.palette.warm-grey-100}",
+          "$value": "{options.color.warm-grey-100}",
           "$type": "color"
         },
         "primary-hover": {
-          "$value": "{color.palette.blue-spruce-green-1000}",
+          "$value": "{options.color.blue-spruce-green-1000}",
           "$type": "color"
         },
         "primary-active": {
-          "$value": "{color.palette.warm-grey-100}",
+          "$value": "{options.color.warm-grey-100}",
           "$type": "color"
         },
         "primary-disabled": {
-          "$value": "{color.palette.white}",
+          "$value": "{options.color.white}",
           "$type": "color"
         },
         "secondary": {
-          "$value": "{color.palette.warm-grey-900}",
+          "$value": "{options.color.warm-grey-900}",
           "$type": "color"
         },
         "secondary-hover": {
-          "$value": "{color.palette.warm-grey-900}",
+          "$value": "{options.color.warm-grey-900}",
           "$type": "color"
         },
         "secondary-active": {
-          "$value": "{color.palette.warm-grey-100}",
+          "$value": "{options.color.warm-grey-100}",
           "$type": "color"
         },
         "secondary-disabled": {
-          "$value": "{color.palette.warm-grey-500}",
+          "$value": "{options.color.warm-grey-500}",
           "$type": "color"
         },
-        "dark": { "$value": "{color.palette.warm-grey-100}", "$type": "color" },
+        "dark": { "$value": "{options.color.warm-grey-100}", "$type": "color" },
         "dark-hover": {
-          "$value": "{color.palette.warm-grey-900}",
+          "$value": "{options.color.warm-grey-900}",
           "$type": "color"
         },
         "dark-active": {
-          "$value": "{color.palette.warm-grey-100}",
+          "$value": "{options.color.warm-grey-100}",
           "$type": "color"
         },
         "dark-disabled": {
-          "$value": "{color.palette.white}",
+          "$value": "{options.color.white}",
           "$type": "color"
         },
-        "sale": { "$value": "{color.palette.white}", "$type": "color" },
+        "sale": { "$value": "{options.color.white}", "$type": "color" },
         "sale-hover": {
-          "$value": "{color.palette.sale-red-800}",
+          "$value": "{options.color.sale-red-800}",
           "$type": "color"
         },
-        "sale-active": { "$value": "{color.palette.white}", "$type": "color" },
-        "sale-disabled": { "$value": "{color.palette.white}", "$type": "color" }
+        "sale-active": { "$value": "{options.color.white}", "$type": "color" },
+        "sale-disabled": { "$value": "{options.color.white}", "$type": "color" }
       }
     },
     "background": {
       "button": {
         "primary-rest": {
-          "$value": "{color.palette.blue-spruce-green-1000}",
+          "$value": "{options.color.blue-spruce-green-1000}",
           "$type": "color"
         },
         "primary-hover": {
-          "$value": "{color.palette.warm-grey-200}",
+          "$value": "{options.color.warm-grey-200}",
           "$type": "color"
         },
         "primary-active": {
-          "$value": "{color.palette.blue-spruce-green-1000}",
+          "$value": "{options.color.blue-spruce-green-1000}",
           "$type": "color"
         },
         "secondary-rest": {
-          "$value": "{color.palette.warm-grey-100}",
+          "$value": "{options.color.warm-grey-100}",
           "$type": "color"
         },
         "secondary-hover": {
-          "$value": "{color.palette.warm-grey-200}",
+          "$value": "{options.color.warm-grey-200}",
           "$type": "color"
         },
         "secondary-active": {
-          "$value": "{color.palette.warm-grey-700}",
+          "$value": "{options.color.warm-grey-700}",
           "$type": "color"
         },
         "secondary-disabled": {
-          "$value": "{color.palette.warm-grey-100}",
+          "$value": "{options.color.warm-grey-100}",
           "$type": "color"
         },
         "dark-rest": {
-          "$value": "{color.palette.warm-grey-900}",
+          "$value": "{options.color.warm-grey-900}",
           "$type": "color"
         },
         "dark-hover": {
-          "$value": "{color.palette.warm-grey-300}",
+          "$value": "{options.color.warm-grey-300}",
           "$type": "color"
         },
         "dark-active": {
-          "$value": "{color.palette.warm-grey-900}",
+          "$value": "{options.color.warm-grey-900}",
           "$type": "color"
         },
         "sale-rest": {
-          "$value": "{color.palette.sale-red-800}",
+          "$value": "{options.color.sale-red-800}",
           "$type": "color"
         },
         "sale-hover": {
-          "$value": "{color.palette.warm-grey-200}",
+          "$value": "{options.color.warm-grey-200}",
           "$type": "color"
         },
         "sale-active": {
-          "$value": "{color.palette.sale-red-800}",
+          "$value": "{options.color.sale-red-800}",
           "$type": "color"
         },
         "default-disabled": {
-          "$value": "{color.palette.warm-grey-400}",
+          "$value": "{options.color.warm-grey-400}",
           "$type": "color"
         }
       }
@@ -120,78 +120,78 @@
       "button": {
         "primary": {
           "rest": {
-            "$value": "{color.palette.blue-spruce-green-1000}",
+            "$value": "{options.color.blue-spruce-green-1000}",
             "$type": "color"
           },
           "hover": {
-            "$value": "{color.palette.blue-spruce-green-1000}",
+            "$value": "{options.color.blue-spruce-green-1000}",
             "$type": "color"
           },
           "active": {
-            "$value": "{color.palette.blue-spruce-green-1000}",
+            "$value": "{options.color.blue-spruce-green-1000}",
             "$type": "color"
           },
           "active-inset": {
-            "$value": "{color.palette.warm-grey-200}",
+            "$value": "{options.color.warm-grey-200}",
             "$type": "color"
           }
         },
         "secondary": {
           "rest": {
-            "$value": "{color.palette.warm-grey-700}",
+            "$value": "{options.color.warm-grey-700}",
             "$type": "color"
           },
           "hover": {
-            "$value": "{color.palette.warm-grey-900}",
+            "$value": "{options.color.warm-grey-900}",
             "$type": "color"
           },
           "active": {
-            "$value": "{color.palette.warm-grey-700}",
+            "$value": "{options.color.warm-grey-700}",
             "$type": "color"
           },
           "active-inset": {
-            "$value": "{color.palette.warm-grey-200}",
+            "$value": "{options.color.warm-grey-200}",
             "$type": "color"
           }
         },
         "dark": {
           "rest": {
-            "$value": "{color.palette.warm-grey-900}",
+            "$value": "{options.color.warm-grey-900}",
             "$type": "color"
           },
           "hover": {
-            "$value": "{color.palette.warm-grey-900}",
+            "$value": "{options.color.warm-grey-900}",
             "$type": "color"
           },
           "active": {
-            "$value": "{color.palette.warm-grey-900}",
+            "$value": "{options.color.warm-grey-900}",
             "$type": "color"
           },
           "active-inset": {
-            "$value": "{color.palette.warm-grey-300}",
+            "$value": "{options.color.warm-grey-300}",
             "$type": "color"
           }
         },
         "sale": {
           "rest": {
-            "$value": "{color.palette.sale-red-800}",
+            "$value": "{options.color.sale-red-800}",
             "$type": "color"
           },
           "hover": {
-            "$value": "{color.palette.sale-red-800}",
+            "$value": "{options.color.sale-red-800}",
             "$type": "color"
           },
           "active": {
-            "$value": "{color.palette.sale-red-800}",
+            "$value": "{options.color.sale-red-800}",
             "$type": "color"
           },
           "active-inset": {
-            "$value": "{color.palette.warm-grey-200}",
+            "$value": "{options.color.warm-grey-200}",
             "$type": "color"
           }
         },
         "default-disabled": {
-          "$value": "{color.palette.warm-grey-400}",
+          "$value": "{options.color.warm-grey-400}",
           "$type": "color"
         }
       }

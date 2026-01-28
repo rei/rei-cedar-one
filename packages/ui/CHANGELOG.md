@@ -1,5 +1,9 @@
 # @rei/c1-ui Changelog
 
+## 0.1.1-alpha.0 - 2026-01-28
+
+- Renamed UI font/reset outputs to `fonts.css` and `reset.css`.
+
 ## 0.1.0-alpha.0 - 2026-01-27
 
 - Shipped CSS-first styles for button, container, and link components.

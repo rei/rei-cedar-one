@@ -1,0 +1,37 @@
+.cdr-body {
+  color: var(--cdr-text-color, var(--cdr-color-text-primary));
+  margin: 0;
+  font-family: var(
+    --cdr-font-family-sans,
+    Graphik,
+    "Graphik fallback",
+    "Helvetica Neue",
+    sans-serif
+  );
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 1.8rem;
+  line-height: 3rem;
+  font-size: var(--cdr-body-font-size, var(--cdr-type-scale-0));
+  line-height: var(
+    --cdr-body-line-height,
+    var(--cdr-line-height-ratio-body-0)
+  );
+  font-weight: var(--cdr-body-font-weight, 400);
+  max-width: var(--cdr-body-max-width, 75ch);
+}
+
+.cdr-body--scale-0 {
+  --cdr-body-font-size: var(--cdr-type-scale-0);
+  --cdr-body-line-height: var(--cdr-line-height-ratio-body-0);
+}
+
+.cdr-body--scale-1 {
+  --cdr-body-font-size: var(--cdr-type-scale-1);
+  --cdr-body-line-height: var(--cdr-line-height-ratio-body-1);
+}
+
+.cdr-body--strong {
+  --cdr-body-font-weight: 600;
+}
