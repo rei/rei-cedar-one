@@ -1,6 +1,8 @@
 {
   "radius": {
+    "sharp": { "$value": "0px", "$type": "dimension" },
     "soft": { "$value": "2px", "$type": "dimension" },
-    "softer": { "$value": "4px", "$type": "dimension" }
+    "softer": { "$value": "4px", "$type": "dimension" },
+    "round": { "$value": "9999px", "$type": "dimension" }
   }
 }

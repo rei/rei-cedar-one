@@ -49,6 +49,15 @@ export type LinkTagAnalysis = {
   info: LinkClassInfo;
 };
 
+export type ImageClassInfo = ModifierAnalysis;
+
+export type ImageTagAnalysis = {
+  tagName: string;
+  attrs: Map<string, string>;
+  classes: string[];
+  info: ImageClassInfo;
+};
+
 export type TextComponentInfo = {
   baseClass: string;
   info: ModifierAnalysis;

@@ -1,5 +1,12 @@
 # Cedar One Changelog
 
+## 0.1.6-alpha.0 - 2026-01-29
+
+- Added CSS-first image utilities, stories, and fixtures for Cedar One.
+- Added image ESLint rules and updated parity tooling to allow image override props.
+- Added image radius token support and refreshed image placeholders.
+- Marked link + image as complete in the roadmap matrix and documented image utility divergence.
+
 ## 0.1.5-alpha.0 - 2026-01-28
 
 - Added text preset lint rules and updated parity scripts to handle text token divergence.

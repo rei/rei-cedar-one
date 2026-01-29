@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import CedarButtonFixture from '../components/CedarButtonFixture.vue';
 import CedarContainerFixture from '../components/CedarContainerFixture.vue';
+import CedarImageFixture from '../components/CedarImageFixture.vue';
 import CedarLinkFixture from '../components/CedarLinkFixture.vue';
 import CedarTextFixture from '../components/CedarTextFixture.vue';
 
@@ -23,6 +24,13 @@ export const Container: Story = {
   render: () => ({
     components: { CedarContainerFixture },
     template: '<CedarContainerFixture />',
+  }),
+};
+
+export const Image: Story = {
+  render: () => ({
+    components: { CedarImageFixture },
+    template: '<CedarImageFixture />',
   }),
 };
 

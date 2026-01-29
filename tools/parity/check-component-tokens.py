@@ -131,6 +131,10 @@ def main() -> int:
     vars_used = extract_vars_from_component(component_css.read_text())
     ignore_prefix = f"--cdr-{component}-"
     ignore_vars = {
+        "--cdr-img-aspect-ratio",
+        "--cdr-img-border-radius",
+        "--cdr-img-object-fit",
+        "--cdr-img-object-position",
         "--cdr-text-color",
         "--cdr-heading-line-height",
         "--default-outline",

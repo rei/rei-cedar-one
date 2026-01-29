@@ -1,5 +1,9 @@
 # @rei/c1-ui Changelog
 
+## 0.1.2-alpha.0 - 2026-01-29
+
+- Added CSS-first image utilities and modifiers for Cedar One.
+
 ## 0.1.1-alpha.0 - 2026-01-28
 
 - Renamed UI font/reset outputs to `fonts.css` and `reset.css`.

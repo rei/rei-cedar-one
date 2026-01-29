@@ -199,7 +199,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
         No: native <code>&lt;img&gt;</code>/<code>&lt;figure&gt;</code>.
       </td>
       <td>Image styling, aspect ratios, and captions.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>input</td>
@@ -266,7 +266,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
         No: native <code>&lt;a&gt;</code>.
       </td>
       <td>Styled anchors with states.</td>
-      <td>🟡</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>list</td>
@@ -536,6 +536,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
 3. Behavior classification: identify a11y/interaction logic (ARIA, roving tabindex, focus trap, ESC) and decide CSS-only vs adapter.
 4. Adapter plan: prefer vanilla JS for generic web behavior; use framework adapters when schema-driven or framework-specific deps are required.
 5. CSS extraction: translate SCSS in `rei-cedar/src/components/<name>/styles` to `packages/ui/src/css/components/<name>.css`, keep values token-backed (no palette vars in component CSS), and derive media queries from source custom media (import `packages/tokens/src/breakpoints.css`).
+   - Prefer utility modifier classes over inline style overrides when exposing component APIs.
 6. Lint rules: add component rules under `packages/lint/src/rules`, split into focused rules per constraint (like button), register them in `eslint.config.mjs`, and validate in Vue fixtures via `sandbox/vue-library/eslint.config.mjs`.
 7. Stories/fixtures: add/update permutations in `stories/html` and `sandbox/vue-library/src/components`, export fixtures from `sandbox/vue-library/src/index.ts`, and consume them from a Vue Storybook.
    - Prefer fully static markup (no loops/helpers) in stories/fixtures so ESLint can validate literal class usage.
@@ -551,3 +552,4 @@ Intentional deviations from legacy Cedar while keeping the same visual output wh
 - Token naming tweaks: Cedar One emits `--cdr-type-scale-minus-*` tokens and aliases them to `--cdr-type-scale--*` for ergonomic class usage.
 - Breakpoints output: Custom media is used as a source-only build aid (`packages/tokens/src/breakpoints.css`) and is not shipped as a standalone dist file.
 - Token bundles: Tokens are shipped as `core.css`, `components.css`, and optional category bundles rather than a single legacy `cdr-tokens.css`.
+- Image utilities: Cedar One uses a global `cdr-image` class with modifier utilities and omits legacy `-o-object-*` prefixes from the compiled CSS.

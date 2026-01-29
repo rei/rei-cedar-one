@@ -1,0 +1,92 @@
+.cdr-image {
+  max-inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: var(--cdr-img-aspect-ratio);
+  object-fit: var(--cdr-img-object-fit);
+  object-position: var(--cdr-img-object-position);
+  border-radius: var(--cdr-img-border-radius);
+}
+
+.cdr-image--ratio-1-1 {
+  --cdr-img-aspect-ratio: 1 / 1;
+}
+
+.cdr-image--ratio-1-2 {
+  --cdr-img-aspect-ratio: 1 / 2;
+}
+
+.cdr-image--ratio-3-4 {
+  --cdr-img-aspect-ratio: 3 / 4;
+}
+
+.cdr-image--ratio-9-16 {
+  --cdr-img-aspect-ratio: 9 / 16;
+}
+
+.cdr-image--ratio-2-1 {
+  --cdr-img-aspect-ratio: 2 / 1;
+}
+
+.cdr-image--ratio-4-3 {
+  --cdr-img-aspect-ratio: 4 / 3;
+}
+
+.cdr-image--ratio-16-9 {
+  --cdr-img-aspect-ratio: 16 / 9;
+}
+
+.cdr-image--fit-cover {
+  --cdr-img-object-fit: cover;
+}
+
+.cdr-image--fit-contain {
+  --cdr-img-object-fit: contain;
+}
+
+.cdr-image--fit-none {
+  --cdr-img-object-fit: none;
+}
+
+.cdr-image--fit-fill {
+  --cdr-img-object-fit: fill;
+}
+
+.cdr-image--fit-scale-down {
+  --cdr-img-object-fit: scale-down;
+}
+
+.cdr-image--position-center {
+  --cdr-img-object-position: center;
+}
+
+.cdr-image--position-top {
+  --cdr-img-object-position: top;
+}
+
+.cdr-image--position-right {
+  --cdr-img-object-position: right;
+}
+
+.cdr-image--position-bottom {
+  --cdr-img-object-position: bottom;
+}
+
+.cdr-image--position-left {
+  --cdr-img-object-position: left;
+}
+
+.cdr-image--radius-soft {
+  --cdr-img-border-radius: var(--cdr-radius-soft);
+}
+
+.cdr-image--radius-sharp {
+  --cdr-img-border-radius: var(--cdr-radius-sharp);
+}
+
+.cdr-image--radius-softer {
+  --cdr-img-border-radius: var(--cdr-radius-softer);
+}
+
+.cdr-image--radius-round {
+  --cdr-img-border-radius: var(--cdr-radius-round);
+}

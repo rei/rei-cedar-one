@@ -19,6 +19,7 @@ import '../packages/ui/dist/css/components/heading-serif.css';
 import '../packages/ui/dist/css/components/subheading-sans.css';
 import '../packages/ui/dist/css/components/utility-sans.css';
 import '../packages/ui/dist/css/components/utility-serif.css';
+import '../packages/ui/dist/css/components/image.css';
 
 export const parameters = {
   controls: {

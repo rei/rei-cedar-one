@@ -41,6 +41,7 @@ def parse_args() -> argparse.Namespace:
         action="append",
         default=[
             "cdr-button-",
+            "cdr-img-",
             "cdr-link-",
             "cdr-text-",
             "cdr-body-",

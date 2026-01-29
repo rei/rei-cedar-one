@@ -1,5 +1,9 @@
 # @rei/c1-tokens Changelog
 
+## 0.1.2-alpha.0 - 2026-01-29
+
+- Added sharp radius token to support image utility variants.
+
 ## 0.1.1-alpha.0 - 2026-01-28
 
 - Added subheading-sans minus-1 line-height ratio token to support scale -1 presets.

@@ -1,5 +1,9 @@
 # @rei/c1-vue-library Changelog
 
+## 0.1.4-alpha.0 - 2026-01-29
+
+- Added image fixtures and story wiring for Cedar One previews.
+
 ## 0.1.3-alpha.0 - 2026-01-28
 
 - Added Vue Storybook branding, static assets, and autodocs defaults.
