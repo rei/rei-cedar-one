@@ -13,6 +13,11 @@ Outputs:
 - Category bundles: `@rei/c1-tokens/css/categories/*.css`
 - Component bundles: `@rei/c1-tokens/css/components/button.css`, `@rei/c1-tokens/json/components/button.json`, `@rei/c1-tokens/json/components/button.native.json`
 
+Notes:
+
+- The native JSON output only converts single size values to numbers. Composite spacing tokens (for example, `"6px 12px"`) remain strings for now while the native consumption shape is defined.
+- TODO: Consider converting typography token fields (`size`, `height`, `spacing`) from px strings to numbers in the native JSON output once the native spec is finalized (this applies to text-body, headings, utilities, and eyebrow presets).
+
 Token organization:
 
 - Base tokens live in `tokens/global` and `tokens/web` and should contain shared primitives (space, radius, motion, font, global colors).

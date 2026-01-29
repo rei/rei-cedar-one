@@ -5,44 +5,32 @@
 
 # Cedar One · ![Alpha](https://img.shields.io/badge/status-alpha-orange)
 
-Cedar One is a single, framework-agnostic foundation for the
-[Cedar design system](https://cedar.rei.com/). It preserves Cedar’s
-token-driven core while decoupling styling and behavior from any
-single web framework, reducing shipped code and enabling consistent
-delivery across platforms through explicit adapters.
+Cedar One is [Cedar](http://cedar.rei.com), distilled. A token-driven foundation that delivers consistent design across platforms while shipping less code, avoiding framework lock-in, and scaling through explicit adapters.
 
 ## Why Cedar One?
 
-### One system, many platforms
+### One system, everywhere
 
-A single architectural core serves both web and native platforms.
-Shared tokens define design intent, while platform-specific adapters
-handle differences without fragmenting the system or its outputs.
+A single architectural core drives every surface. Shared tokens define design intent, while framework-specific adapters translate that intent across web and native without fragmenting the system.
 
-### Framework-agnostic, performance-focused
+### Ship less code
 
-The web layer targets native HTML and static CSS rather than framework
-runtimes. By resolving styling and validation at build time, Cedar One
-ships less code, produces smaller bundles, and delivers faster, more
-predictable performance.
+Web outputs resolve to native HTML and static CSS rather than framework runtimes. Cedar styles work across Vue, React, or plain markup with no framework lock-in and minimal runtime overhead.
 
-### Intentional behavior and developer experience
+### Catch issues before runtime
 
-Behavior is introduced only where platforms require it, through
-explicit adapters that preserve accessibility and interaction
-standards. Clear contracts, predictable patterns, and fast feedback
-loops make correct usage the default.
+Cedar One shifts complexity to build time. Component contracts are enforced through tooling instead of client-side logic, resulting in smaller bundles, predictable behavior, and fast feedback during development.
 
 ## Docs
 
-- [Architecture and guiding principles](docs/architecture.md)
-- [Conversion roadmap](docs/roadmap.md)
-- [Usage and examples](docs/usage.md)
+- [Architecture](docs/architecture.md)
+- [Roadmap](docs/roadmap.md)
+- [Usage](docs/usage.md)
 
 ## Packages
 
-| Package          | Description                                                               |
-| ---------------- | ------------------------------------------------------------------------- |
-| `@rei/c1-tokens` | Design tokens (source + build outputs) for web and native.                |
-| `@rei/c1-ui`     | Framework-agnostic component CSS and behavior adapters built from tokens. |
-| `@rei/c1-lint`   | ESLint plugin enforcing Cedar One component contracts.                    |
+| Package          | Description                                           |
+| ---------------- | ----------------------------------------------------- |
+| `@rei/c1-tokens` | Design tokens and platform outputs.                   |
+| `@rei/c1-ui`     | Framework-agnostic CSS and behavior adapters.         |
+| `@rei/c1-lint`   | ESLint rules enforcing Cedar One component contracts. |
