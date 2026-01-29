@@ -1,5 +1,5 @@
-import '../../../packages/tokens/dist/web/core.css';
-import '../../../packages/tokens/dist/web/components.css';
+import '../../../packages/tokens/dist/css/core.css';
+import '../../../packages/tokens/dist/css/components.css';
 
 import '../../../packages/ui/dist/css/fonts.css';
 import '../../../packages/ui/dist/css/reset.css';

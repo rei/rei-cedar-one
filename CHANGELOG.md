@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.7-alpha.0 - 2026-01-29
+
+- Reorganized token build outputs into `dist/css` and `dist/json` with native JSON suffixes.
+- Updated Storybook previews and parity tooling to target the new token layout.
+- Removed auto-generated headers from CSS token outputs.
+
 ## 0.1.6-alpha.0 - 2026-01-29
 
 - Added CSS-first image utilities, stories, and fixtures for Cedar One.

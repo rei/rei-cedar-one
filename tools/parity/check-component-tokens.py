@@ -111,11 +111,11 @@ def main() -> int:
         / "packages"
         / "tokens"
         / "dist"
-        / "web"
+        / "css"
         / "components"
         / f"{component}.css"
     )
-    new_token_paths = [root / "packages" / "tokens" / "dist" / "web" / "core.css"]
+    new_token_paths = [root / "packages" / "tokens" / "dist" / "css" / "core.css"]
     if component_tokens_path.exists():
         new_token_paths.append(component_tokens_path)
 

@@ -1,5 +1,11 @@
 # @rei/c1-tokens Changelog
 
+## 0.1.3-alpha.0 - 2026-01-29
+
+- Reorganized outputs into `dist/css` and `dist/json`, with native JSON suffixes.
+- Dropped legacy output headers from generated CSS files.
+- Updated exports and documentation for the new token layout.
+
 ## 0.1.2-alpha.0 - 2026-01-29
 
 - Added sharp radius token to support image utility variants.

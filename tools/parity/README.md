@@ -18,7 +18,7 @@ The script exits non-zero if it finds missing tokens or mismatched values.
 ## Cedar UI token usage
 
 Ensure `packages/ui/src/css` only references tokens that exist in
-`packages/tokens/dist/web`. This allows override custom props per
+`packages/tokens/dist/css`. This allows override custom props per
 component via an allowlist of prefixes.
 
 ```sh

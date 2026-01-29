@@ -4,14 +4,14 @@ Design tokens source of truth for Cedar. Tokens are authored in DTCG format and 
 
 Build:
 
-- `pnpm build` (from this package) generates `dist/web` and `dist/react-native`.
+- `pnpm build` (from this package) generates `dist/css` and `dist/json`.
 
 Outputs:
 
-- Full bundles: `@rei/c1-tokens/web/tokens.json`, `@rei/c1-tokens/react-native/tokens.json`
-- Core bundle: `@rei/c1-tokens/web/core.css`
-- Category bundles: `@rei/c1-tokens/web/categories/*.css`
-- Component bundles: `@rei/c1-tokens/web/components/button.css`, `@rei/c1-tokens/web/components/button.json`, `@rei/c1-tokens/react-native/components/button.json`
+- Full bundles: `@rei/c1-tokens/json/tokens.json`, `@rei/c1-tokens/json/tokens.native.json`
+- Core bundle: `@rei/c1-tokens/css/core.css`
+- Category bundles: `@rei/c1-tokens/css/categories/*.css`
+- Component bundles: `@rei/c1-tokens/css/components/button.css`, `@rei/c1-tokens/json/components/button.json`, `@rei/c1-tokens/json/components/button.native.json`
 
 Token organization:
 
@@ -22,14 +22,14 @@ Token organization:
 Usage (web):
 
 ```css
-@import '@rei/c1-tokens/web/core.css';
-@import '@rei/c1-tokens/web/components/button.css';
+@import '@rei/c1-tokens/css/core.css';
+@import '@rei/c1-tokens/css/components/button.css';
 ```
 
 Usage (React Native):
 
 ```ts
-import buttonTokens from '@rei/c1-tokens/react-native/components/button.json';
+import buttonTokens from '@rei/c1-tokens/json/components/button.native.json';
 ```
 
 Status: experimental.

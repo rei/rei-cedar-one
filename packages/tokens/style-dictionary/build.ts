@@ -159,12 +159,6 @@ StyleDictionary.registerTransform({
 StyleDictionary.registerFormat({
   name: 'css/custom-media',
   format: ({ dictionary }) => {
-    const header = [
-      '/**',
-      ' * Do not edit directly, this file was auto-generated.',
-      ' */',
-      '',
-    ].join('\n');
     const byPath = new Map(
       dictionary.allTokens.map((token) => [token.path.join('.'), token]),
     );
@@ -212,7 +206,7 @@ StyleDictionary.registerFormat({
     if (mdMin) lines.push(`@custom-media --cdr-md-up (min-width: ${mdMin});`);
     if (lgMin) lines.push(`@custom-media --cdr-lg-up (min-width: ${lgMin});`);
 
-    return `${header}${lines.join('\n')}\n`;
+    return `${lines.join('\n')}\n`;
   },
 });
 
@@ -224,18 +218,12 @@ StyleDictionary.registerFormat({
 const formatCssVariables = (dictionary: {
   allTokens: Array<{ name: string; value?: unknown; $value?: unknown }>;
 }) => {
-  const header = [
-    '/**',
-    ' * Do not edit directly, this file was auto-generated.',
-    ' */',
-    '',
-  ].join('\n');
   const lines = dictionary.allTokens.map((token) => {
     const value = token.value ?? token.$value;
     return `  --${token.name}: ${value};`;
   });
 
-  return `${header}:root {\n${lines.join('\n')}\n}\n`;
+  return `:root {\n${lines.join('\n')}\n}\n`;
 };
 
 /**
@@ -312,9 +300,10 @@ const webTransforms = [
 
 /**
  * Builds Cedar token outputs.
- * - web: full and base bundles with concrete values
- * - webComponents: component bundles referencing base variables
- * - rn: JSON outputs with resolved values
+ * - web: CSS bundles with concrete values
+ * - webComponents: component CSS bundles referencing base variables
+ * - json: JSON bundles aligned to web transforms
+ * - jsonNative: JSON outputs with resolved values
  */
 const sd = new StyleDictionary({
   source: ['tokens/**/*.json'],
@@ -323,7 +312,7 @@ const sd = new StyleDictionary({
     web: {
       transforms: webTransforms,
       prefix: 'cdr',
-      buildPath: 'dist/web/',
+      buildPath: 'dist/css/',
       files: [
         {
           destination: 'core.css',
@@ -332,11 +321,6 @@ const sd = new StyleDictionary({
           options: {
             outputReferences: false,
           },
-        },
-        {
-          destination: 'tokens.json',
-          format: 'json/nested',
-          filter: withoutLegacyGaps,
         },
         {
           destination: 'components.css',
@@ -439,7 +423,7 @@ const sd = new StyleDictionary({
     webComponents: {
       transforms: webTransforms,
       prefix: 'cdr',
-      buildPath: 'dist/web/',
+      buildPath: 'dist/css/',
       log: {
         warnings: 'disabled',
       },
@@ -452,6 +436,18 @@ const sd = new StyleDictionary({
             outputReferences: false,
           },
         },
+      ],
+    },
+    json: {
+      transforms: webTransforms,
+      prefix: 'cdr',
+      buildPath: 'dist/json/',
+      files: [
+        {
+          destination: 'tokens.json',
+          format: 'json/nested',
+          filter: withoutLegacyGaps,
+        },
         {
           destination: 'components/button.json',
           format: 'json/nested',
@@ -459,17 +455,17 @@ const sd = new StyleDictionary({
         },
       ],
     },
-    rn: {
+    jsonNative: {
       transforms: ['size/px-to-number'],
-      buildPath: 'dist/react-native/',
+      buildPath: 'dist/json/',
       files: [
         {
-          destination: 'tokens.json',
+          destination: 'tokens.native.json',
           format: 'json/nested',
           filter: withoutOptions,
         },
         {
-          destination: 'components/button.json',
+          destination: 'components/button.native.json',
           format: 'json/nested',
           filter: (token) => withoutOptions(token) && isButtonToken(token),
         },
@@ -485,7 +481,8 @@ const sd = new StyleDictionary({
 const run = async () => {
   await sd.buildPlatform('web');
   await sd.buildPlatform('webComponents');
-  await sd.buildPlatform('rn');
+  await sd.buildPlatform('json');
+  await sd.buildPlatform('jsonNative');
 };
 
 run();

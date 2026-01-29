@@ -27,8 +27,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--tokens-root",
         type=Path,
-        default=Path("packages/tokens/dist/web"),
-        help="Path to c1-tokens dist web directory.",
+        default=Path("packages/tokens/dist/css"),
+        help="Path to c1-tokens dist css directory.",
     )
     parser.add_argument(
         "--allow",
