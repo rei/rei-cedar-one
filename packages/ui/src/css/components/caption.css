@@ -1,0 +1,45 @@
+.cdr-caption {
+  max-width: 530px;
+  line-height: 1;
+  padding: var(--cdr-space-half-x) 0;
+}
+
+.cdr-caption__summary {
+  font-family: var(--cdr-font-family-sans);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 2.2rem;
+  margin: 0;
+  color: var(--cdr-caption-summary-color, var(--cdr-color-text-primary));
+}
+
+.cdr-caption cite {
+  font-family: var(--cdr-font-family-sans);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.16px;
+  line-height: 1.8rem;
+  color: var(--cdr-caption-cite-color, var(--cdr-color-text-secondary));
+  font-style: normal;
+}
+
+.cdr-caption__summary + cite {
+  display: inline-block;
+  margin-top: var(--cdr-space-half-x);
+}
+
+.cdr-caption__summary + .cdr-caption__cite {
+  display: inline-block;
+  margin-top: var(--cdr-space-half-x);
+}
+
+.cdr-caption__cite {
+  font-family: var(--cdr-font-family-sans);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.16px;
+  line-height: 1.8rem;
+  color: var(--cdr-caption-cite-color, var(--cdr-color-text-secondary));
+  font-style: normal;
+}

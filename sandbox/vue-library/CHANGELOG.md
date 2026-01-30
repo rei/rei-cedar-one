@@ -1,5 +1,9 @@
 # @rei/c1-vue-library Changelog
 
+## 0.1.7-alpha.0 - 2026-01-30
+
+- Expanded the lint fixture component to cover caption markup.
+
 ## 0.1.6-alpha.0 - 2026-01-30
 
 - Replaced the fixture set with a single lint fixture component and removed the Vue Storybook.

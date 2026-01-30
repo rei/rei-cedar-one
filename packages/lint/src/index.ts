@@ -1,4 +1,5 @@
 import buttonRules from './rules/button-rules.js';
+import captionRules from './rules/caption-rules.js';
 import containerRules from './rules/container-rules.js';
 import imageRules from './rules/image-rules.js';
 import listRules from './rules/list-rules.js';
@@ -8,6 +9,7 @@ import textRules from './rules/text-rules.js';
 
 const rules = {
   ...buttonRules.rules,
+  ...captionRules.rules,
   ...containerRules.rules,
   ...imageRules.rules,
   ...listRules.rules,
@@ -20,6 +22,7 @@ const configs = {
   recommended: {
     rules: {
       ...buttonRules.configs.recommended.rules,
+      ...captionRules.configs.recommended.rules,
       ...containerRules.configs.recommended.rules,
       ...imageRules.configs.recommended.rules,
       ...listRules.configs.recommended.rules,
@@ -40,6 +43,7 @@ export type {
   ParsedTag,
   ButtonClassInfo,
   ButtonTagAnalysis,
+  CaptionTagAnalysis,
   ContainerClassInfo,
   ContainerTagAnalysis,
   ImageClassInfo,

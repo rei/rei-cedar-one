@@ -182,6 +182,24 @@ export default defineComponent({
     </section>
 
     <section class="fixture-group">
+      <h3>Caption</h3>
+      <div class="fixture-stack">
+        <img
+          class="cdr-image"
+          src="https://cedar.rei.com/rei-passage-2-tent.jpg"
+          alt="Person in an REI Passage 2 tent"
+        />
+        <div class="cdr-caption">
+          <p class="cdr-caption__summary">Person in an REI Passage 2 tent.</p>
+        </div>
+        <div class="cdr-caption">
+          <p class="cdr-caption__summary">Person in an REI Passage 2 tent.</p>
+          <cite class="cdr-caption__cite">Photo by Cedar Studio</cite>
+        </div>
+      </div>
+    </section>
+
+    <section class="fixture-group">
       <h3>Images</h3>
       <div class="fixture-stack">
         <img

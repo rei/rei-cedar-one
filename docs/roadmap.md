@@ -84,7 +84,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>No: text-only.</td>
       <td>Text styling only.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>card</td>
@@ -538,11 +538,14 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
 5. CSS extraction: translate SCSS in `rei-cedar/src/components/<name>/styles` to `packages/ui/src/css/components/<name>.css`, keep values token-backed (no palette vars in component CSS), and derive media queries from source custom media (import `packages/tokens/src/breakpoints.css`).
    - Prefer utility modifier classes over inline style overrides when exposing component APIs.
 6. Lint rules: add component rules under `packages/lint/src/rules`, split into focused rules per constraint (like button), register them in `eslint.config.mjs`, and validate in Vue fixtures via `sandbox/vue-library/eslint.config.mjs`.
+   - Keep lint rule modules consistent by using a typed wrapper helper (import `Rule` from eslint) for rule metadata/check signatures.
 7. Stories/fixtures: add/update permutations in `stories/html` and in the Vue lint fixture (`sandbox/vue-library/src/components/CedarLintFixture.vue`), export it from `sandbox/vue-library/src/index.ts`, and keep markup static so ESLint can validate literal class usage.
    - Prefer fully static markup (no loops/helpers) in stories/fixtures so ESLint can validate literal class usage.
    - Structure stories as separate variants (base + each modifier) instead of grouping multiple variants into a single story.
-8. Parity checks: compare compiled CSS in `packages/ui/dist/css` with `rei-cedar/dist/style`, record accepted deltas, run `tools/parity/check-component-tokens.py` for token parity audits, and ensure all `var(--cdr-*)` references in `packages/ui/src/css` exist in `packages/tokens/dist/css` (excluding documented override custom props and `--default-outline`).
+8. Parity checks: compare compiled CSS in `packages/ui/dist/css` with `rei-cedar/dist/style` for functional parity (focus on computed values and runtime behavior, not 1:1 source output), record accepted deltas, run `tools/parity/check-component-tokens.py` for token parity audits, and ensure all `var(--cdr-*)` references in `packages/ui/src/css` exist in `packages/tokens/dist/css` (excluding documented override custom props and `--default-outline`).
+   - Prefer optimized, token-backed source when output remains functionally equivalent to legacy.
    - Text presets intentionally diverge from legacy token naming by using `--cdr-type-scale-*` and `--cdr-line-height-ratio-*`; the component parity script skips those for text components.
+   - When diffing legacy CSS modules, normalize/remove CSS module hash suffixes (for example, `_16-3-1`) before comparing.
 9. Admin: run `pnpm typecheck`, `pnpm lint`, and `pnpm build` to ensure clean outputs; bump package versions as needed, add changelog entries for each touched package, mark the component complete in the conversion matrix when it exists in `rei-cedar`, and prepare a commitizen-style commit message.
 
 ## Divergences

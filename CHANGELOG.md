@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.10-alpha.0 - 2026-01-30
+
+- Added caption component styles, stories, and lint rules.
+- Updated the Vue lint fixture to cover caption usage.
+- Marked caption complete in the roadmap matrix.
+
 ## 0.1.9-alpha.0 - 2026-01-30
 
 - Added cdr-list component styles (ordered, unordered, compact, inline) with nested list support.

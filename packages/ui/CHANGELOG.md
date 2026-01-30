@@ -1,5 +1,9 @@
 # @rei/c1-ui Changelog
 
+## 0.1.5-alpha.0 - 2026-01-30
+
+- Added caption component styles.
+
 ## 0.1.4-alpha.0 - 2026-01-30
 
 - Added list component styles with ordered, unordered, compact, and inline variants.

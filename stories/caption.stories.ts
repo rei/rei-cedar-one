@@ -1,0 +1,51 @@
+const renderBlock = (content: string) => `
+  <div style="display:grid;gap:12px;">
+    ${content}
+  </div>
+`;
+
+export default {
+  title: 'Caption',
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'HTML-first caption styles for Cedar. Validate base markup and element classes.',
+      },
+    },
+  },
+};
+
+export const SummaryOnly = {
+  render: () =>
+    renderBlock(`
+      <img
+        class="cdr-image"
+        src="https://cedar.rei.com/rei-passage-2-tent.jpg"
+        alt="Person in an REI Passage 2 tent"
+      />
+      <div class="cdr-caption">
+        <p class="cdr-caption__summary">
+          Person in an REI Passage 2 tent.
+        </p>
+      </div>
+    `),
+};
+
+export const SummaryWithCredit = {
+  render: () =>
+    renderBlock(`
+      <img
+        class="cdr-image"
+        src="https://cedar.rei.com/rei-passage-2-tent.jpg"
+        alt="Person in an REI Passage 2 tent"
+      />
+      <div class="cdr-caption">
+        <p class="cdr-caption__summary">
+          Person in an REI Passage 2 tent.
+        </p>
+        <cite class="cdr-caption__cite">Photo by Cedar Studio</cite>
+      </div>
+    `),
+};

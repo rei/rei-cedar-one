@@ -1,5 +1,9 @@
 # @rei/c1-lint Changelog
 
+## 0.1.5-alpha.0 - 2026-01-30
+
+- Added caption lint rules for element class validation.
+
 ## 0.1.4-alpha.0 - 2026-01-30
 
 - Added list lint rules for modifier validation and tag restrictions.

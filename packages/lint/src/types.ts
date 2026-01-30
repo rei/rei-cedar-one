@@ -40,6 +40,16 @@ export type ContainerTagAnalysis = {
   info: ContainerClassInfo;
 };
 
+export type CaptionTagAnalysis = {
+  tagName: string;
+  classes: string[];
+  captionClasses: string[];
+  invalidClasses: string[];
+  duplicateClasses: string[];
+  hasSummary: boolean;
+  hasCite: boolean;
+};
+
 export type ProseClassInfo = ModifierAnalysis;
 
 export type ProseTagAnalysis = {
