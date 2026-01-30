@@ -219,7 +219,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>No: text-only.</td>
       <td>Text styling only.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>labelStandalone</td>
@@ -542,6 +542,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
 7. Stories/fixtures: add/update permutations in `stories/html` and in the Vue lint fixture (`sandbox/vue-library/src/components/CedarLintFixture.vue`), export it from `sandbox/vue-library/src/index.ts`, and keep markup static so ESLint can validate literal class usage.
    - Prefer fully static markup (no loops/helpers) in stories/fixtures so ESLint can validate literal class usage.
    - Structure stories as separate variants (base + each modifier) instead of grouping multiple variants into a single story.
+   - Derive story variants from Cedar site examples (`/Users/kmedley/code/cedar-site-nuxt`) when available, then add additional useful permutations.
 8. Parity checks: compare compiled CSS in `packages/ui/dist/css` with `rei-cedar/dist/style` for functional parity (focus on computed values and runtime behavior, not 1:1 source output), record accepted deltas, run `tools/parity/check-component-tokens.py` for token parity audits, and ensure all `var(--cdr-*)` references in `packages/ui/src/css` exist in `packages/tokens/dist/css` (excluding documented override custom props and `--default-outline`).
    - Prefer optimized, token-backed source when output remains functionally equivalent to legacy.
    - Text presets intentionally diverge from legacy token naming by using `--cdr-type-scale-*` and `--cdr-line-height-ratio-*`; the component parity script skips those for text components.

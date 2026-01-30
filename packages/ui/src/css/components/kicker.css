@@ -1,0 +1,18 @@
+.cdr-kicker {
+  font-family: var(
+    --cdr-font-family-sans,
+    Graphik,
+    "Graphik fallback",
+    "Helvetica Neue",
+    sans-serif
+  );
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.032rem;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  text-transform: uppercase;
+  color: var(--cdr-text-color, var(--cdr-color-text-primary));
+  font-size: var(--cdr-type-scale--1);
+  line-height: var(--cdr-line-height-ratio-heading-serif-1);
+}

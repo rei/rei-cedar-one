@@ -136,6 +136,7 @@ def main() -> int:
         "--cdr-img-object-fit",
         "--cdr-img-object-position",
         "--cdr-text-color",
+        "--cdr-line-height-ratio-heading-serif-1",
         "--cdr-heading-line-height",
         "--default-outline",
     }
@@ -144,6 +145,7 @@ def main() -> int:
         "text",
         "body",
         "eyebrow",
+        "kicker",
         "heading-display",
         "heading-sans",
         "heading-serif",

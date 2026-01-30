@@ -1,5 +1,9 @@
 # @rei/c1-ui Changelog
 
+## 0.1.6-alpha.0 - 2026-01-30
+
+- Added kicker component styles with legacy-compatible line-height overrides.
+
 ## 0.1.5-alpha.0 - 2026-01-30
 
 - Added caption component styles.

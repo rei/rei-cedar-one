@@ -1,5 +1,10 @@
 # @rei/cedar-stories Changelog
 
+## 0.1.6-alpha.0 - 2026-01-30
+
+- Added kicker component stories derived from Cedar examples.
+- Added caption media example to prose stories.
+
 ## 0.1.5-alpha.0 - 2026-01-30
 
 - Added caption media examples to prose stories.

@@ -1,5 +1,9 @@
 # @rei/c1-lint Changelog
 
+## 0.1.6-alpha.0 - 2026-01-30
+
+- Added kicker lint rules for modifier validation and duplicates.
+
 ## 0.1.5-alpha.0 - 2026-01-30
 
 - Added caption lint rules for element class validation.

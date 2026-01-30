@@ -40,6 +40,13 @@ export type ContainerTagAnalysis = {
   info: ContainerClassInfo;
 };
 
+export type KickerClassInfo = ModifierAnalysis;
+
+export type KickerTagAnalysis = {
+  classes: string[];
+  info: KickerClassInfo;
+};
+
 export type CaptionTagAnalysis = {
   tagName: string;
   classes: string[];

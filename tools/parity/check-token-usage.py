@@ -48,6 +48,8 @@ def parse_args() -> argparse.Namespace:
             "cdr-body-",
             "cdr-eyebrow-",
             "cdr-heading-",
+            "cdr-kicker-",
+            "cdr-line-height-ratio-heading-serif-",
             "cdr-subheading-sans-",
             "cdr-utility-",
             "cdr-prose-",

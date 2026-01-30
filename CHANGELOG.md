@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.12-alpha.0 - 2026-01-30
+
+- Added kicker component styles, stories, and lint rules with Cedar doc-derived examples.
+- Updated the Vue lint fixture to cover kicker usage and added prose caption media examples.
+- Refined parity tooling for kicker overrides and updated roadmap guidance for story sourcing.
+
 ## 0.1.11-alpha.0 - 2026-01-30
 
 - Added media + caption examples to prose stories and the Vue lint fixture.

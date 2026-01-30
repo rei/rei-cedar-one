@@ -1,5 +1,9 @@
 # @rei/c1-vue-library Changelog
 
+## 0.1.9-alpha.0 - 2026-01-30
+
+- Added kicker coverage and prose caption media example to the lint fixture.
+
 ## 0.1.8-alpha.0 - 2026-01-30
 
 - Added caption media example to the lint fixture prose section.

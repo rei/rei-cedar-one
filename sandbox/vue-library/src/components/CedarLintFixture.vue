@@ -493,6 +493,7 @@ export default defineComponent({
           <h1 class="cdr-heading-serif">Heading Serif</h1>
           <p class="cdr-subheading-sans">Subheading Sans</p>
           <p class="cdr-body">Body text</p>
+          <span class="cdr-kicker">Kicker</span>
           <span class="cdr-eyebrow">Eyebrow</span>
           <p class="cdr-utility-sans">Utility Sans</p>
           <p class="cdr-utility-serif">Utility Serif</p>
