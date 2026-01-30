@@ -19,6 +19,14 @@ const props = withDefaults(defineProps<{ section?: ProseSection }>(), {
 
 const imageData =
   'data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%201200%20600%27%20width%3D%271200%27%20height%3D%27600%27%3E%3Crect%20width%3D%271200%27%20height%3D%27600%27%20fill%3D%27%23dfe7e1%27/%3E%3Cpath%20d%3D%27M0%20420%20L200%20280%20L380%20360%20L520%20240%20L760%20420%20L980%20300%20L1200%20360%20L1200%20600%20L0%20600%20Z%27%20fill%3D%27%2390a59b%27/%3E%3Ccircle%20cx%3D%27900%27%20cy%3D%27140%27%20r%3D%2770%27%20fill%3D%27%23f4f1ea%27/%3E%3C/svg%3E';
+const layersSnippet = `const layers = ['base', 'mid', 'shell'];
+const packed = layers.filter(Boolean);
+`;
+const alertSnippet = `const alert = {
+  status: 'updated',
+  message: 'Storm watch in effect',
+};
+`;
 
 const show = (section: ProseSection) =>
   props.section === 'all' || props.section === section;
@@ -333,9 +341,7 @@ const show = (section: ProseSection) =>
             Learn more in the <a href="#">full guide</a>. Inline code looks like
             <code>layering = [base, mid, shell]</code>.
           </p>
-          <pre><code>{{ `const layers = ['base', 'mid', 'shell'];
-const packed = layers.filter(Boolean);
-` }}</code></pre>
+          <pre><code v-text="layersSnippet" /></pre>
           <hr />
           <table>
             <thead>
@@ -496,11 +502,7 @@ const packed = layers.filter(Boolean);
             Use the invert variant to keep text legible on dark backgrounds
             while still relying on tokenized colors.
           </p>
-          <pre><code>{{ `const alert = {
-  status: 'updated',
-  message: 'Storm watch in effect',
-};
-` }}</code></pre>
+          <pre><code v-text="alertSnippet" /></pre>
           <table>
             <thead>
               <tr>
