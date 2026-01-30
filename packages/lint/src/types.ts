@@ -40,6 +40,13 @@ export type ContainerTagAnalysis = {
   info: ContainerClassInfo;
 };
 
+export type ProseClassInfo = ModifierAnalysis;
+
+export type ProseTagAnalysis = {
+  classes: string[];
+  info: ProseClassInfo;
+};
+
 export type LinkClassInfo = ModifierAnalysis;
 
 export type LinkTagAnalysis = {

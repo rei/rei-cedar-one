@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.8-alpha.0 - 2026-01-30
+
+- Added prose component styles with HTML + Vue story coverage.
+- Added prose lint rules and allowlisted prose override custom props in parity checks.
+- Updated Storybook previews to load prose CSS and refined prose component spacing utilities.
+
 ## 0.1.7-alpha.0 - 2026-01-29
 
 - Reorganized token build outputs into `dist/css` and `dist/json` with native JSON suffixes.

@@ -49,6 +49,7 @@ def parse_args() -> argparse.Namespace:
             "cdr-heading-",
             "cdr-subheading-sans-",
             "cdr-utility-",
+            "cdr-prose-",
         ],
         help=(
             "Token name prefix to ignore (repeatable). "

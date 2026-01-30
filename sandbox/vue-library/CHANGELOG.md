@@ -1,5 +1,9 @@
 # @rei/c1-vue-library Changelog
 
+## 0.1.5-alpha.0 - 2026-01-30
+
+- Added prose fixture component and Storybook wiring.
+
 ## 0.1.4-alpha.0 - 2026-01-29
 
 - Added image fixtures and story wiring for Cedar One previews.

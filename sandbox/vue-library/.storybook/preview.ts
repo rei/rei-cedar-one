@@ -16,6 +16,7 @@ import '../../../packages/ui/dist/css/components/subheading-sans.css';
 import '../../../packages/ui/dist/css/components/utility-sans.css';
 import '../../../packages/ui/dist/css/components/utility-serif.css';
 import '../../../packages/ui/dist/css/components/image.css';
+import '../../../packages/ui/dist/css/components/prose.css';
 
 export const parameters = {
   controls: {

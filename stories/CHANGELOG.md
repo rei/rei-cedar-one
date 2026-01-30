@@ -1,5 +1,9 @@
 # @rei/cedar-stories Changelog
 
+## 0.1.2-alpha.0 - 2026-01-30
+
+- Added prose stories with mixed content coverage.
+
 ## 0.1.1-alpha.0 - 2026-01-29
 
 - Added image stories and updated fixtures to use Cedar brand imagery.

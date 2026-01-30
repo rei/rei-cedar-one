@@ -1,5 +1,9 @@
 # @rei/c1-lint Changelog
 
+## 0.1.3-alpha.0 - 2026-01-30
+
+- Added prose lint rules for modifier validation.
+
 ## 0.1.2-alpha.0 - 2026-01-29
 
 - Added image lint rules for ratios, fits, positions, and radius modifiers.

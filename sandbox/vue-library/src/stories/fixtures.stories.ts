@@ -3,6 +3,7 @@ import CedarButtonFixture from '../components/CedarButtonFixture.vue';
 import CedarContainerFixture from '../components/CedarContainerFixture.vue';
 import CedarImageFixture from '../components/CedarImageFixture.vue';
 import CedarLinkFixture from '../components/CedarLinkFixture.vue';
+import CedarProseFixture from '../components/CedarProseFixture.vue';
 import CedarTextFixture from '../components/CedarTextFixture.vue';
 
 const meta: Meta = {
@@ -38,6 +39,90 @@ export const Link: Story = {
   render: () => ({
     components: { CedarLinkFixture },
     template: '<CedarLinkFixture />',
+  }),
+};
+
+export const Prose: Story = {
+  render: () => ({
+    components: { CedarProseFixture },
+    template: '<CedarProseFixture />',
+  }),
+};
+
+export const ProseOverview: Story = {
+  render: () => ({
+    components: { CedarProseFixture },
+    template: '<CedarProseFixture section="overview" />',
+  }),
+};
+
+export const ProseSizes: Story = {
+  render: () => ({
+    components: { CedarProseFixture },
+    template: '<CedarProseFixture section="sizes" />',
+  }),
+};
+
+export const ProseMeasuredLineLength: Story = {
+  render: () => ({
+    components: { CedarProseFixture },
+    template: '<CedarProseFixture section="measured-line-length" />',
+  }),
+};
+
+export const ProseSerifHeadings: Story = {
+  render: () => ({
+    components: { CedarProseFixture },
+    template: '<CedarProseFixture section="serif-headings" />',
+  }),
+};
+
+export const ProseInvert: Story = {
+  render: () => ({
+    components: { CedarProseFixture },
+    template: '<CedarProseFixture section="invert" />',
+  }),
+};
+
+export const ProseEscapeHatch: Story = {
+  render: () => ({
+    components: { CedarProseFixture },
+    template: '<CedarProseFixture section="escape-hatch" />',
+  }),
+};
+
+export const ProseContentTypes: Story = {
+  render: () => ({
+    components: { CedarProseFixture },
+    template: '<CedarProseFixture section="content-types" />',
+  }),
+};
+
+export const ProseComponentMix: Story = {
+  render: () => ({
+    components: { CedarProseFixture },
+    template: '<CedarProseFixture section="component-mix" />',
+  }),
+};
+
+export const ProseEditorial: Story = {
+  render: () => ({
+    components: { CedarProseFixture },
+    template: '<CedarProseFixture section="editorial" />',
+  }),
+};
+
+export const ProseResponsiveMeasure: Story = {
+  render: () => ({
+    components: { CedarProseFixture },
+    template: '<CedarProseFixture section="responsive-measure" />',
+  }),
+};
+
+export const ProseDarkSurface: Story = {
+  render: () => ({
+    components: { CedarProseFixture },
+    template: '<CedarProseFixture section="dark-surface" />',
   }),
 };
 

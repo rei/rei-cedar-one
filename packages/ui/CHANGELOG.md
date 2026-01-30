@@ -1,5 +1,9 @@
 # @rei/c1-ui Changelog
 
+## 0.1.3-alpha.0 - 2026-01-30
+
+- Added prose component styles and refined spacing rules.
+
 ## 0.1.2-alpha.0 - 2026-01-29
 
 - Added CSS-first image utilities and modifiers for Cedar One.
