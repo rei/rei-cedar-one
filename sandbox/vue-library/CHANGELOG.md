@@ -1,5 +1,9 @@
 # @rei/c1-vue-library Changelog
 
+## 0.1.6-alpha.0 - 2026-01-30
+
+- Added list fixture component and Storybook wiring.
+
 ## 0.1.5-alpha.0 - 2026-01-30
 
 - Added prose fixture component and Storybook wiring.

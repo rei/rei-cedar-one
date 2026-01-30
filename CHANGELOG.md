@@ -1,5 +1,13 @@
 # Cedar One Changelog
 
+## 0.1.9-alpha.0 - 2026-01-30
+
+- Added cdr-list component styles (ordered, unordered, compact, inline) with nested list support.
+- Added list stories, Vue fixture wiring, and Storybook preview imports.
+- Added list lint rules, allowlisted list override props, and marked list complete in the roadmap matrix.
+- Added text secondary color token for list parity.
+- Aligned prose list styling with cdr-list defaults.
+
 ## 0.1.8-alpha.0 - 2026-01-30
 
 - Added prose component styles with HTML + Vue story coverage.

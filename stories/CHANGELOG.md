@@ -1,5 +1,9 @@
 # @rei/cedar-stories Changelog
 
+## 0.1.3-alpha.0 - 2026-01-30
+
+- Added list component stories with modifier coverage.
+
 ## 0.1.2-alpha.0 - 2026-01-30
 
 - Added prose stories with mixed content coverage.

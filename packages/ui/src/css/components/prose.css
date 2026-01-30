@@ -162,18 +162,91 @@
   color: var(--cdr-prose-link-active);
 }
 
-.cdr-prose :where(ul, ol):not(:where(.cdr-not-prose, .cdr-not-prose *)) {
-  padding-inline-start: var(--cdr-prose-space-3);
+.cdr-prose :where(ul):not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  position: relative;
+  padding-left: 1em;
+  list-style-type: none;
+}
+
+.cdr-prose :where(ol):not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+  list-style-position: outside;
+}
+
+.cdr-prose :where(ol) > li:not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  padding-left: var(--cdr-space-quarter-x);
 }
 
 .cdr-prose
-  :where(ul ul, ul ol, ol ul, ol ol):not(:where(.cdr-not-prose, .cdr-not-prose *)) {
-  margin-block: calc(var(--cdr-prose-block-margin) * 0.5);
-  padding-inline-start: var(--cdr-prose-space-2);
+  :where(ul, ol)
+  > li
+  + li:not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  margin-top: var(--cdr-space-half-x);
 }
 
-.cdr-prose :where(li):not(:where(.cdr-not-prose, .cdr-not-prose *)) {
-  margin-block: var(--cdr-prose-space-1);
+.cdr-prose
+  :where(ul, ol)
+  > li:not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  margin-block: 0;
+}
+
+.cdr-prose :where(ul) > li::before:not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  content: '\2022';
+  position: relative;
+  margin-left: -1em;
+  padding-right: var(--cdr-space-half-x);
+  color: var(
+    --cdr-list-unordered-prefix-color,
+    var(--cdr-color-text-secondary)
+  );
+}
+
+.cdr-prose
+  :where(ul, ol)
+  > li
+  > :where(ul, ol):not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  margin-top: var(--cdr-space-half-x);
+  position: relative;
+  padding-left: 1em;
+  list-style-type: none;
+}
+
+.cdr-prose
+  :where(ol)
+  > li
+  > :where(ul, ol)
+  > li:not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  padding-left: 0;
+}
+
+.cdr-prose
+  :where(ol)
+  > li
+  > :where(ul, ol)
+  > li::before:not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  content: '\2013';
+  position: absolute;
+  color: var(
+    --cdr-list-ordered-nested-prefix-color,
+    var(--cdr-color-text-secondary)
+  );
+  left: 0;
+}
+
+.cdr-prose
+  :where(ul)
+  > li
+  > :where(ul, ol)
+  > li::before:not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  content: '\2013';
+  position: relative;
+  margin-left: -1em;
+  padding-right: var(--cdr-space-half-x);
+  color: var(
+    --cdr-list-unordered-nested-prefix-color,
+    var(--cdr-color-text-secondary)
+  );
 }
 
 .cdr-prose

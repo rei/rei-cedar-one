@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import CedarButtonFixture from '../components/CedarButtonFixture.vue';
 import CedarContainerFixture from '../components/CedarContainerFixture.vue';
 import CedarImageFixture from '../components/CedarImageFixture.vue';
+import CedarListFixture from '../components/CedarListFixture.vue';
 import CedarLinkFixture from '../components/CedarLinkFixture.vue';
 import CedarProseFixture from '../components/CedarProseFixture.vue';
 import CedarTextFixture from '../components/CedarTextFixture.vue';
@@ -32,6 +33,55 @@ export const Image: Story = {
   render: () => ({
     components: { CedarImageFixture },
     template: '<CedarImageFixture />',
+  }),
+};
+
+export const ListBase: Story = {
+  render: () => ({
+    components: { CedarListFixture },
+    template: '<CedarListFixture section="base" />',
+  }),
+};
+
+export const ListUnordered: Story = {
+  render: () => ({
+    components: { CedarListFixture },
+    template: '<CedarListFixture section="unordered" />',
+  }),
+};
+
+export const ListOrdered: Story = {
+  render: () => ({
+    components: { CedarListFixture },
+    template: '<CedarListFixture section="ordered" />',
+  }),
+};
+
+export const ListCompact: Story = {
+  render: () => ({
+    components: { CedarListFixture },
+    template: '<CedarListFixture section="compact" />',
+  }),
+};
+
+export const ListInline: Story = {
+  render: () => ({
+    components: { CedarListFixture },
+    template: '<CedarListFixture section="inline" />',
+  }),
+};
+
+export const ListDeepNesting: Story = {
+  render: () => ({
+    components: { CedarListFixture },
+    template: '<CedarListFixture section="deep-nesting" />',
+  }),
+};
+
+export const ListDeepNestingOrdered: Story = {
+  render: () => ({
+    components: { CedarListFixture },
+    template: '<CedarListFixture section="deep-nesting-ordered" />',
   }),
 };
 

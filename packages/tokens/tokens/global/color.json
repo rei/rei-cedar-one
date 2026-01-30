@@ -1,7 +1,8 @@
 {
   "color": {
     "text": {
-      "primary": { "$value": "rgba(12, 11, 8, 0.75)", "$type": "color" }
+      "primary": { "$value": "rgba(12, 11, 8, 0.75)", "$type": "color" },
+      "secondary": { "$value": "rgba(66, 59, 47, 0.75)", "$type": "color" }
     },
     "background": {
       "primary": { "$value": "#ffffff", "$type": "color" }

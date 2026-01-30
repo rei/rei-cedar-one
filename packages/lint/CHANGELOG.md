@@ -1,5 +1,9 @@
 # @rei/c1-lint Changelog
 
+## 0.1.4-alpha.0 - 2026-01-30
+
+- Added list lint rules for modifier validation and tag restrictions.
+
 ## 0.1.3-alpha.0 - 2026-01-30
 
 - Added prose lint rules for modifier validation.

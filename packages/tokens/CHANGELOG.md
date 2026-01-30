@@ -1,5 +1,9 @@
 # @rei/c1-tokens Changelog
 
+## 0.1.4-alpha.0 - 2026-01-30
+
+- Added text secondary color token for list and muted text parity.
+
 ## 0.1.3-alpha.0 - 2026-01-29
 
 - Reorganized outputs into `dist/css` and `dist/json`, with native JSON suffixes.

@@ -277,7 +277,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
         No: native <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code>.
       </td>
       <td>List layout and bullet styling.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>mediaObject</td>
@@ -540,6 +540,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
 6. Lint rules: add component rules under `packages/lint/src/rules`, split into focused rules per constraint (like button), register them in `eslint.config.mjs`, and validate in Vue fixtures via `sandbox/vue-library/eslint.config.mjs`.
 7. Stories/fixtures: add/update permutations in `stories/html` and `sandbox/vue-library/src/components`, export fixtures from `sandbox/vue-library/src/index.ts`, and consume them from a Vue Storybook.
    - Prefer fully static markup (no loops/helpers) in stories/fixtures so ESLint can validate literal class usage.
+   - Structure stories as separate variants (base + each modifier) instead of grouping multiple variants into a single story.
 8. Parity checks: compare compiled CSS in `packages/ui/dist/css` with `rei-cedar/dist/style`, record accepted deltas, run `tools/parity/check-component-tokens.py` for token parity audits, and ensure all `var(--cdr-*)` references in `packages/ui/src/css` exist in `packages/tokens/dist/css` (excluding documented override custom props and `--default-outline`).
    - Text presets intentionally diverge from legacy token naming by using `--cdr-type-scale-*` and `--cdr-line-height-ratio-*`; the component parity script skips those for text components.
 9. Admin: run `pnpm typecheck`, `pnpm lint`, and `pnpm build` to ensure clean outputs; bump package versions as needed, add changelog entries for each touched package, mark the component complete in the conversion matrix when it exists in `rei-cedar`, and prepare a commitizen-style commit message.

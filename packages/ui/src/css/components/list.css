@@ -1,0 +1,146 @@
+.cdr-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cdr-list > li + li {
+  margin-top: var(--cdr-space-half-x);
+}
+
+.cdr-list li > .cdr-list {
+  margin-top: var(--cdr-space-half-x);
+  padding-left: 1em;
+  list-style-type: none;
+}
+
+.cdr-list--compact > li + li {
+  margin-top: var(--cdr-space-quarter-x);
+}
+
+.cdr-list--compact li > .cdr-list {
+  margin-top: var(--cdr-space-quarter-x);
+}
+
+.cdr-list--ordered {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+  list-style-position: outside;
+}
+
+.cdr-list--ordered li {
+  padding: 0 0 0 var(--cdr-space-quarter-x);
+}
+
+.cdr-list--ordered li > .cdr-list {
+  position: relative;
+  padding-left: 1em;
+}
+
+.cdr-list--ordered li > .cdr-list > li {
+  padding-left: 0;
+}
+
+.cdr-list--ordered li > .cdr-list > li::before {
+  content: '\2013';
+  position: absolute;
+  color: var(
+    --cdr-list-ordered-nested-prefix-color,
+    var(--cdr-color-text-secondary)
+  );
+  left: 0;
+}
+
+.cdr-list--unordered {
+  position: relative;
+  padding-left: 1em;
+}
+
+.cdr-list--unordered > li::before {
+  content: '\2022';
+  position: relative;
+  margin-left: -1em;
+  padding-right: var(--cdr-space-half-x);
+  color: var(
+    --cdr-list-unordered-prefix-color,
+    var(--cdr-color-text-secondary)
+  );
+}
+
+.cdr-list--unordered li > .cdr-list {
+  position: relative;
+  padding-left: 1em;
+}
+
+.cdr-list--unordered li > .cdr-list > li::before {
+  content: '\2013';
+  position: relative;
+  margin-left: -1em;
+  padding-right: var(--cdr-space-half-x);
+  color: var(
+    --cdr-list-unordered-nested-prefix-color,
+    var(--cdr-color-text-secondary)
+  );
+}
+
+.cdr-list--inline {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.cdr-list--inline > li {
+  display: block;
+}
+
+.cdr-list--inline > li + li {
+  margin-top: 0;
+  padding-left: 1em;
+}
+
+.cdr-list--inline.cdr-list--compact > li + li {
+  padding-left: 0.5em;
+}
+
+.cdr-list--inline.cdr-list--unordered {
+  left: 0;
+}
+
+.cdr-list--inline.cdr-list--unordered > li {
+  position: relative;
+}
+
+.cdr-list--inline.cdr-list--unordered > li + li {
+  padding-left: 1.5em;
+}
+
+.cdr-list--inline.cdr-list--unordered > li:first-of-type::before {
+  display: none;
+}
+
+.cdr-list--inline.cdr-list--unordered > li::before {
+  content: '\2022';
+  color: var(
+    --cdr-list-inline-text-color,
+    var(--cdr-color-text-secondary)
+  );
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translate(150%, -50%);
+  height: 6px;
+  width: 6px;
+  line-height: 6px;
+  left: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.cdr-list--inline.cdr-list--unordered.cdr-list--compact > li + li {
+  padding-left: 1em;
+}
+
+.cdr-list--inline.cdr-list--unordered.cdr-list--compact > li + li::before {
+  transform: translate(100%, -50%);
+}

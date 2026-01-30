@@ -1,5 +1,10 @@
 # @rei/c1-ui Changelog
 
+## 0.1.4-alpha.0 - 2026-01-30
+
+- Added list component styles with ordered, unordered, compact, and inline variants.
+- Aligned prose list styling with cdr-list defaults.
+
 ## 0.1.3-alpha.0 - 2026-01-30
 
 - Added prose component styles and refined spacing rules.
