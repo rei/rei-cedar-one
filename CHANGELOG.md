@@ -7,6 +7,7 @@
 - Added list lint rules, allowlisted list override props, and marked list complete in the roadmap matrix.
 - Added text secondary color token for list parity.
 - Aligned prose list styling with cdr-list defaults.
+- Removed the Vue Storybook and consolidated Vue fixtures into a single lint fixture component.
 
 ## 0.1.8-alpha.0 - 2026-01-30
 

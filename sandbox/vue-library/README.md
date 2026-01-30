@@ -1,7 +1,7 @@
 # Vue Library
 
-This sandbox package provides simple Vue components for story fixtures and class parity checks.
-Fixtures mirror the Cedar One class APIs from `packages/ui`.
+This sandbox package provides a single Vue component for lint coverage validation.
+The fixture mirrors Cedar One class APIs from `packages/ui` so lint rules surface in-editor and in the CLI.
 
 Scripts:
 
@@ -11,5 +11,5 @@ Scripts:
 
 Notes:
 
-- Fixture exports are in `src/index.ts`.
+- Fixture export lives in `src/index.ts`.
 - `.vue` module typing lives in `src/vite-env.d.ts` for `tsc -b`.

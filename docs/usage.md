@@ -5,7 +5,6 @@ This document focuses on developing and exploring Cedar One. Cedar One is curren
 ```bash
 pnpm install
 pnpm storybook
-pnpm storybook:vue
 ```
 
 ## Using Cedar One components
@@ -57,7 +56,6 @@ export function PrimaryButton() {
 Common workflows for exploring and validating Cedar One:
 
 - `pnpm storybook` - start Storybook for component and utility inspection.
-- `pnpm storybook:vue` - start the Vue Storybook for fixture components.
 - `pnpm build-storybook` - build the static Storybook output.
 - `pnpm tokens:build` - generate token outputs for supported platforms.
 - `pnpm ui:build` - build compiled CSS utilities and recipes.
@@ -70,4 +68,4 @@ The repository is organized as a `pnpm` monorepo:
 
 - `packages/tokens` - design tokens and platform-specific outputs (web + React Native).
 - `packages/ui` - compiled CSS utilities and component recipes.
-- `sandbox/vue-library` - Vue component library used for parity validation and lint coverage.
+- `sandbox/vue-library` - Vue component library used for lint coverage validation.

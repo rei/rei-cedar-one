@@ -19,7 +19,6 @@
     "lint-staged": "lint-staged",
     "prepare": "husky",
     "storybook": "pnpm run ws:storybook",
-    "storybook:vue": "storybook dev -p 6007 --config-dir sandbox/vue-library/.storybook",
     "tokens:build": "pnpm --filter @rei/c1-tokens build",
     "typecheck": "pnpm run ws:typecheck",
     "ui:build": "pnpm --filter @rei/c1-ui build",

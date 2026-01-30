@@ -1,21 +1,5 @@
-import CedarButtonFixture from './components/CedarButtonFixture.vue';
-import CedarContainerFixture from './components/CedarContainerFixture.vue';
-import CedarImageFixture from './components/CedarImageFixture.vue';
-import CedarListFixture from './components/CedarListFixture.vue';
-import CedarLinkFixture from './components/CedarLinkFixture.vue';
-import CedarProseFixture from './components/CedarProseFixture.vue';
-import CedarTextFixture from './components/CedarTextFixture.vue';
-import IconUser from './components/IconUser.vue';
+import CedarLintFixture from './components/CedarLintFixture.vue';
 
-export {
-  CedarButtonFixture,
-  CedarContainerFixture,
-  CedarImageFixture,
-  CedarListFixture,
-  CedarLinkFixture,
-  CedarProseFixture,
-  CedarTextFixture,
-  IconUser,
-};
+export { CedarLintFixture };
 
-export default CedarButtonFixture;
+export default CedarLintFixture;

@@ -2,7 +2,7 @@
 
 ## 0.1.6-alpha.0 - 2026-01-30
 
-- Added list fixture component and Storybook wiring.
+- Replaced the fixture set with a single lint fixture component and removed the Vue Storybook.
 
 ## 0.1.5-alpha.0 - 2026-01-30
 
