@@ -1,5 +1,9 @@
 # @rei/cedar-stories Changelog
 
+## 0.1.5-alpha.0 - 2026-01-30
+
+- Added caption media examples to prose stories.
+
 ## 0.1.4-alpha.0 - 2026-01-30
 
 - Added caption component stories.

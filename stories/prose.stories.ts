@@ -321,6 +321,19 @@ export const ContentTypes = {
           <img src="${imageData}" alt="Illustrated ridge line with a pale sky" />
           <figcaption>Layering keeps you comfortable as conditions change.</figcaption>
         </figure>
+        <figure class="cdr-not-prose">
+          <img
+            class="cdr-image"
+            src="https://cedar.rei.com/rei-passage-2-tent.jpg"
+            alt="Person in an REI Passage 2 tent"
+          />
+          <div class="cdr-caption">
+            <p class="cdr-caption__summary">
+              Person in an REI Passage 2 tent.
+            </p>
+            <cite class="cdr-caption__cite">Photo by Cedar Studio</cite>
+          </div>
+        </figure>
       </article>
     </div>
   `,
