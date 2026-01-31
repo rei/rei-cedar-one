@@ -210,7 +210,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
         No: native <code>&lt;input&gt;</code>.
       </td>
       <td>Native input styling; validation remains app-side.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>kicker</td>

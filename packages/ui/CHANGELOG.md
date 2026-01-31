@@ -1,5 +1,9 @@
 # @rei/c1-ui Changelog
 
+## 0.1.13-alpha.0 - 2026-01-31
+
+- Added input component styles.
+
 ## 0.1.12-alpha.0 - 2026-01-31
 
 - Added form error component styles.

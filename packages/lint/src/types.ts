@@ -124,6 +124,20 @@ export type FormErrorTagAnalysis = {
   hasIcon: boolean;
 };
 
+export type InputTagAnalysis = {
+  tagName: string;
+  classes: string[];
+  inputClasses: string[];
+  invalidClasses: string[];
+  duplicateClasses: string[];
+  modifiers: string[];
+  hasBase: boolean;
+  hasWrap: boolean;
+  hasPreIcon: boolean;
+  hasPostIcon: boolean;
+  hasHelperText: boolean;
+};
+
 export type TitleClassInfo = ModifierAnalysis;
 
 export type TitleTagAnalysis = {

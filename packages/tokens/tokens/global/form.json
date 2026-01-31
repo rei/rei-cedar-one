@@ -1,5 +1,11 @@
 {
   "form": {
+    "input": {
+      "height": {
+        "default": { "$value": "4rem", "$type": "dimension" },
+        "large": { "$value": "4.8rem", "$type": "dimension" }
+      }
+    },
     "figure": {
       "size": {
         "small": { "$value": "16px", "$type": "dimension" },

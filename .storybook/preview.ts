@@ -12,6 +12,7 @@ import '../packages/ui/dist/css/components/container.css';
 import '../packages/ui/dist/css/components/link.css';
 import '../packages/ui/dist/css/components/label-standalone.css';
 import '../packages/ui/dist/css/components/label-wrapper.css';
+import '../packages/ui/dist/css/components/input.css';
 import '../packages/ui/dist/css/components/split-surface.css';
 import '../packages/ui/dist/css/components/form-error.css';
 import '../packages/ui/dist/css/components/text.css';

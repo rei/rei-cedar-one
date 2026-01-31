@@ -63,6 +63,7 @@ def parse_args() -> argparse.Namespace:
             "cdr-label-standalone-",
             "cdr-label-wrapper-",
             "cdr-form-error-",
+            "cdr-input-",
         ],
         help=(
             "Token name prefix to ignore (repeatable). "

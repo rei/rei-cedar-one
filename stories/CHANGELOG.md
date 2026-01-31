@@ -1,5 +1,9 @@
 # @rei/cedar-stories Changelog
 
+## 0.1.15-alpha.0 - 2026-01-31
+
+- Added input story variants.
+
 ## 0.1.14-alpha.0 - 2026-01-31
 
 - Added form error story variants.

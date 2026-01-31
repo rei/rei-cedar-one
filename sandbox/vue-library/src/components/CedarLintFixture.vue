@@ -304,6 +304,65 @@ export default defineComponent({
     </section>
 
     <section class="fixture-group">
+      <h3>Input</h3>
+      <div class="fixture-stack">
+        <div class="cdr-label-standalone">
+          <div class="cdr-label-standalone__label-wrapper">
+            <label class="cdr-label-standalone__label" for="fixture-input">
+              Input label
+            </label>
+            <br />
+            <span
+              class="cdr-label-standalone__helper"
+              id="fixture-input-helper"
+            >
+              Helper text above the field.
+            </span>
+          </div>
+          <div
+            class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+          >
+            <div class="cdr-input-wrap cdr-input--focus">
+              <input
+                class="cdr-input cdr-input--preicon cdr-input--posticons cdr-input--primary"
+                id="fixture-input"
+                type="text"
+                aria-describedby="fixture-input-helper fixture-input-helper-bottom"
+              />
+              <span class="cdr-input__pre-icon">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
+                  ></path>
+                </svg>
+              </span>
+              <span class="cdr-input__post-icon">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path
+                    d="M21 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 16.5v-9A2.5 2.5 0 0 1 5.5 5h13A2.5 2.5 0 0 1 21 7.5z"
+                  ></path>
+                </svg>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z"
+                  ></path>
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div class="cdr-label-standalone__post-content">
+            <span
+              class="cdr-input__helper-text"
+              id="fixture-input-helper-bottom"
+            >
+              Helper text below the field.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fixture-group">
       <h3>Form error</h3>
       <div class="fixture-stack">
         <div class="cdr-form-error --active-error">

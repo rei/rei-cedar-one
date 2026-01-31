@@ -4,6 +4,7 @@ import captionRules from './rules/caption-rules.js';
 import containerRules from './rules/container-rules.js';
 import formErrorRules from './rules/form-error-rules.js';
 import imageRules from './rules/image-rules.js';
+import inputRules from './rules/input-rules.js';
 import kickerRules from './rules/kicker-rules.js';
 import landingLeadRules from './rules/landing-lead-rules.js';
 import labelStandaloneRules from './rules/label-standalone-rules.js';
@@ -23,6 +24,7 @@ const rules = {
   ...containerRules.rules,
   ...formErrorRules.rules,
   ...imageRules.rules,
+  ...inputRules.rules,
   ...kickerRules.rules,
   ...landingLeadRules.rules,
   ...labelStandaloneRules.rules,
@@ -45,6 +47,7 @@ const configs = {
       ...containerRules.configs.recommended.rules,
       ...formErrorRules.configs.recommended.rules,
       ...imageRules.configs.recommended.rules,
+      ...inputRules.configs.recommended.rules,
       ...kickerRules.configs.recommended.rules,
       ...landingLeadRules.configs.recommended.rules,
       ...labelStandaloneRules.configs.recommended.rules,
@@ -76,6 +79,7 @@ export type {
   ContainerClassInfo,
   ContainerTagAnalysis,
   FormErrorTagAnalysis,
+  InputTagAnalysis,
   HeadingSubheadingBlockTagAnalysis,
   KickerClassInfo,
   KickerTagAnalysis,

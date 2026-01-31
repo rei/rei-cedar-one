@@ -27,7 +27,7 @@ export const Base = {
           </label>
         </div>
         <div class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing">
-          <input id="label-standalone-base" type="email" />
+          <input class="cdr-input cdr-input--primary" id="label-standalone-base" type="email" />
         </div>
       </div>
     `),
@@ -48,6 +48,7 @@ export const RequiredWithHelper = {
         </div>
         <div class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing">
           <input
+            class="cdr-input cdr-input--primary"
             id="label-standalone-required"
             type="password"
             aria-describedby="label-standalone-required-help"
@@ -76,6 +77,7 @@ export const OptionalWithHelper = {
         </div>
         <div class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing">
           <input
+            class="cdr-input cdr-input--primary"
             id="label-standalone-optional"
             type="text"
             aria-describedby="label-standalone-optional-helper"
@@ -100,7 +102,7 @@ export const InfoLink = {
           </a>
         </span>
         <div class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing">
-          <input id="label-standalone-info" type="text" />
+          <input class="cdr-input cdr-input--primary" id="label-standalone-info" type="text" />
         </div>
       </div>
     `),
@@ -119,7 +121,7 @@ export const HiddenLabel = {
           </label>
         </div>
         <div class="cdr-label-standalone__input-wrap">
-          <input id="label-standalone-hidden" type="search" placeholder="Search" />
+          <input class="cdr-input cdr-input--primary" id="label-standalone-hidden" type="search" placeholder="Search" />
         </div>
       </div>
     `),
@@ -139,7 +141,7 @@ export const Disabled = {
           </label>
         </div>
         <div class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing">
-          <input id="label-standalone-disabled" type="text" disabled />
+          <input class="cdr-input cdr-input--primary" id="label-standalone-disabled" type="text" disabled />
         </div>
       </div>
     `),

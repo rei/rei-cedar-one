@@ -1,5 +1,9 @@
 # @rei/c1-tokens Changelog
 
+## 0.1.9-alpha.0 - 2026-01-31
+
+- Added input color and sizing tokens for background, border, and text states.
+
 ## 0.1.8-alpha.0 - 2026-01-31
 
 - Added input error text color token for form error parity.
