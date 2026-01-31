@@ -8,7 +8,11 @@
   "exports": {
     "./fonts.css": "./dist/css/fonts.css",
     "./reset.css": "./dist/css/reset.css",
-    "./components/*": "./dist/css/components/*"
+    "./components/*": "./dist/css/components/*",
+    "./adapters/input": {
+      "types": "./src/adapters/input.ts",
+      "default": "./src/adapters/input.ts"
+    }
   },
   "scripts": {
     "build": "postcss \"src/css/**/*.css\" --base src/css --dir dist/css",
