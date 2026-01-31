@@ -771,3 +771,4 @@ Intentional deviations from legacy Cedar while keeping the same visual output wh
 - Breakpoints output: Custom media is used as a source-only build aid (`packages/tokens/src/breakpoints.css`) and is not shipped as a standalone dist file.
 - Token bundles: Tokens are shipped as `core.css`, `components.css`, and optional category bundles rather than a single legacy `cdr-tokens.css`.
 - Image utilities: Cedar One uses a global `cdr-image` class with modifier utilities and omits legacy `-o-object-*` prefixes from the compiled CSS.
+- Prop-to-class mapping: Some legacy Vue components map props to inline CSS variables; Cedar One prefers utility classes to express the same options when possible.
