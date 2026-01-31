@@ -219,6 +219,22 @@ export default defineComponent({
     </section>
 
     <section class="fixture-group">
+      <h3>Abstract</h3>
+      <div class="fixture-stack">
+        <p class="cdr-abstract">
+          Fueling well is the key to longevity and improvement in running. Our
+          experts guide you on filling your plate for your goals.
+        </p>
+        <div style="container-type: inline-size; max-width: 700px">
+          <p class="cdr-abstract">
+            This abstract is inside a container query context to demonstrate the
+            smaller type scale when the container is narrow.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fixture-group">
       <h3>Images</h3>
       <div class="fixture-stack">
         <img

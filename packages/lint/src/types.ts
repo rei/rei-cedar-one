@@ -33,6 +33,13 @@ export type ModifierAnalysis = {
   invalidModifiers: string[];
 };
 
+export type AbstractClassInfo = ModifierAnalysis;
+
+export type AbstractTagAnalysis = {
+  classes: string[];
+  info: AbstractClassInfo;
+};
+
 export type ContainerClassInfo = ModifierAnalysis;
 
 export type ContainerTagAnalysis = {

@@ -142,6 +142,7 @@ def main() -> int:
     }
 
     text_components = {
+        "abstract",
         "text",
         "body",
         "eyebrow",

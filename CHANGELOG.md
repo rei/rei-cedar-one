@@ -1,5 +1,12 @@
 # Cedar One Changelog
 
+## 0.1.14-alpha.0 - 2026-01-30
+
+- Added abstract component styles with container query parity and Storybook stories.
+- Added abstract ESLint rules and Vue lint fixture coverage.
+- Updated roadmap status and parity tooling for abstract.
+- Removed UI CSS minification to allow container query syntax in component CSS.
+
 ## 0.1.13-alpha.0 - 2026-01-30
 
 - Added quote component styles, stories, and Vue fixture coverage.

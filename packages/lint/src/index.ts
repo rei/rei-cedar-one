@@ -1,3 +1,4 @@
+import abstractRules from './rules/abstract-rules.js';
 import buttonRules from './rules/button-rules.js';
 import captionRules from './rules/caption-rules.js';
 import containerRules from './rules/container-rules.js';
@@ -10,6 +11,7 @@ import quoteRules from './rules/quote-rules.js';
 import textRules from './rules/text-rules.js';
 
 const rules = {
+  ...abstractRules.rules,
   ...buttonRules.rules,
   ...captionRules.rules,
   ...containerRules.rules,
@@ -25,6 +27,7 @@ const rules = {
 const configs = {
   recommended: {
     rules: {
+      ...abstractRules.configs.recommended.rules,
       ...buttonRules.configs.recommended.rules,
       ...captionRules.configs.recommended.rules,
       ...containerRules.configs.recommended.rules,
@@ -46,6 +49,8 @@ export default {
 
 export { rules, configs };
 export type {
+  AbstractClassInfo,
+  AbstractTagAnalysis,
   ParsedTag,
   ButtonClassInfo,
   ButtonTagAnalysis,

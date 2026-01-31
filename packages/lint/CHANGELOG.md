@@ -1,5 +1,9 @@
 # @rei/c1-lint Changelog
 
+## 0.1.8-alpha.0 - 2026-01-30
+
+- Added abstract lint rules to validate base class usage.
+
 ## 0.1.7-alpha.0 - 2026-01-30
 
 - Added quote lint rules for modifiers, elements, and tag usage.

@@ -16,6 +16,7 @@ import '../packages/ui/dist/css/components/eyebrow.css';
 import '../packages/ui/dist/css/components/caption.css';
 import '../packages/ui/dist/css/components/quote.css';
 import '../packages/ui/dist/css/components/kicker.css';
+import '../packages/ui/dist/css/components/abstract.css';
 import '../packages/ui/dist/css/components/heading-display.css';
 import '../packages/ui/dist/css/components/heading-sans.css';
 import '../packages/ui/dist/css/components/heading-serif.css';
@@ -32,6 +33,11 @@ export const parameters = {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/i,
+    },
+  },
+  options: {
+    storySort: {
+      method: 'alphabetical',
     },
   },
 };

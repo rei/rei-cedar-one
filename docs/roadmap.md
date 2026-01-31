@@ -34,7 +34,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>No: already CSS-only typography.</td>
       <td>Typography wrapper; can be a class on any semantic element.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>accordion</td>

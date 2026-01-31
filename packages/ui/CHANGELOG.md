@@ -1,5 +1,10 @@
 # @rei/c1-ui Changelog
 
+## 0.1.8-alpha.0 - 2026-01-30
+
+- Added abstract component styles with container query support.
+- Dropped CSS minification in the UI build to support container queries.
+
 ## 0.1.7-alpha.0 - 2026-01-30
 
 - Added quote component styles for block and pull quotes.

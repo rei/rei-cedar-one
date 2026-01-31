@@ -1,5 +1,9 @@
 # @rei/cedar-stories Changelog
 
+## 0.1.8-alpha.0 - 2026-01-30
+
+- Added abstract story variants including container query coverage.
+
 ## 0.1.7-alpha.0 - 2026-01-30
 
 - Added quote story variants for block and pull quotes.
