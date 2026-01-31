@@ -41,6 +41,7 @@ export const RequiredWithHelper = {
           <label class="cdr-label-standalone__label" for="label-standalone-required">
             Password <span aria-hidden="true">*</span>
           </label>
+          <br />
           <span class="cdr-label-standalone__helper" id="label-standalone-required-help">
             Use at least 8 characters.
           </span>
@@ -56,7 +57,7 @@ export const RequiredWithHelper = {
     `),
 };
 
-export const OptionalWithInfoAction = {
+export const OptionalWithHelper = {
   render: () =>
     renderBlock(`
       <div class="cdr-label-standalone">
@@ -65,14 +66,42 @@ export const OptionalWithInfoAction = {
             Company name
             <span class="cdr-label-standalone__optional">(optional)</span>
           </label>
+          <br />
+          <span
+            class="cdr-label-standalone__helper"
+            id="label-standalone-optional-helper"
+          >
+            Used on receipts only.
+          </span>
         </div>
         <div class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing">
-          <input id="label-standalone-optional" type="text" />
-          <div class="cdr-label-standalone__info-action">
-            <button type="button" aria-label="More info">i</button>
-          </div>
+          <input
+            id="label-standalone-optional"
+            type="text"
+            aria-describedby="label-standalone-optional-helper"
+          />
         </div>
-        <span class="cdr-label-standalone__info">Used on receipts only.</span>
+      </div>
+    `),
+};
+
+export const InfoLink = {
+  render: () =>
+    renderBlock(`
+      <div class="cdr-label-standalone">
+        <div class="cdr-label-standalone__label-wrapper">
+          <label class="cdr-label-standalone__label" for="label-standalone-info">
+            Nickname
+          </label>
+        </div>
+        <span class="cdr-label-standalone__info">
+          <a class="cdr-link cdr-link--standalone" href="#">
+            Why we ask
+          </a>
+        </span>
+        <div class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing">
+          <input id="label-standalone-info" type="text" />
+        </div>
       </div>
     `),
 };

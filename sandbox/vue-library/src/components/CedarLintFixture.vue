@@ -192,6 +192,7 @@ export default defineComponent({
             >
               Email address
             </label>
+            <br />
             <span
               class="cdr-label-standalone__helper"
               id="fixture-label-standalone-helper"
