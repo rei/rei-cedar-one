@@ -235,6 +235,24 @@ export default defineComponent({
     </section>
 
     <section class="fixture-group">
+      <h3>Title</h3>
+      <div class="fixture-stack">
+        <h1 class="cdr-title">Atomic title</h1>
+        <div style="container-type: inline-size; max-width: 340px">
+          <h2 class="cdr-title">Title in a narrow container</h2>
+        </div>
+        <div class="fixture-stack">
+          <span class="cdr-kicker">Backpacking</span>
+          <h2 class="cdr-title">Passage 2 Tent</h2>
+          <p class="cdr-abstract">
+            A dependable two-person shelter that balances packability with quick
+            setup.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fixture-group">
       <h3>Landing lead</h3>
       <div class="fixture-stack">
         <div

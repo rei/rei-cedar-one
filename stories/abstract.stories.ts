@@ -31,7 +31,7 @@ export const WithKickerAndTitle = {
   render: () =>
     renderBlock(`
       <span class="cdr-kicker">Kicker</span>
-      <p class="cdr-heading-sans">Title</p>
+      <h2 class="cdr-title">Title</h2>
       <p class="cdr-abstract">Abstract</p>
     `),
 };

@@ -11,6 +11,7 @@ import proseRules from './rules/prose-rules.js';
 import quoteRules from './rules/quote-rules.js';
 import splitSurfaceRules from './rules/split-surface-rules.js';
 import textRules from './rules/text-rules.js';
+import titleRules from './rules/title-rules.js';
 
 const rules = {
   ...abstractRules.rules,
@@ -26,6 +27,7 @@ const rules = {
   ...quoteRules.rules,
   ...splitSurfaceRules.rules,
   ...textRules.rules,
+  ...titleRules.rules,
 };
 
 const configs = {
@@ -44,6 +46,7 @@ const configs = {
       ...quoteRules.configs.recommended.rules,
       ...splitSurfaceRules.configs.recommended.rules,
       ...textRules.configs.recommended.rules,
+      ...titleRules.configs.recommended.rules,
     },
   },
 };
@@ -80,4 +83,6 @@ export type {
   SplitSurfaceTagAnalysis,
   TextComponentInfo,
   TextTagAnalysis,
+  TitleClassInfo,
+  TitleTagAnalysis,
 } from './types.js';

@@ -84,6 +84,13 @@ export type KickerTagAnalysis = {
   info: KickerClassInfo;
 };
 
+export type TitleClassInfo = ModifierAnalysis;
+
+export type TitleTagAnalysis = {
+  classes: string[];
+  info: TitleClassInfo;
+};
+
 export type CaptionTagAnalysis = {
   tagName: string;
   classes: string[];

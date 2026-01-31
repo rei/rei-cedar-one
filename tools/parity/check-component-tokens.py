@@ -147,6 +147,7 @@ def main() -> int:
         "body",
         "eyebrow",
         "kicker",
+        "title",
         "heading-display",
         "heading-sans",
         "heading-serif",

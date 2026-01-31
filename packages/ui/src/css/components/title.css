@@ -1,0 +1,113 @@
+.cdr-title {
+  color: var(--cdr-text-color, var(--cdr-color-text-primary));
+  margin: 0;
+  font-family: var(
+    --cdr-font-family-serif,
+    Stuart,
+    "Stuart fallback",
+    Georgia,
+    serif
+  );
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 5.4rem;
+  line-height: 6rem;
+  font-size: var(--cdr-type-scale-4);
+  line-height: var(--cdr-line-height-ratio-heading-4);
+}
+
+@container (min-width: 720px) and (max-width: 900px) {
+  .cdr-title {
+    font-family: var(
+      --cdr-font-family-serif,
+      Stuart,
+      "Stuart fallback",
+      Georgia,
+      serif
+    );
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: 3.2rem;
+    line-height: 3.6rem;
+    font-size: var(--cdr-type-scale-3);
+    line-height: var(--cdr-line-height-ratio-heading-3);
+  }
+}
+
+@container (min-width: 540px) and (max-width: 720px) {
+  .cdr-title {
+    font-family: var(
+      --cdr-font-family-serif,
+      Stuart,
+      "Stuart fallback",
+      Georgia,
+      serif
+    );
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: 3.2rem;
+    line-height: 3.6rem;
+    font-size: var(--cdr-type-scale-2);
+    line-height: var(--cdr-line-height-ratio-heading-2);
+  }
+}
+
+@container (min-width: 360px) and (max-width: 540px) {
+  .cdr-title {
+    font-family: var(
+      --cdr-font-family-sans,
+      Graphik,
+      "Graphik fallback",
+      "Helvetica Neue",
+      sans-serif
+    );
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: 2rem;
+    line-height: 2.6rem;
+    font-size: var(--cdr-type-scale-1);
+    line-height: var(--cdr-line-height-ratio-heading-1);
+  }
+}
+
+@container (min-width: 180px) and (max-width: 360px) {
+  .cdr-title {
+    font-family: var(
+      --cdr-font-family-sans,
+      Graphik,
+      "Graphik fallback",
+      "Helvetica Neue",
+      sans-serif
+    );
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: 2rem;
+    line-height: 2.6rem;
+    font-size: var(--cdr-type-scale-0);
+    line-height: calc(var(--cdr-type-scale-0) * 1.25);
+  }
+}
+
+@container (max-width: 180px) {
+  .cdr-title {
+    font-family: var(
+      --cdr-font-family-sans,
+      Graphik,
+      "Graphik fallback",
+      "Helvetica Neue",
+      sans-serif
+    );
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: 2rem;
+    line-height: 2.6rem;
+    font-size: var(--cdr-type-scale--1);
+    line-height: calc(var(--cdr-type-scale--1) * 1.25);
+  }
+}

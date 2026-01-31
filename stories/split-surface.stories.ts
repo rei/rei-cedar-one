@@ -5,13 +5,17 @@ const renderSurface = (modifier: 'top' | 'bottom') => `
       style="--cdr-split-surface-surface-color:#ffffff;"
     >
       <div class="cdr-split-surface__top">
-        <div style="padding:24px 0;">
-          <strong>Top content</strong>
-        </div>
+        <img
+          class="cdr-image cdr-image--ratio-16-9 cdr-image--fit-cover"
+          src="https://cedar.rei.com/rei-passage-2-tent.jpg"
+          alt="A person in a tent"
+        />
       </div>
       <div class="cdr-split-surface__bottom">
         <div style="padding:24px 0;">
-          <strong>Bottom content</strong>
+          <h2 class="cdr-heading-display cdr-heading-display--scale-4">
+            A life outdoors is a life well lived
+          </h2>
         </div>
       </div>
     </div>

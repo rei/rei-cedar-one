@@ -28,7 +28,7 @@ export const TitlePairing = {
   render: () =>
     renderBlock(`
       <span class="cdr-kicker">Kicker</span>
-      <p class="cdr-heading-sans">Title</p>
+      <h2 class="cdr-title">Title</h2>
       <p class="cdr-abstract">
         Abstract text that explains the headline in a bit more detail.
       </p>

@@ -1,5 +1,10 @@
 # @rei/cedar-stories Changelog
 
+## 0.1.11-alpha.0 - 2026-01-31
+
+- Added title story variants derived from Cedar atomic content examples.
+- Aligned atomic content, caption, and split surface stories with Cedar site markup.
+
 ## 0.1.10-alpha.0 - 2026-01-30
 
 - Added landing lead and split surface story variants.

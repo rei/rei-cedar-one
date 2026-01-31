@@ -334,12 +334,12 @@ export const ContentTypes = {
             src="https://cedar.rei.com/rei-passage-2-tent.jpg"
             alt="Person in an REI Passage 2 tent"
           />
-          <div class="cdr-caption">
+          <figcaption class="cdr-caption">
             <p class="cdr-caption__summary">
               Person in an REI Passage 2 tent.
             </p>
             <cite class="cdr-caption__cite">Photo by Cedar Studio</cite>
-          </div>
+          </figcaption>
         </figure>
       </article>
     </div>
@@ -359,7 +359,7 @@ export const ComponentMix = {
           class="cdr-not-prose"
           style="display:grid;gap:12px;padding:16px;border:1px solid var(--cdr-prose-rule);border-radius:var(--cdr-prose-radius)"
         >
-          <p class="cdr-text">Component title</p>
+          <h3 class="cdr-title">Component title</h3>
           <a class="cdr-link" href="#">Cedar link</a>
           <button
             type="button"

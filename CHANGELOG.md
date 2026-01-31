@@ -1,5 +1,12 @@
 # Cedar One Changelog
 
+## 0.1.16-alpha.0 - 2026-01-31
+
+- Added title component styles and Storybook variants.
+- Added title lint rules and Vue lint fixture coverage.
+- Marked title complete in the roadmap matrix and parity tooling.
+- Aligned atomic content, caption, and split surface story markup with Cedar site examples.
+
 ## 0.1.15-alpha.0 - 2026-01-30
 
 - Added split surface and landing lead component styles and stories.

@@ -1,5 +1,9 @@
 # @rei/c1-ui Changelog
 
+## 0.1.10-alpha.0 - 2026-01-31
+
+- Added title component styles with container query scaling.
+
 ## 0.1.9-alpha.0 - 2026-01-30
 
 - Added landing lead and split surface component styles.

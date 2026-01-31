@@ -19,6 +19,7 @@ import '../packages/ui/dist/css/components/quote.css';
 import '../packages/ui/dist/css/components/kicker.css';
 import '../packages/ui/dist/css/components/abstract.css';
 import '../packages/ui/dist/css/components/landing-lead.css';
+import '../packages/ui/dist/css/components/title.css';
 import '../packages/ui/dist/css/components/heading-display.css';
 import '../packages/ui/dist/css/components/heading-sans.css';
 import '../packages/ui/dist/css/components/heading-serif.css';

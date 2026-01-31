@@ -20,32 +20,36 @@ export default {
 export const SummaryOnly = {
   render: () =>
     renderBlock(`
-      <img
-        class="cdr-image"
-        src="https://cedar.rei.com/rei-passage-2-tent.jpg"
-        alt="Person in an REI Passage 2 tent"
-      />
-      <div class="cdr-caption">
-        <p class="cdr-caption__summary">
-          Person in an REI Passage 2 tent.
-        </p>
-      </div>
+      <figure>
+        <img
+          class="cdr-image"
+          src="https://cedar.rei.com/rei-passage-2-tent.jpg"
+          alt="Person in an REI Passage 2 tent"
+        />
+        <figcaption class="cdr-caption">
+          <p class="cdr-caption__summary">
+            Person in an REI Passage 2 tent.
+          </p>
+        </figcaption>
+      </figure>
     `),
 };
 
 export const SummaryWithCredit = {
   render: () =>
     renderBlock(`
-      <img
-        class="cdr-image"
-        src="https://cedar.rei.com/rei-passage-2-tent.jpg"
-        alt="Person in an REI Passage 2 tent"
-      />
-      <div class="cdr-caption">
-        <p class="cdr-caption__summary">
-          Person in an REI Passage 2 tent.
-        </p>
-        <cite class="cdr-caption__cite">Photo by Cedar Studio</cite>
-      </div>
+      <figure>
+        <img
+          class="cdr-image"
+          src="https://cedar.rei.com/rei-passage-2-tent.jpg"
+          alt="Person in an REI Passage 2 tent"
+        />
+        <figcaption class="cdr-caption">
+          <p class="cdr-caption__summary">
+            Person in an REI Passage 2 tent.
+          </p>
+          <cite class="cdr-caption__cite">Photo by Cedar Studio</cite>
+        </figcaption>
+      </figure>
     `),
 };
