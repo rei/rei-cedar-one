@@ -10,12 +10,19 @@
     "./reset.css": "./dist/css/reset.css",
     "./components/*": "./dist/css/components/*",
     "./adapters/input": {
-      "types": "./src/adapters/input.ts",
-      "default": "./src/adapters/input.ts"
+      "types": "./dist/adapters/input/index.d.ts",
+      "default": "./dist/adapters/input/index.js"
+    },
+    "./adapters/input/types": {
+      "types": "./dist/adapters/input/types.d.ts"
     }
   },
   "scripts": {
-    "build": "postcss \"src/css/**/*.css\" --base src/css --dir dist/css",
+    "build": "pnpm run build:adapters && pnpm run build:css",
+    "build:adapters": "pnpm run clean:adapters && vite build -c vite.adapters.config.ts && pnpm run build:types",
+    "build:css": "postcss \"src/css/**/*.css\" --base src/css --dir dist/css",
+    "build:types": "tsc -p tsconfig.adapters.json",
+    "clean:adapters": "rm -rf dist/adapters",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc -p tsconfig.json --noEmit"
@@ -25,9 +32,10 @@
   },
   "devDependencies": {
     "@rei/c1-lint": "workspace:*",
-    "postcss": "^8.4.38",
-    "postcss-cli": "^11.0.0",
-    "postcss-custom-media": "^10.0.4",
-    "postcss-import": "^16.1.0"
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-custom-media": "^12.0.0",
+    "postcss-import": "^16.1.1",
+    "vite": "^7.3.1"
   }
 }

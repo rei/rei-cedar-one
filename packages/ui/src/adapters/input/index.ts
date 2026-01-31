@@ -1,65 +1,45 @@
-export type InputBackground = 'primary' | 'secondary' | (string & {});
-export type InputSize = 'large' | (string & {});
+/**
+ * Framework-agnostic input adapter core.
+ * Use this in vanilla HTML/CSS/JS, or wrap it with framework-specific helpers
+ * (for example, a Vue composable in this same directory).
+ */
 
-export interface InputAdapterState {
-  id?: string;
-  type?: string;
-  numeric?: boolean;
-  rows?: number;
-  size?: InputSize;
-  background?: InputBackground;
-  error?: boolean | string;
-  required?: boolean;
-  optional?: boolean;
-  hasPreIcon?: boolean;
-  hasPostIcon?: boolean;
-  hasPostIcons?: boolean;
-  hasHelperTop?: boolean;
-  hasHelperBottom?: boolean;
-  describedBy?: string;
-  isFocused?: boolean;
-}
+export type {
+  InputAdapterInstance,
+  InputAdapterRefs,
+  InputAdapterState,
+  InputComputedState,
+  InputBackground,
+  InputSize,
+  ResolvedInputState,
+} from './types';
 
-export interface InputAdapterRefs {
-  input: HTMLInputElement | HTMLTextAreaElement;
-  wrap?: HTMLElement;
-  helperTop?: HTMLElement | null;
-  helperBottom?: HTMLElement | null;
-  error?: HTMLElement | null;
-  preIcon?: HTMLElement | null;
-  postIcon?: HTMLElement | null;
-}
-
-export interface ResolvedInputState extends InputAdapterState {
-  id: string;
-  background: InputBackground;
-  type: string;
-}
-
-export interface InputComputedState {
-  id: string;
-  helperTopId?: string;
-  helperBottomId?: string;
-  errorId?: string;
-  describedBy?: string;
-  inputAttrs: Record<string, string | undefined>;
-  inputClasses: string[];
-  wrapClasses: string[];
-}
-
-export interface InputAdapterInstance {
-  update(nextState?: InputAdapterState): void;
-  destroy(): void;
-  getState(): ResolvedInputState;
-}
+import type {
+  InputAdapterInstance,
+  InputAdapterRefs,
+  InputAdapterState,
+  InputComputedState,
+  ResolvedInputState,
+} from './types';
 
 let inputIdCounter = 0;
 
-const nextInputId = () => {
+/**
+ * Generate a stable unique ID for inputs when none is provided.
+ * @returns Generated ID string.
+ */
+const nextInputId = (): string => {
   inputIdCounter += 1;
   return `cdr-input-${inputIdCounter}`;
 };
 
+/**
+ * Normalize adapter state by resolving defaults from DOM refs and prior state.
+ * @param state - Partial adapter state updates.
+ * @param refs - DOM references used for inference.
+ * @param existingId - Previously resolved ID, if any.
+ * @returns Fully resolved state.
+ */
 const normalizeState = (
   state: InputAdapterState,
   refs: InputAdapterRefs,
@@ -83,11 +63,24 @@ const normalizeState = (
   };
 };
 
-const buildDescribedBy = (ids: Array<string | undefined>) => {
+/**
+ * Join aria-describedby IDs into a single attribute value.
+ * @param ids - List of IDs (including undefined).
+ * @returns Space-separated IDs or undefined.
+ */
+const buildDescribedBy = (
+  ids: Array<string | undefined>,
+): string | undefined => {
   const filtered = ids.filter(Boolean) as string[];
   return filtered.length ? filtered.join(' ') : undefined;
 };
 
+/**
+ * Compute derived attributes and class toggles from adapter state.
+ * Consumers can use this directly in frameworks to keep templates declarative.
+ * @param state - Fully resolved adapter state.
+ * @returns Computed attributes and class lists.
+ */
 export const computeInputState = (
   state: ResolvedInputState,
 ): InputComputedState => {
@@ -152,7 +145,13 @@ export const computeInputState = (
   };
 };
 
-const setAttr = (el: HTMLElement, name: string, value?: string) => {
+/**
+ * Set or remove an attribute based on a value.
+ * @param el - Target element.
+ * @param name - Attribute name.
+ * @param value - Attribute value, if any.
+ */
+const setAttr = (el: HTMLElement, name: string, value?: string): void => {
   if (!value) {
     el.removeAttribute(name);
     return;
@@ -160,7 +159,13 @@ const setAttr = (el: HTMLElement, name: string, value?: string) => {
   el.setAttribute(name, value);
 };
 
-const toggleClass = (el: HTMLElement, className: string, on: boolean) => {
+/**
+ * Toggle a class name on an element.
+ * @param el - Target element.
+ * @param className - Class to toggle.
+ * @param on - Whether the class should be present.
+ */
+const toggleClass = (el: HTMLElement, className: string, on: boolean): void => {
   if (on) {
     el.classList.add(className);
   } else {
@@ -168,22 +173,37 @@ const toggleClass = (el: HTMLElement, className: string, on: boolean) => {
   }
 };
 
+/**
+ * Apply a managed set of classes by toggling against the active list.
+ * @param el - Target element.
+ * @param managed - Set of classes managed by the adapter.
+ * @param active - Classes that should be active.
+ * @returns Nothing.
+ */
 const applyManagedClasses = (
   el: HTMLElement,
   managed: Set<string>,
   active: string[],
-) => {
+): void => {
   for (const cls of managed) {
     toggleClass(el, cls, active.includes(cls));
   }
 };
 
+/**
+ * Apply computed state to DOM nodes in vanilla environments.
+ * @param refs - DOM references for the input structure.
+ * @param computed - Computed adapter state.
+ * @param managedInputClasses - Optional managed class set for the input.
+ * @param managedWrapClasses - Optional managed class set for the wrapper.
+ * @returns Nothing.
+ */
 export const applyInputState = (
   refs: InputAdapterRefs,
   computed: InputComputedState,
   managedInputClasses?: Set<string>,
   managedWrapClasses?: Set<string>,
-) => {
+): void => {
   const { input, wrap, helperTop, helperBottom, error } = refs;
 
   if (managedInputClasses) {
@@ -229,6 +249,13 @@ export const applyInputState = (
   }
 };
 
+/**
+ * Create a vanilla adapter instance that wires focus/blur and updates DOM
+ * attributes/classes as state changes.
+ * @param refs - DOM references for the input structure.
+ * @param initialState - Initial adapter state.
+ * @returns Adapter instance with update/destroy APIs.
+ */
 export const createInputAdapter = (
   refs: InputAdapterRefs,
   initialState: InputAdapterState = {},
@@ -238,7 +265,11 @@ export const createInputAdapter = (
   const managedInputClasses = new Set<string>(computed.inputClasses);
   const managedWrapClasses = new Set<string>(computed.wrapClasses);
 
-  const handleFocus = () => {
+  /**
+   * Focus handler used to reflect focus state in classes.
+   * @returns Nothing.
+   */
+  const handleFocus = (): void => {
     resolvedState = { ...resolvedState, isFocused: true };
     computed = computeInputState(resolvedState);
     computed.inputClasses.forEach((cls) => managedInputClasses.add(cls));
@@ -246,7 +277,11 @@ export const createInputAdapter = (
     applyInputState(refs, computed, managedInputClasses, managedWrapClasses);
   };
 
-  const handleBlur = () => {
+  /**
+   * Blur handler used to reflect focus state in classes.
+   * @returns Nothing.
+   */
+  const handleBlur = (): void => {
     resolvedState = { ...resolvedState, isFocused: false };
     computed = computeInputState(resolvedState);
     computed.inputClasses.forEach((cls) => managedInputClasses.add(cls));
@@ -254,7 +289,12 @@ export const createInputAdapter = (
     applyInputState(refs, computed, managedInputClasses, managedWrapClasses);
   };
 
-  const update = (nextState: InputAdapterState = {}) => {
+  /**
+   * Update adapter state and re-apply computed DOM wiring.
+   * @param nextState - Partial state updates.
+   * @returns Nothing.
+   */
+  const update = (nextState: InputAdapterState = {}): void => {
     resolvedState = normalizeState(
       { ...resolvedState, ...nextState },
       refs,
@@ -266,7 +306,11 @@ export const createInputAdapter = (
     applyInputState(refs, computed, managedInputClasses, managedWrapClasses);
   };
 
-  const destroy = () => {
+  /**
+   * Tear down event listeners added by the adapter.
+   * @returns Nothing.
+   */
+  const destroy = (): void => {
     refs.input.removeEventListener('focus', handleFocus);
     refs.input.removeEventListener('blur', handleBlur);
   };
