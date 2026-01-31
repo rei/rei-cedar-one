@@ -11,7 +11,7 @@ export default {
     docs: {
       description: {
         component:
-          'HTML-first kicker styles for Cedar. Derived from Cedar docs examples and common title pairings.',
+          'Kickers sit above a title or heading to categorize or capture interest, using atomic-content typography.',
       },
     },
   },

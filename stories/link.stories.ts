@@ -11,7 +11,7 @@ export default {
     docs: {
       description: {
         component:
-          'HTML-first link styles for Cedar. Validate base markup and modifier classes.',
+          'Link styles cover neutral and standalone treatments plus button-tag links for actions that look like links.',
       },
     },
   },

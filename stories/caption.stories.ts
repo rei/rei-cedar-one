@@ -11,7 +11,7 @@ export default {
     docs: {
       description: {
         component:
-          'HTML-first caption styles for Cedar. Validate base markup and element classes.',
+          'Captions pair a summary with optional credit and are intended to sit with media; summary-only and credit-only variants match default styling.',
       },
     },
   },

@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component:
-          'Optional prose styles for rich text and CMS content wrapped in cdr-prose.',
+          'Prose styles provide readable defaults for rich text and CMS content, aligning with Cedar typography guidance and spacing.',
       },
     },
   },

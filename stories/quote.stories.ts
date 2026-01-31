@@ -11,7 +11,7 @@ export default {
     docs: {
       description: {
         component:
-          'HTML-first quote styles for Cedar. Derived from Cedar site block and pull quote examples.',
+          'Block quotes separate external source text; pull quotes repeat an excerpt to emphasize or aid scanning.',
       },
     },
   },

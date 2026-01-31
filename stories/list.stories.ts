@@ -11,7 +11,7 @@ export default {
     docs: {
       description: {
         component:
-          'HTML-first list styles for Cedar. Validate base markup and modifier classes.',
+          'List styles cover bare, unordered, ordered, compact spacing, and inline layouts (including inline unordered bullets).',
       },
     },
   },

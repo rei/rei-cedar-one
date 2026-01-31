@@ -5,7 +5,7 @@ export default {
     docs: {
       description: {
         component:
-          'HTML-first text styles for Cedar typography presets and base text.',
+          'CdrText wraps text elements with default type styles and spacing; presets map to Cedar typography for headings, subheadings, body, utility, and eyebrow.',
       },
     },
   },

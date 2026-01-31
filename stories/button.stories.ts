@@ -69,7 +69,7 @@ export default {
     docs: {
       description: {
         component:
-          'HTML-first button styles for Cedar. Validate variants, sizes, and icon combinations.',
+          'Buttons communicate actions: primary for the main task, secondary for supporting actions, with link-style, icon-only, and stateful treatments.',
       },
     },
   },

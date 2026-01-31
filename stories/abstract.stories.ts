@@ -11,7 +11,7 @@ export default {
     docs: {
       description: {
         component:
-          'HTML-first abstract styles for Cedar. Derived from Cedar doc examples and tuned for container queries.',
+          'Abstracts summarize a content composition and use atomic-content typography that adapts to their container.',
       },
     },
   },

@@ -31,7 +31,7 @@ export default {
     docs: {
       description: {
         component:
-          'HTML-first container styles for Cedar. Compare static and fluid layouts.',
+          'Cedar containers center content and provide page gutters aligned to REI layouts; static and fluid variants control width.',
       },
     },
   },

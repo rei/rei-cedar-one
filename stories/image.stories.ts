@@ -5,7 +5,7 @@ export default {
     docs: {
       description: {
         component:
-          'HTML-first image styles for aspect ratio, object-fit, position, and radius.',
+          'Images are used to illustrate, compare, tell stories, or convey brand; utilities handle ratios, fit, position, and radius.',
       },
     },
   },
