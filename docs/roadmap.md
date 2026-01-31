@@ -8,7 +8,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
 
 1. **Component:** component name from `rei-cedar`.
 2. **CSS?:** can be expressed with HTML + classes (no runtime behavior).
-3. **Adapter:** requires JS for a11y, interaction, or state.
+3. **Adapter:** JS required to reach functional parity with `rei-cedar` (a11y, interaction, state).
 4. **Type:** recommended layer for that behavior (vanilla vs framework).
 5. **Native:** native HTML that could reduce or replace the adapter.
 6. **Notes:** key behavior or layout constraints.
@@ -33,7 +33,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: already CSS-only typography.</td>
-      <td>Typography wrapper; can be a class on any semantic element.</td>
+      <td>Adapter: none. Typography wrapper; can be a class on any semantic element.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -45,7 +45,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
         Yes: <code>&lt;details&gt;/&lt;summary&gt;</code> gives toggle +
         keyboard; keep CSS for motion.
       </td>
-      <td>Expand/collapse, ARIA, keyboard, and height transitions.</td>
+      <td>Adapter: required. Expand/collapse, ARIA, keyboard, and height transitions.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -54,16 +54,16 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>Optional</td>
       <td>Vanilla JS/TS</td>
       <td>No: layout-only; dismiss is app logic.</td>
-      <td>Static layout is CSS; dismiss behavior is app logic.</td>
+      <td>Adapter: optional. Static layout is CSS; dismiss behavior is app logic.</td>
       <td>⚪</td>
     </tr>
     <tr>
       <td>breadcrumb</td>
       <td>Yes</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Required</td>
+      <td>Vanilla JS/TS</td>
       <td>No: list semantics already native.</td>
-      <td>Simple list + separators; no interaction required.</td>
+      <td>Adapter: required. Truncation/ellipsis behavior and focus management require JS for parity.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -74,7 +74,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>
         No: native <code>&lt;button&gt;</code>/<code>&lt;a&gt;</code> already.
       </td>
-      <td>Native button/anchor states + classes cover styling.</td>
+      <td>Adapter: none. Native button/anchor states + classes cover styling.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -83,7 +83,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: text-only.</td>
-      <td>Text styling only.</td>
+      <td>Adapter: none. Text styling only.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -92,18 +92,18 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: layout-only.</td>
-      <td>Layout, elevation, and spacing styles only.</td>
+      <td>Adapter: none. Layout, elevation, and spacing styles only.</td>
       <td>⚪</td>
     </tr>
     <tr>
       <td>checkbox</td>
       <td>Yes</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Optional</td>
+      <td>Vanilla JS/TS</td>
       <td>
         No: native <code>&lt;input type="checkbox"&gt;</code>.
       </td>
-      <td>Native input + label with CSS states.</td>
+      <td>Adapter: optional. Native input styling; optional adapter wires label, helper, error, and state classes for parity.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -115,7 +115,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
         Maybe: use <code>&lt;button&gt;</code> or <code>&lt;input&gt;</code> for
         selectable chips.
       </td>
-      <td>Base pill styling; dismiss/select needs app logic.</td>
+      <td>Adapter: optional. Single chip is CSS-only; chip group needs adapter for roving focus/keyboard.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -124,7 +124,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>Required</td>
       <td>Framework adapters</td>
       <td>No: schema renderer depends on component map/slots.</td>
-      <td>Schema-driven renderer; depends on component map and slots.</td>
+      <td>Adapter: required. Schema-driven renderer; depends on component map and slots.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -133,7 +133,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: layout-only.</td>
-      <td>Layout container and spacing utilities only.</td>
+      <td>Adapter: none. Layout container and spacing utilities only.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -142,7 +142,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>Yes: native overflow + scroll-snap reduces carousel JS.</td>
-      <td>Carousel/scroll behavior, controls, and focus management.</td>
+      <td>Adapter: required. Carousel/scroll behavior, controls, and focus management.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -151,16 +151,16 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: text-only.</td>
-      <td>Error messaging styles only.</td>
+      <td>Adapter: none. Error messaging styles only.</td>
       <td>✅</td>
     </tr>
     <tr>
       <td>formGroup</td>
       <td>Yes</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Optional</td>
+      <td>Vanilla JS/TS</td>
       <td>No: layout-only.</td>
-      <td>Layout for label/help/field grouping.</td>
+      <td>Adapter: optional. Fieldset/legend layout; optional adapter maps IDs and ARIA error wiring.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -169,7 +169,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: layout-only.</td>
-      <td>Static tile layout and typographic styling.</td>
+      <td>Adapter: none. Static tile layout and typographic styling.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -178,7 +178,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: CSS grid utilities.</td>
-      <td>Layout grid; responsive classes only.</td>
+      <td>Adapter: none. Layout grid; responsive classes only.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -187,7 +187,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: SVG wrapper.</td>
-      <td>Inline SVG or icon wrapper; no behavior.</td>
+      <td>Adapter: none. Inline SVG or icon wrapper; no behavior.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -198,18 +198,18 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>
         No: native <code>&lt;img&gt;</code>/<code>&lt;figure&gt;</code>.
       </td>
-      <td>Image styling, aspect ratios, and captions.</td>
+      <td>Adapter: none. Image styling, aspect ratios, and captions.</td>
       <td>✅</td>
     </tr>
     <tr>
       <td>input</td>
       <td>Yes</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Optional</td>
+      <td>Vanilla JS/TS</td>
       <td>
-        No: native <code>&lt;input&gt;</code>.
+        No: native <code>&lt;input&gt;</code> covers entry; adapters handle wiring.
       </td>
-      <td>Native input styling; validation remains app-side.</td>
+      <td>Adapter: optional. CSS-only visuals; optional adapter wires ID/ARIA/helper/error classes. Validation remains app-side.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -218,7 +218,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: text-only.</td>
-      <td>Text styling only.</td>
+      <td>Adapter: none. Text styling only.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -227,7 +227,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: label-only.</td>
-      <td>Label styling only.</td>
+      <td>Adapter: none. Label styling only.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -236,7 +236,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: layout-only.</td>
-      <td>Wrapper/label layout; no behavior.</td>
+      <td>Adapter: none. Wrapper/label layout; no behavior.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -245,7 +245,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: composite layout (image + copy).</td>
-      <td>Landing lead layout with image and heading/subheading block.</td>
+      <td>Adapter: none. Landing lead layout with image and heading/subheading block.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -254,7 +254,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: layout utilities.</td>
-      <td>Spacing and layout utilities only.</td>
+      <td>Adapter: none. Spacing and layout utilities only.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -265,7 +265,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>
         No: native <code>&lt;a&gt;</code>.
       </td>
-      <td>Styled anchors with states.</td>
+      <td>Adapter: none. Styled anchors with states.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -276,7 +276,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>
         No: native <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code>.
       </td>
-      <td>List layout and bullet styling.</td>
+      <td>Adapter: none. List layout and bullet styling.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -285,7 +285,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: layout-only.</td>
-      <td>Media + content layout pattern.</td>
+      <td>Adapter: none. Media + content layout pattern.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -296,25 +296,25 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>
         Yes: <code>&lt;dialog&gt;</code> provides focus/ESC; polyfill as needed.
       </td>
-      <td>Focus trap, scroll lock, ESC handling, and animation timing.</td>
+      <td>Adapter: required. Focus trap, scroll lock, ESC handling, and animation timing.</td>
       <td>⚪</td>
     </tr>
     <tr>
       <td>objectOverlay</td>
       <td>Yes</td>
-      <td>None</td>
-      <td>None</td>
-      <td>No: layout-only.</td>
-      <td>Layered layout pattern; no interaction.</td>
+      <td>Required</td>
+      <td>Vanilla JS/TS</td>
+      <td>No: responsive positioning + gradients need JS.</td>
+      <td>Adapter: required. Responsive positioning, gradient data attributes, and border-radius inheritance.</td>
       <td>⚪</td>
     </tr>
     <tr>
       <td>pagination</td>
       <td>Yes</td>
-      <td>None</td>
-      <td>None</td>
-      <td>No: nav semantics already native.</td>
-      <td>Styling for links; page logic lives in the app.</td>
+      <td>Required</td>
+      <td>Vanilla JS/TS</td>
+      <td>No: nav semantics are native; range logic needs JS.</td>
+      <td>Adapter: required. Pagination range/ellipsis logic, aria labels, and current page state.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -325,7 +325,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>
         No: native <code>&lt;picture&gt;</code>.
       </td>
-      <td>Responsive image element styling.</td>
+      <td>Adapter: none. Responsive image element styling.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -334,7 +334,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>Yes: HTML Popover API for toggle; JS fallback for placement.</td>
-      <td>Toggle + positioning + outside click handling.</td>
+      <td>Adapter: required. Toggle + positioning + outside click handling.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -343,7 +343,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>No: needs measurement/placement logic.</td>
-      <td>Positioning/measurement, ESC, and click-away.</td>
+      <td>Adapter: required. Positioning/measurement, ESC, and click-away.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -352,47 +352,47 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: text-only.</td>
-      <td>Quote typography + layout.</td>
+      <td>Adapter: none. Quote typography + layout.</td>
       <td>✅</td>
     </tr>
     <tr>
       <td>radio</td>
       <td>Yes</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Optional</td>
+      <td>Vanilla JS/TS</td>
       <td>
         No: native <code>&lt;input type="radio"&gt;</code>.
       </td>
-      <td>Native radio styling; group logic is native/app.</td>
+      <td>Adapter: optional. Native radio styling; optional adapter wires labels, errors, and group helper text for parity.</td>
       <td>⚪</td>
     </tr>
     <tr>
       <td>rating</td>
-      <td>No</td>
-      <td>Required</td>
+      <td>Yes</td>
+      <td>Optional</td>
       <td>Vanilla JS/TS</td>
       <td>Maybe: data-driven stars via CSS masks; still need a11y text.</td>
-      <td>Dynamic star rendering and accessible text.</td>
+      <td>Adapter: optional. Star display can be manual markup; optional adapter computes star breakdown and SR text.</td>
       <td>⚪</td>
     </tr>
     <tr>
       <td>select</td>
       <td>Yes</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Optional</td>
+      <td>Vanilla JS/TS</td>
       <td>
         No: native <code>&lt;select&gt;</code>.
       </td>
-      <td>Native select styling; options rendering is app-side.</td>
+      <td>Adapter: optional. Native select styling; optional adapter wires label/helper/error/ARIA wiring for parity.</td>
       <td>⚪</td>
     </tr>
     <tr>
       <td>skeleton</td>
       <td>Yes</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Optional</td>
+      <td>Vanilla JS/TS</td>
       <td>No: CSS-only.</td>
-      <td>Loading shimmer styles only.</td>
+      <td>Adapter: optional. CSS shimmer styles; optional adapter toggles motion class.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -401,7 +401,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: layout-only.</td>
-      <td>Layout split pattern; no behavior.</td>
+      <td>Adapter: none. Layout split pattern; no behavior.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -410,7 +410,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: style-only.</td>
-      <td>Surface styles and variants only.</td>
+      <td>Adapter: none. Surface styles and variants only.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -419,7 +419,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: wrapper-only.</td>
-      <td>Surface wrapper for navigation styling.</td>
+      <td>Adapter: none. Surface wrapper for navigation styling.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -430,7 +430,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>
         Maybe: native overflow + scrollbar styling if custom UX is optional.
       </td>
-      <td>Scroll area behavior and custom scrollbar interactions.</td>
+      <td>Adapter: required. Scroll area behavior and custom scrollbar interactions.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -443,17 +443,17 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
         <code>:disabled</code> states for selection.
       </td>
       <td>
-        Styles for checked/disabled/loading states; selection logic in app.
+        Adapter: none. Styles for checked/disabled/loading states; selection logic in app.
       </td>
       <td>⚪</td>
     </tr>
     <tr>
       <td>switch</td>
       <td>Yes</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Optional</td>
+      <td>Vanilla JS/TS</td>
       <td>No: native checkbox toggle.</td>
-      <td>Native checkbox toggle styling.</td>
+      <td>Adapter: optional. Native checkbox toggle styling; optional adapter wires label/ARIA and state classes.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -462,7 +462,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: native table semantics.</td>
-      <td>Table layout and typography styles.</td>
+      <td>Adapter: none. Table layout and typography styles.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -471,7 +471,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>No: roving tabindex + ARIA require JS.</td>
-      <td>Active state, roving tabindex, and keyboard navigation.</td>
+      <td>Adapter: required. Active state, roving tabindex, and keyboard navigation.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -480,7 +480,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: text-only.</td>
-      <td>Text styling only.</td>
+      <td>Adapter: none. Text styling only.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -489,7 +489,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>None</td>
       <td>No: heading styles.</td>
-      <td>Heading styles only.</td>
+      <td>Adapter: none. Heading styles only.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -498,7 +498,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>No: timing/stacking/focus require JS.</td>
-      <td>Timed dismissal, stacking, and focus handling.</td>
+      <td>Adapter: required. Timed dismissal, stacking, and focus handling.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -507,7 +507,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>Yes: radio/checkbox group semantics reduce JS.</td>
-      <td>Group state, aria-checked, and roving tabindex.</td>
+      <td>Adapter: required. Group state, aria-checked, and roving tabindex.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -519,10 +519,10 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
         Maybe: <code>title</code> or Popover API for basic use; JS for rich
         placement.
       </td>
-      <td>Hover/focus triggers + positioning + aria-describedby.</td>
+      <td>Adapter: required. Hover/focus triggers + positioning + aria-describedby.</td>
       <td>⚪</td>
     </tr>
-  </tbody>
+</tbody>
 </table>
 
 <p>
