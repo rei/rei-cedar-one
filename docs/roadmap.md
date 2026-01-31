@@ -14,6 +14,8 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
 6. **Notes:** key behavior or layout constraints.
 7. **Status:** implementation status in this repo.
 
+Progress: 26 / 74 components marked complete (✅).
+
 <table class="intro-matrix">
   <thead>
     <tr>
@@ -49,12 +51,21 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>⚪</td>
     </tr>
     <tr>
+      <td>accordionGroup</td>
+      <td>No</td>
+      <td>Required</td>
+      <td>Vanilla JS/TS</td>
+      <td>Yes: <code>&lt;details&gt;</code> reduces toggle JS; group roving focus still needs JS.</td>
+      <td>Adapter: required. Group roving focus + breakpoint unwrap behavior.</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
       <td>banner</td>
       <td>Yes</td>
-      <td>Optional</td>
-      <td>Vanilla JS/TS</td>
+      <td>None</td>
+      <td>None</td>
       <td>No: layout-only; dismiss is app logic.</td>
-      <td>Adapter: optional. Static layout is CSS; dismiss behavior is app logic.</td>
+      <td>Adapter: none. Static layout is CSS; any dismiss behavior is app logic.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -98,24 +109,33 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
     <tr>
       <td>checkbox</td>
       <td>Yes</td>
-      <td>Optional</td>
+      <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>
         No: native <code>&lt;input type="checkbox"&gt;</code>.
       </td>
-      <td>Adapter: optional. Native input styling; optional adapter wires label, helper, error, and state classes for parity.</td>
+      <td>Adapter: required. Indeterminate state, true/false/custom values, and label wrapper wiring.</td>
       <td>⚪</td>
     </tr>
     <tr>
       <td>chip</td>
       <td>Yes</td>
-      <td>Optional</td>
-      <td>Vanilla JS/TS</td>
+      <td>None</td>
+      <td>None</td>
       <td>
         Maybe: use <code>&lt;button&gt;</code> or <code>&lt;input&gt;</code> for
         selectable chips.
       </td>
-      <td>Adapter: optional. Single chip is CSS-only; chip group needs adapter for roving focus/keyboard.</td>
+      <td>Adapter: none. Chip styling only; see chipGroup for roving focus/keyboard.</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <td>chipGroup</td>
+      <td>No</td>
+      <td>Required</td>
+      <td>Vanilla JS/TS</td>
+      <td>Yes: <code>&lt;fieldset&gt;</code> and group semantics reduce JS for structure.</td>
+      <td>Adapter: required. Roving tabindex, keyboard navigation, and focus management.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -146,6 +166,15 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>⚪</td>
     </tr>
     <tr>
+      <td>filmstripEngine</td>
+      <td>No</td>
+      <td>Required</td>
+      <td>Vanilla JS/TS</td>
+      <td>Yes: scroll-snap reduces JS, but engine handles arrows/roving focus.</td>
+      <td>Adapter: required. Scroll math, focus management, arrows, and aria messaging.</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
       <td>formError</td>
       <td>Yes</td>
       <td>None</td>
@@ -157,10 +186,10 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
     <tr>
       <td>formGroup</td>
       <td>Yes</td>
-      <td>Optional</td>
+      <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>No: layout-only.</td>
-      <td>Adapter: optional. Fieldset/legend layout; optional adapter maps IDs and ARIA error wiring.</td>
+      <td>Adapter: required. Auto ID + error/required/optional wiring and aria-errormessage.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -170,6 +199,15 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>No: layout-only.</td>
       <td>Adapter: none. Static tile layout and typographic styling.</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <td>fulfillmentTileIcon</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: icon wrapper.</td>
+      <td>Adapter: none. Icon wrapper styles only.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -202,15 +240,24 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>✅</td>
     </tr>
     <tr>
+      <td>img</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>Yes: native <code>&lt;img&gt;</code>.</td>
+      <td>Adapter: none. Maps image custom properties (ratio, fit, position, radius).</td>
+      <td>✅</td>
+    </tr>
+    <tr>
       <td>input</td>
       <td>Yes</td>
-      <td>Optional</td>
+      <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>
         No: native <code>&lt;input&gt;</code> covers entry; adapters handle wiring.
       </td>
-      <td>Adapter: optional. CSS-only visuals; optional adapter wires ID/ARIA/helper/error classes. Validation remains app-side.</td>
-      <td>✅</td>
+      <td>Adapter: required. CSS-only visuals; adapter wires ID/ARIA/helper/error classes for parity. Validation remains app-side.</td>
+      <td>🟡</td>
     </tr>
     <tr>
       <td>kicker</td>
@@ -246,6 +293,15 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>No: composite layout (image + copy).</td>
       <td>Adapter: none. Landing lead layout with image and heading/subheading block.</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>headingSubheadingBlock</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: layout-only.</td>
+      <td>Adapter: none. Heading/subheading wrapper used by landingLead.</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -358,41 +414,104 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
     <tr>
       <td>radio</td>
       <td>Yes</td>
-      <td>Optional</td>
+      <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>
         No: native <code>&lt;input type="radio"&gt;</code>.
       </td>
-      <td>Adapter: optional. Native radio styling; optional adapter wires labels, errors, and group helper text for parity.</td>
+      <td>Adapter: required. v-model state wiring and label wrapper integration for parity.</td>
       <td>⚪</td>
     </tr>
     <tr>
       <td>rating</td>
       <td>Yes</td>
-      <td>Optional</td>
+      <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>Maybe: data-driven stars via CSS masks; still need a11y text.</td>
-      <td>Adapter: optional. Star display can be manual markup; optional adapter computes star breakdown and SR text.</td>
+      <td>Adapter: required. Star breakdown + SR text computed from rating/count.</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <td>ratingStar100</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: SVG-only.</td>
+      <td>Adapter: none. Static star SVG glyph.</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <td>ratingStar75</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: SVG-only.</td>
+      <td>Adapter: none. Static star SVG glyph.</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <td>ratingStar50</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: SVG-only.</td>
+      <td>Adapter: none. Static star SVG glyph.</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <td>ratingStar25</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: SVG-only.</td>
+      <td>Adapter: none. Static star SVG glyph.</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <td>ratingStar00</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: SVG-only.</td>
+      <td>Adapter: none. Static star SVG glyph.</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <td>ratingStarNull</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: SVG-only.</td>
+      <td>Adapter: none. Static star SVG glyph.</td>
       <td>⚪</td>
     </tr>
     <tr>
       <td>select</td>
       <td>Yes</td>
-      <td>Optional</td>
+      <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>
         No: native <code>&lt;select&gt;</code>.
       </td>
-      <td>Adapter: optional. Native select styling; optional adapter wires label/helper/error/ARIA wiring for parity.</td>
+      <td>Adapter: required. Label/ARIA wiring, prompt state, options mapping, and error/helper slots.</td>
       <td>⚪</td>
     </tr>
     <tr>
       <td>skeleton</td>
       <td>Yes</td>
-      <td>Optional</td>
+      <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>No: CSS-only.</td>
-      <td>Adapter: optional. CSS shimmer styles; optional adapter toggles motion class.</td>
+      <td>Adapter: required. Motion prop wiring to bones plus ARIA busy state alignment.</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <td>skeletonBone</td>
+      <td>Yes</td>
+      <td>Required</td>
+      <td>Vanilla JS/TS</td>
+      <td>No: styled block.</td>
+      <td>Adapter: required. Motion class wiring via parent skeleton state.</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -450,10 +569,10 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
     <tr>
       <td>switch</td>
       <td>Yes</td>
-      <td>Optional</td>
+      <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>No: native checkbox toggle.</td>
-      <td>Adapter: optional. Native checkbox toggle styling; optional adapter wires label/ARIA and state classes.</td>
+      <td>Adapter: required. Toggle interaction and aria-checked updates (non-native button).</td>
       <td>⚪</td>
     </tr>
     <tr>
@@ -475,13 +594,94 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>⚪</td>
     </tr>
     <tr>
+      <td>tabPanel</td>
+      <td>No</td>
+      <td>Required</td>
+      <td>Vanilla JS/TS</td>
+      <td>No: tabpanel active state is JS-driven.</td>
+      <td>Adapter: required. Active state, aria-labelledby wiring, and tab-change emit.</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
       <td>text</td>
       <td>Yes</td>
       <td>None</td>
       <td>None</td>
       <td>No: text-only.</td>
       <td>Adapter: none. Text styling only.</td>
-      <td>⚪</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>textBody</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: text-only.</td>
+      <td>Adapter: none. Text preset class.</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>textEyebrow</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: text-only.</td>
+      <td>Adapter: none. Text preset class.</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>textHeadingDisplay</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: text-only.</td>
+      <td>Adapter: none. Text preset class.</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>textHeadingSans</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: text-only.</td>
+      <td>Adapter: none. Text preset class.</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>textHeadingSerif</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: text-only.</td>
+      <td>Adapter: none. Text preset class.</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>textSubheadingSans</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: text-only.</td>
+      <td>Adapter: none. Text preset class.</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>textUtilitySans</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: text-only.</td>
+      <td>Adapter: none. Text preset class.</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>textUtilitySerif</td>
+      <td>Yes</td>
+      <td>None</td>
+      <td>None</td>
+      <td>No: text-only.</td>
+      <td>Adapter: none. Text preset class.</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>title</td>
@@ -507,7 +707,16 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>Required</td>
       <td>Vanilla JS/TS</td>
       <td>Yes: radio/checkbox group semantics reduce JS.</td>
-      <td>Adapter: required. Group state, aria-checked, and roving tabindex.</td>
+      <td>Adapter: required. Selected state wiring for toggle items (aria-checked/tabindex).</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <td>toggleGroup</td>
+      <td>No</td>
+      <td>Required</td>
+      <td>Vanilla JS/TS</td>
+      <td>Yes: radio/checkbox group semantics reduce JS.</td>
+      <td>Adapter: required. Group state, roving focus, and update:modelValue.</td>
       <td>⚪</td>
     </tr>
     <tr>
