@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.21-alpha.0 - 2026-01-31
+
+- Added a root element helper for the input adapter and simplified adapter internals.
+- Reorganized Storybook stories into per-component folders with HTML fragments for input.
+- Enabled repo-wide unused code checks and refreshed docs around adapter behavior.
+
 ## 0.1.20-alpha.0 - 2026-01-31
 
 - Added input component styles, stories, and lint rules.

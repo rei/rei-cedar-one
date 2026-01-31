@@ -1,4 +1,9 @@
-# @rei/cedar-stories Changelog
+# @rei/c1-stories Changelog
+
+## 0.1.16-alpha.0 - 2026-01-31
+
+- Moved stories into per-component folders and nested input HTML fragments.
+- Wired the vanilla input adapter during render for docs parity.
 
 ## 0.1.15-alpha.0 - 2026-01-31
 

@@ -1,6 +1,6 @@
 {
-  "name": "rei-cedar-one",
-  "version": "0.1.20-alpha.0",
+  "name": "@rei/c1",
+  "version": "0.1.21-alpha.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -22,13 +22,13 @@
     "tokens:build": "pnpm --filter @rei/c1-tokens build",
     "typecheck": "pnpm run ws:typecheck",
     "ui:build": "pnpm --filter @rei/c1-ui build",
-    "ws:build": "pnpm -r --if-present --filter \"!rei-cedar-one\" run build",
+    "ws:build": "pnpm -r --if-present --filter \"!@rei/c1\" run build",
     "ws:dev": "pnpm -r --parallel --if-present dev",
-    "ws:lint": "pnpm -r --if-present --filter \"!rei-cedar-one\" run lint",
-    "ws:lint:fix": "pnpm -r --if-present --filter \"!rei-cedar-one\" run lint:fix",
+    "ws:lint": "pnpm -r --if-present --filter \"!@rei/c1\" run lint",
+    "ws:lint:fix": "pnpm -r --if-present --filter \"!@rei/c1\" run lint:fix",
     "ws:storybook": "pnpm tokens:build && pnpm ui:build && storybook dev -p 6006 --config-dir .storybook",
     "ws:storybook:build": "pnpm tokens:build && pnpm ui:build && storybook build --config-dir .storybook",
-    "ws:typecheck": "pnpm -r --if-present --filter \"!rei-cedar-one\" run typecheck"
+    "ws:typecheck": "pnpm -r --if-present --filter \"!@rei/c1\" run typecheck"
   },
   "lint-staged": {
     "package.json": "pnpm dlx sort-package-json@latest",

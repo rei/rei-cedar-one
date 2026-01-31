@@ -4,5 +4,10 @@
     "composite": true,
     "noEmit": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.d.ts",
+    "../packages/ui/src/adapters/**/*.ts"
+  ]
 }

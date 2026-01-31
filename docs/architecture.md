@@ -31,13 +31,19 @@ _Example: ESLint enforcing `cdr-button` contract rules at development time._
 
 Adapters provide behavior and accessibility wiring when CSS alone cannot reach functional parity with legacy Cedar components. The adapter model is split into a shared, framework-agnostic core and thin framework wrappers.
 
+### Adapter boundaries
+
+- **CSS-only first:** if a component’s parity gap is purely presentational, it remains CSS-only.
+- **Behavioral parity:** adapters are only introduced for runtime behavior (focus management, ARIA wiring, measurement, keyboard interaction).
+- **Validation scope:** adapters do not implement business rules. They reflect app-provided validity (e.g., error state) and only add runtime validation when parity _requires_ it and the scope is explicitly documented.
+
 ### Core (vanilla TS)
 
 - **Pure state computation:** derive attributes, class toggles, and IDs from a small input state object.
 - **Optional DOM helper:** apply computed state to DOM nodes in plain HTML/JS contexts.
-- **Lifecycle surface:** `createAdapter({ refs, initialState })` returns `update(nextState)` and `destroy()` for wiring focus/blur and cleanup.
+- **Lifecycle surface:** `createInputAdapter({ refs, initialState })` returns `update(nextState)`, `destroy()`, and `getState()` for wiring focus/blur and cleanup.
 
-The core does not implement runtime input validation (e.g., required rules, value checks). Contract validation stays in ESLint at build time. Runtime validity is handled case-by-case: most components keep validation app-side and adapters only reflect state via ARIA/class wiring, while any adapter-provided validation must be explicitly scoped and documented when parity requires it.
+The core does not implement business validation (e.g., “required” or min/max checks). Contract validation stays in ESLint at build time. Runtime validity is handled case-by-case: most components keep validation app-side and adapters only reflect state via ARIA/class wiring, while any adapter-provided validation must be explicitly scoped and documented when parity requires it.
 
 ### Framework adapters (Vue/React/etc.)
 
@@ -48,12 +54,18 @@ Framework adapters should remain idiomatic:
 
 Framework wrappers reuse the core compute layer to avoid duplicated logic while keeping DOM ownership with the framework.
 
+### Distribution model
+
+- **Subpath exports:** adapters are consumed as `@rei/c1-ui/adapters/<component>` and types as `@rei/c1-ui/adapters/<component>/types`.
+- **Tree-shakeable core:** compute helpers are pure functions so framework wrappers can share logic without pulling DOM helpers.
+
 ### Example: input adapter behavior
 
 - Generate or accept `id` and map helper/error text IDs into `aria-describedby`.
 - Toggle `aria-invalid` / `aria-errormessage` when `error` is present.
 - Add focus state classes (`cdr-input--focus`) on focus/blur.
 - Map `numeric` / `type=number` to `inputmode` and `pattern` attributes.
+- Offer a convenience entry point (`createInputAdapterFromElement`) that resolves refs from a root element.
 
 This keeps HTML/CSS/JS usage viable while enabling framework-specific adapters to share the same behavior contract.
 

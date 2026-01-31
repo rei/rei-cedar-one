@@ -52,3 +52,8 @@ export interface InputAdapterInstance {
   destroy(): void;
   getState(): ResolvedInputState;
 }
+
+export interface InputAdapterElementOptions {
+  element: HTMLElement;
+  initialState?: InputAdapterState;
+}

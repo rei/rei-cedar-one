@@ -1,0 +1,38 @@
+<div class="cdr-label-standalone">
+  <div class="cdr-label-standalone__label-wrapper">
+    <label class="cdr-label-standalone__label" for="input-error">
+      Input label
+    </label>
+  </div>
+  <div class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing">
+    <div class="cdr-input-wrap">
+      <input
+        class="cdr-input cdr-input--primary cdr-input--error"
+        id="input-error"
+        type="text"
+      />
+    </div>
+  </div>
+  <div class="cdr-label-standalone__post-content">
+    <div class="cdr-form-error --active-error" style="display:flex;align-items:center;gap:4px;">
+      <span
+        class="cdr-form-error__icon"
+        style="display:inline-flex;align-items:center;justify-content:center;height:20px;"
+      >
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+        >
+          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z"></path>
+        </svg>
+      </span>
+      <div role="status" aria-atomic="true" aria-relevant="all">
+        <div>Please enter a valid value.</div>
+      </div>
+    </div>
+  </div>
+</div>

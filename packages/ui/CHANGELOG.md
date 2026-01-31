@@ -1,5 +1,10 @@
 # @rei/c1-ui Changelog
 
+## 0.1.14-alpha.0 - 2026-01-31
+
+- Added `createInputAdapterFromElement` for easier adapter wiring.
+- Simplified input adapter state application and lifecycle handling.
+
 ## 0.1.13-alpha.0 - 2026-01-31
 
 - Added input component styles.

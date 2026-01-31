@@ -7,6 +7,7 @@
 export type {
   InputAdapterInstance,
   InputAdapterRefs,
+  InputAdapterElementOptions,
   InputAdapterState,
   InputComputedState,
   InputBackground,
@@ -17,6 +18,7 @@ export type {
 import type {
   InputAdapterInstance,
   InputAdapterRefs,
+  InputAdapterElementOptions,
   InputAdapterState,
   InputComputedState,
   ResolvedInputState,
@@ -29,8 +31,7 @@ let inputIdCounter = 0;
  * @returns Generated ID string.
  */
 const nextInputId = (): string => {
-  inputIdCounter += 1;
-  return `cdr-input-${inputIdCounter}`;
+  return `cdr-input-${++inputIdCounter}`;
 };
 
 /**
@@ -64,18 +65,6 @@ const normalizeState = (
 };
 
 /**
- * Join aria-describedby IDs into a single attribute value.
- * @param ids - List of IDs (including undefined).
- * @returns Space-separated IDs or undefined.
- */
-const buildDescribedBy = (
-  ids: Array<string | undefined>,
-): string | undefined => {
-  const filtered = ids.filter(Boolean) as string[];
-  return filtered.length ? filtered.join(' ') : undefined;
-};
-
-/**
  * Compute derived attributes and class toggles from adapter state.
  * Consumers can use this directly in frameworks to keep templates declarative.
  * @param state - Fully resolved adapter state.
@@ -99,12 +88,15 @@ export const computeInputState = (
     : undefined;
   const errorId = hasError ? `${state.id}-error` : undefined;
 
-  const describedBy = buildDescribedBy([
-    helperTopId,
-    helperBottomId,
-    state.describedBy,
-    hasError ? errorId : undefined,
-  ]);
+  const describedBy =
+    [
+      helperTopId,
+      helperBottomId,
+      state.describedBy,
+      hasError ? errorId : undefined,
+    ]
+      .filter(Boolean)
+      .join(' ') || undefined;
 
   const inputClasses = [
     'cdr-input',
@@ -214,16 +206,12 @@ export const applyInputState = (
     }
   }
 
-  setAttr(input, 'id', computed.id);
-  if (input instanceof HTMLInputElement) {
-    setAttr(input, 'type', computed.inputAttrs.type);
+  for (const [name, value] of Object.entries(computed.inputAttrs)) {
+    if (name === 'type' && !(input instanceof HTMLInputElement)) {
+      continue;
+    }
+    setAttr(input, name, value);
   }
-  setAttr(input, 'aria-required', computed.inputAttrs['aria-required']);
-  setAttr(input, 'aria-invalid', computed.inputAttrs['aria-invalid']);
-  setAttr(input, 'aria-errormessage', computed.inputAttrs['aria-errormessage']);
-  setAttr(input, 'aria-describedby', computed.inputAttrs['aria-describedby']);
-  setAttr(input, 'inputmode', computed.inputAttrs.inputmode);
-  setAttr(input, 'pattern', computed.inputAttrs.pattern);
 
   if (wrap) {
     if (managedWrapClasses) {
@@ -266,11 +254,12 @@ export const createInputAdapter = (
   const managedWrapClasses = new Set<string>(computed.wrapClasses);
 
   /**
-   * Focus handler used to reflect focus state in classes.
+   * Apply a new resolved state and update DOM wiring.
+   * @param nextState - Fully resolved adapter state.
    * @returns Nothing.
    */
-  const handleFocus = (): void => {
-    resolvedState = { ...resolvedState, isFocused: true };
+  const commitState = (nextState: ResolvedInputState): void => {
+    resolvedState = nextState;
     computed = computeInputState(resolvedState);
     computed.inputClasses.forEach((cls) => managedInputClasses.add(cls));
     computed.wrapClasses.forEach((cls) => managedWrapClasses.add(cls));
@@ -278,15 +267,19 @@ export const createInputAdapter = (
   };
 
   /**
+   * Focus handler used to reflect focus state in classes.
+   * @returns Nothing.
+   */
+  const handleFocus = (): void => {
+    commitState({ ...resolvedState, isFocused: true });
+  };
+
+  /**
    * Blur handler used to reflect focus state in classes.
    * @returns Nothing.
    */
   const handleBlur = (): void => {
-    resolvedState = { ...resolvedState, isFocused: false };
-    computed = computeInputState(resolvedState);
-    computed.inputClasses.forEach((cls) => managedInputClasses.add(cls));
-    computed.wrapClasses.forEach((cls) => managedWrapClasses.add(cls));
-    applyInputState(refs, computed, managedInputClasses, managedWrapClasses);
+    commitState({ ...resolvedState, isFocused: false });
   };
 
   /**
@@ -295,15 +288,13 @@ export const createInputAdapter = (
    * @returns Nothing.
    */
   const update = (nextState: InputAdapterState = {}): void => {
-    resolvedState = normalizeState(
-      { ...resolvedState, ...nextState },
-      refs,
-      resolvedState.id,
+    commitState(
+      normalizeState(
+        { ...resolvedState, ...nextState },
+        refs,
+        resolvedState.id,
+      ),
     );
-    computed = computeInputState(resolvedState);
-    computed.inputClasses.forEach((cls) => managedInputClasses.add(cls));
-    computed.wrapClasses.forEach((cls) => managedWrapClasses.add(cls));
-    applyInputState(refs, computed, managedInputClasses, managedWrapClasses);
   };
 
   /**
@@ -317,11 +308,116 @@ export const createInputAdapter = (
 
   refs.input.addEventListener('focus', handleFocus);
   refs.input.addEventListener('blur', handleBlur);
-  applyInputState(refs, computed, managedInputClasses, managedWrapClasses);
+  commitState(resolvedState);
 
   return {
     update,
     destroy,
     getState: () => resolvedState,
   };
+};
+
+/**
+ * Create an adapter by resolving refs from an element.
+ * The element can be a `.cdr-label-standalone`, `.cdr-input-wrap`, or the input itself.
+ * @param options - Element and optional initial state.
+ * @returns Adapter instance with update/destroy APIs.
+ */
+export const createInputAdapterFromElement = (
+  options: InputAdapterElementOptions,
+): InputAdapterInstance => {
+  const { element, initialState = {} } = options;
+
+  const isInputElement =
+    element instanceof HTMLInputElement ||
+    element instanceof HTMLTextAreaElement;
+  const wrap =
+    element.classList?.contains('cdr-input-wrap') &&
+    element instanceof HTMLElement
+      ? element
+      : element.querySelector<HTMLElement>('.cdr-input-wrap');
+  const input =
+    (isInputElement
+      ? (element as HTMLInputElement | HTMLTextAreaElement)
+      : wrap?.querySelector<HTMLInputElement | HTMLTextAreaElement>(
+          'input, textarea',
+        )) ??
+    element.querySelector<HTMLInputElement | HTMLTextAreaElement>(
+      'input, textarea',
+    );
+
+  if (!input) {
+    throw new Error(
+      'createInputAdapterFromElement: could not find input or textarea element.',
+    );
+  }
+
+  const resolvedWrap =
+    wrap ?? (input.closest('.cdr-input-wrap') as HTMLElement | null);
+
+  if (!resolvedWrap) {
+    throw new Error(
+      'createInputAdapterFromElement: could not find .cdr-input-wrap.',
+    );
+  }
+
+  const scope =
+    resolvedWrap.closest<HTMLElement>('.cdr-label-standalone') ?? element;
+
+  const helperTop = scope.querySelector<HTMLElement>(
+    '.cdr-label-standalone__helper',
+  );
+  const helperBottom = scope.querySelector<HTMLElement>(
+    '.cdr-input__helper-text',
+  );
+  const error = scope.querySelector<HTMLElement>('.cdr-form-error');
+  const preIcon = resolvedWrap.querySelector<HTMLElement>(
+    '.cdr-input__pre-icon',
+  );
+  const postIcon = resolvedWrap.querySelector<HTMLElement>(
+    '.cdr-input__post-icon',
+  );
+
+  const classList = input.classList;
+  const isSecondary = classList.contains('cdr-input--secondary');
+  const isLarge = classList.contains('cdr-input--large');
+  const hasPostIcons = classList.contains('cdr-input--posticons');
+  const hasError = classList.contains('cdr-input--error') || Boolean(error);
+  const isNumeric =
+    input.getAttribute('inputmode') === 'numeric' ||
+    (input instanceof HTMLInputElement && input.type === 'number');
+
+  const derivedState: InputAdapterState = {
+    background:
+      initialState.background ?? (isSecondary ? 'secondary' : 'primary'),
+    size: initialState.size ?? (isLarge ? 'large' : undefined),
+    error: initialState.error ?? (hasError || undefined),
+    hasPostIcons: initialState.hasPostIcons ?? hasPostIcons,
+    hasPreIcon:
+      initialState.hasPreIcon ??
+      (classList.contains('cdr-input--preicon') || Boolean(preIcon)),
+    hasPostIcon:
+      initialState.hasPostIcon ??
+      (classList.contains('cdr-input--posticon') || Boolean(postIcon)),
+    rows:
+      initialState.rows ??
+      (input instanceof HTMLTextAreaElement ? input.rows : undefined),
+    type:
+      initialState.type ??
+      (input instanceof HTMLInputElement ? input.type : undefined),
+    numeric: initialState.numeric ?? isNumeric,
+  };
+
+  return createInputAdapter(
+    {
+      input,
+      wrap: resolvedWrap,
+      helperTop,
+      helperBottom,
+      error,
+      preIcon,
+      postIcon,
+    },
+    derivedState,
+  );
 };
