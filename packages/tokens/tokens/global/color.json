@@ -14,7 +14,11 @@
           "$value": "{options.color.warm-grey-500}",
           "$type": "color"
         },
-        "help": { "$value": "{color.text.secondary}", "$type": "color" }
+        "help": { "$value": "{color.text.secondary}", "$type": "color" },
+        "error": {
+          "$value": "{options.color.error-red-850}",
+          "$type": "color"
+        }
       }
     },
     "background": {

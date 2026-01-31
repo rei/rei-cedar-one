@@ -1,5 +1,9 @@
 # @rei/c1-lint Changelog
 
+## 0.1.12-alpha.0 - 2026-01-31
+
+- Added form error lint rules.
+
 ## 0.1.11-alpha.0 - 2026-01-31
 
 - Added label standalone and label wrapper lint rules.

@@ -137,6 +137,8 @@ def main() -> int:
         "--cdr-img-object-position",
         "--cdr-form-figure-background-color",
         "--cdr-form-figure-box-shadow-color",
+        "--cdr-form-error-text-color",
+        "--cdr-form-error-fill-color",
         "--cdr-text-color",
         "--cdr-line-height-ratio-heading-serif-1",
         "--cdr-heading-line-height",

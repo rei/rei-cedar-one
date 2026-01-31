@@ -13,6 +13,7 @@ import '../packages/ui/dist/css/components/link.css';
 import '../packages/ui/dist/css/components/label-standalone.css';
 import '../packages/ui/dist/css/components/label-wrapper.css';
 import '../packages/ui/dist/css/components/split-surface.css';
+import '../packages/ui/dist/css/components/form-error.css';
 import '../packages/ui/dist/css/components/text.css';
 import '../packages/ui/dist/css/components/body.css';
 import '../packages/ui/dist/css/components/eyebrow.css';

@@ -152,7 +152,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>No: text-only.</td>
       <td>Error messaging styles only.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>formGroup</td>

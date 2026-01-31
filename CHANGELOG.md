@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.19-alpha.0 - 2026-01-31
+
+- Added form error component styles, stories, and lint rules.
+- Added form error token support, parity tooling updates, and Vue lint fixture coverage.
+- Marked form error complete in the roadmap matrix.
+
 ## 0.1.18-alpha.0 - 2026-01-31
 
 - Added label standalone and label wrapper component styles, stories, and lint rules.

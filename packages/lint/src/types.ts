@@ -113,6 +113,17 @@ export type LabelWrapperTagAnalysis = {
   hasContent: boolean;
 };
 
+export type FormErrorTagAnalysis = {
+  tagName: string;
+  classes: string[];
+  formErrorClasses: string[];
+  invalidClasses: string[];
+  duplicateClasses: string[];
+  hasBase: boolean;
+  hasActive: boolean;
+  hasIcon: boolean;
+};
+
 export type TitleClassInfo = ModifierAnalysis;
 
 export type TitleTagAnalysis = {

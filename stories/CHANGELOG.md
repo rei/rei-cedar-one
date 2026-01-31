@@ -1,5 +1,9 @@
 # @rei/cedar-stories Changelog
 
+## 0.1.14-alpha.0 - 2026-01-31
+
+- Added form error story variants.
+
 ## 0.1.13-alpha.0 - 2026-01-31
 
 - Added label standalone and label wrapper stories.

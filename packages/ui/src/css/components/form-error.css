@@ -1,0 +1,31 @@
+.cdr-form-error {
+  font-family: var(
+    --cdr-text-utility-sans-300-family,
+    var(--cdr-font-family-sans)
+  );
+  font-style: var(--cdr-text-utility-sans-300-style, normal);
+  font-weight: var(--cdr-text-utility-sans-300-weight, 400);
+  letter-spacing: var(--cdr-text-utility-sans-300-spacing, -0.016rem);
+  font-size: var(--cdr-text-utility-sans-300-size, 1.6rem);
+  line-height: var(--cdr-text-utility-sans-300-height, 2.2rem);
+  color: var(
+    --cdr-form-error-text-color,
+    var(--cdr-color-text-input-error)
+  );
+  fill: var(
+    --cdr-form-error-fill-color,
+    var(--cdr-color-text-input-error)
+  );
+  margin-top: var(--cdr-space-quarter-x);
+  height: 0;
+  margin: 0;
+}
+
+.cdr-form-error__icon {
+  margin-right: var(--cdr-space-quarter-x);
+}
+
+.--active-error {
+  height: auto;
+  padding: var(--cdr-space-quarter-x);
+}

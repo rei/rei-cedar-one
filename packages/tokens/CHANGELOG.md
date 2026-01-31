@@ -1,5 +1,9 @@
 # @rei/c1-tokens Changelog
 
+## 0.1.8-alpha.0 - 2026-01-31
+
+- Added input error text color token for form error parity.
+
 ## 0.1.7-alpha.0 - 2026-01-31
 
 - Added input/label color tokens, form figure sizes, and space eighth-x for label components.

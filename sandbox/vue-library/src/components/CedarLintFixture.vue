@@ -303,6 +303,29 @@ export default defineComponent({
     </section>
 
     <section class="fixture-group">
+      <h3>Form error</h3>
+      <div class="fixture-stack">
+        <div class="cdr-form-error --active-error">
+          <span class="cdr-form-error__icon">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path
+                d="M12 2.5c-.5 0-.9.3-1.1.7L3 19.1c-.4.7.1 1.6.9 1.6h16.2c.8 0 1.3-.9.9-1.6L13.1 3.2c-.2-.4-.6-.7-1.1-.7zM11 9h2v6h-2V9zm0 8h2v2h-2v-2z"
+              ></path>
+            </svg>
+          </span>
+          <div
+            role="status"
+            aria-atomic="true"
+            aria-relevant="all"
+            style="display: inline-block"
+          >
+            <div>Please enter a valid email address.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fixture-group">
       <h3>Caption</h3>
       <div class="fixture-stack">
         <img
