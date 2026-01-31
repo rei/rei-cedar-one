@@ -27,6 +27,36 @@ Cedar One enforces component contracts through development tooling, such as ESLi
 
 _Example: ESLint enforcing `cdr-button` contract rules at development time._
 
+## Adapter architecture
+
+Adapters provide behavior and accessibility wiring when CSS alone cannot reach functional parity with legacy Cedar components. The adapter model is split into a shared, framework-agnostic core and thin framework wrappers.
+
+### Core (vanilla TS)
+
+- **Pure state computation:** derive attributes, class toggles, and IDs from a small input state object.
+- **Optional DOM helper:** apply computed state to DOM nodes in plain HTML/JS contexts.
+- **Lifecycle surface:** `createAdapter({ refs, initialState })` returns `update(nextState)` and `destroy()` for wiring focus/blur and cleanup.
+
+The core does not implement runtime input validation (e.g., required rules, value checks). Contract validation stays in ESLint at build time. Runtime validity is handled case-by-case: most components keep validation app-side and adapters only reflect state via ARIA/class wiring, while any adapter-provided validation must be explicitly scoped and documented when parity requires it.
+
+### Framework adapters (Vue/React/etc.)
+
+Framework adapters should remain idiomatic:
+
+- **Vue:** use `computed()` to build `attrs`/`class` objects from the core compute layer, and template bindings like `@focus/@blur` to manage focus state.
+- **React:** use `useMemo` for computed state and spread attributes/classes directly onto JSX.
+
+Framework wrappers reuse the core compute layer to avoid duplicated logic while keeping DOM ownership with the framework.
+
+### Example: input adapter behavior
+
+- Generate or accept `id` and map helper/error text IDs into `aria-describedby`.
+- Toggle `aria-invalid` / `aria-errormessage` when `error` is present.
+- Add focus state classes (`cdr-input--focus`) on focus/blur.
+- Map `numeric` / `type=number` to `inputmode` and `pattern` attributes.
+
+This keeps HTML/CSS/JS usage viable while enabling framework-specific adapters to share the same behavior contract.
+
 ## VS Code extension ideas
 
 The Cedar One architecture enables strong editor support by making contracts and constraints explicit at build time.
