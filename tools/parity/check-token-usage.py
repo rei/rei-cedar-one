@@ -33,7 +33,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--allow",
         action="append",
-        default=[],
+        default=[
+            "cdr-form-figure-background-color",
+            "cdr-form-figure-box-shadow-color",
+        ],
         help="Explicit token name to ignore (repeatable).",
     )
     parser.add_argument(
@@ -57,6 +60,8 @@ def parse_args() -> argparse.Namespace:
             "cdr-quote-",
             "cdr-landing-lead-",
             "cdr-split-surface-",
+            "cdr-label-standalone-",
+            "cdr-label-wrapper-",
         ],
         help=(
             "Token name prefix to ignore (repeatable). "

@@ -1,6 +1,6 @@
 {
   "name": "@rei/c1-tokens",
-  "version": "0.1.6-alpha.0",
+  "version": "0.1.7-alpha.0",
   "private": true,
   "description": "Cedar design tokens (DTCG) with web and React Native outputs.",
   "sideEffects": [

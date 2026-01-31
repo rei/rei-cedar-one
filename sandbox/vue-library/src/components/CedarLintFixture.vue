@@ -182,6 +182,127 @@ export default defineComponent({
     </section>
 
     <section class="fixture-group">
+      <h3>Label standalone</h3>
+      <div class="fixture-stack">
+        <div class="cdr-label-standalone">
+          <div class="cdr-label-standalone__label-wrapper">
+            <label
+              class="cdr-label-standalone__label"
+              for="fixture-label-standalone"
+            >
+              Email address
+            </label>
+            <span
+              class="cdr-label-standalone__helper"
+              id="fixture-label-standalone-helper"
+            >
+              Use a work email if available.
+            </span>
+          </div>
+          <div
+            class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+          >
+            <input
+              id="fixture-label-standalone"
+              type="email"
+              aria-describedby="fixture-label-standalone-helper"
+            />
+            <div class="cdr-label-standalone__info-action">
+              <button type="button" aria-label="More info">i</button>
+            </div>
+          </div>
+          <span class="cdr-label-standalone__info">
+            We'll only use this for account updates.
+          </span>
+          <div class="cdr-label-standalone__post-content">
+            <span>Post content placeholder.</span>
+          </div>
+        </div>
+
+        <div class="cdr-label-standalone">
+          <div class="cdr-label-standalone__label-wrapper">
+            <label
+              class="cdr-label-standalone__label cdr-label-standalone__label--sr-only"
+              for="fixture-label-hidden"
+            >
+              Search
+            </label>
+          </div>
+          <div class="cdr-label-standalone__input-wrap">
+            <input id="fixture-label-hidden" type="search" />
+          </div>
+        </div>
+
+        <div class="cdr-label-standalone">
+          <div class="cdr-label-standalone__label-wrapper">
+            <label
+              class="cdr-label-standalone__label cdr-label-standalone__label--disabled"
+              for="fixture-label-disabled"
+            >
+              Disabled field
+              <span class="cdr-label-standalone__optional">(optional)</span>
+            </label>
+          </div>
+          <div
+            class="cdr-label-standalone__input-wrap cdr-label-standalone__input-spacing"
+          >
+            <input id="fixture-label-disabled" type="text" disabled />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fixture-group">
+      <h3>Label wrapper</h3>
+      <div class="fixture-stack">
+        <div class="cdr-label-wrapper__container">
+          <label
+            class="cdr-label-wrapper cdr-label-wrapper--primary cdr-label-wrapper--medium"
+          >
+            <input type="checkbox" />
+            <span class="cdr-label-wrapper__figure"></span>
+            <span class="cdr-label-wrapper__content">Primary label</span>
+          </label>
+        </div>
+
+        <div class="cdr-label-wrapper__container">
+          <label
+            class="cdr-label-wrapper cdr-label-wrapper--secondary cdr-label-wrapper--small"
+          >
+            <input type="checkbox" />
+            <span class="cdr-label-wrapper__figure"></span>
+            <span class="cdr-label-wrapper__content"
+              >Secondary small label</span
+            >
+          </label>
+        </div>
+
+        <div class="cdr-label-wrapper__container">
+          <label
+            class="cdr-label-wrapper cdr-label-wrapper--primary cdr-label-wrapper--large cdr-label-wrapper--hide-figure"
+          >
+            <input type="checkbox" />
+            <span class="cdr-label-wrapper__figure"></span>
+            <span class="cdr-checkbox__svg-box"
+              ><svg viewBox="0 0 24 24"></svg
+            ></span>
+            <span class="cdr-label-wrapper__content">Hidden figure</span>
+          </label>
+        </div>
+
+        <div class="cdr-label-wrapper__container">
+          <label
+            class="cdr-label-wrapper cdr-label-wrapper--primary cdr-label-wrapper--small@xs cdr-label-wrapper--medium@sm cdr-label-wrapper--large@lg cdr-label-wrapper--disabled"
+          >
+            <input type="checkbox" disabled />
+            <span class="cdr-label-wrapper__figure"></span>
+            <span class="cdr-label-wrapper__content">Responsive sizes</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="fixture-group">
       <h3>Caption</h3>
       <div class="fixture-stack">
         <img

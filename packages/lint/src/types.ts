@@ -84,6 +84,35 @@ export type KickerTagAnalysis = {
   info: KickerClassInfo;
 };
 
+export type LabelStandaloneTagAnalysis = {
+  tagName: string;
+  classes: string[];
+  labelStandaloneClasses: string[];
+  invalidClasses: string[];
+  duplicateClasses: string[];
+  hasLabelWrapper: boolean;
+  hasLabel: boolean;
+  hasOptional: boolean;
+  hasHelper: boolean;
+  hasInfo: boolean;
+  hasPostContent: boolean;
+  hasInfoAction: boolean;
+  hasInputWrap: boolean;
+  hasInputSpacing: boolean;
+};
+
+export type LabelWrapperTagAnalysis = {
+  tagName: string;
+  classes: string[];
+  labelWrapperClasses: string[];
+  invalidElementClasses: string[];
+  duplicateClasses: string[];
+  info: ModifierAnalysis;
+  hasContainer: boolean;
+  hasFigure: boolean;
+  hasContent: boolean;
+};
+
 export type TitleClassInfo = ModifierAnalysis;
 
 export type TitleTagAnalysis = {

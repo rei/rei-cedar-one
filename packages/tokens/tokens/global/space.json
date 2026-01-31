@@ -1,5 +1,6 @@
 {
   "space": {
+    "eighth-x": { "$value": "2px", "$type": "dimension" },
     "quarter-x": { "$value": "4px", "$type": "dimension" },
     "half-x": { "$value": "8px", "$type": "dimension" },
     "three-quarter-x": { "$value": "12px", "$type": "dimension" },

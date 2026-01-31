@@ -1,6 +1,6 @@
 {
   "name": "@rei/cedar-stories",
-  "version": "0.1.12-alpha.0",
+  "version": "0.1.13-alpha.0",
   "private": true,
   "scripts": {
     "lint": "eslint .",

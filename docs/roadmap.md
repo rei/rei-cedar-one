@@ -228,7 +228,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>No: label-only.</td>
       <td>Label styling only.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>labelWrapper</td>
@@ -237,7 +237,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>No: layout-only.</td>
       <td>Wrapper/label layout; no behavior.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>landingLead</td>

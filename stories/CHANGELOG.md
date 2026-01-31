@@ -1,5 +1,10 @@
 # @rei/cedar-stories Changelog
 
+## 0.1.13-alpha.0 - 2026-01-31
+
+- Added label standalone and label wrapper stories.
+- Grouped Button and Link stories under a Controls category.
+
 ## 0.1.12-alpha.0 - 2026-01-31
 
 - Grouped Storybook stories into category folders for easier browsing.

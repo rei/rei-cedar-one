@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.18-alpha.0 - 2026-01-31
+
+- Added label standalone and label wrapper component styles, stories, and lint rules.
+- Added label-related token support, lint fixture coverage, and roadmap completion status.
+- Grouped Storybook stories into controls/forms categories for clarity.
+
 ## 0.1.17-alpha.0 - 2026-01-31
 
 - Grouped Storybook stories into category folders for easier browsing.

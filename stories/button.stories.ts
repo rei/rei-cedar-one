@@ -63,7 +63,7 @@ const renderButton = ({
 };
 
 export default {
-  title: 'Components/Button',
+  title: 'Controls/Button',
   tags: ['autodocs'],
   parameters: {
     docs: {

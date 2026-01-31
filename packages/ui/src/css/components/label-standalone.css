@@ -1,0 +1,116 @@
+.cdr-label-standalone {
+  display: grid;
+  grid-template-areas:
+    "label label info"
+    "input input input"
+    "post post post";
+}
+
+.cdr-label-standalone__label-wrapper {
+  grid-area: label;
+}
+
+.cdr-label-standalone__label {
+  font-family: var(
+    --cdr-font-family-sans,
+    Graphik,
+    "Graphik fallback",
+    "Helvetica Neue",
+    sans-serif
+  );
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.016rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: var(
+    --cdr-label-standalone-text-color,
+    var(--cdr-color-text-input-label)
+  );
+  margin: 0;
+}
+
+.cdr-label-standalone__label--sr-only {
+  position: absolute;
+  width: 0.1rem;
+  height: 0.1rem;
+  padding: 0;
+  margin: -0.1rem;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.cdr-label-standalone__label--disabled,
+.cdr-label-standalone__label--disabled .cdr-label-standalone__optional {
+  color: var(
+    --cdr-label-standalone-disabled-text-color,
+    var(--cdr-color-text-input-disabled)
+  );
+}
+
+.cdr-label-standalone__optional {
+  color: var(
+    --cdr-label-standalone-optional-text-color,
+    var(--cdr-color-text-input-optional)
+  );
+}
+
+.cdr-label-standalone__helper {
+  font-family: var(
+    --cdr-font-family-sans,
+    Graphik,
+    "Graphik fallback",
+    "Helvetica Neue",
+    sans-serif
+  );
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.016rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: var(
+    --cdr-label-standalone-helper-text-color,
+    var(--cdr-color-text-input-help)
+  );
+  margin-top: var(--cdr-space-eighth-x);
+}
+
+.cdr-label-standalone__info {
+  font-family: var(
+    --cdr-font-family-sans,
+    Graphik,
+    "Graphik fallback",
+    "Helvetica Neue",
+    sans-serif
+  );
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.016rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  grid-area: info;
+  order: 2;
+  place-self: end end;
+}
+
+.cdr-label-standalone__post-content {
+  grid-area: post;
+}
+
+.cdr-label-standalone__info-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+}
+
+.cdr-label-standalone__input-wrap {
+  position: relative;
+  display: flex;
+  grid-area: input;
+}
+
+.cdr-label-standalone__input-spacing {
+  margin-top: var(--cdr-space-half-x);
+}
