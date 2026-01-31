@@ -1,5 +1,9 @@
 # Cedar One Changelog
 
+## 0.1.17-alpha.0 - 2026-01-31
+
+- Grouped Storybook stories into category folders for easier browsing.
+
 ## 0.1.16-alpha.0 - 2026-01-31
 
 - Added title component styles and Storybook variants.

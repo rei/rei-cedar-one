@@ -1,5 +1,9 @@
 # @rei/cedar-stories Changelog
 
+## 0.1.12-alpha.0 - 2026-01-31
+
+- Grouped Storybook stories into category folders for easier browsing.
+
 ## 0.1.11-alpha.0 - 2026-01-31
 
 - Added title story variants derived from Cedar atomic content examples.

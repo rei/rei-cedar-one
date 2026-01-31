@@ -28,7 +28,7 @@ const renderLead = (options: { wrapperStyles?: string }) => {
 };
 
 export default {
-  title: 'Landing Lead',
+  title: 'Layout/Landing Lead',
   tags: ['autodocs'],
   parameters: {
     docs: {

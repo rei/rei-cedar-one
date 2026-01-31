@@ -5,7 +5,7 @@ const renderRow = (items: string) => `
 `;
 
 export default {
-  title: 'Link',
+  title: 'Components/Link',
   tags: ['autodocs'],
   parameters: {
     docs: {

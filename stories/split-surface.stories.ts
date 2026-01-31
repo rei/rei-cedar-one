@@ -23,7 +23,7 @@ const renderSurface = (modifier: 'top' | 'bottom') => `
 `;
 
 export default {
-  title: 'Split Surface',
+  title: 'Layout/Split Surface',
   tags: ['autodocs'],
   parameters: {
     docs: {

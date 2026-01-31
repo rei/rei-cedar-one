@@ -5,7 +5,7 @@ const renderBlock = (content: string) => `
 `;
 
 export default {
-  title: 'Kicker',
+  title: 'Typography/Kicker',
   tags: ['autodocs'],
   parameters: {
     docs: {

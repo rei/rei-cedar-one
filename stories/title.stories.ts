@@ -13,7 +13,7 @@ const renderCard = (content: string) => `
 `;
 
 export default {
-  title: 'Title',
+  title: 'Typography/Title',
   tags: ['autodocs'],
   parameters: {
     docs: {

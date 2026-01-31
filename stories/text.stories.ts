@@ -1,5 +1,5 @@
 export default {
-  title: 'Text',
+  title: 'Typography/Text',
   tags: ['autodocs'],
   parameters: {
     docs: {

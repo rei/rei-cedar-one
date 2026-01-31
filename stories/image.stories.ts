@@ -1,5 +1,5 @@
 export default {
-  title: 'Image',
+  title: 'Media/Image',
   tags: ['autodocs'],
   parameters: {
     docs: {

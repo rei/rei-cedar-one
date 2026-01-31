@@ -5,7 +5,7 @@ const renderBlock = (content: string) => `
 `;
 
 export default {
-  title: 'Quote',
+  title: 'Typography/Quote',
   tags: ['autodocs'],
   parameters: {
     docs: {
