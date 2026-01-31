@@ -1,5 +1,9 @@
 # @rei/c1-tokens Changelog
 
+## 0.1.6-alpha.0 - 2026-01-30
+
+- Added three-x and four-x spacing tokens for split surface spacing parity.
+
 ## 0.1.5-alpha.0 - 2026-01-30
 
 - Added border primary and inset one-x stretch tokens for quote parity.

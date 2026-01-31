@@ -4,10 +4,12 @@ import captionRules from './rules/caption-rules.js';
 import containerRules from './rules/container-rules.js';
 import imageRules from './rules/image-rules.js';
 import kickerRules from './rules/kicker-rules.js';
+import landingLeadRules from './rules/landing-lead-rules.js';
 import listRules from './rules/list-rules.js';
 import linkRules from './rules/link-rules.js';
 import proseRules from './rules/prose-rules.js';
 import quoteRules from './rules/quote-rules.js';
+import splitSurfaceRules from './rules/split-surface-rules.js';
 import textRules from './rules/text-rules.js';
 
 const rules = {
@@ -17,10 +19,12 @@ const rules = {
   ...containerRules.rules,
   ...imageRules.rules,
   ...kickerRules.rules,
+  ...landingLeadRules.rules,
   ...listRules.rules,
   ...linkRules.rules,
   ...proseRules.rules,
   ...quoteRules.rules,
+  ...splitSurfaceRules.rules,
   ...textRules.rules,
 };
 
@@ -33,10 +37,12 @@ const configs = {
       ...containerRules.configs.recommended.rules,
       ...imageRules.configs.recommended.rules,
       ...kickerRules.configs.recommended.rules,
+      ...landingLeadRules.configs.recommended.rules,
       ...listRules.configs.recommended.rules,
       ...linkRules.configs.recommended.rules,
       ...proseRules.configs.recommended.rules,
       ...quoteRules.configs.recommended.rules,
+      ...splitSurfaceRules.configs.recommended.rules,
       ...textRules.configs.recommended.rules,
     },
   },
@@ -57,8 +63,10 @@ export type {
   CaptionTagAnalysis,
   ContainerClassInfo,
   ContainerTagAnalysis,
+  HeadingSubheadingBlockTagAnalysis,
   KickerClassInfo,
   KickerTagAnalysis,
+  LandingLeadTagAnalysis,
   ImageClassInfo,
   ImageTagAnalysis,
   ListClassInfo,
@@ -69,6 +77,7 @@ export type {
   ProseTagAnalysis,
   QuoteClassInfo,
   QuoteTagAnalysis,
+  SplitSurfaceTagAnalysis,
   TextComponentInfo,
   TextTagAnalysis,
 } from './types.js';

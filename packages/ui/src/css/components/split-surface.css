@@ -1,0 +1,54 @@
+@import '../../../../tokens/src/breakpoints.css';
+
+.cdr-split-surface {
+  width: 100%;
+  line-height: 0;
+}
+
+.cdr-split-surface--top {
+  background: linear-gradient(
+    var(
+        --cdr-split-surface-surface-color,
+        var(--cdr-color-background-primary)
+      )
+      0 50%,
+    transparent 50% 100%
+  );
+}
+
+.cdr-split-surface--bottom {
+  background: linear-gradient(
+    transparent 0 50%,
+    var(
+        --cdr-split-surface-surface-color,
+        var(--cdr-color-background-primary)
+      )
+      50% 100%
+  );
+}
+
+.cdr-split-surface__top,
+.cdr-split-surface__bottom {
+  padding: 0 var(--cdr-space-four-x);
+}
+
+@media (--cdr-md) {
+  .cdr-split-surface__top,
+  .cdr-split-surface__bottom {
+    padding: 0 var(--cdr-space-three-x);
+  }
+}
+
+@media (--cdr-sm) {
+  .cdr-split-surface__top,
+  .cdr-split-surface__bottom {
+    padding: 0 var(--cdr-space-two-x);
+  }
+}
+
+@media (--cdr-xs) {
+  .cdr-split-surface__top,
+  .cdr-split-surface__bottom {
+    padding: 0 var(--cdr-space-one-x);
+  }
+}

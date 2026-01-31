@@ -6,6 +6,8 @@
     "one-x": { "$value": "16px", "$type": "dimension" },
     "one-and-a-half-x": { "$value": "24px", "$type": "dimension" },
     "two-x": { "$value": "32px", "$type": "dimension" },
+    "three-x": { "$value": "48px", "$type": "dimension" },
+    "four-x": { "$value": "64px", "$type": "dimension" },
     "inset": {
       "half-x": { "$value": "8px", "$type": "dimension" },
       "three-quarter-x-squish": { "$value": "6px 12px", "$type": "dimension" },

@@ -1,5 +1,9 @@
 # @rei/c1-vue-library Changelog
 
+## 0.1.12-alpha.0 - 2026-01-30
+
+- Added landing lead markup coverage to the lint fixture.
+
 ## 0.1.11-alpha.0 - 2026-01-30
 
 - Added abstract markup coverage to the lint fixture.

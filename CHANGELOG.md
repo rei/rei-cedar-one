@@ -1,5 +1,12 @@
 # Cedar One Changelog
 
+## 0.1.15-alpha.0 - 2026-01-30
+
+- Added split surface and landing lead component styles and stories.
+- Added lint rules and Vue fixture coverage for landing lead and split surface.
+- Added three-x and four-x spacing tokens for split surface parity.
+- Updated roadmap status and parity tooling for landing lead and split surface.
+
 ## 0.1.14-alpha.0 - 2026-01-30
 
 - Added abstract component styles with container query parity and Storybook stories.

@@ -1,5 +1,9 @@
 # @rei/c1-ui Changelog
 
+## 0.1.9-alpha.0 - 2026-01-30
+
+- Added landing lead and split surface component styles.
+
 ## 0.1.8-alpha.0 - 2026-01-30
 
 - Added abstract component styles with container query support.

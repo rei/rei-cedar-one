@@ -1,5 +1,9 @@
 # @rei/cedar-stories Changelog
 
+## 0.1.10-alpha.0 - 2026-01-30
+
+- Added landing lead and split surface story variants.
+
 ## 0.1.9-alpha.0 - 2026-01-30
 
 - Refreshed Storybook component descriptions using Cedar site guidance.

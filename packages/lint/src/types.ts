@@ -40,6 +40,36 @@ export type AbstractTagAnalysis = {
   info: AbstractClassInfo;
 };
 
+export type LandingLeadTagAnalysis = {
+  tagName: string;
+  classes: string[];
+  landingLeadClasses: string[];
+  invalidClasses: string[];
+  duplicateClasses: string[];
+  hasBase: boolean;
+  hasElement: boolean;
+};
+
+export type HeadingSubheadingBlockTagAnalysis = {
+  tagName: string;
+  classes: string[];
+  blockClasses: string[];
+  invalidClasses: string[];
+  duplicateClasses: string[];
+  hasBase: boolean;
+  hasElement: boolean;
+};
+
+export type SplitSurfaceTagAnalysis = {
+  tagName: string;
+  classes: string[];
+  splitSurfaceClasses: string[];
+  invalidElementClasses: string[];
+  duplicateClasses: string[];
+  info: ModifierAnalysis;
+  hasElement: boolean;
+};
+
 export type ContainerClassInfo = ModifierAnalysis;
 
 export type ContainerTagAnalysis = {

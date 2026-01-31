@@ -1,0 +1,42 @@
+@import '../../../../tokens/src/breakpoints.css';
+
+.cdr-landing-lead {
+  --cdr-split-surface-surface-color: var(
+    --cdr-landing-lead-surface-color,
+    var(--cdr-color-background-primary)
+  );
+}
+
+.cdr-landing-lead__image {
+  --cdr-img-aspect-ratio: 4 / 1;
+  --cdr-img-object-fit: cover;
+  width: 100%;
+}
+
+@media (--cdr-sm) {
+  .cdr-landing-lead__image {
+    --cdr-img-aspect-ratio: 4 / 3;
+  }
+}
+
+@media (--cdr-xs) {
+  .cdr-landing-lead__image {
+    --cdr-img-aspect-ratio: 4 / 3;
+  }
+}
+
+.cdr-landing-lead__copy-block {
+  padding: var(--cdr-space-two-x);
+}
+
+.cdr-heading-subheading-block__heading {
+  display: block;
+  margin: 0 0 var(--cdr-space-one-x);
+  max-width: 40ch;
+}
+
+.cdr-heading-subheading-block__subheading {
+  display: block;
+  margin-top: var(--cdr-space-three-quarter-x) !important;
+  max-width: 60ch;
+}

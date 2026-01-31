@@ -1,5 +1,9 @@
 # @rei/c1-lint Changelog
 
+## 0.1.9-alpha.0 - 2026-01-30
+
+- Added lint rules for landing lead and split surface classes.
+
 ## 0.1.8-alpha.0 - 2026-01-30
 
 - Added abstract lint rules to validate base class usage.

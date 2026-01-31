@@ -244,9 +244,9 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>Yes</td>
       <td>None</td>
       <td>None</td>
-      <td>No: text-only.</td>
-      <td>Marketing lead text styling only.</td>
-      <td>⚪</td>
+      <td>No: composite layout (image + copy).</td>
+      <td>Landing lead layout with image and heading/subheading block.</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>layout</td>
@@ -402,7 +402,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>No: layout-only.</td>
       <td>Layout split pattern; no behavior.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>surface</td>
