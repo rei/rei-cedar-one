@@ -57,6 +57,19 @@ export type CaptionTagAnalysis = {
   hasCite: boolean;
 };
 
+export type QuoteClassInfo = ModifierAnalysis;
+
+export type QuoteTagAnalysis = {
+  tagName: string;
+  classes: string[];
+  quoteClasses: string[];
+  invalidElementClasses: string[];
+  duplicateClasses: string[];
+  info: QuoteClassInfo;
+  hasSummary: boolean;
+  hasCitation: boolean;
+};
+
 export type ProseClassInfo = ModifierAnalysis;
 
 export type ProseTagAnalysis = {

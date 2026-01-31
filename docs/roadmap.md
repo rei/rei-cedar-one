@@ -353,7 +353,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
       <td>None</td>
       <td>No: text-only.</td>
       <td>Quote typography + layout.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>radio</td>
@@ -537,6 +537,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
 4. Adapter plan: prefer vanilla JS for generic web behavior; use framework adapters when schema-driven or framework-specific deps are required.
 5. CSS extraction: translate SCSS in `rei-cedar/src/components/<name>/styles` to `packages/ui/src/css/components/<name>.css`, keep values token-backed (no palette vars in component CSS), and derive media queries from source custom media (import `packages/tokens/src/breakpoints.css`).
    - Prefer utility modifier classes over inline style overrides when exposing component APIs.
+   - If the component uses `@media (--cdr-*)`, ensure `breakpoints.css` is imported so custom media compiles.
 6. Lint rules: add component rules under `packages/lint/src/rules`, split into focused rules per constraint (like button), register them in `eslint.config.mjs`, and validate in Vue fixtures via `sandbox/vue-library/eslint.config.mjs`.
    - Keep lint rule modules consistent by using a typed wrapper helper (import `Rule` from eslint) for rule metadata/check signatures.
 7. Stories/fixtures: add/update permutations in `stories/html` and in the Vue lint fixture (`sandbox/vue-library/src/components/CedarLintFixture.vue`), export it from `sandbox/vue-library/src/index.ts`, and keep markup static so ESLint can validate literal class usage.

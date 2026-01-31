@@ -1,5 +1,10 @@
 # @rei/c1-ui Changelog
 
+## 0.1.7-alpha.0 - 2026-01-30
+
+- Added quote component styles for block and pull quotes.
+- Aligned prose blockquote styling with quote base typography.
+
 ## 0.1.6-alpha.0 - 2026-01-30
 
 - Added kicker component styles with legacy-compatible line-height overrides.

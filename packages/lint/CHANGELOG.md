@@ -1,5 +1,9 @@
 # @rei/c1-lint Changelog
 
+## 0.1.7-alpha.0 - 2026-01-30
+
+- Added quote lint rules for modifiers, elements, and tag usage.
+
 ## 0.1.6-alpha.0 - 2026-01-30
 
 - Added kicker lint rules for modifier validation and duplicates.

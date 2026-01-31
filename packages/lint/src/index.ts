@@ -6,6 +6,7 @@ import kickerRules from './rules/kicker-rules.js';
 import listRules from './rules/list-rules.js';
 import linkRules from './rules/link-rules.js';
 import proseRules from './rules/prose-rules.js';
+import quoteRules from './rules/quote-rules.js';
 import textRules from './rules/text-rules.js';
 
 const rules = {
@@ -17,6 +18,7 @@ const rules = {
   ...listRules.rules,
   ...linkRules.rules,
   ...proseRules.rules,
+  ...quoteRules.rules,
   ...textRules.rules,
 };
 
@@ -31,6 +33,7 @@ const configs = {
       ...listRules.configs.recommended.rules,
       ...linkRules.configs.recommended.rules,
       ...proseRules.configs.recommended.rules,
+      ...quoteRules.configs.recommended.rules,
       ...textRules.configs.recommended.rules,
     },
   },
@@ -59,6 +62,8 @@ export type {
   LinkTagAnalysis,
   ProseClassInfo,
   ProseTagAnalysis,
+  QuoteClassInfo,
+  QuoteTagAnalysis,
   TextComponentInfo,
   TextTagAnalysis,
 } from './types.js';

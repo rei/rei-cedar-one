@@ -10,7 +10,19 @@
       "half-x": { "$value": "8px", "$type": "dimension" },
       "three-quarter-x-squish": { "$value": "6px 12px", "$type": "dimension" },
       "one-x-squish": { "$value": "8px 16px", "$type": "dimension" },
-      "one-and-a-half-x-squish": { "$value": "12px 24px", "$type": "dimension" }
+      "one-and-a-half-x-squish": {
+        "$value": "12px 24px",
+        "$type": "dimension"
+      },
+      "one-x-stretch-top-bottom": {
+        "$value": "24px",
+        "$type": "dimension"
+      },
+      "one-x-stretch-left-right": {
+        "$value": "16px",
+        "$type": "dimension"
+      },
+      "one-x-stretch": { "$value": "24px 16px", "$type": "dimension" }
     }
   }
 }

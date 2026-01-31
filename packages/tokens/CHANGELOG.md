@@ -1,5 +1,9 @@
 # @rei/c1-tokens Changelog
 
+## 0.1.5-alpha.0 - 2026-01-30
+
+- Added border primary and inset one-x stretch tokens for quote parity.
+
 ## 0.1.4-alpha.0 - 2026-01-30
 
 - Added text secondary color token for list and muted text parity.

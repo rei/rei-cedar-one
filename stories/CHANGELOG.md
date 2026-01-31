@@ -1,5 +1,10 @@
 # @rei/cedar-stories Changelog
 
+## 0.1.7-alpha.0 - 2026-01-30
+
+- Added quote story variants for block and pull quotes.
+- Added cite elements to prose blockquotes for quote styling coverage.
+
 ## 0.1.6-alpha.0 - 2026-01-30
 
 - Added kicker component stories derived from Cedar examples.

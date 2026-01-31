@@ -200,6 +200,25 @@ export default defineComponent({
     </section>
 
     <section class="fixture-group">
+      <h3>Quote</h3>
+      <div class="fixture-stack">
+        <blockquote class="cdr-quote">
+          <p class="cdr-quote__summary">
+            Never doubt that a small group of thoughtful, committed citizens can
+            change the world; indeed, it's the only thing that ever has.
+          </p>
+          <cite class="cdr-quote__citation">Margaret Mead</cite>
+        </blockquote>
+        <aside class="cdr-quote cdr-quote--pull">
+          <p class="cdr-quote__summary">
+            Never doubt that a small group of thoughtful, committed citizens can
+            change the world; indeed, it's the only thing that ever has.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="fixture-group">
       <h3>Images</h3>
       <div class="fixture-stack">
         <img

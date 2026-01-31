@@ -1,3 +1,5 @@
+@import '../../../../tokens/src/breakpoints.css';
+
 .cdr-prose {
   --cdr-prose-text: var(--cdr-color-text-primary);
   --cdr-prose-muted: var(--cdr-color-icon-default);
@@ -250,10 +252,54 @@
 }
 
 .cdr-prose
-  :where(blockquote):not(:where(.cdr-not-prose, .cdr-not-prose *)) {
-  padding-inline-start: var(--cdr-prose-space-2);
-  border-inline-start: 0.3rem solid var(--cdr-prose-rule);
-  color: var(--cdr-prose-muted);
+  :where(blockquote):not(:where(.cdr-quote)):not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  padding: var(--cdr-space-inset-one-x-stretch);
+  color: var(--cdr-quote-content-text-color, var(--cdr-color-text-primary));
+  line-height: 1;
+}
+
+.cdr-prose
+  :where(blockquote):not(:where(.cdr-quote)):not(:where(.cdr-not-prose, .cdr-not-prose *))
+  > :where(p):not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  font-family: var(--cdr-font-family-serif);
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 3.6rem;
+  letter-spacing: -0.08rem;
+  color: var(--cdr-quote-content-text-color, var(--cdr-color-text-primary));
+  margin: 0;
+}
+
+@media (--cdr-xs) {
+  .cdr-prose
+    :where(blockquote):not(:where(.cdr-quote)):not(:where(.cdr-not-prose, .cdr-not-prose *))
+    > :where(p):not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+  }
+}
+
+.cdr-prose
+  :where(blockquote):not(:where(.cdr-quote)):not(:where(.cdr-not-prose, .cdr-not-prose *))
+  :where(cite):not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  font-family: var(
+    --cdr-text-utility-sans-100-family,
+    var(--cdr-font-family-sans)
+  );
+  font-style: var(--cdr-text-utility-sans-100-style, normal);
+  font-weight: var(--cdr-text-utility-sans-100-weight, 400);
+  letter-spacing: var(--cdr-text-utility-sans-100-spacing, -0.008rem);
+  font-size: var(--cdr-text-utility-sans-100-size, 1.2rem);
+  line-height: var(--cdr-text-utility-sans-100-height, 1.6rem);
+  color: var(--cdr-quote-cite-text-color, var(--cdr-color-text-secondary));
+  display: block;
+}
+
+.cdr-prose
+  :where(blockquote):not(:where(.cdr-quote)):not(:where(.cdr-not-prose, .cdr-not-prose *))
+  > :where(p):not(:where(.cdr-not-prose, .cdr-not-prose *))
+  + :where(cite):not(:where(.cdr-not-prose, .cdr-not-prose *)) {
+  padding-top: var(--cdr-space-one-x);
 }
 
 .cdr-prose :where(code):not(:where(.cdr-not-prose, .cdr-not-prose *)) {

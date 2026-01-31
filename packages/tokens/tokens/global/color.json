@@ -7,6 +7,12 @@
     "background": {
       "primary": { "$value": "#ffffff", "$type": "color" }
     },
+    "border": {
+      "primary": {
+        "$value": "{options.color.warm-grey-400}",
+        "$type": "color"
+      }
+    },
     "icon": {
       "default": {
         "$value": "{options.color.warm-grey-700}",

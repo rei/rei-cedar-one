@@ -138,8 +138,11 @@ export const Overview = {
           familiar and straightforward manner.
         </p>
         <blockquote>
-          Never doubt that a small group of thoughtful, committed citizens can change
-          the world; indeed, it's the only thing that ever has.
+          <p>
+            Never doubt that a small group of thoughtful, committed citizens can
+            change the world; indeed, it's the only thing that ever has.
+          </p>
+          <cite>Margaret Mead</cite>
         </blockquote>
       </article>
     </div>
@@ -205,8 +208,11 @@ export const SerifHeadings = {
           <li>Carry extra layers for exposed ridgelines.</li>
         </ul>
         <blockquote>
-          We’re seeing the first hints of winter, but most lower trails are still in
-          excellent shape.
+          <p>
+            We’re seeing the first hints of winter, but most lower trails are still
+            in excellent shape.
+          </p>
+          <cite>Trail crew</cite>
         </blockquote>
         <h4>What’s next</h4>
         <p>
@@ -283,7 +289,8 @@ export const ContentTypes = {
         </ul>
         <h4>Field note</h4>
         <blockquote>
-          The best system is the one you can adjust quickly without stopping.
+          <p>The best system is the one you can adjust quickly without stopping.</p>
+          <cite>REI Gear Lab</cite>
         </blockquote>
         <p>
           Learn more in the <a href="#">full guide</a>. Inline code looks like
@@ -399,7 +406,8 @@ export const Editorial = {
           <li>Plan turnaround times before the temperature drops.</li>
         </ul>
         <blockquote>
-          A little extra preparation keeps a short trip comfortable and safe.
+          <p>A little extra preparation keeps a short trip comfortable and safe.</p>
+          <cite>Trip report</cite>
         </blockquote>
         <h4>Footnotes</h4>
         <p>

@@ -1,5 +1,14 @@
 # Cedar One Changelog
 
+## 0.1.13-alpha.0 - 2026-01-30
+
+- Added quote component styles, stories, and Vue fixture coverage.
+- Added quote ESLint rules and allowlisted quote override props.
+- Added quote support tokens for border primary and inset one-x stretch spacing.
+- Aligned prose blockquote styling with quote typography defaults.
+- Updated prose stories to include cite elements in blockquotes.
+- Updated Storybook preview imports and roadmap status for quote.
+
 ## 0.1.12-alpha.0 - 2026-01-30
 
 - Added kicker component styles, stories, and lint rules with Cedar doc-derived examples.
