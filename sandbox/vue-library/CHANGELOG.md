@@ -1,5 +1,10 @@
 # @rei/c1-vue-library Changelog
 
+## 0.1.17-alpha.0 - 2026-02-01
+
+- Reintroduced the Vue Storybook with Cedar One theming and input stories driven by args/controls.
+- Removed the standalone harness files in favor of Storybook-only previews.
+
 ## 0.1.16-alpha.0 - 2026-01-31
 
 - Added input markup coverage to the lint fixture.

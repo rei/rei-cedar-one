@@ -8,6 +8,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.d.ts",
-    "../packages/ui/src/adapters/**/*.ts"
+    "../packages/ui/src/adapters/**/*.ts",
+    "../packages/ui/src/vite-env.d.ts"
   ]
 }

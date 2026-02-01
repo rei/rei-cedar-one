@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import htmlParser from '@html-eslint/parser';
 import vueParser from 'vue-eslint-parser';
+import globals from 'globals';
 import cedar from '@rei/c1-lint';
 
 const cedarRecommendedRules = cedar.configs.recommended.rules;
@@ -54,6 +55,9 @@ export default [
         ecmaVersion: 'latest',
         sourceType: 'module',
         parser: tseslint.parser,
+      },
+      globals: {
+        ...globals.browser,
       },
     },
     plugins: {

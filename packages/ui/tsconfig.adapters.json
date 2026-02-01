@@ -8,5 +8,5 @@
     "outDir": "dist/adapters",
     "rootDir": "src/adapters"
   },
-  "include": ["src/adapters/**/*"]
+  "include": ["src/adapters/**/*", "src/vite-env.d.ts"]
 }

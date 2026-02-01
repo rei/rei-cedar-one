@@ -7,6 +7,7 @@ export default defineConfig({
     lib: {
       entry: {
         'input/index': 'src/adapters/input/index.ts',
+        'input/vue': 'src/adapters/input/vue.ts',
       },
       formats: ['es'],
       fileName: (_format, entryName) => `${entryName}.js`,

@@ -2,7 +2,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'CedarLintFixture',
+  name: 'C1LintFixture',
   data() {
     return {
       fixtureTitle: 'Cedar Lint Fixture',

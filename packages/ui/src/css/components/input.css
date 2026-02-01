@@ -6,7 +6,7 @@
 
 .cdr-input__button ~ .cdr-input__button {
   position: relative;
-  margin-left: -4px;
+  margin-left: 0;
 }
 
 .cdr-input__button ~ .cdr-input__button::before {
@@ -358,11 +358,21 @@
 }
 
 .cdr-input__post-icon {
-  display: block;
+  display: flex;
+  align-items: center;
   position: absolute;
   top: 50%;
   right: var(--cdr-space-half-x);
   transform: translateY(-50%);
+}
+
+.cdr-input__pre-icon svg,
+.cdr-input__post-icon svg {
+  display: block;
+}
+
+.cdr-input__button svg {
+  display: block;
 }
 
 .cdr-input__helper-text {

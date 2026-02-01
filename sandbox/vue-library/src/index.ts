@@ -1,5 +1,6 @@
-import CedarLintFixture from './components/CedarLintFixture.vue';
+import C1Input from './components/C1Input.vue';
+import C1LintFixture from './components/C1LintFixture.vue';
 
-export { CedarLintFixture };
+export { C1Input, C1LintFixture };
 
-export default CedarLintFixture;
+export default C1LintFixture;

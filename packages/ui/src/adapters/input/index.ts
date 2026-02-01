@@ -252,6 +252,11 @@ export const createInputAdapter = (
   let computed = computeInputState(resolvedState);
   const managedInputClasses = new Set<string>(computed.inputClasses);
   const managedWrapClasses = new Set<string>(computed.wrapClasses);
+  console.info('[c1-input] createInputAdapter', {
+    id: resolvedState.id,
+    type: resolvedState.type,
+    background: resolvedState.background,
+  });
 
   /**
    * Apply a new resolved state and update DOM wiring.
@@ -407,6 +412,16 @@ export const createInputAdapterFromElement = (
       (input instanceof HTMLInputElement ? input.type : undefined),
     numeric: initialState.numeric ?? isNumeric,
   };
+
+  console.info('[c1-input] createInputAdapterFromElement', {
+    element: element.tagName,
+    hasHelperTop: Boolean(helperTop),
+    hasHelperBottom: Boolean(helperBottom),
+    hasError,
+    hasPreIcon: Boolean(preIcon),
+    hasPostIcon: Boolean(postIcon),
+    hasPostIcons,
+  });
 
   return createInputAdapter(
     {

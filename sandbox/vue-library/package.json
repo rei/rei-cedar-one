@@ -1,6 +1,6 @@
 {
   "name": "@rei/c1-vue-library",
-  "version": "0.1.16-alpha.0",
+  "version": "0.1.17-alpha.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -15,8 +15,11 @@
   ],
   "scripts": {
     "build": "pnpm run typecheck && vite build && vue-tsc -p tsconfig.app.json --declaration --emitDeclarationOnly --declarationDir dist/types",
+    "build-storybook": "storybook build --config-dir .storybook",
+    "dev": "pnpm storybook",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "storybook": "storybook dev -p 6007 --config-dir .storybook",
     "typecheck": "vue-tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit"
   },
   "dependencies": {
@@ -25,10 +28,16 @@
     "vue": "^3.5.24"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "5.0.0",
     "@rei/c1-lint": "workspace:*",
+    "@storybook/addon-docs": "10.2.0",
+    "@storybook/addon-onboarding": "10.2.0",
+    "@storybook/addon-vitest": "10.2.0",
+    "@storybook/vue3-vite": "10.2.0",
     "@types/node": "^24.10.1",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
+    "storybook": "10.2.0",
     "typescript": "~5.9.3",
     "vite": "^7.2.4",
     "vue-tsc": "^3.1.4"

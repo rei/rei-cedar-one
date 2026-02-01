@@ -1,5 +1,12 @@
 # Cedar One Changelog
 
+## 0.1.22-alpha.0 - 2026-02-01
+
+- Reintroduced the Vue Storybook with shared Cedar One theming and Vue input stories driven by args.
+- Added Vue input adapter support and refreshed adapter build outputs for the UI package.
+- Aligned input/form-error icon spacing and post-icon button layout with the HTML fragment baselines.
+- Simplified root scripts to include a dedicated Vue Storybook entry point.
+
 ## 0.1.21-alpha.0 - 2026-01-31
 
 - Added a root element helper for the input adapter and simplified adapter internals.

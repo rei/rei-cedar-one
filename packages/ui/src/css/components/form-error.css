@@ -23,6 +23,20 @@
 
 .cdr-form-error__icon {
   margin-right: var(--cdr-space-quarter-x);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  vertical-align: middle;
+}
+
+.cdr-form-error__icon svg {
+  display: block;
+}
+
+.cdr-form-error [role] {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .--active-error {
