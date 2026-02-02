@@ -6,10 +6,11 @@ Framework-agnostic Cedar icon assets for use in vanilla HTML, Vue, React, or any
 
 - `@rei/c1-icons` – JS module exporting `icons`, `iconNames`, and `getIcon`.
 - `@rei/c1-icons/sprite.svg` – a full SVG sprite sheet.
-- `@rei/c1-icons/icons.json` – icon name → SVG string map.
-- `@rei/c1-icons/icon-names.json` – array of icon names.
-- `@rei/c1-icons/icon-meta.json` – icon metadata (viewBox, category, tags).
-- `@rei/c1-icons/icons/<name>.svg` – individual SVG files.
+- `@rei/c1-icons/data.json` – icon name → SVG string map.
+- `@rei/c1-icons/names.json` – array of icon names.
+- `@rei/c1-icons/meta.json` – icon metadata (viewBox, category, tags).
+- `@rei/c1-icons/svg/<name>.svg` – individual SVG files.
+- `@rei/c1-icons/vue/<name>` – Vue single-file component per icon.
 
 ## Usage
 
@@ -35,7 +36,33 @@ Load the sprite once, then reference symbols:
 ### Raw SVG import
 
 ```js
-import arrowDown from '@rei/c1-icons/icons/arrow-down.svg';
+import arrowDown from '@rei/c1-icons/svg/arrow-down.svg';
+```
+
+### Vue per-icon component
+
+```vue
+<script setup lang="ts">
+import ArrowDown from '@rei/c1-icons/vue/arrow-down';
+// Or named exports from the Vue entrypoint:
+// import { C1IconArrowDown } from '@rei/c1-icons/vue';
+</script>
+
+<template>
+  <ArrowDown size="small" aria-label="Expand" />
+</template>
+```
+
+### Vue sprite component
+
+```vue
+<script setup lang="ts">
+import { C1Icon } from '@rei/c1-icons/vue';
+</script>
+
+<template>
+  <C1Icon name="arrow-down" aria-label="Expand" />
+</template>
 ```
 
 ## Accessibility

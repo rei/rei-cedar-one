@@ -1,0 +1,18 @@
+<div style="display:grid;gap:24px;padding:24px">
+  <article class="cdr-prose" style="max-width:72ch">
+    <h2>Prose with embedded components</h2>
+    <p>
+      Use <code>.cdr-not-prose</code> to prevent prose styles from leaking into
+      Cedar components or custom UI blocks.
+    </p>
+    <div
+      class="cdr-not-prose"
+      style="padding:16px;border:1px dashed var(--cdr-prose-rule);border-radius:var(--cdr-prose-radius)"
+    >
+      <p class="cdr-text">This block opts out of prose styling.</p>
+      <button type="button" class="cdr-button cdr-button--primary cdr-button--medium">
+        Call to action
+      </button>
+    </div>
+  </article>
+</div>

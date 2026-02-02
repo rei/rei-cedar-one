@@ -8,6 +8,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
+    "@rei/c1-icons": "workspace:*",
     "@rei/c1-lint": "workspace:*"
   }
 }

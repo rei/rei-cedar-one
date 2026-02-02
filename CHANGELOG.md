@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.24-alpha.0 - 2026-02-02
+
+- Reworked HTML stories to use static fragments with build-time icon inlining and added an icon sprite demo.
+- Added icon CSS + lint rules, and updated Vue stories/fixtures to use @rei/c1-icons Vue wrappers.
+- Renamed icon export paths (svg/data/meta/names) and prefixed Vue icon components with `C1Icon`.
+
 ## 0.1.23-alpha.0 - 2026-02-02
 
 - Reorganized apps into `apps/html` and `apps/vue`, with HTML stories living under `apps/html/stories`.

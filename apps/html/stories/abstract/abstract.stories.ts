@@ -1,3 +1,7 @@
+import base from './fragments/base.html?raw';
+import constrainedContainer from './fragments/constrained-container.html?raw';
+import withKickerAndTitle from './fragments/with-kicker-and-title.html?raw';
+
 const renderBlock = (content: string) => `
   <div style="display:grid;gap:16px;max-width:70ch;">
     ${content}
@@ -18,32 +22,13 @@ export default {
 };
 
 export const Base = {
-  render: () =>
-    renderBlock(`
-      <p class="cdr-abstract">
-        Fueling well is the key to longevity and improvement in running. Our experts
-        guide you on filling your plate for your goals.
-      </p>
-    `),
+  render: () => renderBlock(base),
 };
 
 export const WithKickerAndTitle = {
-  render: () =>
-    renderBlock(`
-      <span class="cdr-kicker">Kicker</span>
-      <h2 class="cdr-title">Title</h2>
-      <p class="cdr-abstract">Abstract</p>
-    `),
+  render: () => renderBlock(withKickerAndTitle),
 };
 
 export const ConstrainedContainer = {
-  render: () =>
-    renderBlock(`
-      <div style="container-type:inline-size;max-width:700px;border:1px dashed var(--cdr-color-border-primary);padding:16px;">
-        <p class="cdr-abstract">
-          This abstract is inside a container query context to demonstrate the
-          smaller type scale when the container is narrow.
-        </p>
-      </div>
-    `),
+  render: () => renderBlock(constrainedContainer),
 };

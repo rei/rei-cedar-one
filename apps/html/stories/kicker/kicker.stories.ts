@@ -1,3 +1,6 @@
+import base from './fragments/base.html?raw';
+import titlePairing from './fragments/title-pairing.html?raw';
+
 const renderBlock = (content: string) => `
   <div style="display:grid;gap:12px;max-width:60ch;">
     ${content}
@@ -18,19 +21,9 @@ export default {
 };
 
 export const Base = {
-  render: () =>
-    renderBlock(`
-      <span class="cdr-kicker">Kicker</span>
-    `),
+  render: () => renderBlock(base),
 };
 
 export const TitlePairing = {
-  render: () =>
-    renderBlock(`
-      <span class="cdr-kicker">Kicker</span>
-      <h2 class="cdr-title">Title</h2>
-      <p class="cdr-abstract">
-        Abstract text that explains the headline in a bit more detail.
-      </p>
-    `),
+  render: () => renderBlock(titlePairing),
 };

@@ -33,6 +33,7 @@ import '../../../packages/ui/dist/css/components/utility-serif.css';
 import '../../../packages/ui/dist/css/components/image.css';
 import '../../../packages/ui/dist/css/components/prose.css';
 import '../../../packages/ui/dist/css/components/list.css';
+import '../../../packages/ui/dist/css/components/icon.css';
 
 export const parameters = {
   controls: {

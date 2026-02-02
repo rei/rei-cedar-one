@@ -1,5 +1,10 @@
 # @rei/c1-icons Changelog
 
+## 0.1.2-alpha.0 - 2026-02-02
+
+- Prefixed Vue icon component exports with `C1Icon` for consistency.
+- Renamed SVG/JSON export paths to `svg/*`, `data.json`, `names.json`, and `meta.json`.
+
 ## 0.1.1-alpha.0 - 2026-02-02
 
 - Migrated build/validation tooling to TypeScript with package-local lint/typecheck support.

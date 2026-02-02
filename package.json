@@ -1,6 +1,6 @@
 {
   "name": "@rei/c1",
-  "version": "0.1.23-alpha.0",
+  "version": "0.1.24-alpha.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -13,13 +13,14 @@
     "fixtures:vue": "pnpm --filter @rei/c1-vue build",
     "fixtures:vue:build": "pnpm --filter @rei/c1-vue build",
     "format": "prettier --write --single-quote",
+    "icons:build": "pnpm --filter @rei/c1-icons build",
     "lint": "pnpm run lint:plugin:build && pnpm run ws:lint",
     "lint:fix": "pnpm run lint:plugin:build && pnpm run ws:lint:fix",
     "lint:plugin:build": "pnpm --filter @rei/c1-lint build",
     "lint-staged": "lint-staged",
     "prepare": "husky",
     "storybook": "pnpm run ws:storybook",
-    "storybook:vue": "pnpm tokens:build && pnpm ui:build && pnpm --filter @rei/c1-vue storybook",
+    "storybook:vue": "pnpm tokens:build && pnpm ui:build && pnpm icons:build && pnpm --filter @rei/c1-vue storybook",
     "tokens:build": "pnpm --filter @rei/c1-tokens build",
     "typecheck": "pnpm run ws:typecheck",
     "ui:build": "pnpm --filter @rei/c1-ui build",
@@ -27,8 +28,8 @@
     "ws:dev": "pnpm -r --parallel --if-present dev",
     "ws:lint": "pnpm -r --if-present --filter \"!@rei/c1\" run lint",
     "ws:lint:fix": "pnpm -r --if-present --filter \"!@rei/c1\" run lint:fix",
-    "ws:storybook": "pnpm tokens:build && pnpm ui:build && storybook dev -p 6006 --config-dir apps/html/.storybook",
-    "ws:storybook:build": "pnpm tokens:build && pnpm ui:build && storybook build --config-dir apps/html/.storybook",
+    "ws:storybook": "pnpm tokens:build && pnpm ui:build && pnpm icons:build && storybook dev -p 6006 --config-dir apps/html/.storybook",
+    "ws:storybook:build": "pnpm tokens:build && pnpm ui:build && pnpm icons:build && storybook build --config-dir apps/html/.storybook",
     "ws:typecheck": "pnpm -r --if-present --filter \"!@rei/c1\" run typecheck"
   },
   "lint-staged": {

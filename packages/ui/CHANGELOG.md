@@ -1,5 +1,9 @@
 # @rei/c1-ui Changelog
 
+## 0.1.16-alpha.0 - 2026-02-02
+
+- Added icon component CSS utilities.
+
 ## 0.1.14-alpha.0 - 2026-01-31
 
 - Added `createInputAdapterFromElement` for easier adapter wiring.

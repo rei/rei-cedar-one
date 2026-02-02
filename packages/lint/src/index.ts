@@ -3,6 +3,7 @@ import buttonRules from './rules/button-rules.js';
 import captionRules from './rules/caption-rules.js';
 import containerRules from './rules/container-rules.js';
 import formErrorRules from './rules/form-error-rules.js';
+import iconRules from './rules/icon-rules.js';
 import imageRules from './rules/image-rules.js';
 import inputRules from './rules/input-rules.js';
 import kickerRules from './rules/kicker-rules.js';
@@ -23,6 +24,7 @@ const rules = {
   ...captionRules.rules,
   ...containerRules.rules,
   ...formErrorRules.rules,
+  ...iconRules.rules,
   ...imageRules.rules,
   ...inputRules.rules,
   ...kickerRules.rules,
@@ -46,6 +48,7 @@ const configs = {
       ...captionRules.configs.recommended.rules,
       ...containerRules.configs.recommended.rules,
       ...formErrorRules.configs.recommended.rules,
+      ...iconRules.configs.recommended.rules,
       ...imageRules.configs.recommended.rules,
       ...inputRules.configs.recommended.rules,
       ...kickerRules.configs.recommended.rules,
@@ -79,6 +82,8 @@ export type {
   ContainerClassInfo,
   ContainerTagAnalysis,
   FormErrorTagAnalysis,
+  IconClassInfo,
+  IconTagAnalysis,
   InputTagAnalysis,
   HeadingSubheadingBlockTagAnalysis,
   KickerClassInfo,

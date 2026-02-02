@@ -1,5 +1,10 @@
 # @rei/c1-html Changelog
 
+## 0.1.18-alpha.0 - 2026-02-02
+
+- Converted HTML stories to fragment imports with build-time icon inlining.
+- Added an icon sprite usage story.
+
 ## 0.1.17-alpha.0 - 2026-02-02
 
 - Renamed the HTML Storybook app package and moved stories under `apps/html/stories`.

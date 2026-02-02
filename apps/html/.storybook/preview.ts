@@ -15,6 +15,7 @@ import '../../../packages/ui/dist/css/components/label-wrapper.css';
 import '../../../packages/ui/dist/css/components/input.css';
 import '../../../packages/ui/dist/css/components/split-surface.css';
 import '../../../packages/ui/dist/css/components/form-error.css';
+import '../../../packages/ui/dist/css/components/icon.css';
 import '../../../packages/ui/dist/css/components/text.css';
 import '../../../packages/ui/dist/css/components/body.css';
 import '../../../packages/ui/dist/css/components/eyebrow.css';
@@ -33,6 +34,28 @@ import '../../../packages/ui/dist/css/components/utility-serif.css';
 import '../../../packages/ui/dist/css/components/image.css';
 import '../../../packages/ui/dist/css/components/prose.css';
 import '../../../packages/ui/dist/css/components/list.css';
+
+import sprite from '@rei/c1-icons/sprite.svg?raw';
+
+const ensureSprite = () => {
+  if (typeof document === 'undefined') return;
+  if (document.getElementById('c1-icons-sprite')) return;
+
+  const container = document.createElement('div');
+  container.id = 'c1-icons-sprite';
+  container.style.display = 'none';
+  container.innerHTML = sprite;
+  document.body.prepend(container);
+};
+
+type StoryFn = () => string;
+
+const withSprite = (Story: StoryFn) => {
+  ensureSprite();
+  return Story();
+};
+
+export const decorators = [withSprite];
 
 export const parameters = {
   controls: {

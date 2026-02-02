@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { h, ref, watch } from 'vue';
+import { C1IconInformationStroke, C1IconSearch } from '@rei/c1-icons/vue';
+import { computed, ref, watch } from 'vue';
 
 import C1Input from '../components/C1Input.vue';
 
@@ -51,32 +52,8 @@ export const InputArgsData: InputStoryArgs = {
   showInfoAction: false,
 };
 
-const buildIcon = (path: string) =>
-  h(
-    'svg',
-    {
-      'aria-hidden': 'true',
-      focusable: 'false',
-      xmlns: 'http://www.w3.org/2000/svg',
-      viewBox: '0 0 24 24',
-      width: 24,
-      height: 24,
-    },
-    [h('path', { d: path })],
-  );
-
-const iconInfo = () =>
-  buildIcon(
-    'M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z',
-  );
-
-const iconSearch = () =>
-  buildIcon(
-    'M11 4a7 7 0 1 0 4.3 12.5l3.6 3.6 1.4-1.4-3.6-3.6A7 7 0 0 0 11 4zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10z',
-  );
-
 const renderInput = (args: InputStoryArgs) => ({
-  components: { C1Input },
+  components: { C1Input, C1IconInformationStroke, C1IconSearch },
   setup() {
     const modelValue = ref(args.modelValue ?? '');
 
@@ -87,126 +64,161 @@ const renderInput = (args: InputStoryArgs) => ({
       },
     );
 
-    const updateModelValue = (nextValue: string) => {
-      modelValue.value = nextValue;
-    };
-
-    return () => {
-      const errorValue = args.error ? args.errorMessage || true : false;
-      const inputProps = {
-        label: args.label,
-        modelValue: modelValue.value,
-        type: args.type,
-        background: args.background,
-        size: args.size || undefined,
-        rows: args.rows || 1,
-        required: args.required,
-        optional: args.optional,
-        disabled: args.disabled,
-        hideLabel: args.hideLabel,
-        numeric: args.numeric,
-        error: errorValue,
-        'onUpdate:modelValue': updateModelValue,
-      };
-
-      const slots: Record<string, () => unknown> = {};
-
-      if (args.helperTextTop) {
-        slots['helper-text-top'] = () => args.helperTextTop;
-      }
-
-      if (args.helperTextBottom) {
-        slots['helper-text-bottom'] = () => args.helperTextBottom;
-      }
-
-      if (args.showPreIcon) {
-        slots['pre-icon'] = () => iconSearch();
-      }
-
-      if (args.showPostIcon || args.showPostIcons) {
-        slots['post-icon'] = () => {
-          if (args.showPostIcons) {
-            return [
-              h(
-                'button',
-                {
-                  type: 'button',
-                  class:
-                    'cdr-button cdr-button--primary cdr-button--icon-only cdr-input__button',
-                  'aria-label': 'Clear input',
-                },
-                [iconInfo()],
-              ),
-              h(
-                'button',
-                {
-                  type: 'button',
-                  class:
-                    'cdr-button cdr-button--primary cdr-button--icon-only cdr-input__button',
-                  'aria-label': 'More info',
-                },
-                [iconSearch()],
-              ),
-            ];
+    const errorValue = computed(() =>
+      args.error ? args.errorMessage || true : false,
+    );
+    const normalizedSize = computed(() => args.size || undefined);
+    const normalizedRows = computed(() => args.rows || 1);
+    const wrapperStyle = computed(() =>
+      args.background === 'secondary'
+        ? {
+            background: 'var(--cdr-color-background-input-default-active)',
+            padding: '16px',
+            borderRadius: '12px',
           }
+        : undefined,
+    );
 
-          return iconInfo();
-        };
-      }
-
-      if (args.showInfo) {
-        slots.info = () =>
-          h(
-            'a',
-            {
-              class: 'cdr-link cdr-link--standalone',
-              href: '#',
-            },
-            args.infoText,
-          );
-      }
-
-      if (args.showInfoAction) {
-        slots['info-action'] = () =>
-          h(
-            'button',
-            {
-              type: 'button',
-              class:
-                'cdr-button cdr-button--primary cdr-button--icon-only cdr-input__button',
-              'aria-label': 'More info',
-            },
-            [iconInfo()],
-          );
-      }
-
-      const wrapperStyle =
-        args.background === 'secondary'
-          ? {
-              background: 'var(--cdr-color-background-input-default-active)',
-              padding: '16px',
-              borderRadius: '12px',
-            }
-          : undefined;
-
-      const inputNode = h(C1Input, inputProps, slots);
-      const panel = wrapperStyle
-        ? h('div', { style: wrapperStyle }, [inputNode])
-        : inputNode;
-
-      return h(
-        'div',
-        {
-          style: {
-            display: 'grid',
-            gap: '16px',
-            maxWidth: '520px',
-          },
-        },
-        [panel],
-      );
+    return {
+      args,
+      modelValue,
+      errorValue,
+      normalizedSize,
+      normalizedRows,
+      wrapperStyle,
     };
   },
+  template: `
+    <div style="display:grid;gap:16px;max-width:520px">
+      <div v-if="wrapperStyle" :style="wrapperStyle">
+        <C1Input
+          :label="args.label"
+          :type="args.type"
+          :background="args.background"
+          :size="normalizedSize"
+          :rows="normalizedRows"
+          :required="args.required"
+          :optional="args.optional"
+          :disabled="args.disabled"
+          :hide-label="args.hideLabel"
+          :numeric="args.numeric"
+          :error="errorValue"
+          :post-icons="args.showPostIcons"
+          v-model="modelValue"
+        >
+          <template v-if="args.helperTextTop" #helper-text-top>
+            {{ args.helperTextTop }}
+          </template>
+          <template v-if="args.helperTextBottom" #helper-text-bottom>
+            {{ args.helperTextBottom }}
+          </template>
+          <template v-if="args.showPreIcon" #pre-icon>
+            <C1IconSearch inherit-color focusable="false" />
+          </template>
+          <template v-if="args.showPostIcon || args.showPostIcons" #post-icon>
+            <template v-if="args.showPostIcons">
+              <button
+                type="button"
+                class="cdr-button cdr-button--primary cdr-button--icon-only cdr-input__button"
+                aria-label="Clear input"
+              >
+                <C1IconInformationStroke inherit-color focusable="false" />
+              </button>
+              <button
+                type="button"
+                class="cdr-button cdr-button--primary cdr-button--icon-only cdr-input__button"
+                aria-label="More info"
+              >
+                <C1IconSearch inherit-color focusable="false" />
+              </button>
+            </template>
+            <C1IconInformationStroke
+              v-else
+              inherit-color
+              focusable="false"
+            />
+          </template>
+          <template v-if="args.showInfo" #info>
+            <a class="cdr-link cdr-link--standalone" href="#">
+              {{ args.infoText }}
+            </a>
+          </template>
+          <template v-if="args.showInfoAction" #info-action>
+            <button
+              type="button"
+              class="cdr-button cdr-button--primary cdr-button--icon-only cdr-input__button"
+              aria-label="More info"
+            >
+              <C1IconInformationStroke inherit-color focusable="false" />
+            </button>
+          </template>
+        </C1Input>
+      </div>
+      <C1Input
+        v-else
+        :label="args.label"
+        :type="args.type"
+        :background="args.background"
+        :size="normalizedSize"
+        :rows="normalizedRows"
+        :required="args.required"
+        :optional="args.optional"
+        :disabled="args.disabled"
+        :hide-label="args.hideLabel"
+        :numeric="args.numeric"
+        :error="errorValue"
+        :post-icons="args.showPostIcons"
+        v-model="modelValue"
+      >
+        <template v-if="args.helperTextTop" #helper-text-top>
+          {{ args.helperTextTop }}
+        </template>
+        <template v-if="args.helperTextBottom" #helper-text-bottom>
+          {{ args.helperTextBottom }}
+        </template>
+        <template v-if="args.showPreIcon" #pre-icon>
+          <C1IconSearch inherit-color focusable="false" />
+        </template>
+        <template v-if="args.showPostIcon || args.showPostIcons" #post-icon>
+          <template v-if="args.showPostIcons">
+            <button
+              type="button"
+              class="cdr-button cdr-button--primary cdr-button--icon-only cdr-input__button"
+              aria-label="Clear input"
+            >
+              <C1IconInformationStroke inherit-color focusable="false" />
+            </button>
+            <button
+              type="button"
+              class="cdr-button cdr-button--primary cdr-button--icon-only cdr-input__button"
+              aria-label="More info"
+            >
+              <C1IconSearch inherit-color focusable="false" />
+            </button>
+          </template>
+          <C1IconInformationStroke
+            v-else
+            inherit-color
+            focusable="false"
+          />
+        </template>
+        <template v-if="args.showInfo" #info>
+          <a class="cdr-link cdr-link--standalone" href="#">
+            {{ args.infoText }}
+          </a>
+        </template>
+        <template v-if="args.showInfoAction" #info-action>
+          <button
+            type="button"
+            class="cdr-button cdr-button--primary cdr-button--icon-only cdr-input__button"
+            aria-label="More info"
+          >
+            <C1IconInformationStroke inherit-color focusable="false" />
+          </button>
+        </template>
+      </C1Input>
+    </div>
+  `,
 });
 
 const meta = {

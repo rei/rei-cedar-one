@@ -14,7 +14,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
 6. **Notes:** key behavior or layout constraints.
 7. **Status:** implementation status in this repo.
 
-Progress: 26 / 74 components marked complete (✅).
+Progress: 27 / 74 components marked complete (✅).
 
 <table class="intro-matrix">
   <thead>
@@ -226,7 +226,7 @@ Progress: 26 / 74 components marked complete (✅).
       <td>None</td>
       <td>No: SVG wrapper.</td>
       <td>Adapter: none. Inline SVG or icon wrapper; no behavior.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>image</td>
@@ -755,7 +755,7 @@ Progress: 26 / 74 components marked complete (✅).
    - Derive story variants from Cedar site examples (`/Users/kmedley/code/cedar-site-nuxt`) when available, then add additional useful permutations.
    - Update the Storybook `docs.description` copy using Cedar site component purpose/usage guidance in `cedar-site-nuxt`.
    - Audit story markup against Cedar site examples to ensure atomic-content classes (like `cdr-title`) are used when available.
-8. Parity checks: compare compiled CSS in `packages/ui/dist/css` with `rei-cedar/dist/style` for functional parity (focus on computed values and runtime behavior, not 1:1 source output), record accepted deltas, run `tools/parity/check-component-tokens.py` for token parity audits, and ensure all `var(--cdr-*)` references in `packages/ui/src/css` exist in `packages/tokens/dist/css` (excluding documented override custom props and `--default-outline`).
+8. Parity checks: compare compiled CSS in `packages/ui/dist/css` with `rei-cedar/dist/style` for functional parity (focus on computed values and runtime behavior, not 1:1 source output), record accepted deltas, run `tools/parity/check-component-tokens.py` for token parity audits, and ensure all `var(--cdr-*)` references in `packages/ui/src/css` exist in `packages/tokens/dist/css` (excluding documented override custom props and `--default-outline`). When adding component-level override props, allow their prefixes in `tools/parity/check-token-usage.py` (for example, `--cdr-icon-*`).
    - Prefer optimized, token-backed source when output remains functionally equivalent to legacy.
    - Text presets intentionally diverge from legacy token naming by using `--cdr-type-scale-*` and `--cdr-line-height-ratio-*`; the component parity script skips those for text components.
    - When diffing legacy CSS modules, normalize/remove CSS module hash suffixes (for example, `_16-3-1`) before comparing.

@@ -1,5 +1,9 @@
 # @rei/c1-lint Changelog
 
+## 0.1.14-alpha.0 - 2026-02-02
+
+- Added icon lint rules.
+
 ## 0.1.13-alpha.0 - 2026-01-31
 
 - Added input lint rules.

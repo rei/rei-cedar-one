@@ -1,0 +1,27 @@
+<div style="display:grid;gap:24px;padding:24px">
+  <article class="cdr-prose" style="max-width:72ch">
+    <h2>Mixed content with Cedar components</h2>
+    <p>
+      Prose styling should not leak into Cedar components. Wrap component
+      blocks with <code>.cdr-not-prose</code> when needed.
+    </p>
+    <div
+      class="cdr-not-prose"
+      style="display:grid;gap:12px;padding:16px;border:1px solid var(--cdr-prose-rule);border-radius:var(--cdr-prose-radius)"
+    >
+      <h3 class="cdr-title">Component title</h3>
+      <a class="cdr-link" href="#">Cedar link</a>
+      <button
+        type="button"
+        class="cdr-button cdr-button--secondary cdr-button--medium"
+        style="justify-self:start"
+      >
+        Secondary action
+      </button>
+    </div>
+    <p>
+      After the embedded block, prose styles resume for additional paragraphs
+      and inline elements like <code>cdr-not-prose</code>.
+    </p>
+  </article>
+</div>

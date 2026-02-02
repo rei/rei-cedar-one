@@ -1,5 +1,10 @@
 # @rei/c1-vue Changelog
 
+## 0.1.19-alpha.0 - 2026-02-02
+
+- Swapped inline SVGs for @rei/c1-icons Vue wrappers in stories and fixtures.
+- Added icon CSS to Vue Storybook previews.
+
 ## 0.1.18-alpha.0 - 2026-02-02
 
 - Renamed the Vue app workspace to `apps/vue` and updated package metadata.

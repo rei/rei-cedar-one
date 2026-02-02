@@ -1,8 +1,20 @@
 <script lang="ts">
+import {
+  C1IconAccountProfile,
+  C1IconCheckSm,
+  C1IconInformationStroke,
+  C1IconSearch,
+} from '@rei/c1-icons/vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'C1LintFixture',
+  components: {
+    C1IconAccountProfile,
+    C1IconCheckSm,
+    C1IconInformationStroke,
+    C1IconSearch,
+  },
   data() {
     return {
       fixtureTitle: 'Cedar Lint Fixture',
@@ -156,6 +168,33 @@ export default defineComponent({
     </section>
 
     <section class="fixture-group">
+      <h3>Icons</h3>
+      <div class="fixture-row">
+        <C1IconAccountProfile aria-hidden="true" focusable="false" />
+        <C1IconAccountProfile
+          aria-hidden="true"
+          focusable="false"
+          size="small"
+        />
+        <C1IconAccountProfile
+          aria-hidden="true"
+          focusable="false"
+          size="large"
+        />
+        <C1IconAccountProfile
+          aria-hidden="true"
+          focusable="false"
+          inherit-color
+        />
+        <C1IconAccountProfile
+          aria-hidden="true"
+          focusable="false"
+          size="small@xs large@lg"
+        />
+      </div>
+    </section>
+
+    <section class="fixture-group">
       <h3>Containers</h3>
       <div class="fixture-stack">
         <div class="cdr-container cdr-container--static">Static container</div>
@@ -284,9 +323,13 @@ export default defineComponent({
           >
             <input type="checkbox" />
             <span class="cdr-label-wrapper__figure"></span>
-            <span class="cdr-checkbox__svg-box"
-              ><svg viewBox="0 0 24 24"></svg
-            ></span>
+            <span class="cdr-checkbox__svg-box">
+              <C1IconCheckSm
+                aria-hidden="true"
+                focusable="false"
+                inherit-color
+              />
+            </span>
             <span class="cdr-label-wrapper__content">Hidden figure</span>
           </label>
         </div>
@@ -330,23 +373,23 @@ export default defineComponent({
                 aria-describedby="fixture-input-helper fixture-input-helper-bottom"
               />
               <span class="cdr-input__pre-icon">
-                <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <path
-                    d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
-                  ></path>
-                </svg>
+                <C1IconSearch
+                  aria-hidden="true"
+                  focusable="false"
+                  inherit-color
+                />
               </span>
               <span class="cdr-input__post-icon">
-                <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <path
-                    d="M21 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 16.5v-9A2.5 2.5 0 0 1 5.5 5h13A2.5 2.5 0 0 1 21 7.5z"
-                  ></path>
-                </svg>
-                <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <path
-                    d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z"
-                  ></path>
-                </svg>
+                <C1IconInformationStroke
+                  aria-hidden="true"
+                  focusable="false"
+                  inherit-color
+                />
+                <C1IconSearch
+                  aria-hidden="true"
+                  focusable="false"
+                  inherit-color
+                />
               </span>
             </div>
           </div>
@@ -367,11 +410,12 @@ export default defineComponent({
       <div class="fixture-stack">
         <div class="cdr-form-error --active-error">
           <span class="cdr-form-error__icon">
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path
-                d="M12 2.5c-.5 0-.9.3-1.1.7L3 19.1c-.4.7.1 1.6.9 1.6h16.2c.8 0 1.3-.9.9-1.6L13.1 3.2c-.2-.4-.6-.7-1.1-.7zM11 9h2v6h-2V9zm0 8h2v2h-2v-2z"
-              ></path>
-            </svg>
+            <C1IconInformationStroke
+              aria-hidden="true"
+              focusable="false"
+              inherit-color
+              style="width: 2rem; height: 2rem"
+            />
           </span>
           <div
             role="status"

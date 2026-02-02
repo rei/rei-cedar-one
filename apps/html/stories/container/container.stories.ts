@@ -1,24 +1,12 @@
+import fluid from './fragments/fluid.html?raw';
+import sideBySide from './fragments/side-by-side.html?raw';
+import staticMarkup from './fragments/static.html?raw';
+
 type ContainerVariant = 'static' | 'fluid';
 
 const CONTAINER_MARKUP: Record<ContainerVariant, string> = {
-  static: `
-    <div style="background:#f4f2ef;padding:16px;">
-      <div class="cdr-container cdr-container--static" style="background:#fff;border:1px solid #d8d3cc;">
-        <div style="padding:16px;">
-          <strong>static</strong> container content
-        </div>
-      </div>
-    </div>
-  `,
-  fluid: `
-    <div style="background:#f4f2ef;padding:16px;">
-      <div class="cdr-container cdr-container--fluid" style="background:#fff;border:1px solid #d8d3cc;">
-        <div style="padding:16px;">
-          <strong>fluid</strong> container content
-        </div>
-      </div>
-    </div>
-  `,
+  static: staticMarkup,
+  fluid,
 };
 
 const renderContainer = (variant: ContainerVariant) =>
@@ -54,10 +42,5 @@ export const Fluid = {
 };
 
 export const SideBySide = {
-  render: () => `
-    <div style="display:grid;gap:16px;">
-      ${renderContainer('static')}
-      ${renderContainer('fluid')}
-    </div>
-  `,
+  render: () => sideBySide,
 };

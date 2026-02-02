@@ -11,6 +11,9 @@ const rootDir = path.resolve(
 const iconsDir = path.join(rootDir, 'src', 'icons');
 const distDir = path.join(rootDir, 'dist');
 const distIconsDir = path.join(distDir, 'icons');
+const distVueDir = path.join(distDir, 'vue');
+const distVueIconsDir = path.join(distVueDir, 'icons');
+const srcVueDir = path.join(rootDir, 'src', 'vue');
 
 /**
  * Remove and recreate the dist directory.
@@ -19,6 +22,7 @@ const ensureCleanDist = async (): Promise<void> => {
   await fs.rm(distDir, { recursive: true, force: true });
   await fs.mkdir(distDir, { recursive: true });
   await fs.mkdir(distIconsDir, { recursive: true });
+  await fs.mkdir(distVueIconsDir, { recursive: true });
 };
 
 /**
@@ -245,6 +249,27 @@ const buildMeta = (
 };
 
 /**
+ * Convert a kebab-case icon name to PascalCase.
+ * @param name - Icon name.
+ */
+const toPascalCase = (name: string): string =>
+  name
+    .split('-')
+    .map((part) => (part ? `${part[0].toUpperCase()}${part.slice(1)}` : ''))
+    .join('');
+
+/**
+ * Extract inner SVG markup from an SVG string and normalize presentation roles.
+ * @param svg - Raw SVG markup.
+ */
+const extractSvgInner = (svg: string): string => {
+  const match = svg.match(/<svg[^>]*>([\s\S]*?)<\/svg>/);
+  if (!match) return '';
+  const inner = match[1].trim();
+  return inner.replace(/<path\b(?![^>]*\brole=)/g, '<path role="presentation"');
+};
+
+/**
  * Read, optimize, and index all icons from src/icons.
  */
 const readIcons = async (): Promise<{
@@ -365,6 +390,85 @@ const writeTypes = async (iconNames: string[]): Promise<void> => {
 };
 
 /**
+ * Write Vue single-file components for each icon.
+ * @param icons - Map of icon name to SVG markup.
+ */
+const writeVueComponents = async (
+  icons: Record<string, string>,
+): Promise<void> => {
+  const entries = Object.entries(icons);
+  const exportLines: string[] = [];
+
+  const c1IconPath = path.join(srcVueDir, 'C1Icon.vue');
+  try {
+    const c1Icon = await fs.readFile(c1IconPath, 'utf8');
+    await fs.writeFile(path.join(distVueDir, 'C1Icon.vue'), c1Icon);
+    exportLines.push(`export { default as C1Icon } from './C1Icon.vue';`);
+  } catch (error) {
+    const nodeError = error as NodeJS.ErrnoException;
+    if (nodeError.code !== 'ENOENT') {
+      throw error;
+    }
+  }
+
+  for (const [name, svg] of entries) {
+    const componentName = `C1Icon${toPascalCase(name)}`;
+    const inner = extractSvgInner(svg);
+
+    const sfc = `<script setup lang="ts">
+import { computed, useAttrs } from 'vue';
+import C1Icon from '../C1Icon.vue';
+
+defineOptions({ name: '${componentName}' });
+
+type IconSize = string;
+
+const props = defineProps<{
+  size?: IconSize;
+  inheritColor?: boolean;
+  props?: Record<string, unknown>;
+}>();
+
+const attrs = useAttrs();
+const resolvedSize = computed(
+  () => props.size ?? (props.props as { size?: IconSize } | undefined)?.size,
+);
+const resolvedInheritColor = computed(
+  () =>
+    props.inheritColor ??
+    (props.props as { inheritColor?: boolean } | undefined)?.inheritColor ??
+    false,
+);
+const iconProps = computed(() => ({
+  ...(props.props ?? {}),
+  ...attrs,
+  size: resolvedSize.value,
+  inheritColor: resolvedInheritColor.value,
+}));
+</script>
+
+<template>
+  <C1Icon v-bind="iconProps">
+    <slot />
+    ${inner}
+  </C1Icon>
+</template>
+`;
+
+    await fs.writeFile(path.join(distVueIconsDir, `${name}.vue`), sfc);
+    exportLines.push(
+      `export { default as ${componentName} } from './icons/${name}.vue';`,
+    );
+  }
+
+  const indexJs = `${exportLines.join('\n')}\n`;
+  const indexTypes = `${exportLines.join('\n')}\n`;
+
+  await fs.writeFile(path.join(distVueDir, 'index.js'), indexJs);
+  await fs.writeFile(path.join(distVueDir, 'index.d.ts'), indexTypes);
+};
+
+/**
  * Build optimized icon assets and module outputs.
  */
 const build = async (): Promise<void> => {
@@ -377,6 +481,7 @@ const build = async (): Promise<void> => {
     writeIconData(icons, iconMeta, iconNames),
     writeModule(icons, iconMeta, iconNames),
     writeTypes(iconNames),
+    writeVueComponents(icons),
   ]);
 };
 

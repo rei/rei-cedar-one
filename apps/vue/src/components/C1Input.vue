@@ -68,18 +68,11 @@
         :id="errorId"
       >
         <span v-show="showError" class="cdr-form-error__icon">
-          <svg
+          <C1IconInformationStroke
             aria-hidden="true"
             focusable="false"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="20"
-            height="20"
-          >
-            <path
-              d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z"
-            />
-          </svg>
+            inherit-color
+          />
         </span>
         <div :role="errorRole" aria-atomic="true" aria-relevant="all">
           <div v-if="showError">
@@ -92,6 +85,7 @@
 </template>
 
 <script setup lang="ts">
+import { C1IconInformationStroke } from '@rei/c1-icons/vue';
 import { computed, ref, useAttrs, useSlots } from 'vue';
 
 import { useInputAdapter } from '@rei/c1-ui/adapters/input/vue';
@@ -140,6 +134,10 @@ const props = defineProps({
   modelValue: {
     type: [String, Number],
   },
+  postIcons: {
+    type: Boolean,
+    default: false,
+  },
   inputContainerClass: String,
   labelClass: String,
 });
@@ -156,9 +154,7 @@ const hasHelperTop = computed(() => Boolean(slots['helper-text-top']));
 const hasHelperBottom = computed(() => Boolean(slots['helper-text-bottom']));
 const hasPreIcon = computed(() => Boolean(slots['pre-icon']));
 const hasPostIcon = computed(() => Boolean(slots['post-icon']));
-const hasPostIcons = computed(() =>
-  slots['post-icon'] ? slots['post-icon']().length > 1 : false,
-);
+const hasPostIcons = computed(() => props.postIcons && hasPostIcon.value);
 const hasInfo = computed(() => Boolean(slots.info));
 const hasInfoAction = computed(() => Boolean(slots['info-action']));
 const isMultiline = computed(() => props.rows > 1);

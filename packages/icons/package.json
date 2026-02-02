@@ -1,6 +1,6 @@
 {
   "name": "@rei/c1-icons",
-  "version": "0.1.1-alpha.0",
+  "version": "0.1.2-alpha.0",
   "private": true,
   "description": "Framework-agnostic Cedar icon assets (sprite, raw SVGs, JSON, JS).",
   "type": "module",
@@ -10,11 +10,17 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
-    "./icons.json": "./dist/icons.json",
-    "./icon-meta.json": "./dist/icon-meta.json",
-    "./icon-names.json": "./dist/icon-names.json",
+    "./vue": {
+      "types": "./dist/vue/index.d.ts",
+      "import": "./dist/vue/index.js"
+    },
+    "./vue/*": "./dist/vue/icons/*.vue",
+    "./vue/icon": "./dist/vue/C1Icon.vue",
+    "./data.json": "./dist/icons.json",
+    "./meta.json": "./dist/icon-meta.json",
+    "./names.json": "./dist/icon-names.json",
     "./sprite.svg": "./dist/sprite.svg",
-    "./icons/*": "./dist/icons/*.svg"
+    "./svg/*": "./dist/icons/*.svg"
   },
   "files": [
     "dist",
@@ -24,7 +30,7 @@
     "build": "pnpm run validate && tsx scripts/build.ts",
     "clean": "rm -rf dist",
     "lint": "eslint .",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit && vue-tsc -p tsconfig.vue.json --noEmit",
     "validate": "tsx scripts/validate.ts"
   },
   "devDependencies": {
@@ -33,6 +39,16 @@
     "svgo": "^3.3.2",
     "svgstore": "^3.0.1",
     "tsx": "^4.20.5",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vue": "^3.5.24",
+    "vue-tsc": "^3.1.4"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    }
   }
 }
