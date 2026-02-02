@@ -68,4 +68,4 @@ The repository is organized as a `pnpm` monorepo:
 
 - `packages/tokens` - design tokens and platform-specific outputs (web + React Native).
 - `packages/ui` - compiled CSS utilities and component recipes.
-- `sandbox/vue-library` - Vue component library used for lint coverage validation.
+- `apps/vue` - Vue component library used for lint coverage validation.

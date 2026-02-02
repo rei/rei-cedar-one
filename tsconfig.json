@@ -5,8 +5,8 @@
     { "path": "./packages/lint" },
     { "path": "./packages/tokens" },
     { "path": "./packages/ui" },
-    { "path": "./sandbox/vue-library" },
-    { "path": "./stories" },
-    { "path": "./.storybook" }
+    { "path": "./apps/vue" },
+    { "path": "./apps/html" },
+    { "path": "./apps/html/.storybook" }
   ]
 }

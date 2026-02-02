@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.23-alpha.0 - 2026-02-02
+
+- Reorganized apps into `apps/html` and `apps/vue`, with HTML stories living under `apps/html/stories`.
+- Added the framework-agnostic `@rei/c1-icons` package with SVG optimization, metadata, and validation tooling.
+- Migrated icon build/validate tooling to TypeScript with dedicated lint/typecheck configs.
+
 ## 0.1.22-alpha.0 - 2026-02-01
 
 - Reintroduced the Vue Storybook with shared Cedar One theming and Vue input stories driven by args.
@@ -129,7 +135,7 @@
 
 ## 0.1.2-alpha.0 - 2026-01-28
 
-- Converted the Vue fixtures app into @rei/c1-vue-library and restored declaration output.
+- Converted the Vue fixtures app into @rei/c1-vue and restored declaration output.
 - Removed the playground sandboxes and updated workspace scripts accordingly.
 - Refined usage and roadmap docs for the new Vue library workflow.
 

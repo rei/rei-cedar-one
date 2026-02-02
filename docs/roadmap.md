@@ -740,16 +740,16 @@ Progress: 26 / 74 components marked complete (✅).
 
 ## Component tasks
 
-1. Inventory + contract: audit `rei-cedar/src/components/<name>` (props/slots/states/class output) and define the minimal HTML structure (tags/required attrs). Mirror it in `stories/html` and fixtures.
+1. Inventory + contract: audit `rei-cedar/src/components/<name>` (props/slots/states/class output) and define the minimal HTML structure (tags/required attrs). Mirror it in `apps/html/stories` and fixtures.
 2. Token parity: identify required tokens and add them to `packages/tokens/tokens` (use `rei-cedar-tokens` as source of truth). Rebuild dist outputs; do not edit `dist` directly (see `tools/parity/README.md`).
 3. Behavior classification: identify a11y/interaction logic (ARIA, roving tabindex, focus trap, ESC) and decide CSS-only vs adapter.
 4. Adapter plan: prefer vanilla JS for generic web behavior; use framework adapters when schema-driven or framework-specific deps are required.
 5. CSS extraction: translate SCSS in `rei-cedar/src/components/<name>/styles` to `packages/ui/src/css/components/<name>.css`, keep values token-backed (no palette vars in component CSS), and derive media queries from source custom media (import `packages/tokens/src/breakpoints.css`).
    - Prefer utility modifier classes over inline style overrides when exposing component APIs.
    - If the component uses `@media (--cdr-*)`, ensure `breakpoints.css` is imported so custom media compiles.
-6. Lint rules: add component rules under `packages/lint/src/rules`, split into focused rules per constraint (like button), register them in `eslint.config.mjs`, and validate in Vue fixtures via `sandbox/vue-library/eslint.config.mjs`.
+6. Lint rules: add component rules under `packages/lint/src/rules`, split into focused rules per constraint (like button), register them in `eslint.config.mjs`, and validate in Vue fixtures via `apps/vue/eslint.config.mjs`.
    - Keep lint rule modules consistent by using a typed wrapper helper (import `Rule` from eslint) for rule metadata/check signatures.
-7. Stories/fixtures: add/update permutations in `stories/html` and in the Vue lint fixture (`sandbox/vue-library/src/components/CedarLintFixture.vue`), export it from `sandbox/vue-library/src/index.ts`, and keep markup static so ESLint can validate literal class usage.
+7. Stories/fixtures: add/update permutations in `apps/html/stories` and in the Vue lint fixture (`apps/vue/src/components/CedarLintFixture.vue`), export it from `apps/vue/src/index.ts`, and keep markup static so ESLint can validate literal class usage.
    - Prefer fully static markup (no loops/helpers) in stories/fixtures so ESLint can validate literal class usage.
    - Structure stories as separate variants (base + each modifier) instead of grouping multiple variants into a single story.
    - Derive story variants from Cedar site examples (`/Users/kmedley/code/cedar-site-nuxt`) when available, then add additional useful permutations.

@@ -8,7 +8,7 @@ This document outlines the architectural principles and near-term goals that gui
 - **CSS-first web delivery:** utilities and recipes cover most styling without framework bindings.
 - **Adapters at the edges:** behavioral and platform-specific logic is introduced only where required.
 - **Build-time validation:** ESLint and tooling enforce contracts so validation is not shipped at runtime.
-- **Monorepo orchestration:** `pnpm` workspaces manage packages, tooling, and sandboxes.
+- **Monorepo orchestration:** `pnpm` workspaces manage packages, tooling, and apps.
 
 ## Goals
 
