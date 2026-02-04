@@ -6,7 +6,7 @@ addons.setConfig({
     ...themes.dark,
     brandTitle: 'Cedar One',
     brandUrl: 'https://cedar.rei.com',
-    brandImage: '/assets/c1.png',
+    brandImage: 'assets/c1.png',
     brandTarget: '_blank',
   }),
 });

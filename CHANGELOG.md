@@ -1,5 +1,9 @@
 # Cedar One Changelog
 
+## 0.1.35-alpha.0 - 2026-02-04
+
+- Fixed Storybook manager brand image pathing for GitHub Pages subpaths.
+
 ## 0.1.34-alpha.0 - 2026-02-04
 
 - Fixed GitHub Pages Storybook workflow to pass output directories directly to the Storybook CLI.
