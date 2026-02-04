@@ -1,5 +1,14 @@
 # Cedar One Changelog
 
+## 0.1.26-alpha.0 - 2026-02-04
+
+- Added React icon wrappers to @rei/c1-icons and wired React stories/components to use them.
+
+## 0.1.25-alpha.0 - 2026-02-03
+
+- Scaffolded the @rei/c1-react app with Storybook and an adapter-driven input component.
+- Added a React input adapter entry to @rei/c1-ui and wired it into the build.
+
 ## 0.1.24-alpha.0 - 2026-02-02
 
 - Reworked HTML stories to use static fragments with build-time icon inlining and added an icon sprite demo.

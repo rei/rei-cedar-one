@@ -1,5 +1,9 @@
 # @rei/c1-ui Changelog
 
+## 0.1.17-alpha.0 - 2026-02-03
+
+- Added a React input adapter entry point.
+
 ## 0.1.16-alpha.0 - 2026-02-02
 
 - Added icon component CSS utilities.

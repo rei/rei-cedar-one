@@ -11,6 +11,9 @@ Framework-agnostic Cedar icon assets for use in vanilla HTML, Vue, React, or any
 - `@rei/c1-icons/meta.json` – icon metadata (viewBox, category, tags).
 - `@rei/c1-icons/svg/<name>.svg` – individual SVG files.
 - `@rei/c1-icons/vue/<name>` – Vue single-file component per icon.
+- `@rei/c1-icons/vue` – Vue entrypoint with `C1Icon` + named exports.
+- `@rei/c1-icons/react` – React entrypoint with `C1Icon` + named exports.
+- `@rei/c1-icons/react/<name>` – React component per icon.
 
 ## Usage
 
@@ -63,6 +66,24 @@ import { C1Icon } from '@rei/c1-icons/vue';
 <template>
   <C1Icon name="arrow-down" aria-label="Expand" />
 </template>
+```
+
+### React per-icon component
+
+```tsx
+import ArrowDown from '@rei/c1-icons/react/arrow-down';
+// Or named exports from the React entrypoint:
+// import { C1IconArrowDown } from '@rei/c1-icons/react';
+
+export const Example = () => <ArrowDown size="small" aria-label="Expand" />;
+```
+
+### React sprite component
+
+```tsx
+import { C1Icon } from '@rei/c1-icons/react';
+
+export const Example = () => <C1Icon name="arrow-down" aria-label="Expand" />;
 ```
 
 ## Accessibility

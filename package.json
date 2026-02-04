@@ -1,6 +1,6 @@
 {
   "name": "@rei/c1",
-  "version": "0.1.24-alpha.0",
+  "version": "0.1.26-alpha.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "lint-staged": "lint-staged",
     "prepare": "husky",
     "storybook": "pnpm run ws:storybook",
+    "storybook:react": "pnpm tokens:build && pnpm ui:build && pnpm icons:build && pnpm --filter @rei/c1-react storybook",
     "storybook:vue": "pnpm tokens:build && pnpm ui:build && pnpm icons:build && pnpm --filter @rei/c1-vue storybook",
     "tokens:build": "pnpm --filter @rei/c1-tokens build",
     "typecheck": "pnpm run ws:typecheck",

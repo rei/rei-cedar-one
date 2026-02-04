@@ -1,5 +1,9 @@
 # @rei/c1-icons Changelog
 
+## 0.1.3-alpha.0 - 2026-02-04
+
+- Added React icon components with entrypoint exports.
+
 ## 0.1.2-alpha.0 - 2026-02-02
 
 - Prefixed Vue icon component exports with `C1Icon` for consistency.

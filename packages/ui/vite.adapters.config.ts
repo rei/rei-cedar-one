@@ -8,6 +8,7 @@ export default defineConfig({
       entry: {
         'input/index': 'src/adapters/input/index.ts',
         'input/vue': 'src/adapters/input/vue.ts',
+        'input/react': 'src/adapters/input/react.ts',
       },
       formats: ['es'],
       fileName: (_format, entryName) => `${entryName}.js`,

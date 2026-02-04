@@ -13,6 +13,8 @@ const distDir = path.join(rootDir, 'dist');
 const distIconsDir = path.join(distDir, 'icons');
 const distVueDir = path.join(distDir, 'vue');
 const distVueIconsDir = path.join(distVueDir, 'icons');
+const distReactDir = path.join(distDir, 'react');
+const distReactIconsDir = path.join(distReactDir, 'icons');
 const srcVueDir = path.join(rootDir, 'src', 'vue');
 
 /**
@@ -23,6 +25,7 @@ const ensureCleanDist = async (): Promise<void> => {
   await fs.mkdir(distDir, { recursive: true });
   await fs.mkdir(distIconsDir, { recursive: true });
   await fs.mkdir(distVueIconsDir, { recursive: true });
+  await fs.mkdir(distReactIconsDir, { recursive: true });
 };
 
 /**
@@ -469,6 +472,147 @@ const iconProps = computed(() => ({
 };
 
 /**
+ * Write React components for each icon.
+ * @param icons - Map of icon name to SVG markup.
+ */
+const writeReactComponents = async (
+  icons: Record<string, string>,
+): Promise<void> => {
+  const entries = Object.entries(icons);
+  const exportLines: string[] = [];
+  const typeLines: string[] = [];
+
+  const baseComponent = `import { createElement } from 'react';
+
+const buildSizeClass = (size) => {
+  if (!size) return undefined;
+  return size
+    .split(' ')
+    .filter(Boolean)
+    .map((token) => \`cdr-icon--\${token}\`)
+    .join(' ');
+};
+
+const C1Icon = ({
+  name,
+  use,
+  inheritColor = false,
+  size,
+  className,
+  children,
+  ...rest
+}) => {
+  const sizeClass = buildSizeClass(size);
+  const classes = ['cdr-icon', sizeClass, inheritColor ? 'cdr-icon--inherit-color' : null, className]
+    .filter(Boolean)
+    .join(' ');
+  const href = use ?? (name ? \`#\${name}\` : undefined);
+  const hasLabel = rest['aria-label'] || rest['aria-labelledby'];
+  const ariaHidden = !hasLabel && rest['aria-hidden'] === undefined ? 'true' : rest['aria-hidden'];
+
+  return createElement(
+    'svg',
+    {
+      ...rest,
+      className: classes,
+      xmlns: 'http://www.w3.org/2000/svg',
+      viewBox: '0 0 24 24',
+      'aria-hidden': ariaHidden,
+    },
+    children,
+    href ? createElement('use', { href, xlinkHref: href }) : null,
+  );
+};
+
+export default C1Icon;
+`;
+
+  const baseTypes = `import type { SVGProps } from 'react';
+
+export type C1IconProps = Omit<SVGProps<SVGSVGElement>, 'name'> & {
+  name?: string;
+  use?: string;
+  size?: string;
+  inheritColor?: boolean;
+};
+
+declare const C1Icon: (props: C1IconProps) => JSX.Element;
+
+export default C1Icon;
+`;
+
+  await fs.mkdir(distReactDir, { recursive: true });
+  await fs.writeFile(path.join(distReactDir, 'C1Icon.js'), baseComponent);
+  await fs.writeFile(path.join(distReactDir, 'C1Icon.d.ts'), baseTypes);
+  exportLines.push(`export { default as C1Icon } from './C1Icon.js';`);
+  typeLines.push(`export { default as C1Icon } from './C1Icon.js';`);
+  typeLines.push(`export type { C1IconProps } from './C1Icon.js';`);
+
+  for (const [name, svg] of entries) {
+    const componentName = `C1Icon${toPascalCase(name)}`;
+    const inner = extractSvgInner(svg);
+
+    const component = `import { createElement } from 'react';
+import C1Icon from '../C1Icon.js';
+
+const ${componentName} = (props = {}) => {
+  const { size, inheritColor, props: extraProps, children, ...rest } = props;
+  const resolvedSize = size ?? (extraProps && extraProps.size);
+  const resolvedInheritColor =
+    inheritColor ?? (extraProps && extraProps.inheritColor) ?? false;
+  const iconProps = {
+    ...(extraProps ?? {}),
+    ...rest,
+    size: resolvedSize,
+    inheritColor: resolvedInheritColor,
+  };
+
+  return createElement(
+    C1Icon,
+    iconProps,
+    children,
+    createElement('g', { dangerouslySetInnerHTML: { __html: ${JSON.stringify(inner)} } }),
+  );
+};
+
+${componentName}.displayName = '${componentName}';
+
+export default ${componentName};
+`;
+
+    const componentTypes = `import type { JSX } from 'react';
+import type { C1IconProps } from '../C1Icon.js';
+
+export type ${componentName}Props = Omit<C1IconProps, 'name' | 'use'> & {
+  props?: C1IconProps;
+};
+
+declare const ${componentName}: (props: ${componentName}Props) => JSX.Element;
+
+export default ${componentName};
+`;
+
+    await fs.writeFile(path.join(distReactIconsDir, `${name}.js`), component);
+    await fs.writeFile(
+      path.join(distReactIconsDir, `${name}.d.ts`),
+      componentTypes,
+    );
+    exportLines.push(
+      `export { default as ${componentName} } from './icons/${name}.js';`,
+    );
+    typeLines.push(
+      `export { default as ${componentName} } from './icons/${name}.js';`,
+    );
+  }
+
+  const indexJs = `${exportLines.join('\n')}\n`;
+  const indexTypes = `${typeLines.join('\n')}\n`;
+
+  await fs.writeFile(path.join(distReactDir, 'index.js'), indexJs);
+  await fs.writeFile(path.join(distReactDir, 'index.d.ts'), indexTypes);
+};
+
+/**
  * Build optimized icon assets and module outputs.
  */
 const build = async (): Promise<void> => {
@@ -482,6 +626,7 @@ const build = async (): Promise<void> => {
     writeModule(icons, iconMeta, iconNames),
     writeTypes(iconNames),
     writeVueComponents(icons),
+    writeReactComponents(icons),
   ]);
 };
 
