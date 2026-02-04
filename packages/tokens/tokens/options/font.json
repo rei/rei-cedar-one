@@ -2,77 +2,254 @@
   "options": {
     "font": {
       "family": {
-        "serif-main": "Stuart",
-        "serif-fallback": "\"Stuart fallback\", Georgia, serif",
-        "sans-main": "Graphik",
-        "sans-fallback": "\"Graphik fallback\", \"Helvetica Neue\", sans-serif",
-        "serif": "{options.font.family.serif-main}, {options.font.family.serif-fallback}",
-        "sans": "{options.font.family.sans-main}, {options.font.family.sans-fallback}",
-        "mono": "SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace",
+        "serif-main": {
+          "$value": "Stuart",
+          "$type": "fontFamily"
+        },
+        "serif-fallback": {
+          "$value": "\"Stuart fallback\", Georgia, serif",
+          "$type": "fontFamily"
+        },
+        "sans-main": {
+          "$value": "Graphik",
+          "$type": "fontFamily"
+        },
+        "sans-fallback": {
+          "$value": "\"Graphik fallback\", \"Helvetica Neue\", sans-serif",
+          "$type": "fontFamily"
+        },
+        "serif": {
+          "$value": "{options.font.family.serif-main}, {options.font.family.serif-fallback}",
+          "$type": "fontFamily"
+        },
+        "sans": {
+          "$value": "{options.font.family.sans-main}, {options.font.family.sans-fallback}",
+          "$type": "fontFamily"
+        },
+        "mono": {
+          "$value": "SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace",
+          "$type": "fontFamily"
+        },
         "legacy": {
-          "serif": "Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
-          "sans": "Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
-          "sans-condensed": "\"Roboto Condensed\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          "serif": {
+            "$value": "Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+            "$type": "fontFamily"
+          },
+          "sans": {
+            "$value": "Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+            "$type": "fontFamily"
+          },
+          "sans-condensed": {
+            "$value": "\"Roboto Condensed\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+            "$type": "fontFamily"
+          }
         }
       },
       "style": {
-        "normal": "normal",
-        "italic": "italic"
+        "normal": {
+          "$value": "normal",
+          "$type": "fontStyle"
+        },
+        "italic": {
+          "$value": "italic",
+          "$type": "fontStyle"
+        }
       },
       "size": {
-        "100": "12px",
-        "200": "14px",
-        "300": "16px",
-        "400": "18px",
-        "500": "20px",
-        "600": "24px",
-        "700": "28px",
-        "800": "32px",
-        "900": "36px",
-        "1000": "42px",
-        "1100": "48px",
-        "1200": "54px",
-        "1300": "60px",
-        "1400": "68px",
-        "1500": "76px",
-        "1600": "86px"
+        "100": {
+          "$value": "12px",
+          "$type": "fontSize"
+        },
+        "200": {
+          "$value": "14px",
+          "$type": "fontSize"
+        },
+        "300": {
+          "$value": "16px",
+          "$type": "fontSize"
+        },
+        "400": {
+          "$value": "18px",
+          "$type": "fontSize"
+        },
+        "500": {
+          "$value": "20px",
+          "$type": "fontSize"
+        },
+        "600": {
+          "$value": "24px",
+          "$type": "fontSize"
+        },
+        "700": {
+          "$value": "28px",
+          "$type": "fontSize"
+        },
+        "800": {
+          "$value": "32px",
+          "$type": "fontSize"
+        },
+        "900": {
+          "$value": "36px",
+          "$type": "fontSize"
+        },
+        "1000": {
+          "$value": "42px",
+          "$type": "fontSize"
+        },
+        "1100": {
+          "$value": "48px",
+          "$type": "fontSize"
+        },
+        "1200": {
+          "$value": "54px",
+          "$type": "fontSize"
+        },
+        "1300": {
+          "$value": "60px",
+          "$type": "fontSize"
+        },
+        "1400": {
+          "$value": "68px",
+          "$type": "fontSize"
+        },
+        "1500": {
+          "$value": "76px",
+          "$type": "fontSize"
+        },
+        "1600": {
+          "$value": "86px",
+          "$type": "fontSize"
+        }
       },
       "weight": {
-        "normal": "400",
-        "medium": "500",
-        "semibold": "600",
-        "strong": "700"
+        "normal": {
+          "$value": "400",
+          "$type": "fontWeight"
+        },
+        "medium": {
+          "$value": "500",
+          "$type": "fontWeight"
+        },
+        "semibold": {
+          "$value": "600",
+          "$type": "fontWeight"
+        },
+        "strong": {
+          "$value": "700",
+          "$type": "fontWeight"
+        }
       },
       "spacing": {
-        "tightest": "-0.64px",
-        "tighter": "-0.32px",
-        "tight": "-0.16px",
-        "tightish": "-0.08px",
-        "normal": "0px",
-        "looseish": "0.08px",
-        "loose": "0.16px",
-        "looser": "0.32px",
-        "loosest": "0.64px"
+        "tightest": {
+          "$value": "-0.64px",
+          "$type": "letterSpacing"
+        },
+        "tighter": {
+          "$value": "-0.32px",
+          "$type": "letterSpacing"
+        },
+        "tight": {
+          "$value": "-0.16px",
+          "$type": "letterSpacing"
+        },
+        "tightish": {
+          "$value": "-0.08px",
+          "$type": "letterSpacing"
+        },
+        "normal": {
+          "$value": "0px",
+          "$type": "letterSpacing"
+        },
+        "looseish": {
+          "$value": "0.08px",
+          "$type": "letterSpacing"
+        },
+        "loose": {
+          "$value": "0.16px",
+          "$type": "letterSpacing"
+        },
+        "looser": {
+          "$value": "0.32px",
+          "$type": "letterSpacing"
+        },
+        "loosest": {
+          "$value": "0.64px",
+          "$type": "letterSpacing"
+        }
       },
       "height": {
-        "100": "16px",
-        "200": "18px",
-        "300": "20px",
-        "400": "22px",
-        "500": "24px",
-        "600": "26px",
-        "700": "28px",
-        "800": "30px",
-        "900": "32px",
-        "1000": "36px",
-        "1100": "40px",
-        "1200": "44px",
-        "1300": "50px",
-        "1400": "56px",
-        "1500": "64px",
-        "1600": "72px",
-        "1700": "80px",
-        "1800": "92px"
+        "100": {
+          "$value": "16px",
+          "$type": "dimension"
+        },
+        "200": {
+          "$value": "18px",
+          "$type": "dimension"
+        },
+        "300": {
+          "$value": "20px",
+          "$type": "dimension"
+        },
+        "400": {
+          "$value": "22px",
+          "$type": "dimension"
+        },
+        "500": {
+          "$value": "24px",
+          "$type": "dimension"
+        },
+        "600": {
+          "$value": "26px",
+          "$type": "dimension"
+        },
+        "700": {
+          "$value": "28px",
+          "$type": "dimension"
+        },
+        "800": {
+          "$value": "30px",
+          "$type": "dimension"
+        },
+        "900": {
+          "$value": "32px",
+          "$type": "dimension"
+        },
+        "1000": {
+          "$value": "36px",
+          "$type": "dimension"
+        },
+        "1100": {
+          "$value": "40px",
+          "$type": "dimension"
+        },
+        "1200": {
+          "$value": "44px",
+          "$type": "dimension"
+        },
+        "1300": {
+          "$value": "50px",
+          "$type": "dimension"
+        },
+        "1400": {
+          "$value": "56px",
+          "$type": "dimension"
+        },
+        "1500": {
+          "$value": "64px",
+          "$type": "dimension"
+        },
+        "1600": {
+          "$value": "72px",
+          "$type": "dimension"
+        },
+        "1700": {
+          "$value": "80px",
+          "$type": "dimension"
+        },
+        "1800": {
+          "$value": "92px",
+          "$type": "dimension"
+        }
       }
     }
   }

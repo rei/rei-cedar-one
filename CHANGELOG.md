@@ -1,5 +1,9 @@
 # Cedar One Changelog
 
+## 0.1.32-alpha.0 - 2026-02-04
+
+- Converted options token sources to DTCG format so references resolve and token CSS outputs avoid collisions.
+
 ## 0.1.31-alpha.0 - 2026-02-04
 
 - Updated workspace dependencies to latest versions and stabilized icon build config for svgo v4.

@@ -1,5 +1,9 @@
 # @rei/c1-tokens Changelog
 
+## 0.1.12-alpha.0 - 2026-02-04
+
+- Converted options tokens to DTCG format to resolve references and prevent CSS token collisions.
+
 ## 0.1.11-alpha.0 - 2026-02-04
 
 - Added accordion hover background color token.
