@@ -1,5 +1,9 @@
 # Cedar One Changelog
 
+## 0.1.34-alpha.0 - 2026-02-04
+
+- Fixed GitHub Pages Storybook workflow to pass output directories directly to the Storybook CLI.
+
 ## 0.1.33-alpha.0 - 2026-02-04
 
 - Added GitHub Pages workflow to build and deploy HTML, Vue, and React Storybooks under subpaths.

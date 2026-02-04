@@ -45,12 +45,12 @@ jobs:
       - name: Build Vue Storybook
         env:
           STORYBOOK_BASE_PATH: /${{ github.event.repository.name }}/vue/
-        run: pnpm --filter @rei/c1-vue build-storybook -- --output-dir dist/storybook/vue
+        run: pnpm exec storybook build --config-dir apps/vue/.storybook --output-dir dist/storybook/vue
 
       - name: Build React Storybook
         env:
           STORYBOOK_BASE_PATH: /${{ github.event.repository.name }}/react/
-        run: pnpm --filter @rei/c1-react build-storybook -- --output-dir dist/storybook/react
+        run: pnpm exec storybook build --config-dir apps/react/.storybook --output-dir dist/storybook/react
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
