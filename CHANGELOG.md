@@ -1,5 +1,10 @@
 # Cedar One Changelog
 
+## 0.1.27-alpha.0 - 2026-02-04
+
+- Moved input component code into per-component folders with colocated types in the Vue and React apps.
+- Removed debug logging from input adapters.
+
 ## 0.1.26-alpha.0 - 2026-02-04
 
 - Added React icon wrappers to @rei/c1-icons and wired React stories/components to use them.

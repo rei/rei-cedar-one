@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useEffect, useMemo, useState } from 'react';
 
 import { C1IconInformationStroke, C1IconSearch } from '@rei/c1-icons/react';
-import C1Input from '../components/C1Input';
+import C1Input from '../components/input';
 
 type InputStoryArgs = {
   label: string;

@@ -1,5 +1,9 @@
 # @rei/c1-react Changelog
 
+## 0.1.2-alpha.0 - 2026-02-04
+
+- Organized the input component into a dedicated folder with colocated types.
+
 ## 0.1.1-alpha.0 - 2026-02-04
 
 - Swapped inline SVGs for @rei/c1-icons React wrappers in input stories and fixtures.

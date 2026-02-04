@@ -1,4 +1,4 @@
-import C1Input from './components/C1Input.vue';
+import C1Input from './components/input';
 import C1LintFixture from './components/C1LintFixture.vue';
 
 export { C1Input, C1LintFixture };

@@ -89,58 +89,14 @@ import { C1IconInformationStroke } from '@rei/c1-icons/vue';
 import { computed, ref, useAttrs, useSlots } from 'vue';
 
 import { useInputAdapter } from '@rei/c1-ui/adapters/input/vue';
-import type { InputAdapterState } from '@rei/c1-ui/adapters/input';
+import { c1InputProps, type InputAdapterState } from './C1Input.types';
 
 defineOptions({
   name: 'C1Input',
   inheritAttrs: false,
 });
 
-const props = defineProps({
-  id: String,
-  type: {
-    type: String,
-    default: 'text',
-  },
-  label: {
-    type: String,
-    required: true,
-  },
-  numeric: {
-    type: Boolean,
-    default: false,
-  },
-  hideLabel: Boolean,
-  rows: {
-    type: Number,
-    default: 1,
-  },
-  background: {
-    type: String,
-    default: 'primary',
-  },
-  size: String,
-  errorRole: {
-    type: String,
-    default: 'status',
-  },
-  error: {
-    type: [Boolean, String],
-    default: false,
-  },
-  disabled: Boolean,
-  required: Boolean,
-  optional: Boolean,
-  modelValue: {
-    type: [String, Number],
-  },
-  postIcons: {
-    type: Boolean,
-    default: false,
-  },
-  inputContainerClass: String,
-  labelClass: String,
-});
+const props = defineProps(c1InputProps);
 
 const emit = defineEmits({
   'update:modelValue': null,

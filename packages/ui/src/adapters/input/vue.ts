@@ -42,10 +42,6 @@ export const useInputAdapter = (
   const { state, inputRef } = options;
   const isFocused = ref(false);
   const fallbackId = ref<string | undefined>(undefined);
-  console.info('[c1-input][vue] useInputAdapter', {
-    state: unref(state),
-  });
-
   const resolvedState = computed<ResolvedInputState>(() => {
     const nextState = unref(state);
     const input = inputRef ? unref(inputRef) : null;

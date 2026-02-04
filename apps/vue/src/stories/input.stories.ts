@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { C1IconInformationStroke, C1IconSearch } from '@rei/c1-icons/vue';
 import { computed, ref, watch } from 'vue';
 
-import C1Input from '../components/C1Input.vue';
+import C1Input from '../components/input';
 
 type InputStoryArgs = {
   label: string;

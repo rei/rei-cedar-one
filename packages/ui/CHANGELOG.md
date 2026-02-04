@@ -1,5 +1,9 @@
 # @rei/c1-ui Changelog
 
+## 0.1.18-alpha.0 - 2026-02-04
+
+- Removed debug logging from the input adapters.
+
 ## 0.1.17-alpha.0 - 2026-02-03
 
 - Added a React input adapter entry point.
