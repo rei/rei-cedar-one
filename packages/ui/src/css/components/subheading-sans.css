@@ -1,11 +1,11 @@
-.cdr-subheading-sans {
+:is(.cdr-subheading-sans, .shsans) {
   color: var(--cdr-text-color, var(--cdr-color-text-primary));
   margin: 0;
   font-family: var(
     --cdr-font-family-sans,
     Graphik,
-    "Graphik fallback",
-    "Helvetica Neue",
+    'Graphik fallback',
+    'Helvetica Neue',
     sans-serif
   );
   font-style: normal;
@@ -13,32 +13,37 @@
   letter-spacing: 0;
   font-size: 2.4rem;
   line-height: 3rem;
-  font-size: var(
-    --cdr-subheading-sans-font-size,
-    var(--cdr-type-scale-1)
-  );
+  font-size: var(--cdr-subheading-sans-font-size, var(--cdr-type-scale-1));
   line-height: var(
     --cdr-subheading-sans-line-height,
     var(--cdr-line-height-ratio-subheading-sans-1)
   );
 }
 
-.cdr-subheading-sans--scale-minus-1 {
+:is(.cdr-subheading-sans--scale-minus-1, .shsans--s-1) {
   --cdr-subheading-sans-font-size: var(--cdr-type-scale-minus-1);
-  --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans-minus-1);
+  --cdr-subheading-sans-line-height: var(
+    --cdr-line-height-ratio-subheading-sans-minus-1
+  );
 }
 
-.cdr-subheading-sans--scale-0 {
+:is(.cdr-subheading-sans--scale-0, .shsans--s0) {
   --cdr-subheading-sans-font-size: var(--cdr-type-scale-0);
-  --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans-0);
+  --cdr-subheading-sans-line-height: var(
+    --cdr-line-height-ratio-subheading-sans-0
+  );
 }
 
-.cdr-subheading-sans--scale-1 {
+:is(.cdr-subheading-sans--scale-1, .shsans--s1) {
   --cdr-subheading-sans-font-size: var(--cdr-type-scale-1);
-  --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans-1);
+  --cdr-subheading-sans-line-height: var(
+    --cdr-line-height-ratio-subheading-sans-1
+  );
 }
 
-.cdr-subheading-sans--scale-2 {
+:is(.cdr-subheading-sans--scale-2, .shsans--s2) {
   --cdr-subheading-sans-font-size: var(--cdr-type-scale-2);
-  --cdr-subheading-sans-line-height: var(--cdr-line-height-ratio-subheading-sans-2);
+  --cdr-subheading-sans-line-height: var(
+    --cdr-line-height-ratio-subheading-sans-2
+  );
 }

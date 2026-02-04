@@ -1,5 +1,10 @@
 # @rei/c1-lint Changelog
 
+## 0.1.15-alpha.0 - 2026-02-04
+
+- Added class alias support to linting, including HTML tag-level reporting for clearer errors.
+- Exported lint utilities to support unit testing.
+
 ## 0.1.14-alpha.0 - 2026-02-02
 
 - Added icon lint rules.

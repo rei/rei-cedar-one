@@ -1,21 +1,21 @@
-.cdr-label-standalone {
+:is(.cdr-label-standalone, .lbls) {
   display: grid;
   grid-template-areas:
-    "label label info"
-    "input input input"
-    "post post post";
+    'label label info'
+    'input input input'
+    'post post post';
 }
 
-.cdr-label-standalone__label-wrapper {
+:is(.cdr-label-standalone__label-wrapper, .lbls__label-wrapper) {
   grid-area: label;
 }
 
-.cdr-label-standalone__label {
+:is(.cdr-label-standalone__label, .lbls__label) {
   font-family: var(
     --cdr-font-family-sans,
     Graphik,
-    "Graphik fallback",
-    "Helvetica Neue",
+    'Graphik fallback',
+    'Helvetica Neue',
     sans-serif
   );
   font-style: normal;
@@ -30,7 +30,7 @@
   margin: 0;
 }
 
-.cdr-label-standalone__label--sr-only {
+:is(.cdr-label-standalone__label--sr-only, .lbls__label--sr) {
   position: absolute;
   width: 0.1rem;
   height: 0.1rem;
@@ -41,27 +41,28 @@
   border: 0;
 }
 
-.cdr-label-standalone__label--disabled,
-.cdr-label-standalone__label--disabled .cdr-label-standalone__optional {
+:is(.cdr-label-standalone__label--disabled, .lbls__label--dis),
+:is(.cdr-label-standalone__label--disabled, .lbls__label--dis)
+  :is(.cdr-label-standalone__optional, .lbls__optional) {
   color: var(
     --cdr-label-standalone-disabled-text-color,
     var(--cdr-color-text-input-disabled)
   );
 }
 
-.cdr-label-standalone__optional {
+:is(.cdr-label-standalone__optional, .lbls__optional) {
   color: var(
     --cdr-label-standalone-optional-text-color,
     var(--cdr-color-text-input-optional)
   );
 }
 
-.cdr-label-standalone__helper {
+:is(.cdr-label-standalone__helper, .lbls__helper) {
   font-family: var(
     --cdr-font-family-sans,
     Graphik,
-    "Graphik fallback",
-    "Helvetica Neue",
+    'Graphik fallback',
+    'Helvetica Neue',
     sans-serif
   );
   font-style: normal;
@@ -76,12 +77,12 @@
   margin-top: var(--cdr-space-eighth-x);
 }
 
-.cdr-label-standalone__info {
+:is(.cdr-label-standalone__info, .lbls__info) {
   font-family: var(
     --cdr-font-family-sans,
     Graphik,
-    "Graphik fallback",
-    "Helvetica Neue",
+    'Graphik fallback',
+    'Helvetica Neue',
     sans-serif
   );
   font-style: normal;
@@ -94,23 +95,23 @@
   place-self: end end;
 }
 
-.cdr-label-standalone__post-content {
+:is(.cdr-label-standalone__post-content, .lbls__post-content) {
   grid-area: post;
 }
 
-.cdr-label-standalone__info-action {
+:is(.cdr-label-standalone__info-action, .lbls__info-action) {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 4rem;
 }
 
-.cdr-label-standalone__input-wrap {
+:is(.cdr-label-standalone__input-wrap, .lbls__input-wrap) {
   position: relative;
   display: flex;
   grid-area: input;
 }
 
-.cdr-label-standalone__input-spacing {
+:is(.cdr-label-standalone__input-spacing, .lbls__input-spacing) {
   margin-top: var(--cdr-space-half-x);
 }

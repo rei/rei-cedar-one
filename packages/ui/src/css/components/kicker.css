@@ -1,4 +1,4 @@
-.cdr-kicker {
+:is(.cdr-kicker, .kick) {
   font-family: var(
     --cdr-font-family-sans,
     Graphik,

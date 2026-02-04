@@ -1,6 +1,6 @@
 @import '../../../../tokens/src/breakpoints.css';
 
-.cdr-container {
+:is(.cdr-container, .cont) {
   font-family: var(--cdr-text-default-family);
   font-style: var(--cdr-text-default-style);
   font-weight: var(--cdr-text-default-weight);
@@ -13,13 +13,13 @@
 }
 
 @media (--cdr-md-up) {
-  .cdr-container {
+  :is(.cdr-container, .cont) {
     padding-left: var(--cdr-space-two-x);
     padding-right: var(--cdr-space-two-x);
   }
 }
 
-.cdr-container--static {
+:is(.cdr-container--static, .cont--stat) {
   margin-left: auto;
   margin-right: auto;
   max-width: var(--cdr-breakpoint-lg);

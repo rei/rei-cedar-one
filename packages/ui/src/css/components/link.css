@@ -1,4 +1,4 @@
-.cdr-link {
+:is(.cdr-link, .lnk) {
   font-family: var(--cdr-link-font-family, inherit);
   font-size: var(--cdr-link-font-size, inherit);
   line-height: var(--cdr-link-line-height, inherit);
@@ -16,31 +16,31 @@
   text-decoration: var(--cdr-link-text-decoration, underline);
 }
 
-.cdr-link:active,
-.cdr-link:focus {
+:is(.cdr-link, .lnk):active,
+:is(.cdr-link, .lnk):focus {
   color: var(
     --cdr-link-active-text-color-active,
     var(--cdr-color-text-link-active)
   );
 }
 
-.cdr-link:hover {
+:is(.cdr-link, .lnk):hover {
   color: var(--cdr-link-text-color-hover, var(--cdr-color-text-link-hover));
   text-decoration: var(--cdr-link-text-decoration-hover, none);
 }
 
-.cdr-link:focus {
+:is(.cdr-link, .lnk):focus {
   outline: var(--default-outline, 0.2rem solid Highlight);
   outline-color: -webkit-focus-ring-color;
   outline-offset: 0;
 }
 
-.cdr-link--standalone {
+:is(.cdr-link--standalone, .lnk--solo) {
   --cdr-link-text-decoration: none;
   --cdr-link-text-decoration-hover: underline;
 }
 
-.cdr-link--inherit-color {
+:is(.cdr-link--inherit-color, .lnk--ic) {
   color: inherit !important;
   fill: inherit !important;
   --cdr-link-text-color: inherit;
@@ -49,7 +49,7 @@
   --cdr-link-active-text-color-active: inherit;
 }
 
-.cdr-link--neutral {
+:is(.cdr-link--neutral, .lnk--neu) {
   --cdr-link-text-color: var(--cdr-color-text-primary);
   --cdr-link-text-color-hover: var(--cdr-color-text-primary);
   --cdr-link-active-text-color-active: var(--cdr-color-text-primary);

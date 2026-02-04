@@ -1,4 +1,4 @@
-.cdr-heading-sans {
+:is(.cdr-heading-sans, .hsans) {
   color: var(--cdr-text-color, var(--cdr-color-text-primary));
   margin: 0;
   font-family: var(
@@ -20,17 +20,17 @@
   );
 }
 
-.cdr-heading-sans--scale-1 {
+:is(.cdr-heading-sans--scale-1, .hsans--s1) {
   --cdr-heading-sans-font-size: var(--cdr-type-scale-1);
   --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-1);
 }
 
-.cdr-heading-sans--scale-2 {
+:is(.cdr-heading-sans--scale-2, .hsans--s2) {
   --cdr-heading-sans-font-size: var(--cdr-type-scale-2);
   --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-2);
 }
 
-.cdr-heading-sans--scale-3 {
+:is(.cdr-heading-sans--scale-3, .hsans--s3) {
   --cdr-heading-sans-font-size: var(--cdr-type-scale-3);
   --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-3);
 }

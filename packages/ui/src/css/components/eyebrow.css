@@ -1,4 +1,4 @@
-.cdr-eyebrow {
+:is(.cdr-eyebrow, .brow) {
   color: var(--cdr-text-color, var(--cdr-color-text-primary));
   margin: 0;
   font-family: var(

@@ -1,8 +1,27 @@
-import type { Rule } from 'eslint';
+import type { Rule, SourceCode } from 'eslint';
+import { getBaseClassAliases, resolveClassAlias } from './class-aliases.js';
 import type { ModifierAnalysis, ParsedTag } from './types.js';
 
 const TAG_RE = /<\s*([a-zA-Z0-9-]+)\b[^>]*>/gi;
 const ATTR_RE = /([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g;
+
+/**
+ * Narrow unknown values to records.
+ * @param value - Value to check.
+ * @returns True when the value is a non-null object.
+ */
+export const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null;
+
+/**
+ * Extract a string literal value from an AST node.
+ * @param value - AST node candidate.
+ * @returns Literal string or null.
+ */
+export const getLiteralStringValue = (value: unknown): string | null =>
+  isRecord(value) && value.type === 'Literal' && typeof value.value === 'string'
+    ? value.value
+    : null;
 
 /**
  * Parse a raw HTML tag string into a tag name and attributes.
@@ -46,7 +65,135 @@ export function splitClasses(classValue: string): string[] {
   return classValue
     .split(/\s+/)
     .map((value) => value.trim())
+    .map((value) => resolveClassAlias(value))
     .filter(Boolean);
+}
+
+/**
+ * Normalize and set an attribute on the map.
+ * @param attrs - Attribute map.
+ * @param name - Attribute name.
+ * @param value - Attribute value.
+ */
+export function setAttr(
+  attrs: Map<string, string>,
+  name: string,
+  value: string,
+): void {
+  attrs.set(name.toLowerCase(), value);
+}
+
+/**
+ * Extract a string value from a JSX attribute.
+ * @param attr - JSX attribute node.
+ * @returns String value, "__EXPR__", or null.
+ */
+export function getJsxAttributeValue(attr: unknown): string | null {
+  if (!isRecord(attr) || attr.type !== 'JSXAttribute') {
+    return null;
+  }
+  if (!('value' in attr) || attr.value == null) {
+    return '';
+  }
+  const value = attr.value;
+  const literalValue = getLiteralStringValue(value);
+  if (literalValue !== null) {
+    return literalValue;
+  }
+  if (isRecord(value) && value.type === 'JSXExpressionContainer') {
+    const expression = value.expression;
+    const expressionLiteral = getLiteralStringValue(expression);
+    if (expressionLiteral !== null) {
+      return expressionLiteral;
+    }
+    if (
+      isRecord(expression) &&
+      expression.type === 'TemplateLiteral' &&
+      Array.isArray(expression.expressions) &&
+      expression.expressions.length === 0
+    ) {
+      const quasis = expression.quasis;
+      if (!Array.isArray(quasis)) {
+        return '__EXPR__';
+      }
+      return quasis
+        .map((quasi) => {
+          if (!isRecord(quasi) || !isRecord(quasi.value)) {
+            return '';
+          }
+          const raw = quasi.value.raw;
+          return typeof raw === 'string' ? raw : '';
+        })
+        .join('');
+    }
+  }
+  return '__EXPR__';
+}
+
+/**
+ * Extract attributes from a JSX opening element.
+ * @param element - JSX opening element node.
+ * @returns Attribute map.
+ */
+export function getJsxAttributes(
+  element: Record<string, unknown>,
+): Map<string, string> {
+  const attrs = new Map<string, string>();
+  const attributes = Array.isArray(element.attributes)
+    ? element.attributes
+    : [];
+  for (const attr of attributes) {
+    if (!isRecord(attr) || attr.type !== 'JSXAttribute') {
+      continue;
+    }
+    const attrName =
+      isRecord(attr) &&
+      isRecord(attr.name) &&
+      typeof attr.name.name === 'string'
+        ? attr.name.name
+        : '';
+    if (!attrName) {
+      continue;
+    }
+    const value = getJsxAttributeValue(attr);
+    if (value === null) {
+      continue;
+    }
+    setAttr(attrs, attrName, value);
+  }
+  return attrs;
+}
+
+/**
+ * Read attributes from an HTML AST tag node.
+ * @param node - HTML tag node.
+ * @returns Attribute map.
+ */
+export function getHtmlAttributes(node: unknown): Map<string, string> {
+  const attrs = new Map<string, string>();
+  if (!isRecord(node) || !Array.isArray(node.attributes)) {
+    return attrs;
+  }
+  for (const attr of node.attributes) {
+    if (!isRecord(attr) || !isRecord(attr.key)) {
+      continue;
+    }
+    const name =
+      typeof attr.key.value === 'string'
+        ? attr.key.value
+        : typeof attr.key.name === 'string'
+          ? attr.key.name
+          : undefined;
+    if (!name) {
+      continue;
+    }
+    if (isRecord(attr.value) && typeof attr.value.value === 'string') {
+      setAttr(attrs, name, attr.value.value);
+      continue;
+    }
+    setAttr(attrs, name, '');
+  }
+  return attrs;
 }
 
 /**
@@ -219,71 +366,6 @@ export function createModifierRule<T>(options: {
 }
 
 /**
- * Narrow unknown values to records.
- * @param value - Value to check.
- * @returns True when the value is a non-null object.
- */
-const isRecord = (value: unknown): value is Record<string, unknown> =>
-  typeof value === 'object' && value !== null;
-
-/**
- * Extract a string literal value from an AST node.
- * @param value - AST node candidate.
- * @returns Literal string or null.
- */
-const getLiteralStringValue = (value: unknown): string | null =>
-  isRecord(value) && value.type === 'Literal' && typeof value.value === 'string'
-    ? value.value
-    : null;
-
-/**
- * Extract a string value from a JSX attribute.
- * @param attr - JSX attribute node.
- * @returns String value, "__EXPR__", or null.
- */
-export function getJsxAttributeValue(attr: unknown): string | null {
-  if (!isRecord(attr) || attr.type !== 'JSXAttribute') {
-    return null;
-  }
-  if (!('value' in attr) || attr.value == null) {
-    return '';
-  }
-  const value = attr.value;
-  const literalValue = getLiteralStringValue(value);
-  if (literalValue !== null) {
-    return literalValue;
-  }
-  if (isRecord(value) && value.type === 'JSXExpressionContainer') {
-    const expression = value.expression;
-    const expressionLiteral = getLiteralStringValue(expression);
-    if (expressionLiteral !== null) {
-      return expressionLiteral;
-    }
-    if (
-      isRecord(expression) &&
-      expression.type === 'TemplateLiteral' &&
-      Array.isArray(expression.expressions) &&
-      expression.expressions.length === 0
-    ) {
-      const quasis = expression.quasis;
-      if (!Array.isArray(quasis)) {
-        return '__EXPR__';
-      }
-      return quasis
-        .map((quasi) => {
-          if (!isRecord(quasi) || !isRecord(quasi.value)) {
-            return '';
-          }
-          const raw = quasi.value.raw;
-          return typeof raw === 'string' ? raw : '';
-        })
-        .join('');
-    }
-  }
-  return '__EXPR__';
-}
-
-/**
  * Extract attributes from a Vue VElement.
  * @param element - Vue AST element.
  * @returns Attribute map.
@@ -313,12 +395,179 @@ export function getVueAttributes(element: unknown): Map<string, string> {
     }
     const value = attr.value;
     if (!isRecord(value) || typeof value.value !== 'string') {
-      attrs.set(name.toLowerCase(), '__EXPR__');
+      setAttr(attrs, name, '__EXPR__');
       continue;
     }
-    attrs.set(name.toLowerCase(), value.value);
+    setAttr(attrs, name, value.value);
   }
   return attrs;
+}
+
+/**
+ * Build HTML listener for tag scanning.
+ * @param options - Listener options.
+ * @returns HTML rule listener.
+ */
+export function createHtmlListener(options: {
+  isHtml: boolean;
+  handleTag: (
+    tagName: string | null,
+    attrs: Map<string, string>,
+    node: Rule.Node,
+  ) => void;
+}): Rule.RuleListener {
+  const { isHtml, handleTag } = options;
+  return {
+    /**
+     * Handle HTML tag nodes to report precise locations.
+     * @param node - Tag node.
+     */
+    Tag(node: unknown) {
+      if (!isHtml) {
+        return;
+      }
+      if (!isRecord(node) || typeof node.name !== 'string') {
+        return;
+      }
+      const attrs = getHtmlAttributes(node);
+      handleTag(node.name, attrs, node as unknown as Rule.Node);
+    },
+  };
+}
+
+/**
+ * Build story template listener for literal/template strings.
+ * @param options - Listener options.
+ * @returns Story template listener.
+ */
+export function createStoryTemplateListener(options: {
+  isStorySource: boolean;
+  scanTextTags: (text: string, node: Rule.Node) => void;
+}): Rule.RuleListener {
+  const { isStorySource, scanTextTags } = options;
+  return {
+    /**
+     * Handle literal nodes (storybook string templates).
+     * @param node - Literal node.
+     */
+    Literal(node) {
+      if (!isStorySource || !isRecord(node) || typeof node.value !== 'string') {
+        return;
+      }
+      scanTextTags(node.value, node as Rule.Node);
+    },
+    /**
+     * Handle template literals (storybook string templates).
+     * @param node - TemplateLiteral node.
+     */
+    TemplateLiteral(node) {
+      if (!isStorySource) {
+        return;
+      }
+      if (!isRecord(node) || !Array.isArray(node.quasis)) {
+        return;
+      }
+      const quasis = node.quasis;
+      const text = quasis
+        .map((quasi) => {
+          if (!isRecord(quasi) || !isRecord(quasi.value)) {
+            return '';
+          }
+          const raw = quasi.value.raw;
+          return typeof raw === 'string' ? raw : '';
+        })
+        .join('__EXPR__');
+      scanTextTags(text, node as Rule.Node);
+    },
+  };
+}
+
+/**
+ * Build JSX listener for template scanning.
+ * @param options - Listener options.
+ * @returns JSX rule listener.
+ */
+export function createJsxListener(options: {
+  handleTag: (
+    tagName: string | null,
+    attrs: Map<string, string>,
+    node: Rule.Node,
+  ) => void;
+}): Rule.RuleListener {
+  const { handleTag } = options;
+  return {
+    /**
+     * Handle JSX elements.
+     * @param node - JSX element node.
+     */
+    JSXElement(node: unknown) {
+      if (!isRecord(node) || !isRecord(node.openingElement)) {
+        return;
+      }
+      const opening = node.openingElement as Record<string, unknown>;
+      const name = opening.name;
+      if (
+        !isRecord(name) ||
+        name.type !== 'JSXIdentifier' ||
+        typeof name.name !== 'string'
+      ) {
+        return;
+      }
+      const tagName = name.name;
+      const attrs = getJsxAttributes(opening);
+      handleTag(tagName, attrs, node as unknown as Rule.Node);
+    },
+  };
+}
+
+/**
+ * Build Vue template listener for template scanning.
+ * @param options - Listener options.
+ * @returns Vue rule listener.
+ */
+export function createVueListener(options: {
+  sourceCode: SourceCode;
+  handleTag: (
+    tagName: string | null,
+    attrs: Map<string, string>,
+    node: Rule.Node,
+  ) => void;
+}): Rule.RuleListener {
+  const { sourceCode, handleTag } = options;
+  const parserServices = (
+    sourceCode as {
+      parserServices?: {
+        defineTemplateBodyVisitor?: (
+          visitor: Record<string, (node: unknown) => void>,
+        ) => Record<string, unknown>;
+      };
+    }
+  ).parserServices;
+  if (
+    !parserServices ||
+    typeof parserServices.defineTemplateBodyVisitor !== 'function'
+  ) {
+    return {};
+  }
+  return parserServices.defineTemplateBodyVisitor({
+    /**
+     * Handle Vue template elements.
+     * @param node - Vue element node.
+     */
+    VElement(node: unknown) {
+      if (!isRecord(node)) {
+        return;
+      }
+      const rawName = typeof node.rawName === 'string' ? node.rawName : '';
+      const name =
+        isRecord(node.name) && typeof node.name.name === 'string'
+          ? node.name.name
+          : '';
+      const tagName = rawName || name || '';
+      const attrs = getVueAttributes(node);
+      handleTag(String(tagName), attrs, node as unknown as Rule.Node);
+    },
+  }) as Rule.RuleListener;
 }
 
 /**
@@ -461,148 +710,27 @@ export function createRule<TAnalysis>(options: {
         check(analysis, node, context);
       };
 
-      const checkTag = (tagSource: string, node: Rule.Node) => {
-        const { tagName, attrs } = parseAttributes(tagSource);
-        handleTag(tagName, attrs, node);
-      };
-
-      const checkText = (text: string, node: Rule.Node) => {
-        if (!text.includes(baseClass)) {
+      const scanTextTags = (text: string, node: Rule.Node) => {
+        const aliases = getBaseClassAliases(baseClass);
+        if (
+          !text.includes(baseClass) &&
+          !aliases.some((alias) => text.includes(alias))
+        ) {
           return;
         }
         const tags = extractTagStrings(text);
         for (const tagSource of tags) {
-          checkTag(tagSource, node);
+          const { tagName, attrs } = parseAttributes(tagSource);
+          handleTag(tagName, attrs, node);
         }
       };
 
       const sourceCode = context.getSourceCode();
-      const parserServices = (
-        sourceCode as {
-          parserServices?: {
-            defineTemplateBodyVisitor?: (
-              visitor: Record<string, (node: unknown) => void>,
-            ) => Record<string, unknown>;
-          };
-        }
-      ).parserServices;
-      const templateVisitor =
-        parserServices &&
-        typeof parserServices.defineTemplateBodyVisitor === 'function'
-          ? parserServices.defineTemplateBodyVisitor({
-              /**
-               * Handle Vue template elements.
-               * @param node - Vue element node.
-               */
-              VElement(node: unknown) {
-                if (!isRecord(node)) {
-                  return;
-                }
-                const rawName =
-                  typeof node.rawName === 'string' ? node.rawName : '';
-                const name =
-                  isRecord(node.name) && typeof node.name.name === 'string'
-                    ? node.name.name
-                    : '';
-                const tagName = rawName || name || '';
-                const attrs = getVueAttributes(node);
-                handleTag(String(tagName), attrs, node as unknown as Rule.Node);
-              },
-            })
-          : {};
-
       const listener: Rule.RuleListener = {
-        /**
-         * Handle HTML program nodes.
-         * @param node - Program node.
-         */
-        Program(node) {
-          if (!isHtml) {
-            return;
-          }
-          checkText(context.getSourceCode().text, node as Rule.Node);
-        },
-        /**
-         * Handle literal nodes (storybook string templates).
-         * @param node - Literal node.
-         */
-        Literal(node) {
-          if (
-            !isStorySource ||
-            !isRecord(node) ||
-            typeof node.value !== 'string'
-          ) {
-            return;
-          }
-          checkText(node.value, node as Rule.Node);
-        },
-        /**
-         * Handle template literals (storybook string templates).
-         * @param node - TemplateLiteral node.
-         */
-        TemplateLiteral(node) {
-          if (!isStorySource) {
-            return;
-          }
-          if (!isRecord(node) || !Array.isArray(node.quasis)) {
-            return;
-          }
-          const quasis = node.quasis;
-          const text = quasis
-            .map((quasi) => {
-              if (!isRecord(quasi) || !isRecord(quasi.value)) {
-                return '';
-              }
-              const raw = quasi.value.raw;
-              return typeof raw === 'string' ? raw : '';
-            })
-            .join('__EXPR__');
-          checkText(text, node as Rule.Node);
-        },
-        /**
-         * Handle JSX elements.
-         * @param node - JSX element node.
-         */
-        JSXElement(node: unknown) {
-          if (!isRecord(node) || !isRecord(node.openingElement)) {
-            return;
-          }
-          const opening = node.openingElement as Record<string, unknown>;
-          const name = opening.name;
-          if (
-            !isRecord(name) ||
-            name.type !== 'JSXIdentifier' ||
-            typeof name.name !== 'string'
-          ) {
-            return;
-          }
-          const tagName = name.name;
-          const attrs = new Map<string, string>();
-          const attributes = Array.isArray(opening.attributes)
-            ? opening.attributes
-            : [];
-          for (const attr of attributes) {
-            if (!isRecord(attr) || attr.type !== 'JSXAttribute') {
-              continue;
-            }
-            const attrName =
-              isRecord(attr) &&
-              isRecord(attr.name) &&
-              typeof attr.name.name === 'string'
-                ? attr.name.name
-                : '';
-            if (!attrName) {
-              continue;
-            }
-            const value = getJsxAttributeValue(attr);
-            if (value === null) {
-              continue;
-            }
-            attrs.set(attrName.toLowerCase(), value);
-          }
-          handleTag(tagName, attrs, node as unknown as Rule.Node);
-        },
-        ...(templateVisitor as Rule.RuleListener),
+        ...createHtmlListener({ isHtml, handleTag }),
+        ...createStoryTemplateListener({ isStorySource, scanTextTags }),
+        ...createJsxListener({ handleTag }),
+        ...createVueListener({ sourceCode, handleTag }),
       };
       return listener;
     },

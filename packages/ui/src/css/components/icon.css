@@ -1,6 +1,6 @@
 @import '../../../../tokens/src/breakpoints.css';
 
-.cdr-icon {
+:is(.cdr-icon, .icn) {
   display: inline-block;
   vertical-align: middle;
   flex: 0 0 auto;
@@ -9,89 +9,89 @@
   fill: var(--cdr-icon-fill-default, var(--cdr-color-icon-default));
 }
 
-.cdr-icon--small {
+:is(.cdr-icon--small, .icn--sm) {
   width: var(--cdr-icon-size-sm);
   height: var(--cdr-icon-size-sm);
 }
 
-.cdr-icon--medium {
+:is(.cdr-icon--medium, .icn--md) {
   width: var(--cdr-icon-size);
   height: var(--cdr-icon-size);
 }
 
-.cdr-icon--large {
+:is(.cdr-icon--large, .icn--lg) {
   width: var(--cdr-icon-size-lg);
   height: var(--cdr-icon-size-lg);
 }
 
 @media (--cdr-xs) {
-  .cdr-icon--small\@xs {
+  :is(.cdr-icon--small\@xs, .icn--sm\@xs) {
     width: var(--cdr-icon-size-sm);
     height: var(--cdr-icon-size-sm);
   }
 
-  .cdr-icon--medium\@xs {
+  :is(.cdr-icon--medium\@xs, .icn--md\@xs) {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cdr-icon--large\@xs {
+  :is(.cdr-icon--large\@xs, .icn--lg\@xs) {
     width: var(--cdr-icon-size-lg);
     height: var(--cdr-icon-size-lg);
   }
 }
 
 @media (--cdr-sm) {
-  .cdr-icon--small\@sm {
+  :is(.cdr-icon--small\@sm, .icn--sm\@sm) {
     width: var(--cdr-icon-size-sm);
     height: var(--cdr-icon-size-sm);
   }
 
-  .cdr-icon--medium\@sm {
+  :is(.cdr-icon--medium\@sm, .icn--md\@sm) {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cdr-icon--large\@sm {
+  :is(.cdr-icon--large\@sm, .icn--lg\@sm) {
     width: var(--cdr-icon-size-lg);
     height: var(--cdr-icon-size-lg);
   }
 }
 
 @media (--cdr-md) {
-  .cdr-icon--small\@md {
+  :is(.cdr-icon--small\@md, .icn--sm\@md) {
     width: var(--cdr-icon-size-sm);
     height: var(--cdr-icon-size-sm);
   }
 
-  .cdr-icon--medium\@md {
+  :is(.cdr-icon--medium\@md, .icn--md\@md) {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cdr-icon--large\@md {
+  :is(.cdr-icon--large\@md, .icn--lg\@md) {
     width: var(--cdr-icon-size-lg);
     height: var(--cdr-icon-size-lg);
   }
 }
 
 @media (--cdr-lg) {
-  .cdr-icon--small\@lg {
+  :is(.cdr-icon--small\@lg, .icn--sm\@lg) {
     width: var(--cdr-icon-size-sm);
     height: var(--cdr-icon-size-sm);
   }
 
-  .cdr-icon--medium\@lg {
+  :is(.cdr-icon--medium\@lg, .icn--md\@lg) {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cdr-icon--large\@lg {
+  :is(.cdr-icon--large\@lg, .icn--lg\@lg) {
     width: var(--cdr-icon-size-lg);
     height: var(--cdr-icon-size-lg);
   }
 }
 
-.cdr-icon--inherit-color {
+:is(.cdr-icon--inherit-color, .icn--ic) {
   fill: inherit;
 }

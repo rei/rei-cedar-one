@@ -1,15 +1,15 @@
 @import '../../../../tokens/src/breakpoints.css';
 
-.cdr-input__button {
+:is(.cdr-input__button, .inp__btn) {
   display: inline-block;
 }
 
-.cdr-input__button ~ .cdr-input__button {
+:is(.cdr-input__button, .inp__btn) ~ :is(.cdr-input__button, .inp__btn) {
   position: relative;
   margin-left: 0;
 }
 
-.cdr-input__button ~ .cdr-input__button::before {
+:is(.cdr-input__button, .inp__btn) ~ :is(.cdr-input__button, .inp__btn)::before {
   content: '';
   background-color: var(
     --cdr-input-label-background-color,
@@ -23,10 +23,10 @@
   transform: translateY(-50%);
 }
 
-.cdr-input__button:hover,
-.cdr-input__button:active,
-.cdr-input__button:focus,
-.cdr-input__button:focus-within {
+:is(.cdr-input__button, .inp__btn):hover,
+:is(.cdr-input__button, .inp__btn):active,
+:is(.cdr-input__button, .inp__btn):focus,
+:is(.cdr-input__button, .inp__btn):focus-within {
   background-color: var(
     --cdr-input-label-background-interaction,
     var(--cdr-color-background-input-default-active)
@@ -43,10 +43,10 @@
   );
 }
 
-.cdr-input__button:hover svg,
-.cdr-input__button:active svg,
-.cdr-input__button:focus svg,
-.cdr-input__button:focus-within svg {
+:is(.cdr-input__button, .inp__btn):hover svg,
+:is(.cdr-input__button, .inp__btn):active svg,
+:is(.cdr-input__button, .inp__btn):focus svg,
+:is(.cdr-input__button, .inp__btn):focus-within svg {
   box-shadow: none;
   fill: var(
       --cdr-input-label-svg-fill-interaction,
@@ -55,20 +55,20 @@
     !important;
 }
 
-.cdr-input__button:hover::before,
-.cdr-input__button:active::before,
-.cdr-input__button:focus::before,
-.cdr-input__button:focus-within::before {
+:is(.cdr-input__button, .inp__btn):hover::before,
+:is(.cdr-input__button, .inp__btn):active::before,
+:is(.cdr-input__button, .inp__btn):focus::before,
+:is(.cdr-input__button, .inp__btn):focus-within::before {
   width: 0;
 }
 
-.cdr-input__button:last-child {
+:is(.cdr-input__button, .inp__btn):last-child {
   margin-right: calc(-1 * var(--cdr-space-half-x));
   border-top-right-radius: var(--cdr-radius-softer);
   border-bottom-right-radius: var(--cdr-radius-softer);
 }
 
-.cdr-input {
+:is(.cdr-input, .inp) {
   font-family: var(
     --cdr-text-utility-sans-300-family,
     var(--cdr-font-family-sans)
@@ -103,14 +103,14 @@
   appearance: none !important;
 }
 
-.cdr-input[type='number']::-webkit-inner-spin-button,
-.cdr-input[type='number']::-webkit-outer-spin-button {
+:is(.cdr-input, .inp)[type='number']::-webkit-inner-spin-button,
+:is(.cdr-input, .inp)[type='number']::-webkit-outer-spin-button {
   appearance: none;
   margin: 0;
 }
 
-.cdr-input:active,
-.cdr-input:focus {
+:is(.cdr-input, .inp):active,
+:is(.cdr-input, .inp):focus {
   outline: none;
   box-shadow: inset 0 0 0 2px
       var(
@@ -120,7 +120,7 @@
     var(--cdr-prominence-raised);
 }
 
-.cdr-input::placeholder {
+:is(.cdr-input, .inp)::placeholder {
   font-family: var(
     --cdr-text-utility-sans-300-family,
     var(--cdr-font-family-sans)
@@ -136,7 +136,7 @@
   );
 }
 
-.cdr-input[disabled] {
+:is(.cdr-input, .inp)[disabled] {
   background-color: var(
     --cdr-input-background-color-disabled,
     var(--cdr-color-background-input-default-disabled)
@@ -152,7 +152,7 @@
     );
 }
 
-.cdr-input[disabled]:hover {
+:is(.cdr-input, .inp)[disabled]:hover {
   box-shadow: inset 0 0 0 1px
     var(
       --cdr-input-box-shadow-disabled-hover,
@@ -161,69 +161,69 @@
   cursor: not-allowed;
 }
 
-.cdr-input[disabled]::placeholder {
+:is(.cdr-input, .inp)[disabled]::placeholder {
   color: var(
     --cdr-input-placeholder-text-color-disabled,
     var(--cdr-color-text-input-disabled)
   );
 }
 
-.cdr-input--focus svg {
+:is(.cdr-input--focus, .inp--foc) svg {
   fill: var(
     --cdr-input-svg-fill-focus,
     var(--cdr-color-text-primary)
   ) !important;
 }
 
-.cdr-input--multiline {
+:is(.cdr-input--multiline, .inp--ml) {
   height: auto;
 }
 
-.cdr-input--preicon {
+:is(.cdr-input--preicon, .inp--pre) {
   padding-left: calc(
     var(--cdr-space-half-x) + var(--cdr-space-quarter-x) + 25px
   ) !important;
 }
 
-.cdr-input--posticon {
+:is(.cdr-input--posticon, .inp--post) {
   padding-right: 45px;
 }
 
-.cdr-input--posticons {
+:is(.cdr-input--posticons, .inp--posts) {
   padding-right: 90px;
 }
 
-.cdr-input--primary {
+:is(.cdr-input--primary, .inp--pri) {
   background-color: var(
     --cdr-input-background-color-default,
     var(--cdr-color-background-input-default)
   );
 }
 
-.cdr-input--primary:active,
-.cdr-input--primary:focus {
+:is(.cdr-input--primary, .inp--pri):active,
+:is(.cdr-input--primary, .inp--pri):focus {
   background-color: var(
     --cdr-input-background-color-default-focus,
     var(--cdr-color-background-input-default-active)
   );
 }
 
-.cdr-input--secondary {
+:is(.cdr-input--secondary, .inp--sec) {
   background-color: var(
     --cdr-input-background-color-secondary,
     var(--cdr-color-background-input-secondary)
   );
 }
 
-.cdr-input--secondary:active,
-.cdr-input--secondary:focus {
+:is(.cdr-input--secondary, .inp--sec):active,
+:is(.cdr-input--secondary, .inp--sec):focus {
   background-color: var(
     --cdr-input-background-color-secondary-active,
     var(--cdr-color-background-input-secondary-active)
   );
 }
 
-.cdr-input--error {
+:is(.cdr-input--error, .inp--err) {
   background-color: var(
     --cdr-input-error-background-color,
     var(--cdr-color-background-input-error)
@@ -232,7 +232,7 @@
     var(--cdr-input-error-box-shadow, var(--cdr-color-border-input-error));
 }
 
-.cdr-input--large {
+:is(.cdr-input--large, .inp--lg) {
   font-family: var(
     --cdr-text-utility-sans-400-family,
     var(--cdr-font-family-sans)
@@ -248,14 +248,14 @@
   height: var(--cdr-form-input-height-large);
 }
 
-.cdr-input--large::placeholder {
+:is(.cdr-input--large, .inp--lg)::placeholder {
   line-height: calc(
     var(--cdr-space-half-x) + var(--cdr-text-utility-sans-400-height)
   );
 }
 
 @media (--cdr-xs) {
-  .cdr-input--large\@xs {
+  :is(.cdr-input--large\@xs, .inp--lg\@xs) {
     font-family: var(
       --cdr-text-utility-sans-400-family,
       var(--cdr-font-family-sans)
@@ -271,7 +271,7 @@
     height: var(--cdr-form-input-height-large);
   }
 
-  .cdr-input--large\@xs::placeholder {
+  :is(.cdr-input--large\@xs, .inp--lg\@xs)::placeholder {
     line-height: calc(
       var(--cdr-space-half-x) + var(--cdr-text-utility-sans-400-height)
     );
@@ -279,7 +279,7 @@
 }
 
 @media (--cdr-sm) {
-  .cdr-input--large\@sm {
+  :is(.cdr-input--large\@sm, .inp--lg\@sm) {
     font-family: var(
       --cdr-text-utility-sans-400-family,
       var(--cdr-font-family-sans)
@@ -295,7 +295,7 @@
     height: var(--cdr-form-input-height-large);
   }
 
-  .cdr-input--large\@sm::placeholder {
+  :is(.cdr-input--large\@sm, .inp--lg\@sm)::placeholder {
     line-height: calc(
       var(--cdr-space-half-x) + var(--cdr-text-utility-sans-400-height)
     );
@@ -303,7 +303,7 @@
 }
 
 @media (--cdr-md) {
-  .cdr-input--large\@md {
+  :is(.cdr-input--large\@md, .inp--lg\@md) {
     font-family: var(
       --cdr-text-utility-sans-400-family,
       var(--cdr-font-family-sans)
@@ -319,7 +319,7 @@
     height: var(--cdr-form-input-height-large);
   }
 
-  .cdr-input--large\@md::placeholder {
+  :is(.cdr-input--large\@md, .inp--lg\@md)::placeholder {
     line-height: calc(
       var(--cdr-space-half-x) + var(--cdr-text-utility-sans-400-height)
     );
@@ -327,7 +327,7 @@
 }
 
 @media (--cdr-lg) {
-  .cdr-input--large\@lg {
+  :is(.cdr-input--large\@lg, .inp--lg\@lg) {
     font-family: var(
       --cdr-text-utility-sans-400-family,
       var(--cdr-font-family-sans)
@@ -343,21 +343,21 @@
     height: var(--cdr-form-input-height-large);
   }
 
-  .cdr-input--large\@lg::placeholder {
+  :is(.cdr-input--large\@lg, .inp--lg\@lg)::placeholder {
     line-height: calc(
       var(--cdr-space-half-x) + var(--cdr-text-utility-sans-400-height)
     );
   }
 }
 
-.cdr-input__pre-icon {
+:is(.cdr-input__pre-icon, .inp__pre) {
   position: absolute;
   top: 50%;
   left: var(--cdr-space-half-x);
   transform: translateY(-50%);
 }
 
-.cdr-input__post-icon {
+:is(.cdr-input__post-icon, .inp__post) {
   display: flex;
   align-items: center;
   position: absolute;
@@ -366,16 +366,16 @@
   transform: translateY(-50%);
 }
 
-.cdr-input__pre-icon svg,
-.cdr-input__post-icon svg {
+:is(.cdr-input__pre-icon, .inp__pre) svg,
+:is(.cdr-input__post-icon, .inp__post) svg {
   display: block;
 }
 
-.cdr-input__button svg {
+:is(.cdr-input__button, .inp__btn) svg {
   display: block;
 }
 
-.cdr-input__helper-text {
+:is(.cdr-input__helper-text, .inp__help) {
   font-family: var(
     --cdr-text-utility-sans-200-family,
     var(--cdr-font-family-sans)
@@ -393,7 +393,7 @@
   margin-top: var(--cdr-space-quarter-x);
 }
 
-.cdr-input-wrap {
+:is(.cdr-input-wrap, .inp-wrap) {
   position: relative;
   flex-grow: 1;
   fill: var(--cdr-input-wrap-fill, var(--cdr-color-icon-default));

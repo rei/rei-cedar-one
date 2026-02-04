@@ -1,4 +1,4 @@
-.cdr-image {
+:is(.cdr-image, .img) {
   max-inline-size: 100%;
   block-size: auto;
   aspect-ratio: var(--cdr-img-aspect-ratio);
@@ -7,86 +7,86 @@
   border-radius: var(--cdr-img-border-radius);
 }
 
-.cdr-image--ratio-1-1 {
+:is(.cdr-image--ratio-1-1, .img--r1x1) {
   --cdr-img-aspect-ratio: 1 / 1;
 }
 
-.cdr-image--ratio-1-2 {
+:is(.cdr-image--ratio-1-2, .img--r1x2) {
   --cdr-img-aspect-ratio: 1 / 2;
 }
 
-.cdr-image--ratio-3-4 {
+:is(.cdr-image--ratio-3-4, .img--r3x4) {
   --cdr-img-aspect-ratio: 3 / 4;
 }
 
-.cdr-image--ratio-9-16 {
+:is(.cdr-image--ratio-9-16, .img--r9x16) {
   --cdr-img-aspect-ratio: 9 / 16;
 }
 
-.cdr-image--ratio-2-1 {
+:is(.cdr-image--ratio-2-1, .img--r2x1) {
   --cdr-img-aspect-ratio: 2 / 1;
 }
 
-.cdr-image--ratio-4-3 {
+:is(.cdr-image--ratio-4-3, .img--r4x3) {
   --cdr-img-aspect-ratio: 4 / 3;
 }
 
-.cdr-image--ratio-16-9 {
+:is(.cdr-image--ratio-16-9, .img--r16x9) {
   --cdr-img-aspect-ratio: 16 / 9;
 }
 
-.cdr-image--fit-cover {
+:is(.cdr-image--fit-cover, .img--fit-cov) {
   --cdr-img-object-fit: cover;
 }
 
-.cdr-image--fit-contain {
+:is(.cdr-image--fit-contain, .img--fit-con) {
   --cdr-img-object-fit: contain;
 }
 
-.cdr-image--fit-none {
+:is(.cdr-image--fit-none, .img--fit-none) {
   --cdr-img-object-fit: none;
 }
 
-.cdr-image--fit-fill {
+:is(.cdr-image--fit-fill, .img--fit-fil) {
   --cdr-img-object-fit: fill;
 }
 
-.cdr-image--fit-scale-down {
+:is(.cdr-image--fit-scale-down, .img--fit-sd) {
   --cdr-img-object-fit: scale-down;
 }
 
-.cdr-image--position-center {
+:is(.cdr-image--position-center, .img--pos-c) {
   --cdr-img-object-position: center;
 }
 
-.cdr-image--position-top {
+:is(.cdr-image--position-top, .img--pos-t) {
   --cdr-img-object-position: top;
 }
 
-.cdr-image--position-right {
+:is(.cdr-image--position-right, .img--pos-r) {
   --cdr-img-object-position: right;
 }
 
-.cdr-image--position-bottom {
+:is(.cdr-image--position-bottom, .img--pos-b) {
   --cdr-img-object-position: bottom;
 }
 
-.cdr-image--position-left {
+:is(.cdr-image--position-left, .img--pos-l) {
   --cdr-img-object-position: left;
 }
 
-.cdr-image--radius-soft {
+:is(.cdr-image--radius-soft, .img--rad-s) {
   --cdr-img-border-radius: var(--cdr-radius-soft);
 }
 
-.cdr-image--radius-sharp {
+:is(.cdr-image--radius-sharp, .img--rad-sh) {
   --cdr-img-border-radius: var(--cdr-radius-sharp);
 }
 
-.cdr-image--radius-softer {
+:is(.cdr-image--radius-softer, .img--rad-ss) {
   --cdr-img-border-radius: var(--cdr-radius-softer);
 }
 
-.cdr-image--radius-round {
+:is(.cdr-image--radius-round, .img--rad-rnd) {
   --cdr-img-border-radius: var(--cdr-radius-round);
 }

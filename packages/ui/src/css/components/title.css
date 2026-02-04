@@ -1,4 +1,4 @@
-.cdr-title {
+:is(.cdr-title, .ttl) {
   color: var(--cdr-text-color, var(--cdr-color-text-primary));
   margin: 0;
   font-family: var(
@@ -18,7 +18,7 @@
 }
 
 @container (min-width: 720px) and (max-width: 900px) {
-  .cdr-title {
+  :is(.cdr-title, .ttl) {
     font-family: var(
       --cdr-font-family-serif,
       Stuart,
@@ -37,7 +37,7 @@
 }
 
 @container (min-width: 540px) and (max-width: 720px) {
-  .cdr-title {
+  :is(.cdr-title, .ttl) {
     font-family: var(
       --cdr-font-family-serif,
       Stuart,
@@ -56,7 +56,7 @@
 }
 
 @container (min-width: 360px) and (max-width: 540px) {
-  .cdr-title {
+  :is(.cdr-title, .ttl) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -75,7 +75,7 @@
 }
 
 @container (min-width: 180px) and (max-width: 360px) {
-  .cdr-title {
+  :is(.cdr-title, .ttl) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -94,7 +94,7 @@
 }
 
 @container (max-width: 180px) {
-  .cdr-title {
+  :is(.cdr-title, .ttl) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,

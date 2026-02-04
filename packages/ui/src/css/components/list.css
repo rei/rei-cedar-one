@@ -1,47 +1,47 @@
-.cdr-list {
+:is(.cdr-list, .lst) {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.cdr-list > li + li {
+:is(.cdr-list, .lst) > li + li {
   margin-top: var(--cdr-space-half-x);
 }
 
-.cdr-list li > .cdr-list {
+:is(.cdr-list, .lst) li > :is(.cdr-list, .lst) {
   margin-top: var(--cdr-space-half-x);
   padding-left: 1em;
   list-style-type: none;
 }
 
-.cdr-list--compact > li + li {
+:is(.cdr-list--compact, .lst--cmp) > li + li {
   margin-top: var(--cdr-space-quarter-x);
 }
 
-.cdr-list--compact li > .cdr-list {
+:is(.cdr-list--compact, .lst--cmp) li > :is(.cdr-list, .lst) {
   margin-top: var(--cdr-space-quarter-x);
 }
 
-.cdr-list--ordered {
+:is(.cdr-list--ordered, .lst--ord) {
   list-style-type: decimal;
   padding-left: 1.5em;
   list-style-position: outside;
 }
 
-.cdr-list--ordered li {
+:is(.cdr-list--ordered, .lst--ord) li {
   padding: 0 0 0 var(--cdr-space-quarter-x);
 }
 
-.cdr-list--ordered li > .cdr-list {
+:is(.cdr-list--ordered, .lst--ord) li > :is(.cdr-list, .lst) {
   position: relative;
   padding-left: 1em;
 }
 
-.cdr-list--ordered li > .cdr-list > li {
+:is(.cdr-list--ordered, .lst--ord) li > :is(.cdr-list, .lst) > li {
   padding-left: 0;
 }
 
-.cdr-list--ordered li > .cdr-list > li::before {
+:is(.cdr-list--ordered, .lst--ord) li > :is(.cdr-list, .lst) > li::before {
   content: '\2013';
   position: absolute;
   color: var(
@@ -51,12 +51,12 @@
   left: 0;
 }
 
-.cdr-list--unordered {
+:is(.cdr-list--unordered, .lst--unord) {
   position: relative;
   padding-left: 1em;
 }
 
-.cdr-list--unordered > li::before {
+:is(.cdr-list--unordered, .lst--unord) > li::before {
   content: '\2022';
   position: relative;
   margin-left: -1em;
@@ -67,12 +67,12 @@
   );
 }
 
-.cdr-list--unordered li > .cdr-list {
+:is(.cdr-list--unordered, .lst--unord) li > :is(.cdr-list, .lst) {
   position: relative;
   padding-left: 1em;
 }
 
-.cdr-list--unordered li > .cdr-list > li::before {
+:is(.cdr-list--unordered, .lst--unord) li > :is(.cdr-list, .lst) > li::before {
   content: '\2013';
   position: relative;
   margin-left: -1em;
@@ -83,48 +83,49 @@
   );
 }
 
-.cdr-list--inline {
+:is(.cdr-list--inline, .lst--inl) {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
   padding-left: 0;
 }
 
-.cdr-list--inline > li {
+:is(.cdr-list--inline, .lst--inl) > li {
   display: block;
 }
 
-.cdr-list--inline > li + li {
+:is(.cdr-list--inline, .lst--inl) > li + li {
   margin-top: 0;
   padding-left: 1em;
 }
 
-.cdr-list--inline.cdr-list--compact > li + li {
+:is(.cdr-list--inline, .lst--inl):is(.cdr-list--compact, .lst--cmp) > li + li {
   padding-left: 0.5em;
 }
 
-.cdr-list--inline.cdr-list--unordered {
+:is(.cdr-list--inline, .lst--inl):is(.cdr-list--unordered, .lst--unord) {
   left: 0;
 }
 
-.cdr-list--inline.cdr-list--unordered > li {
+:is(.cdr-list--inline, .lst--inl):is(.cdr-list--unordered, .lst--unord) > li {
   position: relative;
 }
 
-.cdr-list--inline.cdr-list--unordered > li + li {
+:is(.cdr-list--inline, .lst--inl):is(.cdr-list--unordered, .lst--unord)
+  > li
+  + li {
   padding-left: 1.5em;
 }
 
-.cdr-list--inline.cdr-list--unordered > li:first-of-type::before {
+:is(.cdr-list--inline, .lst--inl):is(.cdr-list--unordered, .lst--unord)
+  > li:first-of-type::before {
   display: none;
 }
 
-.cdr-list--inline.cdr-list--unordered > li::before {
+:is(.cdr-list--inline, .lst--inl):is(.cdr-list--unordered, .lst--unord)
+  > li::before {
   content: '\2022';
-  color: var(
-    --cdr-list-inline-text-color,
-    var(--cdr-color-text-secondary)
-  );
+  color: var(--cdr-list-inline-text-color, var(--cdr-color-text-secondary));
   display: block;
   position: absolute;
   top: 50%;
@@ -137,10 +138,20 @@
   margin: 0;
 }
 
-.cdr-list--inline.cdr-list--unordered.cdr-list--compact > li + li {
+:is(.cdr-list--inline, .lst--inl):is(.cdr-list--unordered, .lst--unord):is(
+    .cdr-list--compact,
+    .lst--cmp
+  )
+  > li
+  + li {
   padding-left: 1em;
 }
 
-.cdr-list--inline.cdr-list--unordered.cdr-list--compact > li + li::before {
+:is(.cdr-list--inline, .lst--inl):is(.cdr-list--unordered, .lst--unord):is(
+    .cdr-list--compact,
+    .lst--cmp
+  )
+  > li
+  + li::before {
   transform: translate(100%, -50%);
 }

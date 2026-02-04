@@ -1,4 +1,4 @@
-.cdr-heading-serif {
+:is(.cdr-heading-serif, .hser) {
   color: var(--cdr-text-color, var(--cdr-color-text-primary));
   margin: 0;
   font-family: var(
@@ -21,31 +21,31 @@
   font-weight: var(--cdr-heading-serif-font-weight, 400);
 }
 
-.cdr-heading-serif--scale-1 {
+:is(.cdr-heading-serif--scale-1, .hser--s1) {
   --cdr-heading-serif-font-size: var(--cdr-type-scale-1);
   --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-1);
 }
 
-.cdr-heading-serif--scale-2 {
+:is(.cdr-heading-serif--scale-2, .hser--s2) {
   --cdr-heading-serif-font-size: var(--cdr-type-scale-2);
   --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-2);
 }
 
-.cdr-heading-serif--scale-3 {
+:is(.cdr-heading-serif--scale-3, .hser--s3) {
   --cdr-heading-serif-font-size: var(--cdr-type-scale-3);
   --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-3);
 }
 
-.cdr-heading-serif--scale-4 {
+:is(.cdr-heading-serif--scale-4, .hser--s4) {
   --cdr-heading-serif-font-size: var(--cdr-type-scale-4);
   --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-4);
 }
 
-.cdr-heading-serif--scale-5 {
+:is(.cdr-heading-serif--scale-5, .hser--s5) {
   --cdr-heading-serif-font-size: var(--cdr-type-scale-5);
   --cdr-heading-line-height: var(--cdr-line-height-ratio-heading-5);
 }
 
-.cdr-heading-serif--strong {
+:is(.cdr-heading-serif--strong, .hser--str) {
   --cdr-heading-serif-font-weight: 600;
 }

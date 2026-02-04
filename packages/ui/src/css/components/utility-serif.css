@@ -1,4 +1,4 @@
-.cdr-utility-serif {
+:is(.cdr-utility-serif, .userf) {
   color: var(--cdr-text-color, var(--cdr-color-text-primary));
   margin: 0;
   font-family: var(
@@ -21,31 +21,31 @@
   font-weight: var(--cdr-utility-serif-font-weight, 400);
 }
 
-.cdr-utility-serif--scale-minus-1 {
+:is(.cdr-utility-serif--scale-minus-1, .userf--s-1) {
   --cdr-utility-serif-font-size: var(--cdr-type-scale-minus-1);
   --cdr-utility-serif-line-height: var(--cdr-line-height-ratio-utility-minus-1);
 }
 
-.cdr-utility-serif--scale-0 {
+:is(.cdr-utility-serif--scale-0, .userf--s0) {
   --cdr-utility-serif-font-size: var(--cdr-type-scale-0);
   --cdr-utility-serif-line-height: var(--cdr-line-height-ratio-utility-0);
 }
 
-.cdr-utility-serif--scale-1 {
+:is(.cdr-utility-serif--scale-1, .userf--s1) {
   --cdr-utility-serif-font-size: var(--cdr-type-scale-1);
   --cdr-utility-serif-line-height: var(--cdr-line-height-ratio-utility-1);
 }
 
-.cdr-utility-serif--scale-2 {
+:is(.cdr-utility-serif--scale-2, .userf--s2) {
   --cdr-utility-serif-font-size: var(--cdr-type-scale-2);
   --cdr-utility-serif-line-height: var(--cdr-line-height-ratio-utility-2);
 }
 
-.cdr-utility-serif--scale-3 {
+:is(.cdr-utility-serif--scale-3, .userf--s3) {
   --cdr-utility-serif-font-size: var(--cdr-type-scale-3);
   --cdr-utility-serif-line-height: var(--cdr-line-height-ratio-utility-3);
 }
 
-.cdr-utility-serif--strong {
+:is(.cdr-utility-serif--strong, .userf--str) {
   --cdr-utility-serif-font-weight: 600;
 }

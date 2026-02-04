@@ -1,11 +1,11 @@
 @import '../../../../tokens/src/breakpoints.css';
 
-.cdr-split-surface {
+:is(.cdr-split-surface, .split) {
   width: 100%;
   line-height: 0;
 }
 
-.cdr-split-surface--top {
+:is(.cdr-split-surface--top, .split--top) {
   background: linear-gradient(
     var(
         --cdr-split-surface-surface-color,
@@ -16,7 +16,7 @@
   );
 }
 
-.cdr-split-surface--bottom {
+:is(.cdr-split-surface--bottom, .split--bot) {
   background: linear-gradient(
     transparent 0 50%,
     var(
@@ -27,28 +27,28 @@
   );
 }
 
-.cdr-split-surface__top,
-.cdr-split-surface__bottom {
+:is(.cdr-split-surface__top, .split__top),
+:is(.cdr-split-surface__bottom, .split__bot) {
   padding: 0 var(--cdr-space-four-x);
 }
 
 @media (--cdr-md) {
-  .cdr-split-surface__top,
-  .cdr-split-surface__bottom {
+  :is(.cdr-split-surface__top, .split__top),
+  :is(.cdr-split-surface__bottom, .split__bot) {
     padding: 0 var(--cdr-space-three-x);
   }
 }
 
 @media (--cdr-sm) {
-  .cdr-split-surface__top,
-  .cdr-split-surface__bottom {
+  :is(.cdr-split-surface__top, .split__top),
+  :is(.cdr-split-surface__bottom, .split__bot) {
     padding: 0 var(--cdr-space-two-x);
   }
 }
 
 @media (--cdr-xs) {
-  .cdr-split-surface__top,
-  .cdr-split-surface__bottom {
+  :is(.cdr-split-surface__top, .split__top),
+  :is(.cdr-split-surface__bottom, .split__bot) {
     padding: 0 var(--cdr-space-one-x);
   }
 }

@@ -1,6 +1,6 @@
 @import '../../../../tokens/src/breakpoints.css';
 
-.cdr-label-wrapper {
+:is(.cdr-label-wrapper, .lblw) {
   font-family: var(
     --cdr-font-family-sans,
     Graphik,
@@ -37,18 +37,18 @@
   user-select: none;
 }
 
-.cdr-label-wrapper__container {
+:is(.cdr-label-wrapper__container, .lblw__cont) {
   font-size: 0;
   line-height: 1;
 }
 
-.cdr-label-wrapper input {
+:is(.cdr-label-wrapper, .lblw) input {
   position: absolute;
   opacity: 0;
   z-index: -1;
 }
 
-.cdr-label-wrapper--primary:hover {
+:is(.cdr-label-wrapper--primary, .lblw--pri):hover {
   background-color: var(
     --cdr-label-wrapper-primary-background-color-hover,
     var(--cdr-color-background-label-default-hover)
@@ -56,7 +56,7 @@
   cursor: pointer;
 }
 
-.cdr-label-wrapper--primary:focus-within {
+:is(.cdr-label-wrapper--primary, .lblw--pri):focus-within {
   background-color: var(
     --cdr-label-wrapper-primary-background-color-focus,
     var(--cdr-color-background-label-default-focus)
@@ -68,21 +68,21 @@
     );
 }
 
-.cdr-label-wrapper--primary:active {
+:is(.cdr-label-wrapper--primary, .lblw--pri):active {
   background-color: var(
     --cdr-label-wrapper-primary-background-color-active,
     var(--cdr-color-background-label-default-active)
   );
 }
 
-.cdr-label-wrapper--secondary {
+:is(.cdr-label-wrapper--secondary, .lblw--sec) {
   background-color: var(
     --cdr-label-wrapper-secondary-background-color,
     var(--cdr-color-background-input-default)
   );
 }
 
-.cdr-label-wrapper--secondary:hover {
+:is(.cdr-label-wrapper--secondary, .lblw--sec):hover {
   background-color: var(
     --cdr-label-wrapper-secondary-background-color-hover,
     var(--cdr-color-background-label-secondary-hover)
@@ -90,21 +90,21 @@
   cursor: pointer;
 }
 
-.cdr-label-wrapper--secondary:focus-within {
+:is(.cdr-label-wrapper--secondary, .lblw--sec):focus-within {
   background-color: var(
     --cdr-label-wrapper-secondary-background-color-focus,
     var(--cdr-color-background-label-secondary-focus)
   );
 }
 
-.cdr-label-wrapper--secondary:active {
+:is(.cdr-label-wrapper--secondary, .lblw--sec):active {
   background-color: var(
     --cdr-label-wrapper-secondary-background-color-active,
     var(--cdr-color-background-label-secondary-active)
   );
 }
 
-.cdr-label-wrapper--disabled {
+:is(.cdr-label-wrapper--disabled, .lblw--dis) {
   color: var(
     --cdr-label-wrapper-text-color-disabled,
     var(--cdr-color-text-input-disabled)
@@ -112,20 +112,20 @@
   cursor: not-allowed !important;
 }
 
-.cdr-label-wrapper--disabled:hover,
-.cdr-label-wrapper--disabled:focus-within,
-.cdr-label-wrapper--disabled:active {
+:is(.cdr-label-wrapper--disabled, .lblw--dis):hover,
+:is(.cdr-label-wrapper--disabled, .lblw--dis):focus-within,
+:is(.cdr-label-wrapper--disabled, .lblw--dis):active {
   background-color: var(
     --cdr-label-wrapper-background-color-disabled,
     var(--cdr-color-background-input-default)
   ) !important;
 }
 
-.cdr-label-wrapper--disabled .cdr-label-wrapper__figure {
+:is(.cdr-label-wrapper--disabled, .lblw--dis) :is(.cdr-label-wrapper__figure, .lblw__fig) {
   cursor: not-allowed !important;
 }
 
-.cdr-label-wrapper__figure {
+:is(.cdr-label-wrapper__figure, .lblw__fig) {
   top: 1.1rem;
   width: var(--cdr-form-figure-size-medium);
   height: var(--cdr-form-figure-size-medium);
@@ -145,28 +145,28 @@
     var(--cdr-timing-function-ease);
 }
 
-.cdr-label-wrapper__figure::after {
+:is(.cdr-label-wrapper__figure, .lblw__fig)::after {
   width: calc(var(--cdr-form-figure-size-medium) / 4);
   height: calc(var(--cdr-form-figure-size-medium) / 4);
 }
 
-.cdr-label-wrapper__content {
+:is(.cdr-label-wrapper__content, .lblw__content) {
   user-select: text;
 }
 
-.cdr-label-wrapper--hide-figure {
+:is(.cdr-label-wrapper--hide-figure, .lblw--hfig) {
   padding-left: 0;
 }
 
-.cdr-label-wrapper--hide-figure > .cdr-label-wrapper__figure {
+:is(.cdr-label-wrapper--hide-figure, .lblw--hfig) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
   display: none;
 }
 
-.cdr-label-wrapper--hide-figure > .cdr-checkbox__svg-box svg {
+:is(.cdr-label-wrapper--hide-figure, .lblw--hfig) > :is(.cdr-checkbox__svg-box, .cbx__svg) svg {
   fill: transparent !important;
 }
 
-.cdr-label-wrapper--small {
+:is(.cdr-label-wrapper--small, .lblw--sm) {
   font-family: var(
     --cdr-font-family-sans,
     Graphik,
@@ -182,17 +182,17 @@
   padding-left: calc(var(--cdr-form-figure-size-small) + var(--cdr-space-one-x));
 }
 
-.cdr-label-wrapper--small > .cdr-label-wrapper__figure {
+:is(.cdr-label-wrapper--small, .lblw--sm) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
   width: var(--cdr-form-figure-size-small);
   height: var(--cdr-form-figure-size-small);
 }
 
-.cdr-label-wrapper--small > .cdr-label-wrapper__figure::after {
+:is(.cdr-label-wrapper--small, .lblw--sm) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after {
   width: calc(var(--cdr-form-figure-size-small) / 4);
   height: calc(var(--cdr-form-figure-size-small) / 4);
 }
 
-.cdr-label-wrapper--medium {
+:is(.cdr-label-wrapper--medium, .lblw--md) {
   font-family: var(
     --cdr-font-family-sans,
     Graphik,
@@ -208,17 +208,17 @@
   padding-left: calc(var(--cdr-form-figure-size-medium) + var(--cdr-space-one-x));
 }
 
-.cdr-label-wrapper--medium > .cdr-label-wrapper__figure {
+:is(.cdr-label-wrapper--medium, .lblw--md) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
   width: var(--cdr-form-figure-size-medium);
   height: var(--cdr-form-figure-size-medium);
 }
 
-.cdr-label-wrapper--medium > .cdr-label-wrapper__figure::after {
+:is(.cdr-label-wrapper--medium, .lblw--md) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after {
   width: calc(var(--cdr-form-figure-size-medium) / 4);
   height: calc(var(--cdr-form-figure-size-medium) / 4);
 }
 
-.cdr-label-wrapper--large {
+:is(.cdr-label-wrapper--large, .lblw--lg) {
   font-family: var(
     --cdr-font-family-sans,
     Graphik,
@@ -234,23 +234,23 @@
   padding-left: calc(var(--cdr-form-figure-size-large) + var(--cdr-space-one-x));
 }
 
-.cdr-label-wrapper--large > .cdr-label-wrapper__figure {
+:is(.cdr-label-wrapper--large, .lblw--lg) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
   width: var(--cdr-form-figure-size-large);
   height: var(--cdr-form-figure-size-large);
 }
 
-.cdr-label-wrapper--large > .cdr-label-wrapper__figure::after,
-.cdr-label-wrapper--large > .cdr-label-wrapper__figure .cdr-checkbox__checkbox-box {
+:is(.cdr-label-wrapper--large, .lblw--lg) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after,
+:is(.cdr-label-wrapper--large, .lblw--lg) > :is(.cdr-label-wrapper__figure, .lblw__fig) :is(.cdr-checkbox__checkbox-box, .cbx__box) {
   width: calc(var(--cdr-form-figure-size-large) / 4);
   height: calc(var(--cdr-form-figure-size-large) / 4);
 }
 
-.cdr-label-wrapper--large .cdr-checkbox__checkbox-box {
+:is(.cdr-label-wrapper--large, .lblw--lg) :is(.cdr-checkbox__checkbox-box, .cbx__box) {
   width: 2rem;
   height: 2rem;
 }
 
-.cdr-label-wrapper--large .cdr-checkbox__svg-box svg {
+:is(.cdr-label-wrapper--large, .lblw--lg) :is(.cdr-checkbox__svg-box, .cbx__svg) svg {
   width: 2rem;
   height: 2rem;
   left: 0;
@@ -258,7 +258,7 @@
 }
 
 @media (--cdr-xs) {
-  .cdr-label-wrapper--small\@xs {
+  :is(.cdr-label-wrapper--small\@xs, .lblw--sm\@xs) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -276,17 +276,17 @@
     );
   }
 
-  .cdr-label-wrapper--small\@xs > .cdr-label-wrapper__figure {
+  :is(.cdr-label-wrapper--small\@xs, .lblw--sm\@xs) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
     width: var(--cdr-form-figure-size-small);
     height: var(--cdr-form-figure-size-small);
   }
 
-  .cdr-label-wrapper--small\@xs > .cdr-label-wrapper__figure::after {
+  :is(.cdr-label-wrapper--small\@xs, .lblw--sm\@xs) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after {
     width: calc(var(--cdr-form-figure-size-small) / 4);
     height: calc(var(--cdr-form-figure-size-small) / 4);
   }
 
-  .cdr-label-wrapper--medium\@xs {
+  :is(.cdr-label-wrapper--medium\@xs, .lblw--md\@xs) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -304,17 +304,17 @@
     );
   }
 
-  .cdr-label-wrapper--medium\@xs > .cdr-label-wrapper__figure {
+  :is(.cdr-label-wrapper--medium\@xs, .lblw--md\@xs) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
     width: var(--cdr-form-figure-size-medium);
     height: var(--cdr-form-figure-size-medium);
   }
 
-  .cdr-label-wrapper--medium\@xs > .cdr-label-wrapper__figure::after {
+  :is(.cdr-label-wrapper--medium\@xs, .lblw--md\@xs) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after {
     width: calc(var(--cdr-form-figure-size-medium) / 4);
     height: calc(var(--cdr-form-figure-size-medium) / 4);
   }
 
-  .cdr-label-wrapper--large\@xs {
+  :is(.cdr-label-wrapper--large\@xs, .lblw--lg\@xs) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -332,25 +332,25 @@
     );
   }
 
-  .cdr-label-wrapper--large\@xs > .cdr-label-wrapper__figure {
+  :is(.cdr-label-wrapper--large\@xs, .lblw--lg\@xs) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
     width: var(--cdr-form-figure-size-large);
     height: var(--cdr-form-figure-size-large);
   }
 
-  .cdr-label-wrapper--large\@xs > .cdr-label-wrapper__figure::after,
-  .cdr-label-wrapper--large\@xs
-    > .cdr-label-wrapper__figure
-    .cdr-checkbox__checkbox-box {
+  :is(.cdr-label-wrapper--large\@xs, .lblw--lg\@xs) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after,
+  :is(.cdr-label-wrapper--large\@xs, .lblw--lg\@xs)
+    > :is(.cdr-label-wrapper__figure, .lblw__fig)
+    :is(.cdr-checkbox__checkbox-box, .cbx__box) {
     width: calc(var(--cdr-form-figure-size-large) / 4);
     height: calc(var(--cdr-form-figure-size-large) / 4);
   }
 
-  .cdr-label-wrapper--large\@xs .cdr-checkbox__checkbox-box {
+  :is(.cdr-label-wrapper--large\@xs, .lblw--lg\@xs) :is(.cdr-checkbox__checkbox-box, .cbx__box) {
     width: 2rem;
     height: 2rem;
   }
 
-  .cdr-label-wrapper--large\@xs .cdr-checkbox__svg-box svg {
+  :is(.cdr-label-wrapper--large\@xs, .lblw--lg\@xs) :is(.cdr-checkbox__svg-box, .cbx__svg) svg {
     width: 2rem;
     height: 2rem;
     left: 0;
@@ -359,7 +359,7 @@
 }
 
 @media (--cdr-sm) {
-  .cdr-label-wrapper--small\@sm {
+  :is(.cdr-label-wrapper--small\@sm, .lblw--sm\@sm) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -377,17 +377,17 @@
     );
   }
 
-  .cdr-label-wrapper--small\@sm > .cdr-label-wrapper__figure {
+  :is(.cdr-label-wrapper--small\@sm, .lblw--sm\@sm) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
     width: var(--cdr-form-figure-size-small);
     height: var(--cdr-form-figure-size-small);
   }
 
-  .cdr-label-wrapper--small\@sm > .cdr-label-wrapper__figure::after {
+  :is(.cdr-label-wrapper--small\@sm, .lblw--sm\@sm) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after {
     width: calc(var(--cdr-form-figure-size-small) / 4);
     height: calc(var(--cdr-form-figure-size-small) / 4);
   }
 
-  .cdr-label-wrapper--medium\@sm {
+  :is(.cdr-label-wrapper--medium\@sm, .lblw--md\@sm) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -405,17 +405,17 @@
     );
   }
 
-  .cdr-label-wrapper--medium\@sm > .cdr-label-wrapper__figure {
+  :is(.cdr-label-wrapper--medium\@sm, .lblw--md\@sm) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
     width: var(--cdr-form-figure-size-medium);
     height: var(--cdr-form-figure-size-medium);
   }
 
-  .cdr-label-wrapper--medium\@sm > .cdr-label-wrapper__figure::after {
+  :is(.cdr-label-wrapper--medium\@sm, .lblw--md\@sm) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after {
     width: calc(var(--cdr-form-figure-size-medium) / 4);
     height: calc(var(--cdr-form-figure-size-medium) / 4);
   }
 
-  .cdr-label-wrapper--large\@sm {
+  :is(.cdr-label-wrapper--large\@sm, .lblw--lg\@sm) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -433,25 +433,25 @@
     );
   }
 
-  .cdr-label-wrapper--large\@sm > .cdr-label-wrapper__figure {
+  :is(.cdr-label-wrapper--large\@sm, .lblw--lg\@sm) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
     width: var(--cdr-form-figure-size-large);
     height: var(--cdr-form-figure-size-large);
   }
 
-  .cdr-label-wrapper--large\@sm > .cdr-label-wrapper__figure::after,
-  .cdr-label-wrapper--large\@sm
-    > .cdr-label-wrapper__figure
-    .cdr-checkbox__checkbox-box {
+  :is(.cdr-label-wrapper--large\@sm, .lblw--lg\@sm) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after,
+  :is(.cdr-label-wrapper--large\@sm, .lblw--lg\@sm)
+    > :is(.cdr-label-wrapper__figure, .lblw__fig)
+    :is(.cdr-checkbox__checkbox-box, .cbx__box) {
     width: calc(var(--cdr-form-figure-size-large) / 4);
     height: calc(var(--cdr-form-figure-size-large) / 4);
   }
 
-  .cdr-label-wrapper--large\@sm .cdr-checkbox__checkbox-box {
+  :is(.cdr-label-wrapper--large\@sm, .lblw--lg\@sm) :is(.cdr-checkbox__checkbox-box, .cbx__box) {
     width: 2rem;
     height: 2rem;
   }
 
-  .cdr-label-wrapper--large\@sm .cdr-checkbox__svg-box svg {
+  :is(.cdr-label-wrapper--large\@sm, .lblw--lg\@sm) :is(.cdr-checkbox__svg-box, .cbx__svg) svg {
     width: 2rem;
     height: 2rem;
     left: 0;
@@ -460,7 +460,7 @@
 }
 
 @media (--cdr-md) {
-  .cdr-label-wrapper--small\@md {
+  :is(.cdr-label-wrapper--small\@md, .lblw--sm\@md) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -478,17 +478,17 @@
     );
   }
 
-  .cdr-label-wrapper--small\@md > .cdr-label-wrapper__figure {
+  :is(.cdr-label-wrapper--small\@md, .lblw--sm\@md) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
     width: var(--cdr-form-figure-size-small);
     height: var(--cdr-form-figure-size-small);
   }
 
-  .cdr-label-wrapper--small\@md > .cdr-label-wrapper__figure::after {
+  :is(.cdr-label-wrapper--small\@md, .lblw--sm\@md) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after {
     width: calc(var(--cdr-form-figure-size-small) / 4);
     height: calc(var(--cdr-form-figure-size-small) / 4);
   }
 
-  .cdr-label-wrapper--medium\@md {
+  :is(.cdr-label-wrapper--medium\@md, .lblw--md\@md) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -506,17 +506,17 @@
     );
   }
 
-  .cdr-label-wrapper--medium\@md > .cdr-label-wrapper__figure {
+  :is(.cdr-label-wrapper--medium\@md, .lblw--md\@md) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
     width: var(--cdr-form-figure-size-medium);
     height: var(--cdr-form-figure-size-medium);
   }
 
-  .cdr-label-wrapper--medium\@md > .cdr-label-wrapper__figure::after {
+  :is(.cdr-label-wrapper--medium\@md, .lblw--md\@md) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after {
     width: calc(var(--cdr-form-figure-size-medium) / 4);
     height: calc(var(--cdr-form-figure-size-medium) / 4);
   }
 
-  .cdr-label-wrapper--large\@md {
+  :is(.cdr-label-wrapper--large\@md, .lblw--lg\@md) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -534,25 +534,25 @@
     );
   }
 
-  .cdr-label-wrapper--large\@md > .cdr-label-wrapper__figure {
+  :is(.cdr-label-wrapper--large\@md, .lblw--lg\@md) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
     width: var(--cdr-form-figure-size-large);
     height: var(--cdr-form-figure-size-large);
   }
 
-  .cdr-label-wrapper--large\@md > .cdr-label-wrapper__figure::after,
-  .cdr-label-wrapper--large\@md
-    > .cdr-label-wrapper__figure
-    .cdr-checkbox__checkbox-box {
+  :is(.cdr-label-wrapper--large\@md, .lblw--lg\@md) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after,
+  :is(.cdr-label-wrapper--large\@md, .lblw--lg\@md)
+    > :is(.cdr-label-wrapper__figure, .lblw__fig)
+    :is(.cdr-checkbox__checkbox-box, .cbx__box) {
     width: calc(var(--cdr-form-figure-size-large) / 4);
     height: calc(var(--cdr-form-figure-size-large) / 4);
   }
 
-  .cdr-label-wrapper--large\@md .cdr-checkbox__checkbox-box {
+  :is(.cdr-label-wrapper--large\@md, .lblw--lg\@md) :is(.cdr-checkbox__checkbox-box, .cbx__box) {
     width: 2rem;
     height: 2rem;
   }
 
-  .cdr-label-wrapper--large\@md .cdr-checkbox__svg-box svg {
+  :is(.cdr-label-wrapper--large\@md, .lblw--lg\@md) :is(.cdr-checkbox__svg-box, .cbx__svg) svg {
     width: 2rem;
     height: 2rem;
     left: 0;
@@ -561,7 +561,7 @@
 }
 
 @media (--cdr-lg) {
-  .cdr-label-wrapper--small\@lg {
+  :is(.cdr-label-wrapper--small\@lg, .lblw--sm\@lg) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -579,17 +579,17 @@
     );
   }
 
-  .cdr-label-wrapper--small\@lg > .cdr-label-wrapper__figure {
+  :is(.cdr-label-wrapper--small\@lg, .lblw--sm\@lg) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
     width: var(--cdr-form-figure-size-small);
     height: var(--cdr-form-figure-size-small);
   }
 
-  .cdr-label-wrapper--small\@lg > .cdr-label-wrapper__figure::after {
+  :is(.cdr-label-wrapper--small\@lg, .lblw--sm\@lg) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after {
     width: calc(var(--cdr-form-figure-size-small) / 4);
     height: calc(var(--cdr-form-figure-size-small) / 4);
   }
 
-  .cdr-label-wrapper--medium\@lg {
+  :is(.cdr-label-wrapper--medium\@lg, .lblw--md\@lg) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -607,17 +607,17 @@
     );
   }
 
-  .cdr-label-wrapper--medium\@lg > .cdr-label-wrapper__figure {
+  :is(.cdr-label-wrapper--medium\@lg, .lblw--md\@lg) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
     width: var(--cdr-form-figure-size-medium);
     height: var(--cdr-form-figure-size-medium);
   }
 
-  .cdr-label-wrapper--medium\@lg > .cdr-label-wrapper__figure::after {
+  :is(.cdr-label-wrapper--medium\@lg, .lblw--md\@lg) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after {
     width: calc(var(--cdr-form-figure-size-medium) / 4);
     height: calc(var(--cdr-form-figure-size-medium) / 4);
   }
 
-  .cdr-label-wrapper--large\@lg {
+  :is(.cdr-label-wrapper--large\@lg, .lblw--lg\@lg) {
     font-family: var(
       --cdr-font-family-sans,
       Graphik,
@@ -635,25 +635,25 @@
     );
   }
 
-  .cdr-label-wrapper--large\@lg > .cdr-label-wrapper__figure {
+  :is(.cdr-label-wrapper--large\@lg, .lblw--lg\@lg) > :is(.cdr-label-wrapper__figure, .lblw__fig) {
     width: var(--cdr-form-figure-size-large);
     height: var(--cdr-form-figure-size-large);
   }
 
-  .cdr-label-wrapper--large\@lg > .cdr-label-wrapper__figure::after,
-  .cdr-label-wrapper--large\@lg
-    > .cdr-label-wrapper__figure
-    .cdr-checkbox__checkbox-box {
+  :is(.cdr-label-wrapper--large\@lg, .lblw--lg\@lg) > :is(.cdr-label-wrapper__figure, .lblw__fig)::after,
+  :is(.cdr-label-wrapper--large\@lg, .lblw--lg\@lg)
+    > :is(.cdr-label-wrapper__figure, .lblw__fig)
+    :is(.cdr-checkbox__checkbox-box, .cbx__box) {
     width: calc(var(--cdr-form-figure-size-large) / 4);
     height: calc(var(--cdr-form-figure-size-large) / 4);
   }
 
-  .cdr-label-wrapper--large\@lg .cdr-checkbox__checkbox-box {
+  :is(.cdr-label-wrapper--large\@lg, .lblw--lg\@lg) :is(.cdr-checkbox__checkbox-box, .cbx__box) {
     width: 2rem;
     height: 2rem;
   }
 
-  .cdr-label-wrapper--large\@lg .cdr-checkbox__svg-box svg {
+  :is(.cdr-label-wrapper--large\@lg, .lblw--lg\@lg) :is(.cdr-checkbox__svg-box, .cbx__svg) svg {
     width: 2rem;
     height: 2rem;
     left: 0;

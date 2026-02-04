@@ -1,4 +1,4 @@
-.cdr-utility-sans {
+:is(.cdr-utility-sans, .usans) {
   color: var(--cdr-text-color, var(--cdr-color-text-primary));
   margin: 0;
   font-family: var(
@@ -21,31 +21,31 @@
   font-weight: var(--cdr-utility-sans-font-weight, 400);
 }
 
-.cdr-utility-sans--scale-minus-1 {
+:is(.cdr-utility-sans--scale-minus-1, .usans--s-1) {
   --cdr-utility-sans-font-size: var(--cdr-type-scale-minus-1);
   --cdr-utility-sans-line-height: var(--cdr-line-height-ratio-utility-minus-1);
 }
 
-.cdr-utility-sans--scale-0 {
+:is(.cdr-utility-sans--scale-0, .usans--s0) {
   --cdr-utility-sans-font-size: var(--cdr-type-scale-0);
   --cdr-utility-sans-line-height: var(--cdr-line-height-ratio-utility-0);
 }
 
-.cdr-utility-sans--scale-1 {
+:is(.cdr-utility-sans--scale-1, .usans--s1) {
   --cdr-utility-sans-font-size: var(--cdr-type-scale-1);
   --cdr-utility-sans-line-height: var(--cdr-line-height-ratio-utility-1);
 }
 
-.cdr-utility-sans--scale-2 {
+:is(.cdr-utility-sans--scale-2, .usans--s2) {
   --cdr-utility-sans-font-size: var(--cdr-type-scale-2);
   --cdr-utility-sans-line-height: var(--cdr-line-height-ratio-utility-2);
 }
 
-.cdr-utility-sans--scale-3 {
+:is(.cdr-utility-sans--scale-3, .usans--s3) {
   --cdr-utility-sans-font-size: var(--cdr-type-scale-3);
   --cdr-utility-sans-line-height: var(--cdr-line-height-ratio-utility-3);
 }
 
-.cdr-utility-sans--strong {
+:is(.cdr-utility-sans--strong, .usans--str) {
   --cdr-utility-sans-font-weight: 600;
 }

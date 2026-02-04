@@ -1,4 +1,4 @@
-.cdr-text {
+:is(.cdr-text, .txt) {
   color: var(--cdr-text-color, var(--cdr-color-text-primary));
   margin: 0;
 }

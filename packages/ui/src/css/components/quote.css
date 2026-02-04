@@ -1,13 +1,13 @@
 @import '../../../../tokens/src/breakpoints.css';
 
-.cdr-quote {
+:is(.cdr-quote, .qt) {
   margin: 0;
   padding: var(--cdr-space-inset-one-x-stretch);
   line-height: 1;
 }
 
-.cdr-quote cite,
-.cdr-quote__citation {
+:is(.cdr-quote, .qt) cite,
+:is(.cdr-quote__citation, .qt__cite) {
   font-family: var(
     --cdr-text-utility-sans-100-family,
     var(--cdr-font-family-sans)
@@ -21,7 +21,7 @@
   display: block;
 }
 
-.cdr-quote__summary {
+:is(.cdr-quote__summary, .qt__sum) {
   font-family: var(--cdr-font-family-serif);
   font-weight: 400;
   font-size: 2.4rem;
@@ -32,18 +32,18 @@
 }
 
 @media (--cdr-xs) {
-  .cdr-quote__summary {
+  :is(.cdr-quote__summary, .qt__sum) {
     font-size: 1.8rem;
     line-height: 2.8rem;
   }
 }
 
-.cdr-quote__summary + cite,
-.cdr-quote__summary + .cdr-quote__citation {
+:is(.cdr-quote__summary, .qt__sum) + cite,
+:is(.cdr-quote__summary, .qt__sum) + :is(.cdr-quote__citation, .qt__cite) {
   padding-top: var(--cdr-space-one-x);
 }
 
-.cdr-quote--pull {
+:is(.cdr-quote--pull, .qt--pull) {
   border-style: solid;
   border-color: var(
     --cdr-quote-pull-container-border-color,
@@ -55,7 +55,7 @@
 }
 
 @media (--cdr-sm-up) {
-  .cdr-quote--pull {
+  :is(.cdr-quote--pull, .qt--pull) {
     border-width: 0 0 0 0.1rem;
     padding: var(--cdr-space-half-x) var(--cdr-space-one-x)
       var(--cdr-space-half-x) var(--cdr-space-two-x);
@@ -63,6 +63,6 @@
   }
 }
 
-.cdr-quote--pull .cdr-quote__summary {
+:is(.cdr-quote--pull, .qt--pull) :is(.cdr-quote__summary, .qt__sum) {
   font-weight: 600;
 }

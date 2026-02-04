@@ -1,6 +1,6 @@
 @import '../../../../tokens/src/breakpoints.css';
 
-.cdr-button {
+:is(.cdr-button, .btn) {
   font-family: var(--cdr-font-family-sans);
   font-style: normal;
   font-weight: 500;
@@ -26,32 +26,32 @@
     fill var(--cdr-duration-2-x) var(--cdr-timing-function-ease);
 }
 
-.cdr-button:hover,
-.cdr-button:active,
-.cdr-button:focus {
+:is(.cdr-button, .btn):hover,
+:is(.cdr-button, .btn):active,
+:is(.cdr-button, .btn):focus {
   outline: none;
   outline-offset: 0;
   text-decoration: none;
 }
 
-.cdr-button[disabled] {
+:is(.cdr-button, .btn)[disabled] {
   cursor: not-allowed;
 }
 
-.cdr-button svg {
+:is(.cdr-button, .btn) svg {
   align-self: center;
   fill: inherit;
 }
 
-.cdr-button.cdr-button--has-icon-left svg {
+:is(.cdr-button, .btn):is(.cdr-button--has-icon-left, .btn--ico-l) svg {
   margin-right: var(--cdr-space-quarter-x);
 }
 
-.cdr-button.cdr-button--has-icon-right svg {
+:is(.cdr-button, .btn):is(.cdr-button--has-icon-right, .btn--ico-r) svg {
   margin-left: var(--cdr-space-quarter-x);
 }
 
-.cdr-button--primary {
+:is(.cdr-button--primary, .btn--pri) {
   background-color: var(
     --cdr-button-primary-background-color-rest,
     var(--cdr-color-background-button-primary-rest)
@@ -62,8 +62,8 @@
   fill: var(--cdr-button-primary-fill-color, var(--cdr-color-text-button-primary));
 }
 
-.cdr-button--primary:hover,
-.cdr-button--primary:focus {
+:is(.cdr-button--primary, .btn--pri):hover,
+:is(.cdr-button--primary, .btn--pri):focus {
   color: var(
     --cdr-button-primary-text-color-interaction,
     var(--cdr-color-text-button-primary-hover)
@@ -84,7 +84,7 @@
     var(--cdr-prominence-raised);
 }
 
-.cdr-button--primary:active {
+:is(.cdr-button--primary, .btn--pri):active {
   color: var(
     --cdr-button-primary-text-color-active,
     var(--cdr-color-text-button-primary-active)
@@ -109,7 +109,7 @@
       );
 }
 
-.cdr-button--primary[disabled] {
+:is(.cdr-button--primary, .btn--pri)[disabled] {
   background-color: var(
     --cdr-button-primary-background-color-disabled,
     var(--cdr-color-background-button-default-disabled)
@@ -129,7 +129,7 @@
   );
 }
 
-.cdr-button--secondary {
+:is(.cdr-button--secondary, .btn--sec) {
   background-color: var(
     --cdr-button-secondary-background-color-rest,
     var(--cdr-color-background-button-secondary-rest)
@@ -143,8 +143,8 @@
   fill: var(--cdr-button-secondary-fill-color, var(--cdr-color-icon-default));
 }
 
-.cdr-button--secondary:hover,
-.cdr-button--secondary:focus {
+:is(.cdr-button--secondary, .btn--sec):hover,
+:is(.cdr-button--secondary, .btn--sec):focus {
   color: var(
     --cdr-button-secondary-text-color-interaction,
     var(--cdr-color-text-button-secondary-hover)
@@ -165,7 +165,7 @@
     var(--cdr-prominence-raised);
 }
 
-.cdr-button--secondary:active {
+:is(.cdr-button--secondary, .btn--sec):active {
   color: var(
     --cdr-button-secondary-text-color-active,
     var(--cdr-color-text-button-secondary-active)
@@ -190,7 +190,7 @@
       );
 }
 
-.cdr-button--secondary[disabled] {
+:is(.cdr-button--secondary, .btn--sec)[disabled] {
   background-color: var(
     --cdr-button-secondary-background-color-disabled,
     var(--cdr-color-background-button-secondary-disabled)
@@ -210,7 +210,7 @@
   );
 }
 
-.cdr-button--dark {
+:is(.cdr-button--dark, .btn--dk) {
   background-color: var(
     --cdr-button-dark-background-color-rest,
     var(--cdr-color-background-button-dark-rest)
@@ -221,8 +221,8 @@
   fill: var(--cdr-button-dark-fill-color, var(--cdr-color-text-button-dark));
 }
 
-.cdr-button--dark:hover,
-.cdr-button--dark:focus {
+:is(.cdr-button--dark, .btn--dk):hover,
+:is(.cdr-button--dark, .btn--dk):focus {
   color: var(
     --cdr-button-dark-text-color-interaction,
     var(--cdr-color-text-button-dark-hover)
@@ -243,7 +243,7 @@
     var(--cdr-prominence-raised);
 }
 
-.cdr-button--dark:active {
+:is(.cdr-button--dark, .btn--dk):active {
   color: var(
     --cdr-button-dark-text-color-active,
     var(--cdr-color-text-button-dark-active)
@@ -268,7 +268,7 @@
       );
 }
 
-.cdr-button--dark[disabled] {
+:is(.cdr-button--dark, .btn--dk)[disabled] {
   background-color: var(
     --cdr-button-dark-background-color-disabled,
     var(--cdr-color-background-button-default-disabled)
@@ -288,7 +288,7 @@
   );
 }
 
-.cdr-button--sale {
+:is(.cdr-button--sale, .btn--sale) {
   background-color: var(
     --cdr-button-sale-background-color-rest,
     var(--cdr-color-background-button-sale-rest)
@@ -299,8 +299,8 @@
   fill: var(--cdr-button-sale-fill-color, var(--cdr-color-text-button-sale));
 }
 
-.cdr-button--sale:hover,
-.cdr-button--sale:focus {
+:is(.cdr-button--sale, .btn--sale):hover,
+:is(.cdr-button--sale, .btn--sale):focus {
   color: var(
     --cdr-button-sale-text-color-interaction,
     var(--cdr-color-text-button-sale-hover)
@@ -321,7 +321,7 @@
     var(--cdr-prominence-raised);
 }
 
-.cdr-button--sale:active {
+:is(.cdr-button--sale, .btn--sale):active {
   color: var(
     --cdr-button-sale-text-color-active,
     var(--cdr-color-text-button-sale-active)
@@ -346,7 +346,7 @@
       );
 }
 
-.cdr-button--sale[disabled] {
+:is(.cdr-button--sale, .btn--sale)[disabled] {
   background-color: var(
     --cdr-button-sale-background-color-disabled,
     var(--cdr-color-background-button-default-disabled)
@@ -366,22 +366,22 @@
   );
 }
 
-.cdr-button--link {
+:is(.cdr-button--link, .btn--lnk) {
   color: var(--cdr-button-link-text-color, var(--cdr-color-text-link-rest));
   fill: var(--cdr-button-link-fill-color, var(--cdr-color-text-link-rest));
   background-color: transparent;
   text-decoration: underline;
 }
 
-.cdr-button--link:active,
-.cdr-button--link:focus {
+:is(.cdr-button--link, .btn--lnk):active,
+:is(.cdr-button--link, .btn--lnk):focus {
   color: var(
     --cdr-button-link-text-color-active,
     var(--cdr-color-text-link-active)
   );
 }
 
-.cdr-button--link:hover {
+:is(.cdr-button--link, .btn--lnk):hover {
   color: var(
     --cdr-button-link-text-color-hover,
     var(--cdr-color-text-link-hover)
@@ -389,13 +389,13 @@
   text-decoration: none;
 }
 
-.cdr-button--link:focus {
+:is(.cdr-button--link, .btn--lnk):focus {
   outline: var(--cdr-button-link-outline, var(--default-outline, 0.2rem solid Highlight));
   outline-color: -webkit-focus-ring-color;
   outline-offset: 0;
 }
 
-.cdr-button--small {
+:is(.cdr-button--small, .btn--sm) {
   font-family: var(--cdr-font-family-sans);
   font-style: normal;
   font-weight: 500;
@@ -406,20 +406,20 @@
   width: auto;
 }
 
-.cdr-button--small.cdr-button--has-icon-left {
+:is(.cdr-button--small, .btn--sm):is(.cdr-button--has-icon-left, .btn--ico-l) {
   padding-left: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
 }
 
-.cdr-button--small.cdr-button--has-icon-right {
+:is(.cdr-button--small, .btn--sm):is(.cdr-button--has-icon-right, .btn--ico-r) {
   padding-right: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
 }
 
-.cdr-button--small svg {
+:is(.cdr-button--small, .btn--sm) svg {
   width: 2rem;
   height: 2rem;
 }
 
-.cdr-button--medium {
+:is(.cdr-button--medium, .btn--md) {
   font-family: var(--cdr-font-family-sans);
   font-style: normal;
   font-weight: 500;
@@ -430,20 +430,20 @@
   width: auto;
 }
 
-.cdr-button--medium.cdr-button--has-icon-left {
+:is(.cdr-button--medium, .btn--md):is(.cdr-button--has-icon-left, .btn--ico-l) {
   padding-left: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
 }
 
-.cdr-button--medium.cdr-button--has-icon-right {
+:is(.cdr-button--medium, .btn--md):is(.cdr-button--has-icon-right, .btn--ico-r) {
   padding-right: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
 }
 
-.cdr-button--medium svg {
+:is(.cdr-button--medium, .btn--md) svg {
   width: var(--cdr-icon-size);
   height: var(--cdr-icon-size);
 }
 
-.cdr-button--large {
+:is(.cdr-button--large, .btn--lg) {
   font-family: var(--cdr-font-family-sans);
   font-style: normal;
   font-weight: 500;
@@ -454,20 +454,20 @@
   width: auto;
 }
 
-.cdr-button--large.cdr-button--has-icon-left {
+:is(.cdr-button--large, .btn--lg):is(.cdr-button--has-icon-left, .btn--ico-l) {
   padding-left: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
 }
 
-.cdr-button--large.cdr-button--has-icon-right {
+:is(.cdr-button--large, .btn--lg):is(.cdr-button--has-icon-right, .btn--ico-r) {
   padding-right: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
 }
 
-.cdr-button--large svg {
+:is(.cdr-button--large, .btn--lg) svg {
   width: var(--cdr-icon-size);
   height: var(--cdr-icon-size);
 }
 
-.cdr-button--icon-only {
+:is(.cdr-button--icon-only, .btn--ico) {
   background: none;
   border: none;
   border-radius: var(--cdr-radius-soft);
@@ -478,19 +478,19 @@
   fill: var(--cdr-button-icon-only-icon-fill, var(--cdr-color-icon-default));
 }
 
-.cdr-button--icon-only > svg {
+:is(.cdr-button--icon-only, .btn--ico) > svg {
   margin: 0;
 }
 
-.cdr-button--icon-only:hover {
+:is(.cdr-button--icon-only, .btn--ico):hover {
   background: none;
   box-shadow: none;
   border: none;
   fill: var(--cdr-button-icon-only-icon-fill-hover, var(--cdr-color-icon-default));
 }
 
-.cdr-button--icon-only:active,
-.cdr-button--icon-only:focus {
+:is(.cdr-button--icon-only, .btn--ico):active,
+:is(.cdr-button--icon-only, .btn--ico):focus {
   background: none;
   outline: none;
   border: none;
@@ -498,8 +498,8 @@
   fill: var(--cdr-button-icon-only-icon-fill-active, var(--cdr-color-icon-default));
 }
 
-.cdr-button--icon-only:active svg,
-.cdr-button--icon-only:focus svg {
+:is(.cdr-button--icon-only, .btn--ico):active svg,
+:is(.cdr-button--icon-only, .btn--ico):focus svg {
   box-shadow: inset 0 0 0 0.1rem
     var(
       --cdr-button-icon-only-icon-svg-box-shadow,
@@ -507,7 +507,7 @@
     );
 }
 
-.cdr-button--icon-only[disabled] {
+:is(.cdr-button--icon-only, .btn--ico)[disabled] {
   background: transparent;
   box-shadow: none;
   border: none;
@@ -517,11 +517,11 @@
   );
 }
 
-.cdr-button--icon-only-large {
+:is(.cdr-button--icon-only-large, .btn--ico-lg) {
   padding: var(--cdr-space-three-quarter-x);
 }
 
-.cdr-button--with-background {
+:is(.cdr-button--with-background, .btn--bg) {
   border-radius: 50%;
   fill: var(--cdr-button-with-background-icon-fill, var(--cdr-color-icon-default));
   background-color: var(
@@ -535,8 +535,8 @@
     );
 }
 
-.cdr-button--with-background:hover,
-.cdr-button--with-background:focus {
+:is(.cdr-button--with-background, .btn--bg):hover,
+:is(.cdr-button--with-background, .btn--bg):focus {
   fill: var(
     --cdr-button-with-background-icon-fill-interaction,
     var(--cdr-color-icon-default)
@@ -553,12 +553,12 @@
     var(--cdr-prominence-raised);
 }
 
-.cdr-button--with-background:hover svg,
-.cdr-button--with-background:focus svg {
+:is(.cdr-button--with-background, .btn--bg):hover svg,
+:is(.cdr-button--with-background, .btn--bg):focus svg {
   box-shadow: none;
 }
 
-.cdr-button--with-background:active {
+:is(.cdr-button--with-background, .btn--bg):active {
   color: var(
     --cdr-button-with-background-color-active,
     var(--cdr-color-text-button-secondary-active)
@@ -583,11 +583,11 @@
       );
 }
 
-.cdr-button--with-background:active svg {
+:is(.cdr-button--with-background, .btn--bg):active svg {
   box-shadow: none;
 }
 
-.cdr-button--with-background[disabled] {
+:is(.cdr-button--with-background, .btn--bg)[disabled] {
   background-color: var(
     --cdr-button-with-background-background-color-disabled,
     var(--cdr-color-background-button-secondary-disabled)
@@ -603,13 +603,13 @@
   );
 }
 
-.cdr-button--full-width {
+:is(.cdr-button--full-width, .btn--fw) {
   width: 100% !important;
   justify-content: center;
 }
 
 @media (--cdr-xs) {
-  .cdr-button--small\@xs {
+  :is(.cdr-button--small\@xs, .btn--sm\@xs) {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -620,20 +620,20 @@
     width: auto;
   }
 
-  .cdr-button--small\@xs.cdr-button--has-icon-left {
+  :is(.cdr-button--small\@xs, .btn--sm\@xs):is(.cdr-button--has-icon-left, .btn--ico-l) {
     padding-left: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--small\@xs.cdr-button--has-icon-right {
+  :is(.cdr-button--small\@xs, .btn--sm\@xs):is(.cdr-button--has-icon-right, .btn--ico-r) {
     padding-right: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--small\@xs svg {
+  :is(.cdr-button--small\@xs, .btn--sm\@xs) svg {
     width: 2rem;
     height: 2rem;
   }
 
-  .cdr-button--medium\@xs {
+  :is(.cdr-button--medium\@xs, .btn--md\@xs) {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -644,20 +644,20 @@
     width: auto;
   }
 
-  .cdr-button--medium\@xs.cdr-button--has-icon-left {
+  :is(.cdr-button--medium\@xs, .btn--md\@xs):is(.cdr-button--has-icon-left, .btn--ico-l) {
     padding-left: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--medium\@xs.cdr-button--has-icon-right {
+  :is(.cdr-button--medium\@xs, .btn--md\@xs):is(.cdr-button--has-icon-right, .btn--ico-r) {
     padding-right: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--medium\@xs svg {
+  :is(.cdr-button--medium\@xs, .btn--md\@xs) svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cdr-button--large\@xs {
+  :is(.cdr-button--large\@xs, .btn--lg\@xs) {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -668,27 +668,27 @@
     width: auto;
   }
 
-  .cdr-button--large\@xs.cdr-button--has-icon-left {
+  :is(.cdr-button--large\@xs, .btn--lg\@xs):is(.cdr-button--has-icon-left, .btn--ico-l) {
     padding-left: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--large\@xs.cdr-button--has-icon-right {
+  :is(.cdr-button--large\@xs, .btn--lg\@xs):is(.cdr-button--has-icon-right, .btn--ico-r) {
     padding-right: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--large\@xs svg {
+  :is(.cdr-button--large\@xs, .btn--lg\@xs) svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cdr-button--full-width\@xs {
+  :is(.cdr-button--full-width\@xs, .btn--fw\@xs) {
     width: 100% !important;
     justify-content: center;
   }
 }
 
 @media (--cdr-sm) {
-  .cdr-button--small\@sm {
+  :is(.cdr-button--small\@sm, .btn--sm\@sm) {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -699,20 +699,20 @@
     width: auto;
   }
 
-  .cdr-button--small\@sm.cdr-button--has-icon-left {
+  :is(.cdr-button--small\@sm, .btn--sm\@sm):is(.cdr-button--has-icon-left, .btn--ico-l) {
     padding-left: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--small\@sm.cdr-button--has-icon-right {
+  :is(.cdr-button--small\@sm, .btn--sm\@sm):is(.cdr-button--has-icon-right, .btn--ico-r) {
     padding-right: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--small\@sm svg {
+  :is(.cdr-button--small\@sm, .btn--sm\@sm) svg {
     width: 2rem;
     height: 2rem;
   }
 
-  .cdr-button--medium\@sm {
+  :is(.cdr-button--medium\@sm, .btn--md\@sm) {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -723,20 +723,20 @@
     width: auto;
   }
 
-  .cdr-button--medium\@sm.cdr-button--has-icon-left {
+  :is(.cdr-button--medium\@sm, .btn--md\@sm):is(.cdr-button--has-icon-left, .btn--ico-l) {
     padding-left: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--medium\@sm.cdr-button--has-icon-right {
+  :is(.cdr-button--medium\@sm, .btn--md\@sm):is(.cdr-button--has-icon-right, .btn--ico-r) {
     padding-right: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--medium\@sm svg {
+  :is(.cdr-button--medium\@sm, .btn--md\@sm) svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cdr-button--large\@sm {
+  :is(.cdr-button--large\@sm, .btn--lg\@sm) {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -747,27 +747,27 @@
     width: auto;
   }
 
-  .cdr-button--large\@sm.cdr-button--has-icon-left {
+  :is(.cdr-button--large\@sm, .btn--lg\@sm):is(.cdr-button--has-icon-left, .btn--ico-l) {
     padding-left: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--large\@sm.cdr-button--has-icon-right {
+  :is(.cdr-button--large\@sm, .btn--lg\@sm):is(.cdr-button--has-icon-right, .btn--ico-r) {
     padding-right: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--large\@sm svg {
+  :is(.cdr-button--large\@sm, .btn--lg\@sm) svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cdr-button--full-width\@sm {
+  :is(.cdr-button--full-width\@sm, .btn--fw\@sm) {
     width: 100% !important;
     justify-content: center;
   }
 }
 
 @media (--cdr-md) {
-  .cdr-button--small\@md {
+  :is(.cdr-button--small\@md, .btn--sm\@md) {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -778,20 +778,20 @@
     width: auto;
   }
 
-  .cdr-button--small\@md.cdr-button--has-icon-left {
+  :is(.cdr-button--small\@md, .btn--sm\@md):is(.cdr-button--has-icon-left, .btn--ico-l) {
     padding-left: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--small\@md.cdr-button--has-icon-right {
+  :is(.cdr-button--small\@md, .btn--sm\@md):is(.cdr-button--has-icon-right, .btn--ico-r) {
     padding-right: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--small\@md svg {
+  :is(.cdr-button--small\@md, .btn--sm\@md) svg {
     width: 2rem;
     height: 2rem;
   }
 
-  .cdr-button--medium\@md {
+  :is(.cdr-button--medium\@md, .btn--md\@md) {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -802,20 +802,20 @@
     width: auto;
   }
 
-  .cdr-button--medium\@md.cdr-button--has-icon-left {
+  :is(.cdr-button--medium\@md, .btn--md\@md):is(.cdr-button--has-icon-left, .btn--ico-l) {
     padding-left: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--medium\@md.cdr-button--has-icon-right {
+  :is(.cdr-button--medium\@md, .btn--md\@md):is(.cdr-button--has-icon-right, .btn--ico-r) {
     padding-right: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--medium\@md svg {
+  :is(.cdr-button--medium\@md, .btn--md\@md) svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cdr-button--large\@md {
+  :is(.cdr-button--large\@md, .btn--lg\@md) {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -826,27 +826,27 @@
     width: auto;
   }
 
-  .cdr-button--large\@md.cdr-button--has-icon-left {
+  :is(.cdr-button--large\@md, .btn--lg\@md):is(.cdr-button--has-icon-left, .btn--ico-l) {
     padding-left: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--large\@md.cdr-button--has-icon-right {
+  :is(.cdr-button--large\@md, .btn--lg\@md):is(.cdr-button--has-icon-right, .btn--ico-r) {
     padding-right: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--large\@md svg {
+  :is(.cdr-button--large\@md, .btn--lg\@md) svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cdr-button--full-width\@md {
+  :is(.cdr-button--full-width\@md, .btn--fw\@md) {
     width: 100% !important;
     justify-content: center;
   }
 }
 
 @media (--cdr-lg) {
-  .cdr-button--small\@lg {
+  :is(.cdr-button--small\@lg, .btn--sm\@lg) {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -857,20 +857,20 @@
     width: auto;
   }
 
-  .cdr-button--small\@lg.cdr-button--has-icon-left {
+  :is(.cdr-button--small\@lg, .btn--sm\@lg):is(.cdr-button--has-icon-left, .btn--ico-l) {
     padding-left: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--small\@lg.cdr-button--has-icon-right {
+  :is(.cdr-button--small\@lg, .btn--sm\@lg):is(.cdr-button--has-icon-right, .btn--ico-r) {
     padding-right: calc(var(--cdr-space-three-quarter-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--small\@lg svg {
+  :is(.cdr-button--small\@lg, .btn--sm\@lg) svg {
     width: 2rem;
     height: 2rem;
   }
 
-  .cdr-button--medium\@lg {
+  :is(.cdr-button--medium\@lg, .btn--md\@lg) {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -881,20 +881,20 @@
     width: auto;
   }
 
-  .cdr-button--medium\@lg.cdr-button--has-icon-left {
+  :is(.cdr-button--medium\@lg, .btn--md\@lg):is(.cdr-button--has-icon-left, .btn--ico-l) {
     padding-left: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--medium\@lg.cdr-button--has-icon-right {
+  :is(.cdr-button--medium\@lg, .btn--md\@lg):is(.cdr-button--has-icon-right, .btn--ico-r) {
     padding-right: calc(var(--cdr-space-one-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--medium\@lg svg {
+  :is(.cdr-button--medium\@lg, .btn--md\@lg) svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cdr-button--large\@lg {
+  :is(.cdr-button--large\@lg, .btn--lg\@lg) {
     font-family: var(--cdr-font-family-sans);
     font-style: normal;
     font-weight: 500;
@@ -905,20 +905,20 @@
     width: auto;
   }
 
-  .cdr-button--large\@lg.cdr-button--has-icon-left {
+  :is(.cdr-button--large\@lg, .btn--lg\@lg):is(.cdr-button--has-icon-left, .btn--ico-l) {
     padding-left: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--large\@lg.cdr-button--has-icon-right {
+  :is(.cdr-button--large\@lg, .btn--lg\@lg):is(.cdr-button--has-icon-right, .btn--ico-r) {
     padding-right: calc(var(--cdr-space-one-and-a-half-x) - var(--cdr-space-quarter-x));
   }
 
-  .cdr-button--large\@lg svg {
+  :is(.cdr-button--large\@lg, .btn--lg\@lg) svg {
     width: var(--cdr-icon-size);
     height: var(--cdr-icon-size);
   }
 
-  .cdr-button--full-width\@lg {
+  :is(.cdr-button--full-width\@lg, .btn--fw\@lg) {
     width: 100% !important;
     justify-content: center;
   }

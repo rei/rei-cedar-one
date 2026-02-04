@@ -1,4 +1,4 @@
-.cdr-form-error {
+:is(.cdr-form-error, .ferr) {
   font-family: var(
     --cdr-text-utility-sans-300-family,
     var(--cdr-font-family-sans)
@@ -21,7 +21,7 @@
   margin: 0;
 }
 
-.cdr-form-error__icon {
+:is(.cdr-form-error__icon, .ferr__icon) {
   margin-right: var(--cdr-space-quarter-x);
   display: inline-flex;
   align-items: center;
@@ -30,16 +30,16 @@
   vertical-align: middle;
 }
 
-.cdr-form-error__icon svg {
+:is(.cdr-form-error__icon, .ferr__icon) svg {
   display: block;
 }
 
-.cdr-form-error [role] {
+:is(.cdr-form-error, .ferr) [role] {
   display: inline-block;
   vertical-align: middle;
 }
 
-.--active-error {
+:is(.--active-error, .is-err) {
   height: auto;
   padding: var(--cdr-space-quarter-x);
 }

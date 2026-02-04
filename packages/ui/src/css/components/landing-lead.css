@@ -1,41 +1,41 @@
 @import '../../../../tokens/src/breakpoints.css';
 
-.cdr-landing-lead {
+:is(.cdr-landing-lead, .lead) {
   --cdr-split-surface-surface-color: var(
     --cdr-landing-lead-surface-color,
     var(--cdr-color-background-primary)
   );
 }
 
-.cdr-landing-lead__image {
+:is(.cdr-landing-lead__image, .lead__img) {
   --cdr-img-aspect-ratio: 4 / 1;
   --cdr-img-object-fit: cover;
   width: 100%;
 }
 
 @media (--cdr-sm) {
-  .cdr-landing-lead__image {
+  :is(.cdr-landing-lead__image, .lead__img) {
     --cdr-img-aspect-ratio: 4 / 3;
   }
 }
 
 @media (--cdr-xs) {
-  .cdr-landing-lead__image {
+  :is(.cdr-landing-lead__image, .lead__img) {
     --cdr-img-aspect-ratio: 4 / 3;
   }
 }
 
-.cdr-landing-lead__copy-block {
+:is(.cdr-landing-lead__copy-block, .lead__copy) {
   padding: var(--cdr-space-two-x);
 }
 
-.cdr-heading-subheading-block__heading {
+:is(.cdr-heading-subheading-block__heading, .hsb__head) {
   display: block;
   margin: 0 0 var(--cdr-space-one-x);
   max-width: 40ch;
 }
 
-.cdr-heading-subheading-block__subheading {
+:is(.cdr-heading-subheading-block__subheading, .hsb__sub) {
   display: block;
   margin-top: var(--cdr-space-three-quarter-x) !important;
   max-width: 60ch;

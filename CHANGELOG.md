@@ -1,5 +1,10 @@
 # Cedar One Changelog
 
+## 0.1.28-alpha.0 - 2026-02-04
+
+- Added shorthand CSS class aliases and updated linting to validate them.
+- Improved HTML lint reporting granularity and exported lint helpers for future unit tests.
+
 ## 0.1.27-alpha.0 - 2026-02-04
 
 - Moved input component code into per-component folders with colocated types in the Vue and React apps.

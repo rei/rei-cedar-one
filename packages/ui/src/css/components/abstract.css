@@ -1,4 +1,4 @@
-.cdr-abstract {
+:is(.cdr-abstract, .abs) {
   color: var(--cdr-text-color, var(--cdr-color-text-primary));
   margin: 0;
   font-family: var(
@@ -21,7 +21,7 @@
 }
 
 @container cdr-abstract (max-width: 720px) {
-  .cdr-abstract {
+  :is(.cdr-abstract, .abs) {
     font-size: var(--cdr-type-scale-0);
     line-height: var(--cdr-line-height-ratio-subheading-sans-0);
   }
