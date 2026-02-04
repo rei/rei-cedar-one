@@ -1,4 +1,6 @@
 import abstractRules from './rules/abstract-rules.js';
+import accordionRules from './rules/accordion-rules.js';
+import accordionGroupRules from './rules/accordion-group-rules.js';
 import buttonRules from './rules/button-rules.js';
 import captionRules from './rules/caption-rules.js';
 import containerRules from './rules/container-rules.js';
@@ -20,6 +22,8 @@ import titleRules from './rules/title-rules.js';
 
 const rules = {
   ...abstractRules.rules,
+  ...accordionRules.rules,
+  ...accordionGroupRules.rules,
   ...buttonRules.rules,
   ...captionRules.rules,
   ...containerRules.rules,
@@ -44,6 +48,8 @@ const configs = {
   recommended: {
     rules: {
       ...abstractRules.configs.recommended.rules,
+      ...accordionRules.configs.recommended.rules,
+      ...accordionGroupRules.configs.recommended.rules,
       ...buttonRules.configs.recommended.rules,
       ...captionRules.configs.recommended.rules,
       ...containerRules.configs.recommended.rules,
@@ -75,6 +81,8 @@ export { rules, configs };
 export type {
   AbstractClassInfo,
   AbstractTagAnalysis,
+  AccordionGroupTagAnalysis,
+  AccordionTagAnalysis,
   ParsedTag,
   ButtonClassInfo,
   ButtonTagAnalysis,

@@ -145,6 +145,32 @@ export type InputTagAnalysis = {
   hasHelperText: boolean;
 };
 
+export type AccordionTagAnalysis = {
+  tagName: string;
+  classes: string[];
+  accordionClasses: string[];
+  invalidElementClasses: string[];
+  duplicateClasses: string[];
+  info: ModifierAnalysis;
+  hasBase: boolean;
+  hasHeader: boolean;
+  hasHeaderUnwrapped: boolean;
+  hasButton: boolean;
+  hasLabel: boolean;
+  hasIcon: boolean;
+  hasContentContainer: boolean;
+  hasContent: boolean;
+};
+
+export type AccordionGroupTagAnalysis = {
+  tagName: string;
+  classes: string[];
+  groupClasses: string[];
+  invalidClasses: string[];
+  duplicateClasses: string[];
+  hasBase: boolean;
+};
+
 export type TitleClassInfo = ModifierAnalysis;
 
 export type TitleTagAnalysis = {

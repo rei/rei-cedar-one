@@ -1,0 +1,44 @@
+<div
+  class="cdr-accordion cdr-accordion--no-spacing"
+  id="accordion-no-spacing-accordion"
+>
+  <h3 class="cdr-accordion__header">
+    <button
+      type="button"
+      class="cdr-accordion__button js-cdr-accordion-button"
+      id="accordion-no-spacing"
+      aria-expanded="true"
+      aria-controls="accordion-no-spacing-collapsible"
+    >
+      <span class="cdr-accordion__label" id="accordion-no-spacing-label">
+        No content spacing
+      </span>
+      <span class="cdr-accordion__icon cdr-accordion--open" aria-hidden="true">
+        <svg
+          class="cdr-icon cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          {{icon:caret-down}}
+        </svg>
+      </span>
+    </button>
+  </h3>
+  <div class="cdr-accordion__content-container cdr-accordion--open">
+    <div
+      class="cdr-accordion__content cdr-accordion--open"
+      id="accordion-no-spacing-collapsible"
+      aria-hidden="false"
+    >
+      <div
+        style="background:#f4f2ed;padding:12px;border-radius:6px;"
+      >
+        <p class="cdr-text">
+          Removing content spacing allows custom layouts to take up the full
+          width of the accordion content area.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

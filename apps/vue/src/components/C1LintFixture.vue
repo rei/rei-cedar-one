@@ -1,6 +1,7 @@
 <script lang="ts">
 import {
   C1IconAccountProfile,
+  C1IconCaretDown,
   C1IconCheckSm,
   C1IconInformationStroke,
   C1IconSearch,
@@ -11,6 +12,7 @@ export default defineComponent({
   name: 'C1LintFixture',
   components: {
     C1IconAccountProfile,
+    C1IconCaretDown,
     C1IconCheckSm,
     C1IconInformationStroke,
     C1IconSearch,
@@ -400,6 +402,79 @@ export default defineComponent({
             >
               Helper text below the field.
             </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fixture-group">
+      <h3>Accordion</h3>
+      <div class="fixture-stack">
+        <div
+          class="cdr-accordion cdr-accordion--border-aligned"
+          id="fixture-accordion-1-accordion"
+        >
+          <h4 class="cdr-accordion__header">
+            <button
+              type="button"
+              class="cdr-accordion__button js-cdr-accordion-button"
+              id="fixture-accordion-1"
+              aria-expanded="true"
+              aria-controls="fixture-accordion-1-collapsible"
+            >
+              <span class="cdr-accordion__label" id="fixture-accordion-1-label">
+                Border aligned accordion
+              </span>
+              <span class="cdr-accordion__icon cdr-accordion--open">
+                <C1IconCaretDown aria-hidden="true" focusable="false" />
+              </span>
+            </button>
+          </h4>
+          <div class="cdr-accordion__content-container cdr-accordion--open">
+            <div
+              class="cdr-accordion__content cdr-accordion--open"
+              id="fixture-accordion-1-collapsible"
+              aria-hidden="false"
+            >
+              <p class="cdr-text">
+                Accordions reveal supplemental content with an accessible
+                heading and button.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="cdr-accordion cdr-accordion--compact"
+          id="fixture-accordion-2-accordion"
+        >
+          <h4 class="cdr-accordion__header">
+            <button
+              type="button"
+              class="cdr-accordion__button js-cdr-accordion-button"
+              id="fixture-accordion-2"
+              aria-expanded="false"
+              aria-controls="fixture-accordion-2-collapsible"
+            >
+              <span class="cdr-accordion__label" id="fixture-accordion-2-label">
+                Compact accordion
+              </span>
+              <span class="cdr-accordion__icon cdr-accordion--closed">
+                <C1IconCaretDown aria-hidden="true" focusable="false" />
+              </span>
+            </button>
+          </h4>
+          <div class="cdr-accordion__content-container cdr-accordion--closed">
+            <div
+              class="cdr-accordion__content cdr-accordion--closed"
+              id="fixture-accordion-2-collapsible"
+              aria-hidden="true"
+            >
+              <p class="cdr-text">
+                Compact styles reduce spacing and typography size for dense
+                layouts.
+              </p>
+            </div>
           </div>
         </div>
       </div>

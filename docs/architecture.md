@@ -37,10 +37,19 @@ Adapters provide behavior and accessibility wiring when CSS alone cannot reach f
 - **Behavioral parity:** adapters are only introduced for runtime behavior (focus management, ARIA wiring, measurement, keyboard interaction).
 - **Validation scope:** adapters do not implement business rules. They reflect app-provided validity (e.g., error state) and only add runtime validation when parity _requires_ it and the scope is explicitly documented.
 
+### Core vs framework-native adapters
+
+When adapters are required, decide whether to share a vanilla core or implement framework-native adapters directly.
+
+- **Use a shared core** when behavior is non-trivial, parity risk is high, or multiple frameworks must stay in lockstep (ARIA rules, focus management, measurement, keyboard interaction).
+- **Use framework-native adapters** when behavior is minimal or tightly coupled to framework idioms and the shared core would be mostly boilerplate.
+- **Document the decision** per component so parity expectations stay explicit.
+
 ### Core (vanilla TS)
 
 - **Pure state computation:** derive attributes, class toggles, and IDs from a small input state object.
 - **Optional DOM helper:** apply computed state to DOM nodes in plain HTML/JS contexts.
+- **Standard layout:** `core.ts` for compute/state, `dom.ts` for element resolution + DOM wiring, `index.ts` for exports.
 - **Lifecycle surface:** `createInputAdapter({ refs, initialState })` returns `update(nextState)`, `destroy()`, and `getState()` for wiring focus/blur and cleanup.
 
 The core does not implement business validation (e.g., “required” or min/max checks). Contract validation stays in ESLint at build time. Runtime validity is handled case-by-case: most components keep validation app-side and adapters only reflect state via ARIA/class wiring, while any adapter-provided validation must be explicitly scoped and documented when parity requires it.

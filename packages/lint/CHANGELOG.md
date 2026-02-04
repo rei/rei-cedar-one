@@ -1,5 +1,13 @@
 # @rei/c1-lint Changelog
 
+## 0.1.17-alpha.0 - 2026-02-04
+
+- Added shorthand class aliases for accordion classes.
+
+## 0.1.16-alpha.0 - 2026-02-04
+
+- Added accordion and accordion-group lint rules.
+
 ## 0.1.15-alpha.0 - 2026-02-04
 
 - Added class alias support to linting, including HTML tag-level reporting for clearer errors.

@@ -1,0 +1,10 @@
+:is(.cdr-accordion-group, .accg) {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+:is(.cdr-accordion-group, .accg) li + li > :is(.cdr-accordion, .acc) {
+  border-top: none;
+}

@@ -1,5 +1,10 @@
 # @rei/c1-vue Changelog
 
+## 0.1.22-alpha.0 - 2026-02-04
+
+- Added accordion markup coverage to the lint fixture.
+- Added accordion styles to the Vue Storybook preview imports.
+
 ## 0.1.20-alpha.0 - 2026-02-04
 
 - Organized the input component into a dedicated folder with colocated types.

@@ -1,0 +1,296 @@
+:is(.cdr-accordion, .acc) {
+  --cdr-accordion-border: 0.1rem solid
+    var(--cdr-accordion-border-color, var(--cdr-color-border-primary));
+  border-top: var(--cdr-accordion-border);
+  border-bottom: var(--cdr-accordion-border);
+  position: relative;
+  list-style: none;
+}
+
+:is(.cdr-accordion, .acc) + :is(.cdr-accordion, .acc) {
+  border-top: none;
+}
+
+:is(.cdr-accordion__button, .acc__btn) {
+  font-family: var(
+    --cdr-text-utility-sans-strong-300-family,
+    var(--cdr-font-family-sans)
+  );
+  font-style: var(--cdr-text-utility-sans-strong-300-style, normal);
+  font-weight: var(--cdr-text-utility-sans-strong-300-weight, 600);
+  letter-spacing: var(--cdr-text-utility-sans-strong-300-spacing, -0.008rem);
+  font-size: var(--cdr-text-utility-sans-strong-300-size, 1.6rem);
+  line-height: var(--cdr-text-utility-sans-strong-300-height, 2.2rem);
+  background-color: var(--cdr-accordion-button-background-color, transparent);
+  border: none;
+  color: var(
+    --cdr-accordion-button-color,
+    var(--cdr-color-text-primary)
+  );
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--cdr-space-one-x);
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+:is(.cdr-accordion__button, .acc__btn):hover,
+:is(.cdr-accordion__button, .acc__btn):focus {
+  background-color: var(
+    --cdr-accordion-button-background-color-hover,
+    var(--cdr-color-background-accordion-hover)
+  );
+}
+
+:is(.cdr-accordion__label, .acc__lbl) {
+  margin-bottom: 0;
+}
+
+:is(.cdr-accordion__header, .acc__head) {
+  margin: 0;
+  padding: 0;
+  font-weight: unset;
+  font-style: unset;
+  font-size: unset;
+}
+
+:is(.cdr-accordion__header--unwrapped, .acc__head--unw) {
+  font-family: var(
+    --cdr-text-heading-sans-400-family,
+    var(--cdr-font-family-sans)
+  );
+  font-style: var(--cdr-text-heading-sans-400-style, normal);
+  font-weight: var(--cdr-text-heading-sans-400-weight, 500);
+  letter-spacing: var(--cdr-text-heading-sans-400-spacing, 0);
+  font-size: var(--cdr-text-heading-sans-400-size, 1.8rem);
+  line-height: var(--cdr-text-heading-sans-400-height, 2.4rem);
+  margin: var(--cdr-space-one-x) 0;
+}
+
+:is(.cdr-accordion__icon, .acc__icon) {
+  margin-left: var(--cdr-space-one-x);
+  color: var(--cdr-accordion-icon-fill, var(--cdr-color-icon-default));
+  fill: var(--cdr-accordion-icon-fill, var(--cdr-color-icon-default));
+  transition: transform var(--cdr-duration-3-x)
+    var(--cdr-timing-function-ease-out);
+  display: inline-flex;
+  align-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+:is(.cdr-accordion__icon, .acc__icon) svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+:is(.cdr-accordion__icon, .acc__icon):is(.cdr-icon, .icn) {
+  color: var(--cdr-accordion-icon-fill, var(--cdr-color-icon-default));
+  fill: var(--cdr-accordion-icon-fill, var(--cdr-color-icon-default));
+}
+
+:is(.cdr-accordion__icon, .acc__icon):is(.cdr-accordion--open, .acc--open) {
+  transform: rotate(-180deg);
+}
+
+:is(.cdr-accordion__content-container, .acc__cont-wrap) {
+  overflow: hidden;
+  transition-duration: var(--cdr-duration-3-x);
+  transition-property: max-height;
+  transition-timing-function: cubic-bezier(0.15, 0, 0.15, 1);
+}
+
+:is(.cdr-accordion__content-container, .acc__cont-wrap) .cdr-tabs--open {
+  transition-duration: var(--cdr-duration-3-x);
+}
+
+:is(.cdr-accordion__content, .acc__cont) {
+  font-family: var(
+    --cdr-text-body-300-family,
+    var(--cdr-font-family-sans)
+  );
+  font-style: var(--cdr-text-body-300-style, normal);
+  font-weight: var(--cdr-text-body-300-weight, 400);
+  letter-spacing: var(--cdr-text-body-300-spacing, 0.008rem);
+  font-size: var(--cdr-text-body-300-size, 1.6rem);
+  line-height: var(--cdr-text-body-300-height, 2.6rem);
+  background-color: var(--cdr-accordion-content-background-color, transparent);
+  color: var(
+    --cdr-accordion-content-text-color,
+    var(--cdr-color-text-primary)
+  );
+  padding: var(--cdr-space-half-x) var(--cdr-space-one-x)
+    var(--cdr-space-one-x);
+  transition: opacity var(--cdr-duration-1-x) linear;
+  opacity: 0;
+}
+
+:is(.cdr-accordion__content, .acc__cont) > * {
+  font-family: var(
+    --cdr-text-body-300-family,
+    var(--cdr-font-family-sans)
+  );
+  font-style: var(--cdr-text-body-300-style, normal);
+  font-weight: var(--cdr-text-body-300-weight, 400);
+  letter-spacing: var(--cdr-text-body-300-spacing, 0.008rem);
+  font-size: var(--cdr-text-body-300-size, 1.6rem);
+  line-height: var(--cdr-text-body-300-height, 2.6rem);
+}
+
+:is(.cdr-accordion__content, .acc__cont):is(.cdr-accordion--open, .acc--open) {
+  opacity: 1;
+}
+
+:is(.cdr-accordion__content, .acc__cont):is(
+    .cdr-accordion--closed,
+    .acc--closed
+  ) {
+  visibility: hidden;
+}
+
+:is(.cdr-accordion--unwrap, .acc--unw) {
+  padding: 0;
+  border-top: none;
+  border-bottom: none;
+}
+
+:is(.cdr-accordion--unwrap, .acc--unw) :is(
+    .cdr-accordion__icon,
+    .acc__icon
+  ) {
+  display: none;
+}
+
+:is(.cdr-accordion--unwrap, .acc--unw) :is(
+    .cdr-accordion__button,
+    .acc__btn
+  ) {
+  font-family: var(
+    --cdr-text-heading-sans-400-family,
+    var(--cdr-font-family-sans)
+  );
+  font-style: var(--cdr-text-heading-sans-400-style, normal);
+  font-weight: var(--cdr-text-heading-sans-400-weight, 500);
+  letter-spacing: var(--cdr-text-heading-sans-400-spacing, 0);
+  font-size: var(--cdr-text-heading-sans-400-size, 1.8rem);
+  line-height: var(--cdr-text-heading-sans-400-height, 2.4rem);
+  padding: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
+:is(.cdr-accordion--unwrap, .acc--unw) :is(
+    .cdr-accordion__header,
+    .acc__head
+  ) {
+  margin: var(--cdr-space-one-x) 0;
+}
+
+:is(.cdr-accordion--border-aligned, .acc--ba) {
+  margin: 0 var(--cdr-space-one-x);
+}
+
+:is(.cdr-accordion--border-aligned, .acc--ba) :is(
+    .cdr-accordion__button,
+    .acc__btn
+  ) {
+  margin-left: calc(-1 * var(--cdr-space-one-x));
+  width: calc(100% + (var(--cdr-space-one-x) * 2));
+}
+
+:is(.cdr-accordion--border-aligned, .acc--ba) :is(
+    .cdr-accordion__content,
+    .acc__cont
+  ) {
+  padding: var(--cdr-space-half-x) 0 var(--cdr-space-one-x);
+}
+
+:is(.cdr-accordion--no-spacing, .acc--ns) :is(
+    .cdr-accordion__content,
+    .acc__cont
+  ) {
+  padding: 0;
+}
+
+:is(.cdr-accordion--compact, .acc--cmp) :is(
+    .cdr-accordion__button,
+    .acc__btn
+  ) {
+  font-family: var(
+    --cdr-text-utility-sans-strong-200-family,
+    var(--cdr-font-family-sans)
+  );
+  font-style: var(--cdr-text-utility-sans-strong-200-style, normal);
+  font-weight: var(--cdr-text-utility-sans-strong-200-weight, 600);
+  letter-spacing: var(--cdr-text-utility-sans-strong-200-spacing, -0.008rem);
+  font-size: var(--cdr-text-utility-sans-strong-200-size, 1.4rem);
+  line-height: var(--cdr-text-utility-sans-strong-200-height, 1.8rem);
+  padding: var(--cdr-space-three-quarter-x);
+}
+
+:is(.cdr-accordion--compact, .acc--cmp) :is(
+    .cdr-accordion__content,
+    .acc__cont
+  ) {
+  font-family: var(
+    --cdr-text-utility-sans-200-family,
+    var(--cdr-font-family-sans)
+  );
+  font-style: var(--cdr-text-utility-sans-200-style, normal);
+  font-weight: var(--cdr-text-utility-sans-200-weight, 400);
+  letter-spacing: var(--cdr-text-utility-sans-200-spacing, -0.016rem);
+  font-size: var(--cdr-text-utility-sans-200-size, 1.4rem);
+  line-height: var(--cdr-text-utility-sans-200-height, 1.8rem);
+  padding: var(--cdr-space-quarter-x) var(--cdr-space-three-quarter-x)
+    var(--cdr-space-three-quarter-x);
+}
+
+:is(.cdr-accordion--compact, .acc--cmp) :is(
+    .cdr-accordion__content,
+    .acc__cont
+  ) > * {
+  font-family: var(
+    --cdr-text-utility-sans-200-family,
+    var(--cdr-font-family-sans)
+  );
+  font-style: var(--cdr-text-utility-sans-200-style, normal);
+  font-weight: var(--cdr-text-utility-sans-200-weight, 400);
+  letter-spacing: var(--cdr-text-utility-sans-200-spacing, -0.016rem);
+  font-size: var(--cdr-text-utility-sans-200-size, 1.4rem);
+  line-height: var(--cdr-text-utility-sans-200-height, 1.8rem);
+}
+
+:is(.cdr-accordion--compact, .acc--cmp) :is(
+    .cdr-accordion__icon,
+    .acc__icon
+  ) svg {
+  width: 100%;
+  height: 100%;
+}
+
+:is(.cdr-accordion--compact, .acc--cmp) :is(
+    .cdr-accordion__icon,
+    .acc__icon
+  ) {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+:is(.cdr-accordion--compact, .acc--cmp):is(
+    .cdr-accordion--border-aligned,
+    .acc--ba
+  ) :is(.cdr-accordion__button, .acc__btn) {
+  margin-left: calc(-1 * var(--cdr-space-three-quarter-x));
+  width: calc(100% + (var(--cdr-space-three-quarter-x) * 2));
+}
+
+:is(.cdr-accordion--compact, .acc--cmp):is(
+    .cdr-accordion--border-aligned,
+    .acc--ba
+  ) :is(.cdr-accordion__content, .acc__cont) {
+  padding: var(--cdr-space-quarter-x) 0 var(--cdr-space-three-quarter-x);
+}

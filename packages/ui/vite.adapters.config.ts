@@ -6,6 +6,7 @@ export default defineConfig({
     emptyOutDir: false,
     lib: {
       entry: {
+        'accordion/index': 'src/adapters/accordion/index.ts',
         'input/index': 'src/adapters/input/index.ts',
         'input/vue': 'src/adapters/input/vue.ts',
         'input/react': 'src/adapters/input/react.ts',

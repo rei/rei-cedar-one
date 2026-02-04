@@ -28,6 +28,10 @@
     },
     "background": {
       "primary": { "$value": "#ffffff", "$type": "color" },
+      "accordion-hover": {
+        "$value": "#f9f8f6",
+        "$type": "color"
+      },
       "input": {
         "default": {
           "$value": "rgba(244, 242, 237, 0.15)",

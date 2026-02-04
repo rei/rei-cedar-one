@@ -1,0 +1,37 @@
+<div class="cdr-accordion" id="accordion-base-accordion">
+  <h3 class="cdr-accordion__header">
+    <button
+      type="button"
+      class="cdr-accordion__button js-cdr-accordion-button"
+      id="accordion-base"
+      aria-expanded="true"
+      aria-controls="accordion-base-collapsible"
+    >
+      <span class="cdr-accordion__label" id="accordion-base-label">
+        A short label
+      </span>
+      <span class="cdr-accordion__icon cdr-accordion--open" aria-hidden="true">
+        <svg
+          class="cdr-icon cdr-icon--inherit-color"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          {{icon:caret-down}}
+        </svg>
+      </span>
+    </button>
+  </h3>
+  <div class="cdr-accordion__content-container cdr-accordion--open">
+    <div
+      class="cdr-accordion__content cdr-accordion--open"
+      id="accordion-base-collapsible"
+      aria-hidden="false"
+    >
+      <p class="cdr-text">
+        This is some supporting content inside the accordion. Use this pattern
+        to tuck away related details without leaving the page.
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,16 @@
 # @rei/c1-ui Changelog
 
+## 0.1.21-alpha.0 - 2026-02-04
+
+- Split the input adapter into core and DOM modules while keeping exports stable.
+- Added accordion shorthand alias selectors to component CSS.
+- Added the accordion adapter entry to the UI build outputs.
+
+## 0.1.20-alpha.0 - 2026-02-04
+
+- Added accordion and accordion-group component styles.
+- Added a framework-agnostic accordion adapter entry point.
+
 ## 0.1.19-alpha.0 - 2026-02-04
 
 - Added shorthand class aliases across component CSS.

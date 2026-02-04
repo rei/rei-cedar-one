@@ -8,6 +8,8 @@ import '../../../packages/ui/dist/css/reset.css';
 
 // Components
 import '../../../packages/ui/dist/css/components/button.css';
+import '../../../packages/ui/dist/css/components/accordion.css';
+import '../../../packages/ui/dist/css/components/accordion-group.css';
 import '../../../packages/ui/dist/css/components/container.css';
 import '../../../packages/ui/dist/css/components/link.css';
 import '../../../packages/ui/dist/css/components/label-standalone.css';

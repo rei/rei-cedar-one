@@ -1,5 +1,19 @@
 # Cedar One Changelog
 
+## 0.1.30-alpha.0 - 2026-02-04
+
+- Standardized adapter layout with input core/dom modules and updated adapter docs.
+- Added accordion shorthand aliases in CSS and lint alias mappings.
+- Simplified accordion HTML story wiring and ensured accordion styles load in previews.
+- Documented alias and adapter layout requirements in the component task list.
+
+## 0.1.29-alpha.0 - 2026-02-04
+
+- Added accordion component styles, adapters, and Storybook stories.
+- Added accordion lint rules, Vue fixture coverage, and roadmap completion status.
+- Added accordion hover token support for background interactions.
+- Allowlisted icon override custom props in token usage checks.
+
 ## 0.1.28-alpha.0 - 2026-02-04
 
 - Added shorthand CSS class aliases and updated linting to validate them.

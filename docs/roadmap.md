@@ -14,7 +14,7 @@ Directional guide based on Cedar components in `rei-cedar/src/components`.
 6. **Notes:** key behavior or layout constraints.
 7. **Status:** implementation status in this repo.
 
-Progress: 27 / 74 components marked complete (✅).
+Progress: 29 / 74 components marked complete (✅).
 
 <table class="intro-matrix">
   <thead>
@@ -48,7 +48,7 @@ Progress: 27 / 74 components marked complete (✅).
         keyboard; keep CSS for motion.
       </td>
       <td>Adapter: required. Expand/collapse, ARIA, keyboard, and height transitions.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>accordionGroup</td>
@@ -57,7 +57,7 @@ Progress: 27 / 74 components marked complete (✅).
       <td>Vanilla JS/TS</td>
       <td>Yes: <code>&lt;details&gt;</code> reduces toggle JS; group roving focus still needs JS.</td>
       <td>Adapter: required. Group roving focus + breakpoint unwrap behavior.</td>
-      <td>⚪</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>banner</td>
@@ -744,11 +744,15 @@ Progress: 27 / 74 components marked complete (✅).
 2. Token parity: identify required tokens and add them to `packages/tokens/tokens` (use `rei-cedar-tokens` as source of truth). Rebuild dist outputs; do not edit `dist` directly (see `tools/parity/README.md`).
 3. Behavior classification: identify a11y/interaction logic (ARIA, roving tabindex, focus trap, ESC) and decide CSS-only vs adapter.
 4. Adapter plan: prefer vanilla JS for generic web behavior; use framework adapters when schema-driven or framework-specific deps are required.
+   - Decide shared core vs framework-native adapters. Use a shared core for non-trivial behavior or multi-framework parity; allow framework-native adapters when the core would be mostly boilerplate. Document the choice.
+   - When using a shared core, follow the standard layout: `core.ts` (compute/state), `dom.ts` (element resolution + DOM wiring), `index.ts` (exports).
 5. CSS extraction: translate SCSS in `rei-cedar/src/components/<name>/styles` to `packages/ui/src/css/components/<name>.css`, keep values token-backed (no palette vars in component CSS), and derive media queries from source custom media (import `packages/tokens/src/breakpoints.css`).
    - Prefer utility modifier classes over inline style overrides when exposing component APIs.
    - If the component uses `@media (--cdr-*)`, ensure `breakpoints.css` is imported so custom media compiles.
+   - Create shorthand aliases for new components and add them to `packages/lint/src/class-aliases.ts`. When aliases exist, apply them in component CSS selectors using `:is(...)` so aliases and long-form classes share the same styling.
 6. Lint rules: add component rules under `packages/lint/src/rules`, split into focused rules per constraint (like button), register them in `eslint.config.mjs`, and validate in Vue fixtures via `apps/vue/eslint.config.mjs`.
    - Keep lint rule modules consistent by using a typed wrapper helper (import `Rule` from eslint) for rule metadata/check signatures.
+   - Add shorthand aliases for new component classes (base + key elements/modifiers) in `packages/lint/src/class-aliases.ts`, even if stories use long-form classes.
 7. Stories/fixtures: add/update permutations in `apps/html/stories` and in the Vue lint fixture (`apps/vue/src/components/CedarLintFixture.vue`), export it from `apps/vue/src/index.ts`, and keep markup static so ESLint can validate literal class usage.
    - Prefer fully static markup (no loops/helpers) in stories/fixtures so ESLint can validate literal class usage.
    - Structure stories as separate variants (base + each modifier) instead of grouping multiple variants into a single story.

@@ -1,6 +1,6 @@
 {
   "name": "@rei/c1-vue",
-  "version": "0.1.20-alpha.0",
+  "version": "0.1.22-alpha.0",
   "private": true,
   "type": "module",
   "exports": {

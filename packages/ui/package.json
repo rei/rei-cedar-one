@@ -1,6 +1,6 @@
 {
   "name": "@rei/c1-ui",
-  "version": "0.1.19-alpha.0",
+  "version": "0.1.21-alpha.0",
   "private": true,
   "sideEffects": [
     "./dist/css/**"
@@ -9,6 +9,13 @@
     "./fonts.css": "./dist/css/fonts.css",
     "./reset.css": "./dist/css/reset.css",
     "./components/*": "./dist/css/components/*",
+    "./adapters/accordion": {
+      "types": "./dist/adapters/accordion/index.d.ts",
+      "default": "./dist/adapters/accordion/index.js"
+    },
+    "./adapters/accordion/types": {
+      "types": "./dist/adapters/accordion/types.d.ts"
+    },
     "./adapters/input": {
       "types": "./dist/adapters/input/index.d.ts",
       "default": "./dist/adapters/input/index.js"

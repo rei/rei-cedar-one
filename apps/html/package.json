@@ -1,6 +1,6 @@
 {
   "name": "@rei/c1-html",
-  "version": "0.1.18-alpha.0",
+  "version": "0.1.20-alpha.0",
   "private": true,
   "scripts": {
     "lint": "eslint .",

@@ -1,0 +1,88 @@
+<div class="cdr-accordion-group">
+  <div
+    class="cdr-accordion cdr-accordion--border-aligned"
+    id="accordion-border-1-accordion"
+  >
+    <h3 class="cdr-accordion__header">
+      <button
+        type="button"
+        class="cdr-accordion__button js-cdr-accordion-button"
+        id="accordion-border-1"
+        aria-expanded="true"
+        aria-controls="accordion-border-1-collapsible"
+      >
+        <span class="cdr-accordion__label" id="accordion-border-1-label">
+          Border aligned
+        </span>
+        <span
+          class="cdr-accordion__icon cdr-accordion--open"
+          aria-hidden="true"
+        >
+          <svg
+            class="cdr-icon cdr-icon--inherit-color"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            {{icon:caret-down}}
+          </svg>
+        </span>
+      </button>
+    </h3>
+    <div class="cdr-accordion__content-container cdr-accordion--open">
+      <div
+        class="cdr-accordion__content cdr-accordion--open"
+        id="accordion-border-1-collapsible"
+        aria-hidden="false"
+      >
+        <p class="cdr-text">
+          Border-aligned accordions align the rule with the label and icon for a
+          cleaner edge.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="cdr-accordion cdr-accordion--border-aligned"
+    id="accordion-border-2-accordion"
+  >
+    <h3 class="cdr-accordion__header">
+      <button
+        type="button"
+        class="cdr-accordion__button js-cdr-accordion-button"
+        id="accordion-border-2"
+        aria-expanded="false"
+        aria-controls="accordion-border-2-collapsible"
+      >
+        <span class="cdr-accordion__label" id="accordion-border-2-label">
+          Second border aligned item
+        </span>
+        <span
+          class="cdr-accordion__icon cdr-accordion--closed"
+          aria-hidden="true"
+        >
+          <svg
+            class="cdr-icon cdr-icon--inherit-color"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            {{icon:caret-down}}
+          </svg>
+        </span>
+      </button>
+    </h3>
+    <div class="cdr-accordion__content-container cdr-accordion--closed">
+      <div
+        class="cdr-accordion__content cdr-accordion--closed"
+        id="accordion-border-2-collapsible"
+        aria-hidden="true"
+      >
+        <p class="cdr-text">
+          This item starts collapsed to highlight the border alignment.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
