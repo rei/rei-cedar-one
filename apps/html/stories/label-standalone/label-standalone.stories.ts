@@ -6,13 +6,13 @@ import optionalWithHelper from './fragments/optional-with-helper.html?raw';
 import requiredWithHelper from './fragments/required-with-helper.html?raw';
 
 const renderBlock = (content: string) => `
-  <div style="display:grid;gap:16px;max-width:480px;">
+  <div class="c1-story-grid c1-story-gap-16 c1-story-max-480">
     ${content}
   </div>
 `;
 
 export default {
-  title: 'Forms/Label Standalone',
+  title: 'HTML/Forms/Label Standalone',
   tags: ['autodocs'],
   parameters: {
     docs: {

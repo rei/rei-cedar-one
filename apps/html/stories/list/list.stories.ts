@@ -7,13 +7,13 @@ import ordered from './fragments/ordered.html?raw';
 import unordered from './fragments/unordered.html?raw';
 
 const renderBlock = (content: string) => `
-  <div style="display:grid;gap:12px;">
+  <div class="c1-story-grid c1-story-gap-12">
     ${content}
   </div>
 `;
 
 export default {
-  title: 'Typography/List',
+  title: 'HTML/Typography/List',
   tags: ['autodocs'],
   parameters: {
     docs: {

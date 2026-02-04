@@ -6,7 +6,7 @@ import radius from './fragments/radius.html?raw';
 import ratios from './fragments/ratios.html?raw';
 
 export default {
-  title: 'Media/Image',
+  title: 'HTML/Media/Image',
   tags: ['autodocs'],
   parameters: {
     docs: {

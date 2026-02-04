@@ -11,7 +11,7 @@ import serifHeadings from './fragments/serif-headings.html?raw';
 import sizes from './fragments/sizes.html?raw';
 
 export default {
-  title: 'Typography/Prose',
+  title: 'HTML/Typography/Prose',
   tags: ['autodocs'],
   parameters: {
     docs: {

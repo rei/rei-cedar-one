@@ -481,6 +481,80 @@ export default defineComponent({
     </section>
 
     <section class="fixture-group">
+      <h3>Accordion group</h3>
+      <div class="fixture-stack">
+        <div class="cdr-accordion-group">
+          <div class="cdr-accordion" id="fixture-accordion-group-1-accordion">
+            <h4 class="cdr-accordion__header">
+              <button
+                type="button"
+                class="cdr-accordion__button js-cdr-accordion-button"
+                id="fixture-accordion-group-1"
+                aria-expanded="true"
+                aria-controls="fixture-accordion-group-1-collapsible"
+              >
+                <span
+                  class="cdr-accordion__label"
+                  id="fixture-accordion-group-1-label"
+                >
+                  Group accordion one
+                </span>
+                <span class="cdr-accordion__icon cdr-accordion--open">
+                  <C1IconCaretDown aria-hidden="true" focusable="false" />
+                </span>
+              </button>
+            </h4>
+            <div class="cdr-accordion__content-container cdr-accordion--open">
+              <div
+                class="cdr-accordion__content cdr-accordion--open"
+                id="fixture-accordion-group-1-collapsible"
+                aria-hidden="false"
+              >
+                <p class="cdr-text">
+                  Accordion groups support roving focus and shared unwrap
+                  behavior.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cdr-accordion" id="fixture-accordion-group-2-accordion">
+            <h4 class="cdr-accordion__header">
+              <button
+                type="button"
+                class="cdr-accordion__button js-cdr-accordion-button"
+                id="fixture-accordion-group-2"
+                aria-expanded="false"
+                aria-controls="fixture-accordion-group-2-collapsible"
+              >
+                <span
+                  class="cdr-accordion__label"
+                  id="fixture-accordion-group-2-label"
+                >
+                  Group accordion two
+                </span>
+                <span class="cdr-accordion__icon cdr-accordion--closed">
+                  <C1IconCaretDown aria-hidden="true" focusable="false" />
+                </span>
+              </button>
+            </h4>
+            <div class="cdr-accordion__content-container cdr-accordion--closed">
+              <div
+                class="cdr-accordion__content cdr-accordion--closed"
+                id="fixture-accordion-group-2-collapsible"
+                aria-hidden="true"
+              >
+                <p class="cdr-text">
+                  Each item can toggle independently inside the group.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fixture-group">
       <h3>Form error</h3>
       <div class="fixture-stack">
         <div class="cdr-form-error --active-error">

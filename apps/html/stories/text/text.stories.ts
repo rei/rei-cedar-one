@@ -9,7 +9,7 @@ import utilitySansScales from './fragments/utility-sans-scales.html?raw';
 import utilitySerifScales from './fragments/utility-serif-scales.html?raw';
 
 export default {
-  title: 'Typography/Text',
+  title: 'HTML/Typography/Text',
   tags: ['autodocs'],
   parameters: {
     docs: {

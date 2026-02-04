@@ -13,7 +13,7 @@ import preIcon from './fragments/pre-icon.html?raw';
 import secondaryBackground from './fragments/secondary-background.html?raw';
 
 const renderBlock = (content: string) => `
-  <div style="display:grid;gap:16px;max-width:520px;">
+  <div class="c1-story-grid c1-story-gap-16 c1-story-max-520">
     ${content}
   </div>
 `;
@@ -50,7 +50,7 @@ const createInputStory = (content: string) => {
 };
 
 export default {
-  title: 'Forms/Input',
+  title: 'HTML/Forms/Input',
   tags: ['autodocs'],
   parameters: {
     docs: {

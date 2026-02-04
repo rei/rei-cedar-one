@@ -13,6 +13,14 @@
       "types": "./dist/adapters/accordion/index.d.ts",
       "default": "./dist/adapters/accordion/index.js"
     },
+    "./adapters/accordion/vue": {
+      "types": "./dist/adapters/accordion/vue.d.ts",
+      "default": "./dist/adapters/accordion/vue.js"
+    },
+    "./adapters/accordion/react": {
+      "types": "./dist/adapters/accordion/react.d.ts",
+      "default": "./dist/adapters/accordion/react.js"
+    },
     "./adapters/accordion/types": {
       "types": "./dist/adapters/accordion/types.d.ts"
     },
@@ -47,14 +55,14 @@
   },
   "devDependencies": {
     "@rei/c1-lint": "workspace:*",
-    "@types/react": "^18.2.66",
+    "@types/react": "^19.2.11",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "postcss-custom-media": "^12.0.0",
     "postcss-import": "^16.1.1",
-    "react": "^18.2.0",
+    "react": "^19.2.4",
     "vite": "^7.3.1",
-    "vue": "^3.5.13"
+    "vue": "^3.5.27"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",

@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import svgstore from 'svgstore';
-import { optimize } from 'svgo';
+import { optimize, type PluginConfig } from 'svgo';
 
 const rootDir = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -41,20 +41,15 @@ const getViewBox = (svg: string): string | null => {
  * Optimize SVG markup with SVGO.
  * @param svg - Raw SVG markup.
  */
+const svgoPlugins: PluginConfig[] = [
+  { name: 'preset-default' },
+  'removeDimensions',
+];
+
 const optimizeSvg = (svg: string): string =>
   optimize(svg, {
     multipass: true,
-    plugins: [
-      {
-        name: 'preset-default',
-        params: {
-          overrides: {
-            removeViewBox: false,
-          },
-        },
-      },
-      'removeDimensions',
-    ],
+    plugins: svgoPlugins,
   }).data;
 
 type IconMeta = {

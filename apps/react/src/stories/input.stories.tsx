@@ -116,7 +116,7 @@ const InputStory = (args: InputStoryArgs) => {
   };
 
   return (
-    <div style={{ display: 'grid', gap: '16px', maxWidth: '520px' }}>
+    <div className="c1-story-grid c1-story-gap-16 c1-story-max-520">
       <div
         style={
           args.background === 'secondary'

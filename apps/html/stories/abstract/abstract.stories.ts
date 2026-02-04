@@ -3,13 +3,13 @@ import constrainedContainer from './fragments/constrained-container.html?raw';
 import withKickerAndTitle from './fragments/with-kicker-and-title.html?raw';
 
 const renderBlock = (content: string) => `
-  <div style="display:grid;gap:16px;max-width:70ch;">
+  <div class="c1-story-grid c1-story-gap-16 c1-story-max-70ch">
     ${content}
   </div>
 `;
 
 export default {
-  title: 'Typography/Abstract',
+  title: 'HTML/Typography/Abstract',
   tags: ['autodocs'],
   parameters: {
     docs: {

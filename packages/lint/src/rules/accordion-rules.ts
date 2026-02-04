@@ -105,6 +105,7 @@ function analyzeAccordionTag(
 
   return {
     tagName: tagName.toLowerCase(),
+    attrs,
     classes,
     accordionClasses,
     invalidElementClasses,
@@ -225,9 +226,24 @@ const ruleHeaderTag = createAccordionRule({
   }),
   check(analysis, node, context) {
     if (analysis.hasHeader || analysis.hasHeaderUnwrapped) {
-      if (!/^h[1-6]$/.test(analysis.tagName)) {
-        context.report({ node, messageId: 'invalidHeaderTag' });
+      if (/^h[1-6]$/.test(analysis.tagName)) {
+        return;
       }
+      if (analysis.tagName === 'component') {
+        return;
+      }
+      const role = analysis.attrs.get('role');
+      if (role === 'heading') {
+        const ariaLevel = analysis.attrs.get('aria-level');
+        if (
+          ariaLevel === undefined ||
+          ariaLevel === '__EXPR__' ||
+          /^[1-6]$/.test(ariaLevel)
+        ) {
+          return;
+        }
+      }
+      context.report({ node, messageId: 'invalidHeaderTag' });
     }
   },
 });

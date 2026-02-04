@@ -2,13 +2,13 @@ import summaryOnly from './fragments/summary-only.html?raw';
 import summaryWithCredit from './fragments/summary-with-credit.html?raw';
 
 const renderBlock = (content: string) => `
-  <div style="display:grid;gap:12px;">
+  <div class="c1-story-grid c1-story-gap-12">
     ${content}
   </div>
 `;
 
 export default {
-  title: 'Typography/Caption',
+  title: 'HTML/Typography/Caption',
   tags: ['autodocs'],
   parameters: {
     docs: {

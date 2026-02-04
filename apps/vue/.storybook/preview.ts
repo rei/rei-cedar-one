@@ -5,6 +5,7 @@ import '../../../packages/tokens/dist/css/components.css';
 // Base
 import '../../../packages/ui/dist/css/fonts.css';
 import '../../../packages/ui/dist/css/reset.css';
+import '../../storybook/storybook.css';
 
 // Components
 import '../../../packages/ui/dist/css/components/button.css';

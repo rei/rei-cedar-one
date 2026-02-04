@@ -1,5 +1,13 @@
 # Cedar One Changelog
 
+## 0.1.31-alpha.0 - 2026-02-04
+
+- Updated workspace dependencies to latest versions and stabilized icon build config for svgo v4.
+- Added shared Storybook layout utilities and replaced inline story wrapper styles.
+- Namespaced HTML Storybook titles under the HTML root.
+- Added Storybook favicons for HTML, Vue, and React previews/manager UI.
+- Aligned accordion component parity across Vue/React (unwrapped behavior, context wiring) and refreshed stories.
+
 ## 0.1.30-alpha.0 - 2026-02-04
 
 - Standardized adapter layout with input core/dom modules and updated adapter docs.

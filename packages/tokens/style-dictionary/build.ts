@@ -308,6 +308,11 @@ const webTransforms = [
 const sd = new StyleDictionary({
   source: ['tokens/**/*.json'],
   usesDtcg: true,
+  log: {
+    errors: {
+      brokenReferences: 'console',
+    },
+  },
   platforms: {
     web: {
       transforms: webTransforms,

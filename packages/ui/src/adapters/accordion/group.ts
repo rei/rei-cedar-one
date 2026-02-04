@@ -64,7 +64,7 @@ export const createAccordionGroupAdapter = (
   const {
     element,
     unwrap = false,
-    accordionSelector = '.cdr-accordion, .cdr-accordion--unwrap',
+    accordionSelector = '.cdr-accordion',
     initialAccordionState = {},
     accordionAdapterOptions,
   } = options;

@@ -69,13 +69,9 @@ const renderInput = (args: InputStoryArgs) => ({
     );
     const normalizedSize = computed(() => args.size || undefined);
     const normalizedRows = computed(() => args.rows || 1);
-    const wrapperStyle = computed(() =>
+    const wrapperClass = computed(() =>
       args.background === 'secondary'
-        ? {
-            background: 'var(--cdr-color-background-input-default-active)',
-            padding: '16px',
-            borderRadius: '12px',
-          }
+        ? 'c1-story-bg-input-active c1-story-pad-16 c1-story-radius-12'
         : undefined,
     );
 
@@ -85,12 +81,12 @@ const renderInput = (args: InputStoryArgs) => ({
       errorValue,
       normalizedSize,
       normalizedRows,
-      wrapperStyle,
+      wrapperClass,
     };
   },
   template: `
-    <div style="display:grid;gap:16px;max-width:520px">
-      <div v-if="wrapperStyle" :style="wrapperStyle">
+    <div class="c1-story-grid c1-story-gap-16 c1-story-max-520">
+      <div v-if="wrapperClass" :class="wrapperClass">
         <C1Input
           :label="args.label"
           :type="args.type"
@@ -228,7 +224,7 @@ const meta = {
   excludeStories: /.*Data$/,
   decorators: [
     () => ({
-      template: '<div style="margin: 3em;"><story/></div>',
+      template: '<div class="c1-story-margin-3em"><story/></div>',
     }),
   ],
   args: {

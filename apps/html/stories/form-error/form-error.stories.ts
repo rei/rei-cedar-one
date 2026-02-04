@@ -2,13 +2,13 @@ import active from './fragments/active.html?raw';
 import base from './fragments/base.html?raw';
 
 const renderBlock = (content: string) => `
-  <div style="display:grid;gap:16px;max-width:480px;">
+  <div class="c1-story-grid c1-story-gap-16 c1-story-max-480">
     ${content}
   </div>
 `;
 
 export default {
-  title: 'Forms/Form Error',
+  title: 'HTML/Forms/Form Error',
   tags: ['autodocs'],
   parameters: {
     docs: {

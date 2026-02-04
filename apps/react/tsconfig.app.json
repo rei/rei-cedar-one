@@ -3,6 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@rei/c1-ui/adapters/accordion": [
+        "../../packages/ui/src/adapters/accordion/index.ts"
+      ],
+      "@rei/c1-ui/adapters/accordion/react": [
+        "../../packages/ui/src/adapters/accordion/react.ts"
+      ],
       "@rei/c1-ui/adapters/input/react": [
         "../../packages/ui/src/adapters/input/react.ts"
       ]

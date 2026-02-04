@@ -1,6 +1,6 @@
 {
   "name": "@rei/c1",
-  "version": "0.1.30-alpha.0",
+  "version": "0.1.31-alpha.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -43,22 +43,22 @@
   "devDependencies": {
     "@chromatic-com/storybook": "5.0.0",
     "@eslint/js": "latest",
-    "@html-eslint/parser": "^0.24.1",
+    "@html-eslint/parser": "^0.54.0",
     "@rei/c1-lint": "workspace:*",
-    "@storybook/addon-docs": "10.2.0",
-    "@storybook/addon-onboarding": "10.2.0",
-    "@storybook/addon-vitest": "10.2.0",
-    "@storybook/html-vite": "10.2.0",
-    "@storybook/vue3-vite": "10.2.0",
-    "@types/node": "^24.10.1",
+    "@storybook/addon-docs": "10.2.6",
+    "@storybook/addon-onboarding": "10.2.6",
+    "@storybook/addon-vitest": "10.2.6",
+    "@storybook/html-vite": "10.2.6",
+    "@storybook/vue3-vite": "10.2.6",
+    "@types/node": "^25.2.0",
     "eslint": "latest",
-    "globals": "^15.12.0",
+    "globals": "^17.3.0",
     "husky": "latest",
     "lint-staged": "latest",
     "prettier": "latest",
-    "storybook": "10.2.0",
-    "typescript": "^5.6.3",
+    "storybook": "10.2.6",
+    "typescript": "^5.9.3",
     "typescript-eslint": "latest",
-    "vue-eslint-parser": "^9.4.3"
+    "vue-eslint-parser": "^10.2.0"
   }
 }

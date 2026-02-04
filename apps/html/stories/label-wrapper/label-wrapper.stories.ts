@@ -6,13 +6,13 @@ import secondary from './fragments/secondary.html?raw';
 import sizes from './fragments/sizes.html?raw';
 
 const renderBlock = (content: string) => `
-  <div style="display:grid;gap:16px;max-width:480px;">
+  <div class="c1-story-grid c1-story-gap-16 c1-story-max-480">
     ${content}
   </div>
 `;
 
 export default {
-  title: 'Forms/Label Wrapper',
+  title: 'HTML/Forms/Label Wrapper',
   tags: ['autodocs'],
   parameters: {
     docs: {

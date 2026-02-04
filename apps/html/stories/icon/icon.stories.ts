@@ -5,7 +5,7 @@ import sizes from './fragments/sizes.html?raw';
 import sprite from './fragments/sprite.html?raw';
 
 export default {
-  title: 'Utilities/Icon',
+  title: 'HTML/Utilities/Icon',
   tags: ['autodocs'],
   parameters: {
     docs: {

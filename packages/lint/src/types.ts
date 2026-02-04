@@ -147,6 +147,7 @@ export type InputTagAnalysis = {
 
 export type AccordionTagAnalysis = {
   tagName: string;
+  attrs: Map<string, string>;
   classes: string[];
   accordionClasses: string[];
   invalidElementClasses: string[];

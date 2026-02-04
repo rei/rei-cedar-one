@@ -156,6 +156,8 @@ const applyUnwrapped = (
   isUnwrapped: boolean,
 ): void => {
   toggleClass(refs.root, UNWRAP_CLASS, isUnwrapped);
+  toggleClass(refs.contentContainer, UNWRAP_CLASS, isUnwrapped);
+  toggleClass(refs.content, UNWRAP_CLASS, isUnwrapped);
 };
 
 /**

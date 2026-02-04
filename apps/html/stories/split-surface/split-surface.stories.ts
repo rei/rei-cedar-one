@@ -2,7 +2,7 @@ import bottom from './fragments/bottom.html?raw';
 import top from './fragments/top.html?raw';
 
 export default {
-  title: 'Layout/Split Surface',
+  title: 'HTML/Layout/Split Surface',
   tags: ['autodocs'],
   parameters: {
     docs: {

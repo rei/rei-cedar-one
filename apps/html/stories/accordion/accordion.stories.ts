@@ -11,7 +11,7 @@ import noSpacing from './fragments/no-spacing.html?raw';
 import unwrapped from './fragments/unwrapped.html?raw';
 
 const renderBlock = (content: string) => `
-  <div style="display:grid;gap:16px;max-width:680px;">
+  <div class="c1-story-grid c1-story-gap-16 c1-story-max-680">
     ${content}
   </div>
 `;
@@ -68,7 +68,7 @@ const createAccordionStory = (content: string) => {
 };
 
 export default {
-  title: 'Components/Accordion',
+  title: 'HTML/Disclosure/Accordion',
   tags: ['autodocs'],
   parameters: {
     docs: {

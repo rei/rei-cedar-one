@@ -13,7 +13,7 @@ const renderContainer = (variant: ContainerVariant) =>
   CONTAINER_MARKUP[variant];
 
 export default {
-  title: 'Layout/Container',
+  title: 'HTML/Layout/Container',
   tags: ['autodocs'],
   parameters: {
     docs: {

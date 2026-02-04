@@ -3,7 +3,7 @@ import buttonTag from './fragments/button-tag.html?raw';
 import modifiers from './fragments/modifiers.html?raw';
 
 export default {
-  title: 'Controls/Link',
+  title: 'HTML/Controls/Link',
   tags: ['autodocs'],
   parameters: {
     docs: {

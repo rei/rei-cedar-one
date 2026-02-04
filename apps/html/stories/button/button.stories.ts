@@ -11,7 +11,7 @@ import sizes from './fragments/sizes.html?raw';
 import withIcons from './fragments/with-icons.html?raw';
 
 export default {
-  title: 'Controls/Button',
+  title: 'HTML/Controls/Button',
   tags: ['autodocs'],
   parameters: {
     docs: {

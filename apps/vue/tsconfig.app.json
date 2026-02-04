@@ -1,6 +1,18 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@rei/c1-ui/adapters/accordion": [
+        "../../packages/ui/src/adapters/accordion/index.ts"
+      ],
+      "@rei/c1-ui/adapters/accordion/vue": [
+        "../../packages/ui/src/adapters/accordion/vue.ts"
+      ],
+      "@rei/c1-ui/adapters/input/vue": [
+        "../../packages/ui/src/adapters/input/vue.ts"
+      ]
+    },
     "declaration": true,
     "emitDeclarationOnly": true,
     "declarationDir": "./dist/types",

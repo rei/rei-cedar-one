@@ -2,7 +2,7 @@ import defaultLead from './fragments/default.html?raw';
 import onPalette from './fragments/on-palette.html?raw';
 
 export default {
-  title: 'Layout/Landing Lead',
+  title: 'HTML/Layout/Landing Lead',
   tags: ['autodocs'],
   parameters: {
     docs: {
