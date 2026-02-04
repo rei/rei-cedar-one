@@ -1,5 +1,9 @@
 # Cedar One Changelog
 
+## 0.1.33-alpha.0 - 2026-02-04
+
+- Added GitHub Pages workflow to build and deploy HTML, Vue, and React Storybooks under subpaths.
+
 ## 0.1.32-alpha.0 - 2026-02-04
 
 - Converted options token sources to DTCG format so references resolve and token CSS outputs avoid collisions.
