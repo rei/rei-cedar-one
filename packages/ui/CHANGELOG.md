@@ -1,5 +1,10 @@
 # @rei/c1-ui Changelog
 
+## 0.1.22-alpha.0 - 2026-02-05
+
+- Tuned prose heading weight alignment and small-prose line-height tokens.
+- Added a configurable prose heading margin scale and updated spacing defaults.
+
 ## 0.1.21-alpha.0 - 2026-02-04
 
 - Split the input adapter into core and DOM modules while keeping exports stable.

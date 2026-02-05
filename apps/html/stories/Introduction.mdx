@@ -1,11 +1,29 @@
-<div className="sb-unstyled cdr-prose c1-story-pad-24 c1-story-max-640">
+<div className="sb-unstyled cdr-prose cdr-prose--sm c1-story-pad-24 c1-story-max-640">
 
-<h1 className="cdr-not-prose cdr-title">Cedar One</h1>
+<h1 className="cdr-title">Cedar One</h1>
+{/* 
+<div className="cdr-not-prose c1-story-mt-8">
+  <ul className="cdr-list cdr-list--inline cdr-list--compact cdr-list--unordered cdr-eyebrow">
+    <li>
+      <a className="cdr-link" href="https://github.com/rei/rei-cedar-one">
+        GitHub
+      </a>
+    </li>
+    <li>
+      <a className="cdr-link" href="https://rei.github.io/rei-cedar-one/vue">
+        Vue Storybook
+      </a>
+    </li>
+    <li>
+      <a className="cdr-link" href="https://rei.github.io/rei-cedar-one/react">
+        React Storybook
+      </a>
+    </li>
+  </ul>
+</div> */}
 
 Cedar One provides a framework-agnostic, CSS-first foundation for <a className="cdr-link" href="http://cedar.rei.com">Cedar</a>.
 Tokens define design intent. Components ship as native HTML and static CSS, with behavior added only when needed.
-
-<div className="cdr-not-prose c1-story-my-48" />
 
 ### A CSS-first component system
 
@@ -15,24 +33,18 @@ Tokens define design intent. Components ship as native HTML and static CSS, with
 </button>
 ```
 
-<div className="c1-story-mt-16" />
-
-Renders this: <button type="button" className="cdr-button cdr-button--primary">{`Add to cart`}</button>
-
-No runtime JavaScript required.
-
-<div className="cdr-not-prose c1-story-my-48" />
+Result: <button type="button" className="cdr-button cdr-button--primary">{`Add to cart`}</button> — no runtime JavaScript required.
 
 ### Contracts, enforced before runtime
 
 Instead of shipping validation logic inside framework components, Cedar One enforces
 component contracts at development and build time using ESLint and tooling.
 
-<p className="cdr-text c1-story-inline-flex c1-story-align-center c1-story-gap-4">
+<h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
   <svg
     aria-hidden="true"
     focusable="false"
-    className="cdr-icon cdr-icon--large c1-story-block"
+    className="cdr-icon cdr-icon--large"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -40,28 +52,27 @@ component contracts at development and build time using ESLint and tooling.
   >
     <use href="#x-stroke" />
   </svg>
-  <strong>Runtime validation</strong>
-</p>
+  <span>Runtime validation</span>
+</h4>
 
-Runtime validation increases shipped JavaScript and expands the surface area to maintain.
+Runtime validation increases shipped JavaScript and expands the surface area to maintain:
 
-```vue
-<!-- Pseudo-code: runtime prop validation inside a framework component -->
-<script setup lang="ts">
+```ts
+import { defineProps } from 'vue';
+
 defineProps({
   variant: {
     type: String,
     validator: (value) => ['primary', 'secondary', 'dark'].includes(value),
   },
 });
-</script>
 ```
 
-<p className="cdr-text c1-story-inline-flex c1-story-align-center c1-story-gap-4">
+<h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
   <svg
     aria-hidden="true"
     focusable="false"
-    className="cdr-icon cdr-icon--large c1-story-block"
+    className="cdr-icon cdr-icon--large"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -69,12 +80,10 @@ defineProps({
   >
     <use href="#check-stroke" />
   </svg>
-  <strong>Dev-time validation</strong>
-</p>
+  <span>Development-time validation</span>
+</h4>
 
-Dev-time validation keeps production markup simple and runtime lean.
-
-Example: catching an unknown modifier.
+So we keep runtime lean and push checks earlier. Here’s what an unknown modifier looks like:
 
 ```ts
 const BASE = 'cdr-button';
@@ -105,16 +114,11 @@ Result:
   alt="Example ESLint error showing an unknown Cedar One class modifier."
 />
 
-<div className="cdr-not-prose c1-story-my-48" />
-
 ### Adapters at the edges
 
-JavaScript is introduced only where behavior is required and CSS cannot close the parity gap.
+We only reach for JavaScript when <a href="./?path=/docs/html-disclosure-accordion--docs">behavior</a> is unavoidable and CSS can’t cover the gap.
 
-- <a href="./?path=/docs/html-forms-input--docs">Input</a>
-- <a href="./?path=/docs/html-disclosure-accordion--docs">Accordion</a>
-
-These behaviors live in small, framework-agnostic adapters that Vue and React can wrap when needed.
+Those behaviors live in small, framework-agnostic adapters that Vue and React can wrap when needed.
 
 In HTML, attach an adapter to the rendered DOM:
 
@@ -133,8 +137,6 @@ import { useAccordionAdapter } from '@rei/c1-ui/adapters/accordion/vue';
 
 useAccordionAdapter({ refs, state });
 ```
-
-<div className="cdr-not-prose c1-story-my-48" />
 
 ### Design principles
 

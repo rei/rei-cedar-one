@@ -1,5 +1,10 @@
 # @rei/c1-html Changelog
 
+## 0.1.21-alpha.0 - 2026-02-05
+
+- Refined the HTML Storybook introduction content and layout.
+- Streamlined intro examples and adapter explanation copy.
+
 ## 0.1.20-alpha.0 - 2026-02-04
 
 - Simplified accordion story adapter wiring and loaded accordion styles in previews.

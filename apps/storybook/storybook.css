@@ -98,6 +98,10 @@
   align-items: center;
 }
 
+.c1-story-align-baseline {
+  align-items: baseline;
+}
+
 .c1-story-justify-center {
   justify-content: center;
 }
@@ -207,6 +211,7 @@
 .c1-story-block {
   display: block;
 }
+
 
 .c1-story-split-surface-white {
   --cdr-split-surface-surface-color: #ffffff;

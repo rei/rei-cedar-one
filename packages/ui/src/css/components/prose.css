@@ -14,6 +14,7 @@
   --cdr-prose-heading-weight: 500;
   --cdr-prose-h1-size: var(--cdr-type-scale-4);
   --cdr-prose-h1-line-height: var(--cdr-line-height-ratio-heading-4);
+  --cdr-prose-h1-weight: 400;
   --cdr-prose-h2-size: var(--cdr-type-scale-3);
   --cdr-prose-h2-line-height: var(--cdr-line-height-ratio-heading-3);
   --cdr-prose-h3-size: var(--cdr-type-scale-2);
@@ -21,10 +22,11 @@
   --cdr-prose-h4-size: var(--cdr-type-scale-1);
   --cdr-prose-h4-line-height: var(--cdr-line-height-ratio-subheading-sans-1);
   --cdr-prose-h5-size: var(--cdr-type-scale-0);
-  --cdr-prose-h5-line-height: var(--cdr-line-height-ratio-utility-1);
+  --cdr-prose-h5-line-height: var(--cdr-line-height-ratio-subheading-sans-0);
   --cdr-prose-space-1: var(--cdr-space-quarter-x);
   --cdr-prose-space-2: var(--cdr-space-one-x);
   --cdr-prose-space-3: var(--cdr-space-two-x);
+  --cdr-prose-heading-margin-scale: 0.85;
   --cdr-prose-block-margin: calc(var(--cdr-prose-font-size) * 0.5);
   --cdr-prose-radius: var(--cdr-radius-softer);
   color: var(--cdr-prose-text);
@@ -34,11 +36,12 @@
 }
 
 :is(.cdr-prose--sm, .prose--sm) {
-  --cdr-prose-font-size: var(--cdr-type-scale-minus-1);
-  --cdr-prose-line-height: var(--cdr-line-height-ratio-body-0);
+  --cdr-prose-font-size: var(--cdr-text-utility-sans-300-size);
+  --cdr-prose-line-height: var(--cdr-text-body-300-height);
   --cdr-prose-space-1: var(--cdr-space-quarter-x);
   --cdr-prose-space-2: var(--cdr-space-three-quarter-x);
   --cdr-prose-space-3: var(--cdr-space-one-and-a-half-x);
+  --cdr-prose-heading-margin-scale: 0.68;
 }
 
 :is(.cdr-prose--lg, .prose--lg) {
@@ -95,7 +98,9 @@
   font-style: normal;
   font-weight: var(--cdr-prose-heading-weight);
   letter-spacing: 0;
-  margin-block: calc(var(--cdr-prose-heading-size) * 0.5);
+  margin-block: calc(
+    var(--cdr-prose-heading-size) * var(--cdr-prose-heading-margin-scale)
+  );
   font-size: var(--cdr-prose-heading-size);
   line-height: var(--cdr-prose-heading-line-height);
 }
@@ -112,6 +117,7 @@
     :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
   ) {
   --cdr-prose-heading-font-family: var(--cdr-font-family-serif);
+  --cdr-prose-heading-weight: var(--cdr-prose-h1-weight);
   --cdr-prose-heading-size: var(--cdr-prose-h1-size);
   --cdr-prose-heading-line-height: var(--cdr-prose-h1-line-height);
 }

@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.40-alpha.0 - 2026-02-05
+
+- Refined the HTML Storybook introduction copy and layout.
+- Adjusted prose heading spacing and small prose line-height tokens for tighter typography control.
+- Updated shared storybook utilities used by the HTML intro.
+
 ## 0.1.39-alpha.0 - 2026-02-04
 
 - Set HTML Storybook introduction as the first story and fixed its internal links.
