@@ -1,5 +1,9 @@
 # Cedar One Changelog
 
+## 0.1.39-alpha.0 - 2026-02-04
+
+- Set HTML Storybook introduction as the first story and fixed its internal links.
+
 ## 0.1.38-alpha.0 - 2026-02-04
 
 - Refined the HTML Storybook introduction and added storybook utility spacing.
