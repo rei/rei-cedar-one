@@ -184,8 +184,8 @@
   margin-top: 8px;
 }
 
-.c1-story-mt-16 {
-  margin-top: 16px;
+.c1-story-mt-24 {
+  margin-top: 24px;
 }
 
 .c1-story-my-24 {
@@ -211,7 +211,6 @@
 .c1-story-block {
   display: block;
 }
-
 
 .c1-story-split-surface-white {
   --cdr-split-surface-surface-color: #ffffff;
