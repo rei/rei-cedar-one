@@ -1,15 +1,13 @@
 <div className="sb-unstyled cdr-prose c1-story-pad-24 c1-story-max-640">
 
-## Cedar One
+<h1 className="cdr-not-prose cdr-title">Cedar One</h1>
 
-This Storybook is the baseline catalog for Cedar One: plain HTML and static CSS.
-It anchors visual parity with `rei-cedar` while keeping the system portable and light.
+Cedar One provides a framework-agnostic, CSS-first foundation for <a className="cdr-link" href="http://cedar.rei.com">Cedar</a>.
+Tokens define design intent. Components ship as native HTML and static CSS, with behavior added only when needed.
+
+<div className="cdr-not-prose c1-story-my-48" />
 
 ### A CSS-first component system
-
-Cedar One reimagines <a className="cdr-link" href="http://cedar.rei.com">Cedar</a> as a framework-agnostic, CSS-first component system.
-
-Tokens define design intent. Styles resolve to native HTML and static CSS. Behavior is added only where parity and accessibility require it.
 
 ```html
 <button class="cdr-button cdr-button--primary" type="button">
@@ -17,17 +15,13 @@ Tokens define design intent. Styles resolve to native HTML and static CSS. Behav
 </button>
 ```
 
-Renders this:
+<div className="c1-story-mt-16" />
 
-<div className="c1-story-flex c1-story-justify-start">
-  <button type="button" className="cdr-button cdr-button--primary">
-    {`Add to cart`}
-  </button>
-</div>
+Renders this: <button type="button" className="cdr-button cdr-button--primary">{`Add to cart`}</button>
 
 No runtime JavaScript required.
 
-<hr className="cdr-not-prose c1-story-my-48" />
+<div className="cdr-not-prose c1-story-my-48" />
 
 ### Contracts, enforced before runtime
 
@@ -111,7 +105,7 @@ Result:
   alt="Example ESLint error showing an unknown Cedar One class modifier."
 />
 
-<hr className="cdr-not-prose c1-story-my-48" />
+<div className="cdr-not-prose c1-story-my-48" />
 
 ### Adapters at the edges
 
@@ -140,7 +134,7 @@ import { useAccordionAdapter } from '@rei/c1-ui/adapters/accordion/vue';
 useAccordionAdapter({ refs, state });
 ```
 
-<hr className="cdr-not-prose c1-story-my-48" />
+<div className="cdr-not-prose c1-story-my-48" />
 
 ### Design principles
 
