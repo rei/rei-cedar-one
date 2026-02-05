@@ -23,8 +23,12 @@ Explore the system:
 
 ## Packages
 
-| Package          | Description                          |
-| ---------------- | ------------------------------------ |
-| `@rei/c1-tokens` | Design tokens and platform outputs   |
-| `@rei/c1-ui`     | CSS and behavior adapters            |
-| `@rei/c1-lint`   | ESLint rules for component contracts |
+| Name             | Description                                  |
+| ---------------- | -------------------------------------------- |
+| `@rei/c1-tokens` | Design tokens and platform outputs           |
+| `@rei/c1-ui`     | CSS, component styles, and behavior adapters |
+| `@rei/c1-icons`  | Icon assets and framework wrappers           |
+| `@rei/c1-lint`   | ESLint rules for component contracts         |
+| `@rei/c1-html`   | HTML Storybook for CSS-first components      |
+| `@rei/c1-vue`    | Vue component library and Storybook          |
+| `@rei/c1-react`  | React component library and Storybook        |
