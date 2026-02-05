@@ -1,5 +1,9 @@
 # Cedar One Changelog
 
+## 0.1.38-alpha.0 - 2026-02-04
+
+- Refined the HTML Storybook introduction and added storybook utility spacing.
+
 ## 0.1.37-alpha.0 - 2026-02-04
 
 - Added Storybook links to the README.

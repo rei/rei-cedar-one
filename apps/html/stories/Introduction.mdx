@@ -1,0 +1,156 @@
+<div className="sb-unstyled cdr-prose c1-story-pad-24 c1-story-max-640">
+
+## Cedar One
+
+This Storybook is the baseline catalog for Cedar One: plain HTML and static CSS.
+It anchors visual parity with `rei-cedar` while keeping the system portable and light.
+
+### A CSS-first component system
+
+Cedar One reimagines <a className="cdr-link" href="http://cedar.rei.com">Cedar</a> as a framework-agnostic, CSS-first component system.
+
+Tokens define design intent. Styles resolve to native HTML and static CSS. Behavior is added only where parity and accessibility require it.
+
+```html
+<button class="cdr-button cdr-button--primary" type="button">
+  Add to cart
+</button>
+```
+
+Renders this:
+
+<div className="c1-story-flex c1-story-justify-start">
+  <button type="button" className="cdr-button cdr-button--primary">
+    {`Add to cart`}
+  </button>
+</div>
+
+No runtime JavaScript required.
+
+<hr className="cdr-not-prose c1-story-my-48" />
+
+### Contracts, enforced before runtime
+
+Instead of shipping validation logic inside framework components, Cedar One enforces
+component contracts at development and build time using ESLint and tooling.
+
+<p className="cdr-text c1-story-inline-flex c1-story-align-center c1-story-gap-4">
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    className="cdr-icon cdr-icon--large c1-story-block"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    style={{ '--cdr-icon-fill-default': 'var(--cdr-color-text-input-error)' }}
+  >
+    <use href="#x-stroke" />
+  </svg>
+  <strong>Runtime validation</strong>
+</p>
+
+Runtime validation increases shipped JavaScript and expands the surface area to maintain.
+
+```vue
+<!-- Pseudo-code: runtime prop validation inside a framework component -->
+<script setup lang="ts">
+defineProps({
+  variant: {
+    type: String,
+    validator: (value) => ['primary', 'secondary', 'dark'].includes(value),
+  },
+});
+</script>
+```
+
+<p className="cdr-text c1-story-inline-flex c1-story-align-center c1-story-gap-4">
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    className="cdr-icon cdr-icon--large c1-story-block"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    style={{ '--cdr-icon-fill-default': '#3b8349' }}
+  >
+    <use href="#check-stroke" />
+  </svg>
+  <strong>Dev-time validation</strong>
+</p>
+
+Dev-time validation keeps production markup simple and runtime lean.
+
+Example: catching an unknown modifier.
+
+```ts
+const BASE = 'cdr-button';
+
+function lintButtonClassList(classList: string[]) {
+  assertHasBaseClass(classList, BASE);
+  for (const cls of classList) {
+    if (cls.startsWith(`${BASE}--`) && !isKnownModifier(cls)) {
+      reportUnknownModifier(cls);
+    }
+  }
+}
+```
+
+Example (typo):
+
+```html
+<button class="cdr-button cdr-button--prmiary" type="button">
+  Add to cart
+</button>
+```
+
+Result:
+
+<img
+  className="cdr-image cdr-image--fit-contain cdr-image--radius-softer"
+  src="assets/lint-error.png"
+  alt="Example ESLint error showing an unknown Cedar One class modifier."
+/>
+
+<hr className="cdr-not-prose c1-story-my-48" />
+
+### Adapters at the edges
+
+JavaScript is introduced only where behavior is required and CSS cannot close the parity gap.
+
+- <a href="/?path=/docs/html-forms-input--docs">Input</a>
+- <a href="/?path=/docs/html-disclosure-accordion--docs">Accordion</a>
+
+These behaviors live in small, framework-agnostic adapters that Vue and React can wrap when needed.
+
+In HTML, attach an adapter to the rendered DOM:
+
+```ts
+import { createAccordionAdapterFromElement } from '@rei/c1-ui/adapters/accordion';
+
+document
+  .querySelectorAll<HTMLElement>('.cdr-accordion')
+  .forEach((element) => createAccordionAdapterFromElement({ element }));
+```
+
+In Vue and React, composables wire refs and lifecycle while reusing the same headless core:
+
+```ts
+import { useAccordionAdapter } from '@rei/c1-ui/adapters/accordion/vue';
+
+useAccordionAdapter({ refs, state });
+```
+
+<hr className="cdr-not-prose c1-story-my-48" />
+
+### Design principles
+
+Cedar One is guided by a small set of system-level principles that shape how components are authored, validated, and shipped.
+
+- **Single source of truth**: Tokens define design intent once and drive outputs across platforms.
+- **Static by default**: HTML and CSS are preferred over runtime abstractions wherever possible.
+- **Validation before shipping**: Component contracts are enforced during development, not in production.
+- **Usage-driven output**: Builds can generate only the utilities and recipes a project actually uses.
+
+Together, these principles keep the system portable, predictable, and scalable as platforms and frameworks evolve.
+
+</div>

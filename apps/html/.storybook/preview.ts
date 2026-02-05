@@ -51,10 +51,12 @@ const ensureSprite = () => {
   document.body.prepend(container);
 };
 
+// Ensure icons are available for Docs pages (not just story renders).
+ensureSprite();
+
 type StoryFn = () => string;
 
 const withSprite = (Story: StoryFn) => {
-  ensureSprite();
   return Story();
 };
 

@@ -180,6 +180,14 @@
   margin-top: 8px;
 }
 
+.c1-story-my-24 {
+  margin-block: 24px;
+}
+
+.c1-story-my-48 {
+  margin-block: 48px;
+}
+
 .c1-story-margin-3em {
   margin: 3em;
 }
