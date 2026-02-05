@@ -194,6 +194,7 @@
     :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
   ) {
   color: var(--cdr-prose-link-hover);
+  text-decoration: none;
 }
 
 :is(.cdr-prose, .prose)
