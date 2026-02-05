@@ -41,7 +41,7 @@
   --cdr-prose-space-1: var(--cdr-space-quarter-x);
   --cdr-prose-space-2: var(--cdr-space-three-quarter-x);
   --cdr-prose-space-3: var(--cdr-space-one-and-a-half-x);
-  --cdr-prose-heading-margin-scale: 0.68;
+  --cdr-prose-heading-margin-scale: 0.55;
 }
 
 :is(.cdr-prose--lg, .prose--lg) {
