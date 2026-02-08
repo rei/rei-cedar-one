@@ -366,6 +366,7 @@
   display: block;
   max-width: 100%;
   height: auto;
+  margin-block: var(--cdr-prose-space-3);
 }
 
 :is(.cdr-prose, .prose) :where(figcaption):not(:is(.cdr-not-prose, .nprose)) {

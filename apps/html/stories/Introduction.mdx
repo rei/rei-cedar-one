@@ -1,26 +1,6 @@
-<div className="sb-unstyled cdr-prose cdr-prose--sm c1-story-pad-24 c1-story-max-640">
+<div className="sb-unstyled cdr-prose cdr-prose--sm cdr-prose--ruled-headings c1-story-max-640">
 
 <h1 className="cdr-title">Cedar One</h1>
-{/* 
-<div className="cdr-not-prose c1-story-mt-8">
-  <ul className="cdr-list cdr-list--inline cdr-list--compact cdr-list--unordered cdr-eyebrow">
-    <li>
-      <a className="cdr-link" href="https://github.com/rei/rei-cedar-one">
-        GitHub
-      </a>
-    </li>
-    <li>
-      <a className="cdr-link" href="https://rei.github.io/rei-cedar-one/vue">
-        Vue Storybook
-      </a>
-    </li>
-    <li>
-      <a className="cdr-link" href="https://rei.github.io/rei-cedar-one/react">
-        React Storybook
-      </a>
-    </li>
-  </ul>
-</div> */}
 
 Cedar One provides a framework-agnostic, CSS-first foundation for <a className="cdr-link" href="http://cedar.rei.com">Cedar</a>.
 Tokens define design intent. Components ship as native HTML and static CSS, with behavior added only when needed.
@@ -33,14 +13,17 @@ Tokens define design intent. Components ship as native HTML and static CSS, with
 </button>
 ```
 
-<div className="c1-story-mt-24" />
+Rendered result (zero runtime JavaScript):
 
-Result: <button type="button" className="cdr-button cdr-button--primary">{`Add to cart`}</button> — no runtime JavaScript required.
+<button type="button" className="cdr-button cdr-button--primary">
+  {`Add to cart`}
+</button>
 
-### Contracts, enforced before runtime
+### Contracts, verified before runtime
 
-Instead of shipping validation logic inside framework components, Cedar One enforces
-component contracts at development and build time using ESLint and tooling.
+Cedar One shifts verifiable correctness into development and build time. Structural,
+accessibility, and styling contracts are enforced through tooling, keeping runtime
+output simple and predictable.
 
 <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
   <svg
@@ -54,10 +37,11 @@ component contracts at development and build time using ESLint and tooling.
   >
     <use href="#x-stroke" />
   </svg>
-  <span>Runtime validation</span>
+  <span>Runtime enforcement</span>
 </h4>
 
-Runtime validation increases shipped JavaScript and expands the surface area to maintain:
+In many systems, component contracts are enforced at runtime through framework code.
+This increases shipped JavaScript and expands the surface area that must be maintained.
 
 ```ts
 import { defineProps } from 'vue';
@@ -82,10 +66,14 @@ defineProps({
   >
     <use href="#check-stroke" />
   </svg>
-  <span>Development-time validation</span>
+  <span>Build-time verification</span>
 </h4>
 
-So we keep runtime lean and push checks earlier. Here’s what an unknown-modifier rule looks like:
+Cedar One enforces these rules through linting and static analysis. Markup stays
+explicit, and problems surface early. This covers structure, accessibility,
+tokens, composition, and cross-framework consistency.
+
+Example: detecting an unknown modifier:
 
 ```ts
 const BASE = 'cdr-button';
@@ -116,11 +104,13 @@ Result:
   alt="Example ESLint error showing an unknown Cedar One class modifier."
 />
 
+By verifying these contracts early, Cedar One avoids duplicating logic across
+frameworks and keeps runtime behavior focused on what cannot be validated statically.
+
 ### Adapters at the edges
 
-We only reach for JavaScript when <a href="./?path=/docs/html-disclosure-accordion--docs">behavior</a> is unavoidable and CSS can’t cover the gap.
-
-Those behaviors live in small, framework-agnostic adapters that Vue and React can wrap when needed.
+JavaScript is reserved for <a href="./?path=/docs/html-disclosure-accordion--docs">behavior</a> that cannot be expressed in CSS.
+This logic lives in small, framework-agnostic adapters.
 
 In HTML, attach an adapter to the rendered DOM:
 
