@@ -9,11 +9,9 @@ Cedar One is a CSS-first, framework-agnostic foundation for the
 [Cedar design system](https://cedar.rei.com).
 
 Components ship as native HTML and static CSS, with design intent defined by tokens
-and shared across platforms.
-
-Instead of embedding behavior and validation into framework components, Cedar One
-pushes those concerns into build-time tooling and small, explicit adapters. This keeps
-runtime output lean, predictable, and portable.
+and shared across platforms. Behavior and validation are pushed into build-time
+tooling and small, explicit adapters, keeping runtime output lean, predictable,
+and portable.
 
 Explore the system:
 
