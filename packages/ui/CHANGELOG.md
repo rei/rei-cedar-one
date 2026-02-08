@@ -1,5 +1,11 @@
 # @rei/c1-ui Changelog
 
+## 0.1.23-alpha.0 - 2026-02-05
+
+- Refined prose heading spacing and introduced optional ruled heading styling.
+- Simplified prose list rules and reduced selector repetition.
+- Removed prose preformatted block styling.
+
 ## 0.1.22-alpha.0 - 2026-02-05
 
 - Tuned prose heading weight alignment and small-prose line-height tokens.

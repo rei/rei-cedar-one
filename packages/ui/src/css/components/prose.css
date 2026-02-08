@@ -26,7 +26,8 @@
   --cdr-prose-space-1: var(--cdr-space-quarter-x);
   --cdr-prose-space-2: var(--cdr-space-one-x);
   --cdr-prose-space-3: var(--cdr-space-two-x);
-  --cdr-prose-heading-margin-scale: 0.85;
+  --cdr-prose-heading-margin-top: 4.8rem;
+  --cdr-prose-heading-margin-bottom: 1.6rem;
   --cdr-prose-block-margin: calc(var(--cdr-prose-font-size) * 0.5);
   --cdr-prose-radius: var(--cdr-radius-softer);
   color: var(--cdr-prose-text);
@@ -41,7 +42,8 @@
   --cdr-prose-space-1: var(--cdr-space-quarter-x);
   --cdr-prose-space-2: var(--cdr-space-three-quarter-x);
   --cdr-prose-space-3: var(--cdr-space-one-and-a-half-x);
-  --cdr-prose-heading-margin-scale: 0.55;
+  --cdr-prose-heading-margin-top: 3.2rem;
+  --cdr-prose-heading-margin-bottom: 1.2rem;
 }
 
 :is(.cdr-prose--lg, .prose--lg) {
@@ -50,12 +52,22 @@
   --cdr-prose-space-1: var(--cdr-space-half-x);
   --cdr-prose-space-2: var(--cdr-space-one-and-a-half-x);
   --cdr-prose-space-3: var(--cdr-space-two-x);
+  --cdr-prose-heading-margin-top: 6.4rem;
+  --cdr-prose-heading-margin-bottom: 2rem;
 }
 
 :is(.cdr-prose--invert, .prose--inv) {
   --cdr-prose-text: var(--cdr-color-text-button-dark);
   --cdr-prose-muted: var(--cdr-color-text-button-dark-disabled);
   --cdr-prose-rule: var(--cdr-color-border-button-dark-rest);
+}
+
+:is(.cdr-prose--ruled-headings, .prose--ruled-h)
+  :where(h1, h2, h3, h4, h5):not(:is(.cdr-not-prose, .nprose)):not(
+    :first-child
+  ) {
+  border-top: 0.1rem solid var(--cdr-prose-rule);
+  padding-top: 2.4rem;
 }
 
 :is(.cdr-prose--serif-headings, .prose--serif-h) {
@@ -69,7 +81,6 @@
   --cdr-prose-h3-line-height: var(--cdr-line-height-ratio-heading-3);
   --cdr-prose-h4-size: var(--cdr-type-scale-2);
   --cdr-prose-h4-line-height: var(--cdr-line-height-ratio-heading-2);
-  --cdr-prose-h1-font-family: var(--cdr-font-family-serif);
 }
 
 :is(.cdr-prose--measure, .prose--meas) {
@@ -78,54 +89,40 @@
 
 :is(.cdr-prose, .prose)
   :where(p, ul, ol, blockquote, pre, table, figure, hr):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
+    :is(.cdr-not-prose, .nprose)
   ) {
   margin-block: var(--cdr-prose-block-margin);
 }
 
-:is(.cdr-prose, .prose)
-  :where(p):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ):last-child {
+:is(.cdr-prose, .prose) :where(p):not(:is(.cdr-not-prose, .nprose)):last-child {
   margin-block-end: 0;
 }
 
 :is(.cdr-prose, .prose)
-  :where(h1, h2, h3, h4, h5):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+  :where(h1, h2, h3, h4, h5):not(:is(.cdr-not-prose, .nprose)) {
   font-family: var(--cdr-prose-heading-font-family);
   font-style: normal;
   font-weight: var(--cdr-prose-heading-weight);
   letter-spacing: 0;
-  margin-block: calc(
-    var(--cdr-prose-heading-size) * var(--cdr-prose-heading-margin-scale)
-  );
+  margin-block-start: var(--cdr-prose-heading-margin-top);
+  margin-block-end: var(--cdr-prose-heading-margin-bottom);
   font-size: var(--cdr-prose-heading-size);
   line-height: var(--cdr-prose-heading-line-height);
 }
 
 :is(.cdr-prose, .prose)
-  :where(h1, h2, h3, h4, h5):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ):first-child {
+  :where(h1, h2, h3, h4, h5):not(:is(.cdr-not-prose, .nprose)):first-child {
   margin-block-start: 0;
 }
 
-:is(.cdr-prose, .prose)
-  :where(h1):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(h1):not(:is(.cdr-not-prose, .nprose)) {
   --cdr-prose-heading-font-family: var(--cdr-font-family-serif);
   --cdr-prose-heading-weight: var(--cdr-prose-h1-weight);
   --cdr-prose-heading-size: var(--cdr-prose-h1-size);
   --cdr-prose-heading-line-height: var(--cdr-prose-h1-line-height);
 }
 
-:is(.cdr-prose, .prose)
-  :where(h2):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(h2):not(:is(.cdr-not-prose, .nprose)) {
   --cdr-prose-heading-font-family: var(
     --cdr-prose-h2-font-family,
     var(--cdr-prose-heading-font-family)
@@ -134,10 +131,7 @@
   --cdr-prose-heading-line-height: var(--cdr-prose-h2-line-height);
 }
 
-:is(.cdr-prose, .prose)
-  :where(h3):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(h3):not(:is(.cdr-not-prose, .nprose)) {
   --cdr-prose-heading-font-family: var(
     --cdr-prose-h3-font-family,
     var(--cdr-prose-heading-font-family)
@@ -146,10 +140,7 @@
   --cdr-prose-heading-line-height: var(--cdr-prose-h3-line-height);
 }
 
-:is(.cdr-prose, .prose)
-  :where(h4):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(h4):not(:is(.cdr-not-prose, .nprose)) {
   --cdr-prose-heading-font-family: var(
     --cdr-prose-h4-font-family,
     var(--cdr-prose-heading-font-family)
@@ -158,10 +149,7 @@
   --cdr-prose-heading-line-height: var(--cdr-prose-h4-line-height);
 }
 
-:is(.cdr-prose, .prose)
-  :where(h5):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(h5):not(:is(.cdr-not-prose, .nprose)) {
   --cdr-prose-heading-font-family: var(
     --cdr-prose-h5-font-family,
     var(--cdr-prose-heading-font-family)
@@ -170,94 +158,64 @@
   --cdr-prose-heading-line-height: var(--cdr-prose-h5-line-height);
 }
 
-:is(.cdr-prose, .prose)
-  :where(strong):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(strong):not(:is(.cdr-not-prose, .nprose)) {
   font-weight: var(--cdr-text-body-strong-300-weight, 600);
 }
 
-:is(.cdr-prose, .prose)
-  :where(em):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(em):not(:is(.cdr-not-prose, .nprose)) {
   font-style: var(--cdr-text-italic-style, italic);
   font-variation-settings: var(--cdr-text-italic-variation, normal);
 }
 
-:is(.cdr-prose, .prose)
-  :where(a):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(a):not(:is(.cdr-not-prose, .nprose)) {
   color: var(--cdr-prose-link-rest);
   text-decoration: underline;
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.12em;
 }
 
-:is(.cdr-prose, .prose)
-  :where(a:hover):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(a:hover):not(:is(.cdr-not-prose, .nprose)) {
   color: var(--cdr-prose-link-hover);
   text-decoration: none;
 }
 
-:is(.cdr-prose, .prose)
-  :where(a:active):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(a:active):not(:is(.cdr-not-prose, .nprose)) {
   color: var(--cdr-prose-link-active);
 }
 
-:is(.cdr-prose, .prose)
-  :where(ul):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(ul, ol):not(:is(.cdr-not-prose, .nprose)) {
   position: relative;
   padding-left: 1em;
-  list-style-type: none;
-}
-
-:is(.cdr-prose, .prose)
-  :where(ol):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
-  list-style-type: decimal;
-  padding-left: 1.5em;
   list-style-position: outside;
 }
 
-:is(.cdr-prose, .prose)
-  :where(ol)
-  > li:not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(ul):not(:is(.cdr-not-prose, .nprose)) {
+  list-style-type: none;
+}
+
+:is(.cdr-prose, .prose) :where(ol):not(:is(.cdr-not-prose, .nprose)) {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+}
+
+:is(.cdr-prose, .prose) :where(ol) > li:not(:is(.cdr-not-prose, .nprose)) {
   padding-left: var(--cdr-space-quarter-x);
 }
 
 :is(.cdr-prose, .prose)
   :where(ul, ol)
   > li
-  + li:not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+  + li:not(:is(.cdr-not-prose, .nprose)) {
   margin-top: var(--cdr-space-half-x);
 }
 
-:is(.cdr-prose, .prose)
-  :where(ul, ol)
-  > li:not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(ul, ol) > li:not(:is(.cdr-not-prose, .nprose)) {
   margin-block: 0;
 }
 
 :is(.cdr-prose, .prose)
   :where(ul)
-  > li::before:not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+  > li::before:not(:is(.cdr-not-prose, .nprose)) {
   content: '\2022';
   position: relative;
   margin-left: -1em;
@@ -271,9 +229,7 @@
 :is(.cdr-prose, .prose)
   :where(ul, ol)
   > li
-  > :where(ul, ol):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+  > :where(ul, ol):not(:is(.cdr-not-prose, .nprose)) {
   margin-top: var(--cdr-space-half-x);
   position: relative;
   padding-left: 1em;
@@ -284,9 +240,7 @@
   :where(ol)
   > li
   > :where(ul, ol)
-  > li:not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+  > li:not(:is(.cdr-not-prose, .nprose)) {
   padding-left: 0;
 }
 
@@ -294,9 +248,7 @@
   :where(ol)
   > li
   > :where(ul, ol)
-  > li::before:not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+  > li::before:not(:is(.cdr-not-prose, .nprose)) {
   content: '\2013';
   position: absolute;
   color: var(
@@ -310,9 +262,7 @@
   :where(ul)
   > li
   > :where(ul, ol)
-  > li::before:not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+  > li::before:not(:is(.cdr-not-prose, .nprose)) {
   content: '\2013';
   position: relative;
   margin-left: -1em;
@@ -325,7 +275,7 @@
 
 :is(.cdr-prose, .prose)
   :where(blockquote):not(:where(:is(.cdr-quote, .qt))):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
+    :is(.cdr-not-prose, .nprose)
   ) {
   padding: var(--cdr-space-inset-one-x-stretch);
   color: var(--cdr-quote-content-text-color, var(--cdr-color-text-primary));
@@ -334,11 +284,9 @@
 
 :is(.cdr-prose, .prose)
   :where(blockquote):not(:where(:is(.cdr-quote, .qt))):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
+    :is(.cdr-not-prose, .nprose)
   )
-  > :where(p):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+  > :where(p):not(:is(.cdr-not-prose, .nprose)) {
   font-family: var(--cdr-font-family-serif);
   font-weight: 400;
   font-size: 2.4rem;
@@ -351,11 +299,9 @@
 @media (--cdr-xs) {
   :is(.cdr-prose, .prose)
     :where(blockquote):not(:where(:is(.cdr-quote, .qt))):not(
-      :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
+      :is(.cdr-not-prose, .nprose)
     )
-    > :where(p):not(
-      :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-    ) {
+    > :where(p):not(:is(.cdr-not-prose, .nprose)) {
     font-size: 1.8rem;
     line-height: 2.8rem;
   }
@@ -363,11 +309,9 @@
 
 :is(.cdr-prose, .prose)
   :where(blockquote):not(:where(:is(.cdr-quote, .qt))):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
+    :is(.cdr-not-prose, .nprose)
   )
-  :where(cite):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+  :where(cite):not(:is(.cdr-not-prose, .nprose)) {
   font-family: var(
     --cdr-text-utility-sans-100-family,
     var(--cdr-font-family-sans)
@@ -383,83 +327,48 @@
 
 :is(.cdr-prose, .prose)
   :where(blockquote):not(:where(:is(.cdr-quote, .qt))):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
+    :is(.cdr-not-prose, .nprose)
   )
-  > :where(p):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  )
-  + :where(cite):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+  > :where(p):not(:is(.cdr-not-prose, .nprose))
+  + :where(cite):not(:is(.cdr-not-prose, .nprose)) {
   padding-top: var(--cdr-space-one-x);
 }
 
-:is(.cdr-prose, .prose)
-  :where(code):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(code):not(:is(.cdr-not-prose, .nprose)) {
   font-family:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
   font-size: 0.9em;
 }
 
-:is(.cdr-prose, .prose)
-  :where(pre):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
-  padding: var(--cdr-space-inset-one-x-squish);
-  border: 0.1rem solid var(--cdr-prose-rule);
-  border-radius: var(--cdr-prose-radius);
-  overflow-x: auto;
-}
-
-:is(.cdr-prose, .prose)
-  :where(hr):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(hr):not(:is(.cdr-not-prose, .nprose)) {
   border: 0;
   border-top: 0.1rem solid var(--cdr-prose-rule);
 }
 
-:is(.cdr-prose, .prose)
-  :where(table):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(table):not(:is(.cdr-not-prose, .nprose)) {
   width: 100%;
   border-collapse: collapse;
 }
 
-:is(.cdr-prose, .prose)
-  :where(th, td):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(th, td):not(:is(.cdr-not-prose, .nprose)) {
   padding-block: var(--cdr-prose-space-1);
   padding-inline: var(--cdr-prose-space-2);
   border-bottom: 0.1rem solid var(--cdr-prose-rule);
   text-align: left;
 }
 
-:is(.cdr-prose, .prose)
-  :where(th):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(th):not(:is(.cdr-not-prose, .nprose)) {
   font-weight: 600;
 }
 
-:is(.cdr-prose, .prose)
-  :where(img):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(img):not(:is(.cdr-not-prose, .nprose)) {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-:is(.cdr-prose, .prose)
-  :where(figcaption):not(
-    :where(:is(.cdr-not-prose, .nprose), :is(.cdr-not-prose, .nprose) *)
-  ) {
+:is(.cdr-prose, .prose) :where(figcaption):not(:is(.cdr-not-prose, .nprose)) {
   margin-block-start: var(--cdr-prose-space-1);
   color: var(--cdr-prose-muted);
 }
