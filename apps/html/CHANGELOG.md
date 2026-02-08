@@ -1,5 +1,10 @@
 # @rei/c1-html Changelog
 
+## 0.1.22-alpha.0 - 2026-02-08
+
+- Added explicit docs classification metadata to every HTML story (`parameters.c1Meta.classification`).
+- Switched HTML docs pages to the shared Cedar One docs layout with classification badges.
+
 ## 0.1.21-alpha.0 - 2026-02-05
 
 - Refined the HTML Storybook introduction content and layout.

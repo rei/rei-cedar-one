@@ -11,6 +11,9 @@ export default {
   title: 'HTML/Typography/Caption',
   tags: ['autodocs'],
   parameters: {
+    c1Meta: {
+      classification: ['css-only'],
+    },
     docs: {
       description: {
         component:

@@ -39,6 +39,7 @@ import '../../../packages/ui/dist/css/components/prose.css';
 import '../../../packages/ui/dist/css/components/list.css';
 
 import sprite from '@rei/c1-icons/sprite.svg?raw';
+import { c1DocsPage } from '../../storybook/docs/c1-docs-page';
 
 const ensureSprite = () => {
   if (typeof document === 'undefined') return;
@@ -63,6 +64,9 @@ const withSprite = (Story: StoryFn) => {
 export const decorators = [withSprite];
 
 export const parameters = {
+  docs: {
+    page: c1DocsPage,
+  },
   controls: {
     expanded: true,
     matchers: {

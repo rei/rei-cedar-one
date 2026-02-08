@@ -15,6 +15,9 @@ export default {
   title: 'HTML/Forms/Label Standalone',
   tags: ['autodocs'],
   parameters: {
+    c1Meta: {
+      classification: ['css-only'],
+    },
     docs: {
       description: {
         component:

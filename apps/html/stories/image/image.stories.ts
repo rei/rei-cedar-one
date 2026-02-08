@@ -9,6 +9,9 @@ export default {
   title: 'HTML/Media/Image',
   tags: ['autodocs'],
   parameters: {
+    c1Meta: {
+      classification: ['css-only'],
+    },
     docs: {
       description: {
         component:

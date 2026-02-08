@@ -53,6 +53,9 @@ export default {
   title: 'HTML/Forms/Input',
   tags: ['autodocs'],
   parameters: {
+    c1Meta: {
+      classification: ['requires-adapter'],
+    },
     docs: {
       description: {
         component:

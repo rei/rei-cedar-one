@@ -9,6 +9,8 @@
   },
   "devDependencies": {
     "@rei/c1-icons": "workspace:*",
-    "@rei/c1-lint": "workspace:*"
+    "@rei/c1-lint": "workspace:*",
+    "@types/react": "^19.2.11",
+    "react": "^19.2.4"
   }
 }

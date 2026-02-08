@@ -14,6 +14,9 @@ export default {
   title: 'HTML/Typography/Prose',
   tags: ['autodocs'],
   parameters: {
+    c1Meta: {
+      classification: ['css-only', 'opt-in'],
+    },
     docs: {
       description: {
         component:

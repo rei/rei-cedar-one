@@ -14,6 +14,9 @@ export default {
   title: 'HTML/Controls/Button',
   tags: ['autodocs'],
   parameters: {
+    c1Meta: {
+      classification: ['css-only'],
+    },
     docs: {
       description: {
         component:

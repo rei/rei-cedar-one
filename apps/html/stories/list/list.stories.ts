@@ -16,6 +16,9 @@ export default {
   title: 'HTML/Typography/List',
   tags: ['autodocs'],
   parameters: {
+    c1Meta: {
+      classification: ['css-only'],
+    },
     docs: {
       description: {
         component:

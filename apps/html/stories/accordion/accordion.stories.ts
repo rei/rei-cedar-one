@@ -71,6 +71,9 @@ export default {
   title: 'HTML/Disclosure/Accordion',
   tags: ['autodocs'],
   parameters: {
+    c1Meta: {
+      classification: ['requires-adapter'],
+    },
     docs: {
       description: {
         component:

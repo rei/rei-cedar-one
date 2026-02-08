@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.41-alpha.0 - 2026-02-08
+
+- Added a shared docs page with component classification badges across HTML, Vue, and React Storybooks.
+- Switched story classification from title inference to explicit per-story `parameters.c1Meta.classification`.
+- Refined docs badge presentation with tighter typography and unstyled Storybook-safe rendering hooks.
+
 ## 0.1.40-alpha.0 - 2026-02-05
 
 - Refined the HTML Storybook introduction copy and layout.

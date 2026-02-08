@@ -134,6 +134,9 @@ const meta = {
   tags: ['autodocs'],
   excludeStories: /.*ArgsData$/,
   parameters: {
+    c1Meta: {
+      classification: ['requires-adapter'],
+    },
     layout: 'padded',
   },
   args: {

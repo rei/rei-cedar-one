@@ -1,5 +1,10 @@
 # @rei/c1-vue Changelog
 
+## 0.1.23-alpha.0 - 2026-02-08
+
+- Added explicit docs classification metadata to Vue Input and Accordion stories.
+- Switched Vue docs pages to the shared Cedar One docs layout with classification badges.
+
 ## 0.1.22-alpha.0 - 2026-02-04
 
 - Added accordion markup coverage to the lint fixture.

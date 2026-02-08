@@ -1,5 +1,10 @@
 # @rei/c1-react Changelog
 
+## 0.1.3-alpha.0 - 2026-02-08
+
+- Added explicit docs classification metadata to React Input and Accordion stories.
+- Switched React docs pages to the shared Cedar One docs layout with classification badges.
+
 ## 0.1.2-alpha.0 - 2026-02-04
 
 - Organized the input component into a dedicated folder with colocated types.

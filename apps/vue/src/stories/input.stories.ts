@@ -227,6 +227,11 @@ const meta = {
       template: '<div class="c1-story-margin-3em"><story/></div>',
     }),
   ],
+  parameters: {
+    c1Meta: {
+      classification: ['requires-adapter'],
+    },
+  },
   args: {
     ...InputArgsData,
   },

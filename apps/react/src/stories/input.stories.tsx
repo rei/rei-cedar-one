@@ -157,6 +157,9 @@ const meta = {
   title: 'React/Forms/Input',
   tags: ['autodocs'],
   parameters: {
+    c1Meta: {
+      classification: ['requires-adapter'],
+    },
     layout: 'padded',
   },
   args: {
