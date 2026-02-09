@@ -16,15 +16,15 @@ and portable.
 <br>
 
 <p align="center">
-  <a href="https://rei.github.io/rei-cedar-one/html/">
+  <a href="https://rei.github.io/rei-cedar-one/html/" style="text-decoration: none;">
     <img src="docs/assets/icons/html5.svg" alt="HTML Storybook" title="HTML Storybook" width="24" height="24" />
   </a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://rei.github.io/rei-cedar-one/vue/">
+  <a href="https://rei.github.io/rei-cedar-one/vue/" style="text-decoration: none;">
     <img src="docs/assets/icons/vue.svg" alt="Vue Storybook" title="Vue Storybook" width="24" height="24" />
   </a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://rei.github.io/rei-cedar-one/react/">
+  <a href="https://rei.github.io/rei-cedar-one/react/" style="text-decoration: none;">
     <img src="docs/assets/icons/react.svg" alt="React Storybook" title="React Storybook" width="24" height="24" />
   </a>
 </p>

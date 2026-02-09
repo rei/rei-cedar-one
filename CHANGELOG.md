@@ -1,5 +1,10 @@
 # Cedar One Changelog
 
+## 0.1.44-alpha.0 - 2026-02-09
+
+- Refined Storybook icon-link presentation in the HTML introduction (larger icons, centered layout, and wider spacing).
+- Updated README Storybook icon links with hover titles and underline-free link styling.
+
 ## 0.1.43-alpha.0 - 2026-02-09
 
 - Added branded SVG social/framework icon assets under `docs/assets/icons`.

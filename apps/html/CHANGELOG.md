@@ -1,5 +1,10 @@
 # @rei/c1-html Changelog
 
+## 0.1.24-alpha.0 - 2026-02-09
+
+- Tuned introduction icon-link layout with centered alignment, increased spacing, and updated icon sizing.
+- Added README Storybook icon-link polish (tooltips and underline-free links).
+
 ## 0.1.23-alpha.0 - 2026-02-09
 
 - Added branded icon links in the HTML Storybook introduction for HTML, Vue, and React Storybook entry points.
