@@ -1,5 +1,10 @@
 # @rei/c1-vue Changelog
 
+## 0.1.24-alpha.0 - 2026-02-09
+
+- Updated Storybook devDependencies to `10.2.7`.
+- Updated Node type dependency versions.
+
 ## 0.1.23-alpha.0 - 2026-02-08
 
 - Added explicit docs classification metadata to Vue Input and Accordion stories.

@@ -1,5 +1,9 @@
 # @rei/c1-ui Changelog
 
+## 0.1.24-alpha.0 - 2026-02-09
+
+- Updated development dependency versions.
+
 ## 0.1.23-alpha.0 - 2026-02-05
 
 - Refined prose heading spacing and introduced optional ruled heading styling.

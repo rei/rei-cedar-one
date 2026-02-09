@@ -1,5 +1,10 @@
 # @rei/c1-lint Changelog
 
+## 0.1.18-alpha.0 - 2026-02-09
+
+- Updated lint package dependencies for current ESLint ecosystem compatibility.
+- Added RuleContext compatibility fallback for filename/source-code access across ESLint API versions.
+
 ## 0.1.17-alpha.0 - 2026-02-04
 
 - Added shorthand class aliases for accordion classes.

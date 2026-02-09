@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.42-alpha.0 - 2026-02-09
+
+- Updated workspace dependencies to latest compatible versions, including Storybook `10.2.7` packages.
+- Kept ESLint pinned to the `9.x` line after validating current parser/plugin compatibility.
+- Updated lockfile state after dependency refresh.
+
 ## 0.1.41-alpha.0 - 2026-02-08
 
 - Added a shared docs page with component classification badges across HTML, Vue, and React Storybooks.

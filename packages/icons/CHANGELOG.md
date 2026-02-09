@@ -1,5 +1,9 @@
 # @rei/c1-icons Changelog
 
+## 0.1.4-alpha.0 - 2026-02-09
+
+- Updated development dependency versions.
+
 ## 0.1.3-alpha.0 - 2026-02-04
 
 - Added React icon components with entrypoint exports.

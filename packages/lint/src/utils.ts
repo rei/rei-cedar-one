@@ -694,7 +694,14 @@ export function createRule<TAnalysis>(options: {
   return {
     meta,
     create(context) {
-      const filename = context.getFilename();
+      const filename =
+        context.filename ??
+        (
+          context as Rule.RuleContext & {
+            getFilename?: () => string;
+          }
+        ).getFilename?.() ??
+        '';
       const isHtml = filename.endsWith('.html') || filename.endsWith('.htm');
       const isStorySource = filename.endsWith('.stories.ts');
 
@@ -725,7 +732,20 @@ export function createRule<TAnalysis>(options: {
         }
       };
 
-      const sourceCode = context.getSourceCode();
+      const sourceCode =
+        context.sourceCode ??
+        (
+          context as Rule.RuleContext & {
+            getSourceCode?: () => SourceCode;
+          }
+        ).getSourceCode?.();
+      if (!sourceCode) {
+        return {
+          ...createHtmlListener({ isHtml, handleTag }),
+          ...createStoryTemplateListener({ isStorySource, scanTextTags }),
+          ...createJsxListener({ handleTag }),
+        };
+      }
       const listener: Rule.RuleListener = {
         ...createHtmlListener({ isHtml, handleTag }),
         ...createStoryTemplateListener({ isStorySource, scanTextTags }),

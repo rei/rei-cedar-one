@@ -1,5 +1,10 @@
 # @rei/c1-react Changelog
 
+## 0.1.4-alpha.0 - 2026-02-09
+
+- Updated Storybook devDependencies to `10.2.7`.
+- Updated Node/React type dependency versions.
+
 ## 0.1.3-alpha.0 - 2026-02-08
 
 - Added explicit docs classification metadata to React Input and Accordion stories.

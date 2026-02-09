@@ -1,6 +1,6 @@
 {
   "name": "@rei/c1-vue",
-  "version": "0.1.23-alpha.0",
+  "version": "0.1.24-alpha.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -31,14 +31,14 @@
   "devDependencies": {
     "@chromatic-com/storybook": "5.0.0",
     "@rei/c1-lint": "workspace:*",
-    "@storybook/addon-docs": "10.2.6",
-    "@storybook/addon-onboarding": "10.2.6",
-    "@storybook/addon-vitest": "10.2.6",
-    "@storybook/vue3-vite": "10.2.6",
-    "@types/node": "^25.2.0",
+    "@storybook/addon-docs": "10.2.7",
+    "@storybook/addon-onboarding": "10.2.7",
+    "@storybook/addon-vitest": "10.2.7",
+    "@storybook/vue3-vite": "10.2.7",
+    "@types/node": "^25.2.2",
     "@vitejs/plugin-vue": "^6.0.4",
     "@vue/tsconfig": "^0.8.1",
-    "storybook": "10.2.6",
+    "storybook": "10.2.7",
     "typescript": "~5.9.3",
     "vite": "^7.3.1",
     "vue-tsc": "^3.2.4"

@@ -1,6 +1,6 @@
 {
   "name": "@rei/c1-lint",
-  "version": "0.1.17-alpha.0",
+  "version": "0.1.18-alpha.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@rei/c1-lint": "workspace:*",
-    "eslint": "latest",
+    "eslint": "^9.0.0",
     "typescript": "latest",
     "typescript-eslint": "latest"
   },
