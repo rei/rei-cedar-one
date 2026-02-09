@@ -13,11 +13,21 @@ and shared across platforms. Behavior and validation are pushed into build-time
 tooling and small, explicit adapters, keeping runtime output lean, predictable,
 and portable.
 
-Explore the system:
+<br>
 
-- [HTML](https://rei.github.io/rei-cedar-one/html)
-- [Vue](https://rei.github.io/rei-cedar-one/vue)
-- [React](https://rei.github.io/rei-cedar-one/react)
+<p align="center">
+  <a href="https://rei.github.io/rei-cedar-one/html/">
+    <img src="docs/assets/icons/html5.svg" alt="HTML Storybook" title="HTML Storybook" width="24" height="24" />
+  </a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://rei.github.io/rei-cedar-one/vue/">
+    <img src="docs/assets/icons/vue.svg" alt="Vue Storybook" title="Vue Storybook" width="24" height="24" />
+  </a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://rei.github.io/rei-cedar-one/react/">
+    <img src="docs/assets/icons/react.svg" alt="React Storybook" title="React Storybook" width="24" height="24" />
+  </a>
+</p>
 
 ## Packages
 

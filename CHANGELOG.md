@@ -1,5 +1,11 @@
 # Cedar One Changelog
 
+## 0.1.43-alpha.0 - 2026-02-09
+
+- Added branded SVG social/framework icon assets under `docs/assets/icons`.
+- Updated HTML Storybook introduction and README with icon-based links to HTML, Vue, and React Storybooks.
+- Added shared Storybook utility support for end-justified flex layouts.
+
 ## 0.1.42-alpha.0 - 2026-02-09
 
 - Updated workspace dependencies to latest compatible versions, including Storybook `10.2.7` packages.

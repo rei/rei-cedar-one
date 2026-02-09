@@ -1,5 +1,10 @@
 # @rei/c1-html Changelog
 
+## 0.1.23-alpha.0 - 2026-02-09
+
+- Added branded icon links in the HTML Storybook introduction for HTML, Vue, and React Storybook entry points.
+- Refined intro icon layout utilities and spacing for improved presentation.
+
 ## 0.1.22-alpha.0 - 2026-02-08
 
 - Added explicit docs classification metadata to every HTML story (`parameters.c1Meta.classification`).
