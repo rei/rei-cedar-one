@@ -3,16 +3,16 @@
   <img src="docs/assets/c1.png" alt="Cedar One logo" width="120" />
 </p>
 <p align="center">
-  <a href="https://rei.github.io/rei-cedar-one/html/" style="text-decoration: none;">
-    <img src="docs/assets/icons/html5.svg" alt="HTML Storybook" title="HTML Storybook" width="24" height="24" />
+  <a href="https://rei.github.io/rei-cedar-one/html/">
+    html
   </a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://rei.github.io/rei-cedar-one/vue/" style="text-decoration: none;">
-    <img src="docs/assets/icons/vue.svg" alt="Vue Storybook" title="Vue Storybook" width="24" height="24" />
+  <a href="https://rei.github.io/rei-cedar-one/vue/">
+    vue
   </a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://rei.github.io/rei-cedar-one/react/" style="text-decoration: none;">
-    <img src="docs/assets/icons/react.svg" alt="React Storybook" title="React Storybook" width="24" height="24" />
+  <a href="https://rei.github.io/rei-cedar-one/react/">
+  react
   </a>
 </p>
 <br>
